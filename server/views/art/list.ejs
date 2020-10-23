@@ -3,12 +3,14 @@
 
   <head>
     <title> <%= title %> </title>
+
+   
     <!--CSS section-->
     <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css' />
     <link rel='stylesheet' href='/@fortawesome/fontawesome-free/css/all.min.css' /> 
     <link rel='stylesheet' href='/content/app.css' />
     <link rel='stylesheet' href='/content/full-width.css' />
-    <link rel='stylesheet' href='/content/contact.css' /> 
+    <link rel='stylesheet' href='/content/business_contact.css' /> 
     <link rel='icon' type= 'image/x-icon' href ='/assets/images/favicon.ico'>
   </head>
 
@@ -28,37 +30,69 @@
 <!----------------------->
 <!------page content----->
 <!----------------------->
-<main class="container">
+<div class="mail_wrap">
+ <div id="mail">
+ 
+ <main class="container">
   <div class="row">
-    <div class="offset-md-l col-md-ll">
-      <a href="/book-list/add" class="btn btn-primary" role="button">Add</a>
-      <br>  
-        <div class="table table-bordered table-striped table-hover">
-          <table>
-           <!--Header row-->
-            <tr>
-              <th class="text-center col-2">Name:</th>
-              <th class="text-center col-2">Author:</th>    
-              <th class="text-center col-2">Published:</th>  
-              <th class="text-center col-2">Desription:</th>  
-              <th class="text-center col-2"></th>  
-              <th class="text-center col-2"></th>  
-            </tr>
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<div id="add">
+							<!--If login,show add button-->
+							<% if (typeof displayName == 'string' && displayName) { %>
+							<a href="/book-list/add" class="user_button" role="button">Add New Contact</a>
+							<% } else { %>
+							<a href="/login" class="user_button" role="button">Login to edit</a>
+							<% } %>
+						</div>
+						<thead>
+                            <!--Header row-->
+							<tr class="table100-head">
+							 <% if (typeof displayName == 'string' && displayName) { %>
+								<th class="column1">NAME</th>
+								<th class="column2">PHONE</th>
+								<th class="column3">EMAIL</th>
+								<th class="column4"></th>
+								<th class="column5"></th>
+                            <% } else { %>
+								<th class="column1">Contact name</th>
+								<th class="column2">Phone</th>
+								<th class="column3">Email</th>
+							<% } %>  							
+							</tr>
+						</thead>
+                        
+						<tbody>
+						        <!--Repearable Template Row-->
+								<% for(let count=0;count<BookList.length;count++){ %> 
+								<tr>
+								 <!--Only show sedit and delete buttons when user login-->
+								 <% if (typeof displayName == 'string' && displayName) { %>
+                                <td class="column1"><%= BookList[count].name %></td>
+								<td class="column2"><%= BookList[count].author %></td>
+								<td class="column3"><%= BookList[count].published %></td>
+								<td class="column4"><a href="/book-list/edit/<%= BookList[count]._id %>" class="user_button">Edit</a></td>
+								<td class="column5"><a id="cancel" href="/book-list/delete/<%= BookList[count]._id %>" class="delete_button">Delete</a></td>  
+							    <% } else {%>
+                               <td class="column1"><%= BookList[count].name %></td>
+                               <td class="column2"><%= BookList[count].author %></td>
+                               <td class="column3"><%= BookList[count].published %></td>
+                               <% } %> 
+							</tr>
+						  <% }  %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
 
-            <!--Repearable Template Row-->
-         
-            <% for(let count=0;count<BookList.length;count++){ %> 
-               <tr>
-                  <td class="text-center col-2"><%= BookList[count].name %></td>
-                  <td class="text-center col-2"><%= BookList[count].author %></td>
-                  <td class="text-center col-2"><%= BookList[count].published %></td>
-                  <td class="text-center col-2"><%= BookList[count].description %></td>
-                  <td class="text-center col-2"><a href="/book-list/edit/<%= BookList[count]._id %>" class="btn btn-primary">Edit</a></td>
-                  <td class="text-center col-2"><a id="cancel" href="/book-list/delete/<%= BookList[count]._id %>" class="btn btn-danger">Delete</a></td>  
-               </tr>
-            <% }  %>
-          </table>
-      </div>
+
 <!----------------------->
 <!------page finish----->
 <!----------------------->

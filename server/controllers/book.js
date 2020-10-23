@@ -12,13 +12,18 @@ module.exports.displayBookList = (req,res,next)=>{
         }
         else{
            //console.log(bookList);
-           res.render('art/list', {title:'ART', BookList:bookList});
+           res.render('art/list', {title:'BUSINESS CONTACT',
+           BookList:bookList,
+           displayName:req.user ? req.user.displayName:''});
         }
      });
    }
 
    module.exports.displayAddPage = (req,res,next)=>{
-    res.render('art/add', {title:'ADD ART'})}
+       //,displayName:req.user ? req.user.displayName:''
+    res.render('art/add', {title:'ADD CONTACT',
+    displayName:req.user ? req.user.displayName:''})
+}
 
    module.exports.processAddPage = (req,res,next)=>{
     let newBook = Book({
@@ -50,7 +55,7 @@ module.exports.displayEditPage =(req,res,next)=>{
         }
         else{
             //show the edit
-            res.render('art/edit',{title:'EDIT ART',book: bookToEdit})
+            res.render('art/edit',{title:'EDIT CONTACT',displayName:req.user ? req.user.displayName:'',book: bookToEdit})
         }
     });
 }

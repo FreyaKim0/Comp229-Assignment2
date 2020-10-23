@@ -83,12 +83,16 @@ body {
 
 /*Header-Popover*/
 .popover-header {
+	outline: none;
+	border: none;
   background-color: #eaeded;
   font-size: 12px;
   font-weight: normal;
   color: black;
 }
 .popover {
+  outline: none;
+	border: none;
   font-weight: normal;
   font-size: 12px;
 }
@@ -120,6 +124,19 @@ body {
   font-size: 12px;
   letter-spacing: 0.1rem;
   margin-top: -25px;
+}
+#welcomeUser{
+  color: #ffffff;
+  font-size: 13px;
+  float: left;
+  margin-top: 10px;
+  line-height: 0.1px;
+
+  text-transform: uppercase;
+}
+#login_button{
+  float: left;
+  margin-top:0px;
 }
 
 /*Header-Hamgurger*/

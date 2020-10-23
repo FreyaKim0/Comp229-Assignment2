@@ -1,0 +1,77 @@
+#description_display{
+    display:none;
+}
+.submit_button_add{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    color: #fff;
+    line-height: 1.2;
+  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    margin-bottom: 20px;
+  
+    padding: 0 5px;
+    min-width: 80px;
+    height: 35px;
+    background-color: #4b4d4d;
+    border-radius: 27px;
+    border-width: 0px;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  
+  .delete_button{
+    width: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    color: #fff;
+    line-height: 1.2;
+  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    margin-left: 10px;
+  
+    padding: 0 5px;
+    min-width: 80px;
+    height: 35px;
+    background-color: #6e0a0a;
+    border-radius: 27px;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  
+  .submit_button_add:hover {
+    background-color:#979999;
+    color: white;
+    text-decoration : none;
+  }
+  
+  .delete_button:hover{
+    background-color: #9e1010;
+    color: white;
+    text-decoration : none; 
+  }
+
+ .input_f{
+
+   width:300px;
+ }

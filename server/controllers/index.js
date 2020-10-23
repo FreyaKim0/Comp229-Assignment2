@@ -9,27 +9,27 @@ let userModel = require('../models/user');
 let User = userModel.User; //alias
 
 module.exports.displayHomePage = (req,res,next)=>{
-    res.render('index',{title:'HOME'});
+    res.render('index',{title:'HOME',displayName:req.user ? req.user.displayName:''});
 }
 
 module.exports.displayAboutPage = (req,res,next)=>{
-    res.render('index',{title:'ABOUT'});
+    res.render('index',{title:'ABOUT',displayName:req.user ? req.user.displayName:''});
 }
 
 module.exports.displayArtPage = (req,res,next)=>{
-    res.render('index',{title:'ART'});
+    res.render('index',{title:'BUSINESS CONTACT',displayName:req.user ? req.user.displayName:''});
 }
 
 module.exports.displayServicePage = (req,res,next)=>{
-    res.render('index',{title:'SERVICE'});
+    res.render('index',{title:'SERVICE',displayName:req.user ? req.user.displayName:''});
 }
 
 module.exports.displayContactPage = (req,res,next)=>{
-    res.render('contact',{title:'CONTACT'});
+    res.render('contact',{title:'CONTACT',displayName:req.user ? req.user.displayName:''});
 }
 
 module.exports.displayProjectPage = (req,res,next)=>{
-    res.render('index',{title:'PROJECT'});
+    res.render('index',{title:'PROJECT',displayName:req.user ? req.user.displayName:''});
 }
 
 module.exports.displayLoginPage = (req,res,next)=>{
@@ -38,7 +38,7 @@ module.exports.displayLoginPage = (req,res,next)=>{
     {
         res.render('auth/login',
         {
-            title:"Login",
+            title:"LOGIN",
             messages:req.flash('loginMessage'),
             displayName:req.user?req.user.displayName:''
         })
@@ -129,5 +129,5 @@ module.exports.processRegisterPage=(req,res,next)=>{
 
 module.exports.performLogout = (req,res,next)=>{
     req.logout();
-    res,redirect('/');
+    res.redirect('/');
 }

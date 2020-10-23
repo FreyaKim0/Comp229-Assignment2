@@ -8,7 +8,7 @@
     <link rel='stylesheet' href='/@fortawesome/fontawesome-free/css/all.min.css' /> 
     <link rel='stylesheet' href='/content/app.css' />
     <link rel='stylesheet' href='/content/full-width.css' />
-    <link rel='stylesheet' href='/content/contact.css' /> 
+    <link rel='stylesheet' href='/content/login.css' /> 
     <link rel='icon' type= 'image/x-icon' href ='/assets/images/favicon.ico'>
   </head>
 
@@ -23,70 +23,102 @@
     </div> 
     
     <div id="content_in_main_wrapper" class="main_grid_constraint">  
-    <%- include('../partials/content.ejs') %>
 
 <!----------------------->
 <!------page content----->
 <!----------------------->
-<main class="container">
-    <!--Message Area-->
-    <% if(messages.length>0) {%>
-       <div class="alter alter-danger">
-           <%=messages%>
-       </div>        
-    <%} %>
-    
-    <div class="row">
-        <div class="offset-md-4 col-md-4">
-            <h1>Please Register</h1>
-              <form method="POST" autocomplete="off">
-    
-                   <fieldset class="form-group">
-                       <label for="username">username:
-                       </label>
-                       <input type="text" class="form-control"
-                       name="username" placeholder="Enter username" id="username" required autofocus>
-                    </fieldset>
-    
-                    <fieldset class="form-group">
-                        <label for="password">password:
-                        </label>
-                        <input type="password" class="form-control"
-                        name="password" placeholder="Enter password" id="password" required>
-                        or
-                        <a href="/register">Register Here</a>
-                    </fieldset>
+<div class="limiter">
+        <div class="main_wrap">
 
-                    <fieldset class="form-group">
-                        <label for="email">Email:
-                        </label>
-                        <input type="email" class="form-control"
-                        name="email" placeholder="Enter email" id="email" required>
-                    </fieldset>
+          <!--Register block--> 
+          <div id="block_wrap">
+          <form method="POST" autocomplete="off">
 
-                    <fieldset class="form-group">
-                        <label for="displayName">display name:
-                        </label>
-                        <input type="text" class="form-control"
-                        name="displayName" placeholder="Enter display name" id="displayName" required>
-                    </fieldset>
-    
-                    <fieldset class="form-group text-right">
-                        <input type="submit" class="btn btn-success" value="Register">
-                        <a href="/" class="btn btn-warning">
-                          <input type="button" value="cancel" class="btn btn-warning">
-                        </a>
-                    </fieldset>
-            </form>
-        </div>
+          <span class="account_login">
+            REGISTER
+          </span><br><br>
+
+          <span class="field_name">
+            USERNAME
+          </span>
+          
+          <div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
+              <!--username input-->
+              <input class="input100" 
+                    type="text" 
+                    name="username" 
+                    id="username" 
+                    required autofocus>
+              <span class="focus-input100">
+              </span>
+          </div>
+          
+          <span class="field_name">
+            PASSWORD
+          </span>
+
+          <div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">  
+            
+            <!--show password-->
+            <span class="btn-show-pass">
+              <i class="fa fa-eye"></i>
+            </span>
+
+            <!--password input-->
+            <input class="input100" 
+                   type="password" 
+                   name="password" 
+                   id="password" 
+                   required>
+            <span class="focus-input100"></span>
+          </div>
+
+          <span class="field_name">
+            EMAIL
+          </span>
+
+          <div class="wrap-input100 validate-input m-b-36" data-validate = "Email is required">
+            <!--email input-->
+            <input class="input100"
+                   type="text" 
+                   name="email" 
+                   id="email" 
+                   required>
+            <span class="focus-input100"></span>
+          </div>
+
+          <span class="field_name">
+            DISPLAY NAME
+          </span>
+
+          <div class="wrap-input100 validate-input m-b-36" data-validate = "Display name is required">
+            <!--displayname input-->
+            <input class="input100" 
+                   type="text" 
+                   name="displayName" 
+                   id="displayName" required>
+            <span class="focus-input100"></span>
+          </div><br>
+
+          <div class="container-login100-form-btn">
+            <!--submit button-->
+            &nbsp;&nbsp;&nbsp;
+            <input type="submit" class="login100-form-btn" value="Register">
+            <!--cancel button-->
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/">   
+            <input type="button" value="Cancel" class="login100-form-btn">
+            </a>
+          </div>
+        </form>
+      </div>
     </div>
-    </main>    
+  </div>
+
 <!----------------------->
 <!------page finish----->
 <!----------------------->
 
-
-  <%- include('../partials/footer.ejs') %>
   </div>
   </div> 
   

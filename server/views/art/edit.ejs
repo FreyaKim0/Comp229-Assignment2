@@ -8,6 +8,7 @@
     <link rel='stylesheet' href='/@fortawesome/fontawesome-free/css/all.min.css' /> 
     <link rel='stylesheet' href='/content/app.css' />
     <link rel='stylesheet' href='/content/full-width.css' />
+    <link rel='stylesheet' href='/content/add.css' /> 
     <link rel='stylesheet' href='/content/contact.css' /> 
     <link rel='icon' type= 'image/x-icon' href ='/assets/images/favicon.ico'>
   </head>
@@ -28,58 +29,73 @@
 <!----------------------->
 <!------page content----->
 <!----------------------->
-<div class="container">
-    <div class="row">
-        <div class="offset-md-2 col-md-8">
-        <form class="form" method="POST">
-            <div class="form-group">
-                <label for="nameTextField">Book Title</label>
-                <input type="text" class="form-control"
+
+<div class="mail_wrap">
+      <div id="mail"><br>
+      <form class="form" method="POST">
+      <table>
+        <tr>
+          <td class="form">
+           <input type="text"
                 id="nameTextField"
-                placeholder="Enter the name of the book title"
+                placeholder="Enter the contact name"
                 name="name" 
                 value="<%=book.name %>"
-                required>
-            </div>
-
-            <div class="form-group">
-                <label for="authorTextField">Author</label>
-                <input type="text" class="form-control"
+                required
+                class="input_f">
+          </td>
+        </tr>
+        <tr>
+          <td class="form">
+          <input type="text"
                 id="nameTextField"
-                placeholder="Enter the name of the book's author"
+                placeholder="Enter phone"
                 name="author" 
                 value="<%=book.author %>"
-                required>
-            </div>
-
-            <div class="form-group">
-                <label for="publishedTextField">Year</label>
-                <input type="text" class="form-control"
+                required
+                class="input_f">
+          </td>
+        </tr>
+        <tr>
+          <td  class="form">
+                <input type="text"
                 id="publishedTextField"
-                placeholder="Enter the Year of the publication"
+                placeholder="Enter email"
                 name="published" 
                 value="<%=book.published %>"
-                required>
-            </div>
-    
-            <div class="form-group">
+                required
+                class="input_f">
+          </td>
+        </tr>
+ 
+        <!--Hide-->
+        <div id="description_display">
                 <label for="descriptionTextArea">Description</label>
-                <textarea type="text" class="form-control"
+                <input type="text" class="form-control"
                 id="descriptionTextArea"
                 placeholder="Enter the description"
-                name="description" 
-                value=""
-                required><%=book.description %></textarea>
+                name="description">
+        </div>
+        
+         <tr>
+          <td  class="form">
+            <!--Submit buttons-->
+            <div id="buttons_wrap"><br>
+                <a href="/book-list" class="delete_button">Cancel</a>
+                <button class="submit_button_add">Submit</button>
+                
             </div>
-            <button class="btn btn-primary">
-              <i class="fas fa-edit"></i> Submit
-            </button>
-
-            <a href=".book-list" class="btn btn-warning"><i class="fas fa-undo"></i>Cancel</a>
-        </form>
-     </div>
+          </td>   
+    
+        </tr>
+      </table>
+      </form>  
+      </div>
     </div>
-</div>
+
+
+
+ 
 <!----------------------->
 <!------page finish----->
 <!----------------------->
