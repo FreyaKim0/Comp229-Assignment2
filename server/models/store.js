@@ -1,54 +1,52 @@
 "use strict"
-
-const book = require("./book");
-
 class Book
 {
-    constructor(_id="",name="",author="",description="",price=0)
+    constructor(_id = "", name = "", author ="", description="", price = 0)
     {
-        this._id=_id;
-        this.name=name;
-        this.author=author;
-        this.description=description;
-        this.price=price;
+        this._id = _id;
+        this.name = name;
+        this.author = author;
+        this.description = description;
+        this.price = price;
     }
 
     toString()
     {
-        reutrn `_id   :${this._id}
-                name  :${this.name}
-                author:${this.author}
-                desciption:${this.description}
-                price :${this.price}`;
+        return "_id          :" + this._id + "\n" +
+               " name        : " + this.name + "\n" +
+               " author      : " + this.author + "\n" +
+               " description :" + this.description + "\n" +
+               " price       :" + this.price;
     }
 }
+
 class Line
 {
-    constructor(book=new Book(),quantity=1)
+    constructor(book = new Book(), quantity = 1)
     {
-        this.book=book;
-        this.quantity=quantity;
+        this.book = book;
+        this.quantity  = quantity;
     }
 
     toString()
     {
-        return "{"+this.book.toString()+"},\n"+
-        "quantity:"+this.quantity;
+        return "{" + this.book.toString() + "}, \n" +
+            " quantity: " + this.quantity;
     }
 
     total()
     {
-        return this.book.price*this.quantity;
+        return this.book.price * this.quantity;
     }
 }
 
 class Cart
 {
-    constructor(lines=[],itemCount=0,cartPrice=0)
+    constructor(lines = [], itemCount = 0, cartPrice = 0)
     {
-        this.lines=lines;
-        this.itemCount=itemCount;
-        this.cartPrice=cartPrice;
+        this.lines = lines;
+        this.itemCount = itemCount;
+        this.cartPrice = cartPrice;
     }
 
     toString() 
@@ -66,13 +64,13 @@ class Cart
         outputString += ", cartPrice: " + this.cartPrice;
         return outputString;
     }
- 
+
     addLine(line)
     {
         this.lines.push(line);
         this.cartPrice += line.total();
     }
- 
+
     empty()
     {
         this.lines = [];
@@ -80,8 +78,7 @@ class Cart
         this.cartPrice = 0;
     }
 }
- 
+
 module.exports.Cart = Cart;
 module.exports.Line = Line;
 module.exports.Book = Book;
- 
