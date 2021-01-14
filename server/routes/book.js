@@ -19,18 +19,18 @@ function requireAuth(req,res,next){
 router.get('/',bookController.displayBookList);
 
 /* Get Route for the ADD page- CREATE operation */
-router.get('/add', requireAuth,bookController.displayAddPage);
+//router.get('/add', requireAuth,bookController.displayAddPage);
 
 /* POST Route for processing the Add page- CREATE operation */
-router.post('/add', requireAuth,bookController.processAddPage);
+router.post('/add', passport.authenticate('jwt',{session: false}),bookController.processAddPage);
 
 /* Get Route for the EDIT page-  UPDAGE operation */
-router.get('/edit/:id', requireAuth,bookController.displayEditPage);
+//router.get('/edit/:id', requireAuth,bookController.displayEditPage);
 
 /* POST Route for processing the EDIT page- UPDAGE operation*/
-router.post('/edit/:id', requireAuth,bookController.processEditPage);
+router.post('/edit/:id', passport.authenticate('jwt',{session: false}),bookController.processEditPage);
 
 /* Get to perform Deletion- DELETE operation*/
-router.get('/delete/:id', requireAuth,bookController.performDelete);
+router.get('/delete/:id', passport.authenticate('jwt',{session: false}),bookController.performDelete);
 
 module.exports=router;

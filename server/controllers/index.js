@@ -1,8 +1,8 @@
-const e = require('express');
-let express=require('express');
+let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 let passport = require('passport');
+//let localPassport = require('passport-local').Strategy;
 
 //define the user Model instance
 let userModel = require('../models/user');
@@ -49,31 +49,54 @@ module.exports.displayLoginPage = (req,res,next)=>{
     }
 }
 
-module.exports.processLoginPage = (req,res,next)=>{
- passport.authenticate('local',
- (err,user,info)=>{ 
-   // server err?
-   if(err)
-   {
-       return next(err);
-   }
-   // is there a user login error?
-   if(!user)
-   {
-       req.flash('loginMessage','Authentication Error');
-       return res.redirect('/login');
-   }
-   req.login(user,(err)=>{
-       //server error?
-       if(err)
-       {
-           return next(err);
-       }
-       return res.redirect('/book-list');
-    });
+module.exports.processLoginPage = (req, res, next) => {
+    passport.authenticate('local',
+    (err, user, info) => {
+        // server err?
+        if(err)
+        {
+            return next(err);
+        }
+        // is there a user login error?
+        if(!user)
+        {
+            /*req.flash('loginMessage', 'Authentication Error');
 
-   })(req,res,next);
+            res.redirect('/redirectof!user'); */ 
+            /*return flase?*/
+        }
+        req.login(user, (err) => {
+            // server error?
+            if(err)
+            {
+                return next(err);
+            }
+ 
+          /*  const payload = 
+            {
+                id: user._id,
+                displayName: user.displayName,
+                username: user.username,
+                email: user.email
+            }
+ 
+            const authToken = jwt.sign(payload, DB.Secret, {
+                expiresIn: 604800 // 1 week
+            });
+            
+            return res.json({success: true, msg: 'User Logged in Successfully!', user: {
+                id: user._id,
+                displayName: user.displayName,
+                username: user.username,
+                email: user.email
+            }, token: authToken});
+ */
+            //return res.redirect('/book-list');
+        });
+    })(req, res, next);
 }
+
+
 
 module.exports.displayRegisterPage =(req,res,next)=>{
     if(!req.user){
@@ -129,5 +152,6 @@ module.exports.processRegisterPage=(req,res,next)=>{
 
 module.exports.performLogout = (req,res,next)=>{
     req.logout();
-    res.redirect('/');
+    //res.redirect('/');
+    res.json({success: true,msg:'User successfully logout!'});
 }

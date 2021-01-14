@@ -1,25 +1,24 @@
-// require moudules for the user Model
+// require modules for the user Model
 let mongoose=require('mongoose');
+let Schema = mongoose.Schema; //Trung
 let passportLocalMongoose = require('passport-local-mongoose');
 
-let User = mongoose.Schema(
+let User = /*mongoose*/ new Schema(
     {
         username:
         {
            type:String,
-           default:"",
+           default:'',
            trim:true,
            required:'username is required'
         },
-        /*
-         password:
+         /*password:
          {
              type:String,
              default:'',
              trim: true,
              required: 'password is required'
-         }
-        */        
+         },*/        
        email:
        {
          type:String,
@@ -37,12 +36,17 @@ let User = mongoose.Schema(
        created:
        {
            type:Date,
-           default:Date.now,
+           default:Date.now
        },
        created:
        {
            type:Date,
-           default:Date.now,
+           default:Date.now
+       },
+       update:
+       {
+            type:Date,
+            default:Date.now
        }
     },
     {

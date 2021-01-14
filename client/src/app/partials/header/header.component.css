@@ -1,0 +1,310 @@
+/*-----XuTung Jin 301111889------*/
+/*-------Framework css-----------*/
+/*---------2020-10-09------------*/
+
+
+/*------body sections------*/
+body {
+  background-color:#F3F4F5;
+  height: 100%;
+}
+
+#nameBanner {
+  background-color: #F3F4F5;
+  color: rgb(129, 125, 125);
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 40px;
+  margin-top: 60px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  line-height: 0.2;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+/*header+content*/
+.main_wrapper {
+  grid-template-columns: 100% 0%;
+  display: grid;
+}
+#header_in_main_wrapper {
+  display: none;
+}
+#content{
+  background-color: black;
+}
+#content_in_main_wrapper {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin:0;
+  padding:0;
+  position: relative;
+}
+
+#contactWrap {
+  width: 250px;
+  float: left;
+  text-align: left;
+}
+
+#contactInfo {
+  display: block;
+}
+
+.main_grid_constraint {
+  width: 100%;
+  text-align: center;
+  font-weight: verdana;
+  font-size: 17px;
+  line-height: 40px;
+}
+.words{
+  color:white;
+  float: left;
+  overflow: hidden;
+  line-height: 20px;
+  letter-spacing: 0.8px;
+  font-size: 12px;
+ }
+
+/*------header sections------*/
+*:focus {
+  outline: 0 !important;
+}
+
+/*Header-Popover*/
+.popover-header {
+	outline: none;
+	border: none;
+  background-color: #eaeded;
+  font-size: 12px;
+  font-weight: normal;
+  color: black;
+}
+.popover {
+  outline: none;
+	border: none;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+/*Header-Picutres*/
+#navClass {
+  opacity: 1;
+  text-align: center;
+}
+#profilePicture {
+  border-radius: 90px;
+}
+
+/*Header-Name section*/
+#pictureDiv {
+  padding-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+#name {
+  color: #ffffff;
+  letter-spacing: 0.1rem;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+#title {
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0.1rem;
+  margin-top: -25px;
+}
+#welcomeUser{
+  color: #ffffff;
+  font-size: 13px;
+  float: left;
+  margin-top: 10px;
+  line-height: 0.1px;
+
+  text-transform: uppercase;
+}
+#login_button{
+  float: left;
+  margin-top:0px;
+}
+
+
+/*Header-Hamgurger*/
+#hamburgerDiv {
+  margin-top: -20px;
+  display: block;
+  height: 40px;
+  padding: 10px;
+  border-style: solid;
+  border-width: 0.01px;
+  border-bottom-color: gray;
+  border-top-color: gray;
+}
+.fas {
+  color: white;
+  font-size: 20px;
+  float: left;
+  margin-left: 0px;
+  opacity: 0.5;
+}
+.fab {
+  color: white;
+  font-size: 20px;
+  float: left;
+  margin-left: 0px;
+  opacity: 0.5;
+}
+.navbar-toggler {
+  padding: 2px;
+}
+.navbar-toggler-icon {
+  width: 15px;
+  height: 15px;
+}
+
+/*Header-Nav*/
+#sideNav {
+  background-color:#252934f8;
+  width: auto;
+  position: relative;
+  z-index: 1;
+  overflow: hidden; /*if you want to crop the image*/
+}
+#sideNav:before{
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: url("/assets/images/background.jpg");
+  opacity:0.4;;
+  background-color: #252934c4;
+}
+#sideNav {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.6rem;
+  text-transform: uppercase;
+  line-height: 1cm;
+}
+#sideNav .navbar-toggler:focus {
+  outline-color: teal;
+}
+#navbarDropdown .nav-link dropdown-toggle {
+  color: pink;
+}
+.contactButton {
+  opacity: 0.5;
+  background-color: transparent;
+  border-width: 0px;
+  margin-right: 5px;
+  float: left;
+}
+.contactButton:hover {
+  opacity: 1;
+}
+.contactButton:focus {
+  opacity: 1;
+  border-width: 0px;
+}
+
+
+/*-----XuTung Jin 301111889---------------*/
+/*--Header css for screen width > 1190px--*/
+/*----------------2020-10-09--------------*/
+
+@media (min-width: 1190px) {
+  #nameBanner {
+    color: rgb(88, 86, 86);
+  }
+  #grid_placeholder {
+    display: block;
+    width: 100%;
+  }
+  #content {
+    overflow: auto;
+    background-color: #F2F4F5;
+    position: relative;
+  }
+  #main {
+    display: grid;
+  }
+  .main_wrapper {
+    grid-template-columns: 20% 80%;
+    display: grid;
+  }
+  .main_grid_constraint {
+    text-align: left;
+    line-height: 40px;
+  }
+  #navbarSupportedContent {
+    padding-top: 15px;
+  }
+  #pictureDiv {
+    padding-left: 13px;
+    padding-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+  #hamburgerDiv {
+    border-width: 0px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+  }
+  #sideNav {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+    min-width: 250px;
+    min-height: 650px;
+  }
+  #sideNav .navbar-brand {
+    display: flex;
+    padding: 0.5rem;
+  }
+  #sideNav .navbar-collapse {
+    padding-left: 0;
+    text-align: center;
+    display: flex;
+    align-items: flex-start;
+    flex-grow: 0;
+    width: 100%;
+    margin-bottom: auto;
+    margin-top: -20px;
+  }
+  #sideNav .navbar-collapse .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+  #sideNav .navbar-collapse .navbar-nav .nav-item {
+    display: block;
+  }
+  #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
+    display: block;
+  }
+  #header_in_main_wrapper {
+    display: block;
+  }
+  .contactButton {
+    float: none;
+  }
+  #hamburger_btn {
+    display: none;
+  }
+  #pictureDiv {
+    padding-top: 20px;
+  }
+}

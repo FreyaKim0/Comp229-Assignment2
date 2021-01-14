@@ -1,0 +1,15 @@
+/*------footer sections------*/
+#footer {
+  font-size: 10px;
+  color:grey;
+  text-align: center;
+  display: block;
+  position: relative;
+  bottom: 0;
+  letter-spacing: 3px;
+  background-color: #F2F4F5;
+}
+
+#grid_placeholder {
+  display: none;
+}

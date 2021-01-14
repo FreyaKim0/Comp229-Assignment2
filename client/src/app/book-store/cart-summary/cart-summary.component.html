@@ -1,0 +1,22 @@
+<!--linkedIn-->
+  <button class="contactButton"
+          type="button"
+          data-container="body"
+          data-trigger="hover"
+          data-toggle="popover"
+          data-placement="top"
+          data-content="Open LinkedIn in new Tab"
+          [disabled]='cart.itemCount==0'  routerLink='/cart'>
+
+            <i class="fa fa-shopping-cart"></i>
+
+            <div class="words" *ngIf='cart.itemCount > 0'>
+              {{ cart.itemCount }} item(s)
+              {{ cart.cartPrice | currency: 'USD':'symbol':'2.2-2' }}
+            </div>
+
+            <div class="words" *ngIf='cart.itemCount==0'>
+              (empty)
+            </div>
+
+</button>

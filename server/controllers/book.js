@@ -12,17 +12,25 @@ module.exports.displayBookList = (req,res,next)=>{
         }
         else{
            //console.log(bookList);
+           
+           /*
            res.render('art/list', {title:'BUSINESS CONTACT',
            BookList:bookList,
            displayName:req.user ? req.user.displayName:''});
+           */
+          res.json(bookList);
         }
      });
    }
 
    module.exports.displayAddPage = (req,res,next)=>{
-       //,displayName:req.user ? req.user.displayName:''
+ 
+    /*
     res.render('art/add', {title:'ADD CONTACT',
     displayName:req.user ? req.user.displayName:''})
+    */
+
+    res.json({success:true,msg:'Successfully displayed add page'});
 }
 
    module.exports.processAddPage = (req,res,next)=>{
@@ -40,7 +48,9 @@ module.exports.displayBookList = (req,res,next)=>{
        }
        else{
            //refresh the book list
-           res.redirect('/book-list');
+           //res.redirect('/book-list');
+
+           res.json({success:true,msg:'Successfully added new book'});
        }
     });
 }
@@ -55,7 +65,8 @@ module.exports.displayEditPage =(req,res,next)=>{
         }
         else{
             //show the edit
-            res.render('art/edit',{title:'EDIT CONTACT',displayName:req.user ? req.user.displayName:'',book: bookToEdit})
+            /*res.render('art/edit',{title:'EDIT CONTACT',displayName:req.user ? req.user.displayName:'',book: bookToEdit})*/
+            res.json({success:true,msg:'Successfully Displayed Book to Edit,book:bookToEdit'});
         }
     });
 }
@@ -76,7 +87,9 @@ module.exports.processEditPage=(req,res,next)=>{
         }
         else{
             //refresh the book list
-            res.redirect('/book-list');
+            //res.redirect('/book-list');
+            
+            res.json({success:true,msg:'Successfully Edited Book',book: updatedBook});
         }
     });
 }
@@ -91,7 +104,9 @@ module.exports.performDelete = (req,res,next)=>{
         }
         else{
             //refresh the book list
-            res.redirect('/book-list');
+            //res.redirect('/book-list');
+
+            res.json({success:true,mdg:'successfully deleted book'});
         }
     });
 }
