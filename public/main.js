@@ -543,7 +543,7 @@ class RestDataSource {
         };
         this.user = new _user_model__WEBPACK_IMPORTED_MODULE_2__["User"]();
         // this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/api/`;
-        this.baseUrl = `https://comp229-f2020-week10.herokuapp.com/api/`;
+        this.baseUrl = `https://xu-tung-jin-assignment2.herokuapp.com/api/`;
     }
     getBooks() {
         return this.http.get(this.baseUrl + 'book-list');
