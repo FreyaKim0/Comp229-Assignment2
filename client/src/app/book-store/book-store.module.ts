@@ -1,18 +1,30 @@
+import { CommonModule } from '@angular/common';
+import { BookDetailComponent } from './book-detail/book-detail.component';
 import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ModelModule } from '../model/model.module';
 import { BookStoreComponent } from '../book-store/book-store.component';
 import { CounterDirective } from './counter.directive';
-import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 
+const routingS = RouterModule.forChild([
+  {path: 'all', component: BookStoreComponent},
+  {path: 'detail',
+   children: [
+    { path: ':id', component: BookDetailComponent, data: {title: 'Product Details'}},
+    { path: '**', redirectTo: 'all'}]
+  },
+  {path: '**', redirectTo: 'all'},
+]);
+
+
 @NgModule({
-  imports: [ModelModule, BrowserModule, FormsModule, RouterModule],
-  declarations: [BookStoreComponent, CounterDirective, CartDetailComponent, CheckoutComponent],
-  exports: [BookStoreComponent, CounterDirective, CartDetailComponent, CheckoutComponent]
+  imports: [CommonModule, FormsModule, routingS],
+  declarations: [BookDetailComponent, BookStoreComponent, CounterDirective, CartDetailComponent, CheckoutComponent]
 })
 
 export class BookStoreModule{}
+
+
+

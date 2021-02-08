@@ -22,7 +22,8 @@ const routes: Routes = [
   {path: 'projects', component: ProjectsComponent, data: {title: 'PROJECT'}},
   {path: 'contact', component: ContactComponent, data: {title: 'CONTACT'}},
 
-  {path: 'book-list', component: BookStoreComponent, data: { title: 'Book Store'}, canActivate: [StoreFirstGuard]},
+  /*{path: 'book-list', component: BookStoreComponent, data: { title: 'Book Store'}, canActivate: [StoreFirstGuard]},*/
+  {path: 'book-list', loadChildren: () => import('./book-store/book-store.module').then(m => m.BookStoreModule)},
   {path: 'cart', component: CartDetailComponent, data: { title: 'Shopping Cart'}, canActivate: [StoreFirstGuard]},
   {path: 'checkout', component: CheckoutComponent, data: { title: 'Checkout'}, canActivate: [StoreFirstGuard]},
   {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},

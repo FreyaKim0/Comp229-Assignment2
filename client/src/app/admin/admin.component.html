@@ -1,24 +1,63 @@
+<!--Personal admin page-->
+
+<div class="text-center mt-3">MOCK BOOK STORE</div>
+
 <div class="container-fluid">
-  <div class="row"></div>
 
+  <!--LEFT COL-->
   <div class="row mt-2">
-    <div class="col-3">
+    <div class="col-3 mt-5 ">
+      <div id="x">
 
-      <button class="btn btn-outline-info btn-block"
-        routerLink='/admin/main/books'
+        <!--Administrator Name-->
+        <div class="name_bar">H</div>
+        <span>Human Resources<br><hr style="width:200px"></span>
+
+        <!--Function lists-->
+        <button class="buttonS"
+          routerLink='/admin/main/books'
+          routerLinkActive='active'>
+          Manage My Products
+        </button><br><br>
+
+        <button class="buttonS"
+          routerLink='/admin/main/books'
+          routerLinkActive='active'>
+          Cusotmer Orders
+        </button><br>
+
+        <hr style="width:200px">
+
+        <button class="buttonS"
+          routerLink='/admin/main/mycart'
+          routerLinkActive='active'>
+          My Shopping Cart
+        </button><br><br>
+
+
+        <button class="buttonS"
+                routerLink='/admin/main/orders'
+                routerLinkActive='active'>
+         My Order History
+        </button>
+
+        <hr style="width:200px">
+
+        <button class="buttonS"
+        routerLink='/book-list'
         routerLinkActive='active'>
-        Books
-      </button>
+        Back to Store
+        </button>
+        <br><br>
 
-      <button class="btn btn-outline-info btn-block"
-              routerLink='/admin/main/orders'
-              routerLinkActive='active'>
-              Orders
-      </button>
-   </div>
-    <div class="col-9">
-      <router-outlet></router-outlet>
     </div>
-    </div>
+  </div>
+
+  <!--RIGHT COL-->
+  <div class="col-9">
+    <router-outlet></router-outlet>
+  </div>
+
+  </div>
 </div>
 

@@ -8,6 +8,8 @@ import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ServiceComponent } from './service/service.component';
+import { ProjectFilterComponent } from './projects/project-filter/project-filter.component';
+import { ProjectItemsComponent } from './projects/project-items/project-items.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, PartialsModule],
@@ -17,7 +19,9 @@ import { ServiceComponent } from './service/service.component';
     ContactComponent,
     HomeComponent,
     ProjectsComponent,
-    ServiceComponent],
+    ServiceComponent,
+    ProjectFilterComponent,
+    ProjectItemsComponent],
   exports: [
     AboutComponent,
     ContactComponent,

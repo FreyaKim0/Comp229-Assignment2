@@ -1,7 +1,9 @@
-#background_wrap{
-  background-color: #F2F4F5;
-  height: 100vh;
-}
+
+
+
+/*for making all pages' background are the correct color*/
+
+
 #grid_placeholder {
   display: none;
 }
@@ -15,6 +17,9 @@
 }
 
 @media (min-width: 1190px) {
+  #content_in_main_wrapper {
+  height:100vh;
+}
 
   #grid_placeholder {
     display: block;

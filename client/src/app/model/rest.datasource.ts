@@ -2,11 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Book } from './book.model';
-import { Cart } from './cart.model';
 import { Order } from './order.model';
-import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
 import { User } from './user.model';
 
 const PROTOCOL = 'https';
@@ -36,28 +33,10 @@ export class RestDataSource
     this.baseUrl = `https://xu-tung-jin-assignment2.herokuapp.com/api/`;
   }
 
-  getBooks(): Observable<Book[]>
-  {
-    return this.http.get<Book[]>(this.baseUrl + 'book-list');
-  }
-
-  saveOrder(order: Order): Observable<Order>
-  {
-    console.log(JSON.stringify(order));
-    return this.http.post<Order>(this.baseUrl + 'orders/add', order);
-  }
-
+  // loggin, authenticate, loggout
   authenticate(user: User): Observable<any>
   {
     return this.http.post<any>(this.baseUrl + 'login', user, this.httpOptions);
-  }
-
-  storeUserData(token: any, user: User): void
-  {
-    localStorage.setItem('id_token', 'Bearer ' + token);
-    localStorage.setItem('user', JSON.stringify(user));
-    this.authToken = token;
-    this.user = user;
   }
 
   logout(): Observable<any>
@@ -72,6 +51,39 @@ export class RestDataSource
   loggedIn(): boolean
   {
     return !this.jwtService.isTokenExpired(this.authToken);
+  }
+
+  // get, add, edit, update user (registration)
+  storeUserData(token: any, user: User): void
+  {
+    localStorage.setItem('id_token', 'Bearer ' + token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = token;
+    this.user = user;
+  }
+
+  getUser(): Observable<User[]>
+  {
+    return this.http.get<User[]>(this.baseUrl + 'admin/register');
+  }
+
+  addUser(user: User): Observable<User>
+  {
+    console.log('addUser function run...');
+    this.loadToken();
+    return this.http.post<User>(this.baseUrl + 'admin/register', user, this.httpOptions);
+  }
+
+  updateUser(user: User): Observable<User>
+  {
+    this.loadToken();
+    return this.http.post<User>(`${this.baseUrl}book-list/edit/${user.username}`, user , this.httpOptions);
+  }
+
+  // get, add, update, delete books
+  getBooks(): Observable<Book[]>
+  {
+    return this.http.get<Book[]>(this.baseUrl + 'book-list');
   }
 
   addBook(book: Book): Observable<Book>
@@ -95,6 +107,13 @@ export class RestDataSource
     return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
   }
 
+  // save, get, delete, update orders
+  saveOrder(order: Order): Observable<Order>
+  {
+    console.log(JSON.stringify(order));
+    return this.http.post<Order>(this.baseUrl + 'orders/add', order);
+  }
+
   getOrders(): Observable<Order[]>
   {
     this.loadToken();
@@ -113,11 +132,14 @@ export class RestDataSource
     return this.http.post<Order>(`${this.baseUrl}orders/edit/${order._id}`, order, this.httpOptions);
   }
 
+  // load Token
   private loadToken(): void
   {
     const token = localStorage.getItem('id_token');
     this.authToken = token;
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
   }
+
+
 }
 

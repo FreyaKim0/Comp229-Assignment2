@@ -1,0 +1,69 @@
+#wrapper{
+ display: flex;
+ flex-wrap:wrap;
+ list-style: none;
+}
+.bookDiv{
+  width: 231px;
+  height:350px;
+  border: 1px solid grey;
+  margin: 10px;
+}
+.editButton{
+  margin-top:20px;
+  margin-left: 180px;
+  position: absolute;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: rgb(129, 129, 122);
+}
+.imageDiv{
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  width:229px;
+  height:230px;
+  background-color: rgb(238, 235, 235);
+}
+.edit_dialog{
+  width:229px;
+  height:40px;
+  position: absolute;
+  bottom: 0;
+  font-size:12px;
+  padding-top: 10px;
+  background-color: rgba(255, 245, 238, 0.863);
+}
+.bookName{
+  margin-top:235px;
+  margin-right: auto;
+  margin-left:auto;
+  font-size: 14px;
+  font-weight: 600;
+  width:180px;
+  text-align: left;
+}
+.fas{
+  color:seashell;
+  font-size: 15px;
+}
+.delete{
+  margin-top:-7px;
+  margin-left:8px;
+  position: absolute;
+}
+.orderTable{
+  width: 70%;
+}
+/* Buttons */
+.buttonS{
+  font-weight: 600;
+  border: 0px solid grey;
+  margin: 20px 10px;
+  width:30%;
+  color:rgb(46, 45, 45);
+  background-color: #d8d5d5;
+  font-size: 14px;
+}

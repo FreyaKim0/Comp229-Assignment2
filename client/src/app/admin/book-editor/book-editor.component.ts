@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/model/book.model';
 import { BookRepository } from 'src/app/model/book.repository';
 @Component({
-  templateUrl: './book-editor.component.html'
+  templateUrl: './book-editor.component.html',
+  styleUrls: ['./book-editor.component.css']
 })
 export class BookEditorComponent implements OnInit {
   editing = false;
@@ -16,6 +17,7 @@ export class BookEditorComponent implements OnInit {
     this.editing = activeRoute.snapshot.params.mode === 'edit';
     if (this.editing)
     {
+      console.log('This one:' + activeRoute.snapshot.params.id);
       Object.assign(this.book, repository.getBook(activeRoute.snapshot.params.id));
     }
   }

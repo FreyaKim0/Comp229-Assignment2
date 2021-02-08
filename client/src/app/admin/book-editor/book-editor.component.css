@@ -1,0 +1,52 @@
+
+.displaySetting{
+
+  margin-right: auto;
+  margin-left: auto;
+  text-align:center;
+  width:80%;
+}
+.input-control{
+  width: 200px;
+}
+.imageDiv{
+  background-color: #d8d5d5;
+  width:100%;
+  height: 350px;
+}
+
+/* Buttons */
+.buttonS{
+  font-weight: 600;
+  border: 0px solid grey;
+  margin: 20px 10px;
+  width:30%;
+  color:rgb(46, 45, 45);
+  background-color: #d8d5d5;
+  font-size: 14px;
+}
+.fas{
+  color:seashell;
+  font-size: 15px;
+  padding-right:15px;
+}
+
+/*Table*/
+table{
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 300px;
+  width: 80%;
+  text-align: left;
+  font-size: 16px;
+}
+td{
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+/*Input*/
+input{
+  width: 100%;
+}
+

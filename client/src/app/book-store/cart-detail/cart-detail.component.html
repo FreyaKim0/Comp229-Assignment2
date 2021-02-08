@@ -1,70 +1,107 @@
-<div class="container-fluid">
-  <div class="row">
-    <div>
-      <col class="mt-2">
-        <h2 class="text-center">Your Cart</h2>
-        <table class="table table-border table-striped p-2">
-          <thead>
-            <tr>
-              <th>Quantity</th>
-              <th>Book</th>
-              <th class="text-right">Price</th>
-              <th class="text-right">Subtotal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Conditional Section-->
-            <tr *ngIf='cart.lines.length==0'>
-              <td class="text-center" colspan="4">Your cart is empty</td>
-            </tr>
-            <!--Repeating Section-->
-            <tr *ngFor='let line of cart.lines'>
-              <td>
-                <input type="number" class="form-control.sm" style="width: 5em"
-                [value]='line.quantity'
-                (change)='cart.updateQuantity(line.book,$event.target.value)'
-                >
-              </td>
-              <td>
-                {{line.book.name}}
-              </td>
-              <td class="text-right">
-                {{line.book.price|currency:'USD':'symbol':'2.2-2'}}
-              </td>
-              <td>
-                {{line.lineTotal|currency:'USD':'symbol':'2.2-2'}}
-              </td>
-              <td class="text-center">
-                <a class="btn btn-sm btn-danger"
-                (click)='cart.removeLine(line.book._id)'>
-                 Remove
-                </a>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan='3' class='text-right'>Total:</td>
-              <td class="text-right">
-                {{ cart.cartPrice|currency:'USD':'symbol':'2.2-2'}}
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-    </div>
-  </div>
+<!--Personal Shopping cart page-->
 
-  <div class="row">
-    <div class="col">
-      <div class="text-center">
-        <button class="btn btn-primary m-1" routerLink='/book-list'>
+<router-outlet></router-outlet>
+
+<div class="wrap">
+  <div id="left">
+    <p class="line_title">My Cart</p>
+    <hr>
+
+    <!--If no item-->
+    <p class="letter" *ngIf='cart.lines.length==0'>
+        The cart is empty.
+    </p>
+
+    <!--Generate items-->
+    <table *ngFor='let line of cart.lines'>
+      <tr>
+          <!-- Conditional Section-->
+          <th *ngIf='cart.lines.length==0'>
+            Your cart is empty
+          </th>
+      </tr>
+
+      <tr>
+        <th>
+            <!--Item picture-->
+            <div class="itemPicture"></div>
+        </th>
+        <th style="max-width: 250px; margin-bottom: 10px;">
+            <!--Book name-->
+              {{line.book.name}}<br><br>
+            <!--Single price-->
+             <span style="color:grey; font-size: 10px;"> {{line.book.price|currency:'USD':'symbol':'2.2-2'}}&nbsp;x</span><br>
+            <!--quantity-->
+              <input type="number" style="width: 2.5em"
+              [value]='line.quantity'
+              (change)='cart.updateQuantity(line.book,$event.target.value)'
+              >
+        </th>
+        <th>
+            <!--amount*price-->
+            <span style="color:red">{{line.lineTotal|currency:'USD':'symbol':'2.2-2'}}</span>
+        </th>
+        <th>
+            <!--Remove item-->
+            <a clsdd="buttonS" (click)='cart.removeLine(line.book._id)'>
+               <i class="far fa-times-circle"></i>
+            </a>
+        </th>
+      </tr>
+     </table>
+
+    <hr>
+  </div>
+  <div id="right">
+    <p class="line_title">Summary</p>
+    <hr>
+    <table class="summary">
+      <tr>
+        <td class="text-left w-50 p-0">
+          Subtotal
+        </td>
+        <td class="text-right w-50 p-0">
+          {{ cart.cartPrice|currency:'USD':'symbol':'2.2-2'}}
+        </td>
+      </tr>
+      <tr>
+        <td class="text-left w-50 p-0">
+          Shipping
+        </td>
+        <td class="text-right w-50 p-0">
+          $15.00
+        </td>
+      </tr>
+      <tr>
+        <td class="text-left w-50 p-0">
+          <hr>
+        </td>
+        <td class="text-right w-50 p-0">
+          <hr>
+        </td>
+      </tr>
+      <tr>
+        <td class="text-left w-50 p-0">
+          Total
+        </td>
+        <td class="text-right w-50 p-0">
+          {{ (cart.cartPrice+15)|currency:'USD':'symbol':'2.2-2'}}
+        </td>
+      </tr>
+    </table>
+
+         <!--continue shopping-->
+         <button class="buttonS" routerLink='/book-list'>
           Continue Shopping
-        </button>
-        <button class="tbn btn-secondary m-1" routerLink='/checkout'
+        </button><br>
+
+        <!--checkout-->
+        <button class="buttonS checkout" routerLink='/checkout'
           [disabled]='cart.lines.length==0'>
-          checkout
+          Checkout
         </button>
-      </div>
-    </div>
   </div>
 </div>
+
+
+

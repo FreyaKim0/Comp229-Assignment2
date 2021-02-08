@@ -1,0 +1,78 @@
+#filter{
+  margin-top:200px;
+  padding: 5px 10px;
+  text-align: left;
+  font-size:14px;
+}
+/* Buttons */
+.buttonS{
+  margin-left:5px;
+  margin-top:10px;
+  border: 1px solid grey;
+  width:90%;
+  background-color: #ffffff;
+  font-size: 14px;
+}
+#wrapper{
+  margin-top: 50px;
+  display: flex;
+  flex-wrap:wrap;
+  list-style: none;
+ }
+ .bookDiv{
+   width: 231px;
+   height:350px;
+   border: 1px solid grey;
+   margin: 10px;
+ }
+ .editButton{
+  margin-top:20px;
+  margin-left: 180px;
+  position: absolute;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: rgb(129, 129, 122);
+}
+.imageDiv{
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  width:229px;
+  height:230px;
+  background-color: rgb(238, 235, 235);
+}
+.edit_dialog{
+  width:229px;
+  height:40px;
+  position: absolute;
+  bottom: 0;
+  font-size:12px;
+  padding-top: 10px;
+  background-color: rgba(255, 245, 238, 0.863);
+}
+.bookName{
+  margin-top:235px;
+  margin-right: auto;
+  margin-left:auto;
+  font-size: 14px;
+  font-weight: 600;
+  width:180px;
+  text-align: left;
+}
+.pageNumber{
+  margin-left: 5px;
+  font-size: 12px;
+  border-width: 0px;
+  background-color: rgba(255, 255, 255, 0);
+  margin-bottom: 10px;
+}
+.pageNumber.a{
+  transition:border-radius 10px
+             background-color silver;
+}
+.pageNumber.active{
+  border-radius: 10px;
+  background-color: silver;
+}

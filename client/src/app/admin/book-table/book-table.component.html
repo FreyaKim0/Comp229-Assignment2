@@ -1,37 +1,49 @@
-<table class="table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Author</th>
-      <th>Published</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor='let b of getBooks()'>
-      <td>{{ b.name }}</td>
-      <td>{{ b.author }}</td>
-      <td>{{ b.published }}</td>
-      <td>{{ b.description }}</td>
-      <td>{{ b.price | currency: 'USD': 'symbol': '2.2-2'}}</td>
-      <td>
-        <button class="btn btn-sm btn-primary m-1" (click)='editBook(b._id)'>
-          <i class="fas fa-pencil-alt"></i> Edit
-        </button>
-      </td>
-      <td>
-        <button class="btn btn-sm btn-danger m-1" (click)='deleteBook(b._id)'>
-          <i class="fas fa-trash-alt"></i> Delete
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<button class="btn btn-primary" (click)='addBook()'>
-  <i class="fas fa-plus-circle"></i> Add New Book
+<!--Shop owner edit their products-->
+
+<button class="buttonS" (click)='addBook()'>
+  <i class="fas fa-plus-circle"></i> &nbsp; Add New Book
 </button>
 
+<button class="buttonS" (click)='addBook()'>
+  <i class="fas fa-eye"></i> &nbsp; View As Public
+</button>
+
+ <!--Generate items-->
+    <div id="wrapper">
+      <div *ngFor='let b of getBooks()'>
+        <div class="bookDiv">
+
+          <!--edit button-->
+          <div class="editButton">
+            <div class="delete">
+              <a (click)='deleteBook(b._id)'>
+                <i class="fas fa-trash-alt"></i>
+              </a>
+
+            </div>
+          </div>
+
+          <!--image-->
+          <div class="imageDiv">
+            <div class="edit_dialog">
+              <a (click)='editBook(b._id)'>
+                Edit Item
+              </a>
+            </div>
+          </div>
+
+          <!--book name-->
+          <div class="bookName">
+            {{ b.name }}
+          </div>
+
+          <!--price-->
+          <div>
+            <span style="text-decoration: line-through; font-size: 12px;">$100.00</span>&nbsp;
+            <span style="font-size:12px; color:red;">{{ b.price | currency: 'USD': 'symbol': '2.2-2'}}</span>
+          </div>
+
+       </div>
+      </div>
+    </div>
 

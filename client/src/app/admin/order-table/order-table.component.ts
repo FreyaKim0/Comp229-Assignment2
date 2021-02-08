@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './order-table.component.html',
+  styleUrls: ['./order-table.component.css']
 })
 export class OrderTableComponent implements OnInit
 {

@@ -1,48 +1,81 @@
-<!-- Checkbox -->
-<div class="form-check">
-  <label class="form-check-label">
-    <input type="checkbox" class="form-check-input"
-    [(ngModel)]='includeShipped'>
-    Display Shipped Orders
-  </label>
+<div class="wrap">
+  <div id="left">
+    <p class="line_title">
+        My Order History &nbsp;&nbsp;&nbsp;
+        <input type="checkbox" style="font-size: 12px; text-align: left;" [(ngModel)]='includeShipped'>
+        <span style="color:rgb(122, 56, 56); font-size:12px; text-align:center;">
+          &nbsp;Display Shipped Orders
+        </span>
+    </p>
+
+    <hr>
+
+    <table>
+
+      <!--Header-->
+      <tr>
+          <th style="width: 18%;">
+              Order Number
+          </th>
+          <th style="width: 18%;">
+              Postal Code
+          </th>
+          <th style="width: 18%;">
+              Product
+          </th>
+          <th style="width: 18%;">
+              Quantity
+          </th>
+          <th style="width: 18%;">
+              Ship Status
+          </th>
+          <th style="width: 10%;">
+          </th>
+      </tr>
+
+      <tr>
+        <td colspan="6">
+
+        </td>
+      </tr>
+
+      <!--If there is no data to show-->
+      <tr *ngIf='getOrders().length == 0'>
+        <td colspan="6" style="color:rgb(197, 191, 191); text-align:center; padding-top:25px;">
+          There are no unshipped orders.
+        </td>
+      </tr>
+
+
+          <ng-template ngFor let-o [ngForOf]='getOrders()'>
+            <tr>
+              <td style="width: 18%; padding-top: 10px;">{{ o.name }}</td>
+              <td style="width: 18%; padding-top: 10px;">{{ o.postalCode }}</td>
+              <td style="width: 18%; padding-top: 10px;">Product</td>
+              <td style="width: 18%; padding-top: 10px;">Quantity</td>
+              <td style="width: 18%; padding-top: 10px; color:maroon;">
+               {{ o.shipped ? "Shipped" : "Proccessing..." }}
+              </td>
+              <td style="width: 10%;  padding-top: 10px;">
+                <button class="buttonS" (click)='delete(o._id)'>
+                  <i class="fas fa-trash-alt"></i> Delete
+                </button>
+              </td>
+            </tr>
+
+
+            <tr *ngFor='let line of o.cart.lines'>
+              <td colspan="2"></td>
+              <td>{{ line.book.name }}</td>
+              <td>{{ line.quantity }}</td>
+            </tr>
+
+          </ng-template>
+
+    </table>
+    <hr>
+  </div>
+
 </div>
 
-<table class="table table-sm">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Postal Code</th>
-      <th colspan="2">Cart</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngIf='getOrders().length == 0'>
-      <td colspan="5">There are no orders</td>
-    </tr>
-    <ng-template ngFor let-o [ngForOf]='getOrders()'>
-      <tr>
-        <td>{{ o.name }}</td>
-        <td>{{ o.postalCode }}</td>
-        <th>Product</th>
-        <th>Quantity</th>
-        <td>
-          <button class="btn btn-warning m-1" (click)='markShipped(o)'>
-            <i class="{{ o.shipped ? 'fas fa-shipping-fast' : 'fas fa-truck' }}"></i> {{ o.shipped ? "Shipped" : "Ship" }}
-          </button>
-        </td>
-        <td>
-          <button class="btn btn-danger" (click)='delete(o._id)'>
-            <i class="fas fa-trash-alt"></i> Delete
-          </button>
-        </td>
-      </tr>
-      <tr *ngFor='let line of o.cart.lines'>
-        <td colspan="2"></td>
-        <td>{{ line.book.name }}</td>
-        <td>{{ line.quantity }}</td>
-      </tr>
-    </ng-template>
-  </tbody>
-</table>
+

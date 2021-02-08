@@ -4,7 +4,8 @@ import { Book } from 'src/app/model/book.model';
 import { BookRepository } from 'src/app/model/book.repository';
 
 @Component({
-  templateUrl: './book-table.component.html'
+  templateUrl: './book-table.component.html',
+  styleUrls: ['./book-table.component.css']
 })
 export class BookTableComponent implements OnInit {
   constructor(private repository: BookRepository,
@@ -17,7 +18,7 @@ export class BookTableComponent implements OnInit {
   }
   deleteBook(id: number): void
   {
-    if (confirm('Are you sure?') && (id !== undefined))
+    if (confirm('This item will be **DELETED PERMANENTLY** , are you sure ?') && (id !== undefined))
     {
       this.repository.deleteBook(id);
     }

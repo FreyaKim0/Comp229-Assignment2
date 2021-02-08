@@ -1,8 +1,6 @@
 import { RestDataSource } from './rest.datasource';
 import { Injectable } from '@angular/core';
 import { Book } from './book.model';
-import { StaticDataSource } from './static.datasource';
-import { once } from 'process';
 
 @Injectable()
 export class BookRepository

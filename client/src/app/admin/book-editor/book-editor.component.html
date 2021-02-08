@@ -1,41 +1,80 @@
-<div class="bg-primary p-2 text-white"
-  [class.bg-warning]='editing'
-  [class.text-dark]='editing'>
-  <h5>{{ editing ? 'Edit' : 'Add'}} Book</h5>
-</div>
+<!--Edit single book content-->
+
+
+<!--Table-->
+<div class="displaySetting">
 <form novalidate #form='ngForm' (ngSubmit)='save(form)'>
+  <table>
+    <tr>
+      <td rowspan="6" style="vertical-align: top;">
+          <div class="imageDiv">Picture</div>
+      </td>
 
-  <div class="form-group">
-    <label>Name</label>
-    <input type="text" class="form-control" name="name" [(ngModel)]='book.name'>
-  </div>
+      <td>
+        Discount Price<br>
+        <input type="text" class="input-control" name="price" [(ngModel)]='book.price'>
+      </td>
 
-  <div class="form-group">
-    <label>Author</label>
-    <input type="text" class="form-control" name="author" [(ngModel)]='book.author'>
-  </div>
+    </tr>
+    <tr>
+      <td>
+        Original Price<br>
+        <input type="text" class="input-control" name="originalPrice" [(ngModel)]='book.originalPrice'>
+      </td>
+    </tr>
+    <tr>
+      <td>
+         <!--Book Name-->
+         Book Name<br>
+         <input type="text" class="input-control" name="name" [(ngModel)]='book.name'>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <!--Publish date-->
+        Publish date<br>
+        <input type="text" class="input-control" name="published" [(ngModel)]='book.published'>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <!--Author-->
+        Author<br>
+        <input type="text" class="input-control" name="author" [(ngModel)]='book.author'>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <br> Sale by
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <!--Description-->
+        Description<br>
+        <textarea cols="60" name="description" rows="5" [(ngModel)]='book.description'></textarea>
+      </td>
+      <td>
 
-  <div class="form-group">
-    <label>Published</label>
-    <input type="text" class="form-control" name="published" [(ngModel)]='book.published'>
-  </div>
-
-  <div class="form-group">
-    <label>Description</label>
-    <input type="text" class="form-control" name="description" [(ngModel)]='book.description'>
-  </div>
-
-  <div class="form-group">
-    <label>Price</label>
-    <input type="text" class="form-control" name="price" [(ngModel)]='book.price'>
-  </div>
-
-  <button type='submit' class="btn btn-primary m-1" [class.btn-warning]='editing'>
-    <i class="{{editing ? 'fas fa-save' : 'fas fa-plus-circle' }}"></i> {{ editing ? "Save" : "Add" }}
+      </td>
+    </tr>
+  </table>
+  <button type='submit'  class="buttonS">
+    <i class="{{editing ? 'fas fa-save' : 'fas fa-plus-circle' }}"></i>
+    {{ editing ? "Save Change" : "Add This Book" }}
   </button>
-  <button type='reset' class="btn btn-secondary" routerLink='/admin/main/books'>
-    <i class="fas fa-undo"></i> Cancel
+
+  <button class="buttonS" type='reset'  routerLink='/admin/main/books'>
+    <i class="fas fa-undo"></i>
+    Cancel
   </button>
 </form>
+<br><br>
+</div>
+
+<!--Old-->
+
+
+
 
 

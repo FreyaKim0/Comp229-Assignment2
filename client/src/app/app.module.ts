@@ -1,4 +1,6 @@
-import { NgModule} from '@angular/core';
+
+
+import { NgModule, OnInit } from '@angular/core';
 import { ModelModule } from './model/model.module';
 import { PagesModule } from './pages/pages.module';
 import { PartialsModule } from './partials/partials.module';
@@ -8,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BookStoreModule } from './book-store/book-store.module';
 import { JwtModule } from '@auth0/angular-jwt';
+
 
 export function jwtTokenGetter(): string
 {
@@ -34,4 +37,4 @@ export function jwtTokenGetter(): string
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule{}
