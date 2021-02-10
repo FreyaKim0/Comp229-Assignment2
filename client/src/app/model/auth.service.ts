@@ -37,6 +37,7 @@ export class AuthService
   // tslint:disable-next-line: typedef
   create(user: User)
   {
-    return this.datasource.getUser();
+    console.log('IN auth.service.ts creat(user) ...');
+    return this.datasource.addUser(user);
   }
 }

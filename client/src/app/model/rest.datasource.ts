@@ -73,20 +73,20 @@ export class RestDataSource
   getUser(): Observable<User[]>
   {
     // this url?
-    return this.http.get<User[]>('https://xu-tung-jin-assignment2.herokuapp.com/admin/register');
+    return this.http.get<User[]>(this.baseUrl + 'register');
   }
 
   getUserbyId( id: string): Observable<User[]>
   {
     // this url?
-    return this.http.get<User[]>('https://xu-tung-jin-assignment2.herokuapp.com/admin/register');
+    return this.http.get<User[]>(this.baseUrl + 'register');
   }
 
   addUser(user: User): Observable<User>
   {
-    // this url?
-    this.loadToken();
-    return this.http.post<User>('https://xu-tung-jin-assignment2.herokuapp.com/admin/register', user, this.httpOptions);
+    console.log('addUser@ rest.datasources.ts');
+    // this.loadToken();
+    return this.http.post<User>(this.baseUrl + 'register', user, this.httpOptions);
   }
 
   updateUser(user: User): Observable<User>

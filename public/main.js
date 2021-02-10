@@ -543,6 +543,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _cart_model__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./cart.model */ "b/QR");
 /* harmony import */ var _order_model__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./order.model */ "sKKC");
+/* harmony import */ var _user_repository__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./user.repository */ "DoVm");
+
 
 
 
@@ -556,17 +558,31 @@ __webpack_require__.r(__webpack_exports__);
 class ModelModule {
 }
 ModelModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineNgModule"]({ type: ModelModule });
-ModelModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineInjector"]({ factory: function ModelModule_Factory(t) { return new (t || ModelModule)(); }, providers: [_book_repository__WEBPACK_IMPORTED_MODULE_5__["BookRepository"], _static_datasource__WEBPACK_IMPORTED_MODULE_4__["StaticDataSource"], _cart_model__WEBPACK_IMPORTED_MODULE_7__["Cart"], _order_model__WEBPACK_IMPORTED_MODULE_8__["Order"], _order_repository__WEBPACK_IMPORTED_MODULE_1__["OrderRepository"],
-        { provide: _static_datasource__WEBPACK_IMPORTED_MODULE_4__["StaticDataSource"], useClass: _rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"] },
-        _rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"], _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]], imports: [[_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]]] });
+ModelModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineInjector"]({ factory: function ModelModule_Factory(t) { return new (t || ModelModule)(); }, providers: [_book_repository__WEBPACK_IMPORTED_MODULE_5__["BookRepository"],
+        _user_repository__WEBPACK_IMPORTED_MODULE_9__["UserRepository"],
+        _static_datasource__WEBPACK_IMPORTED_MODULE_4__["StaticDataSource"],
+        _cart_model__WEBPACK_IMPORTED_MODULE_7__["Cart"],
+        _order_model__WEBPACK_IMPORTED_MODULE_8__["Order"],
+        _order_repository__WEBPACK_IMPORTED_MODULE_1__["OrderRepository"],
+        { provide: _static_datasource__WEBPACK_IMPORTED_MODULE_4__["StaticDataSource"],
+            useClass: _rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"] },
+        _rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"],
+        _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]], imports: [[_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵsetNgModuleScope"](ModelModule, { imports: [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵsetClassMetadata"](ModelModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_6__["NgModule"],
         args: [{
                 imports: [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]],
-                providers: [_book_repository__WEBPACK_IMPORTED_MODULE_5__["BookRepository"], _static_datasource__WEBPACK_IMPORTED_MODULE_4__["StaticDataSource"], _cart_model__WEBPACK_IMPORTED_MODULE_7__["Cart"], _order_model__WEBPACK_IMPORTED_MODULE_8__["Order"], _order_repository__WEBPACK_IMPORTED_MODULE_1__["OrderRepository"],
-                    { provide: _static_datasource__WEBPACK_IMPORTED_MODULE_4__["StaticDataSource"], useClass: _rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"] },
-                    _rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"], _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]]
+                providers: [_book_repository__WEBPACK_IMPORTED_MODULE_5__["BookRepository"],
+                    _user_repository__WEBPACK_IMPORTED_MODULE_9__["UserRepository"],
+                    _static_datasource__WEBPACK_IMPORTED_MODULE_4__["StaticDataSource"],
+                    _cart_model__WEBPACK_IMPORTED_MODULE_7__["Cart"],
+                    _order_model__WEBPACK_IMPORTED_MODULE_8__["Order"],
+                    _order_repository__WEBPACK_IMPORTED_MODULE_1__["OrderRepository"],
+                    { provide: _static_datasource__WEBPACK_IMPORTED_MODULE_4__["StaticDataSource"],
+                        useClass: _rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"] },
+                    _rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"],
+                    _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]]
             }]
     }], null, null); })();
 
@@ -631,14 +647,20 @@ class RestDataSource {
         this.user = user;
     }
     getUser() {
-        return this.http.get(this.baseUrl + 'admin/register');
+        // this url?
+        return this.http.get(this.baseUrl + 'register');
+    }
+    getUserbyId(id) {
+        // this url?
+        return this.http.get(this.baseUrl + 'register');
     }
     addUser(user) {
-        console.log('addUser function run...');
-        this.loadToken();
-        return this.http.post(this.baseUrl + 'admin/register', user, this.httpOptions);
+        console.log('addUser@ rest.datasources.ts');
+        // this.loadToken();
+        return this.http.post(this.baseUrl + 'register', user, this.httpOptions);
     }
     updateUser(user) {
+        // this url?
         this.loadToken();
         return this.http.post(`${this.baseUrl}book-list/edit/${user.username}`, user, this.httpOptions);
     }
@@ -688,6 +710,63 @@ RestDataSource.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineIn
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](RestDataSource, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }, { type: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"] }]; }, null); })();
+
+
+/***/ }),
+
+/***/ "DoVm":
+/*!******************************************!*\
+  !*** ./src/app/model/user.repository.ts ***!
+  \******************************************/
+/*! exports provided: UserRepository */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserRepository", function() { return UserRepository; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _rest_datasource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rest.datasource */ "DZdm");
+
+
+
+class UserRepository {
+    constructor(dataSource) {
+        this.dataSource = dataSource;
+        this.user = [];
+        dataSource.getUser().subscribe(data => {
+            this.user = data;
+            this.username = data.map(b => b.username)
+                .filter((a, index, array) => array.indexOf(a) === index).sort();
+        });
+    }
+    getUser(username = null) {
+        return this.user
+            .filter(b => username == null || username === b.username);
+    }
+    // add or edit user
+    addUser(thisUser) {
+        if (thisUser.username === null || thisUser.username === '' || thisUser.username === undefined) {
+            console.log('if...username:' + thisUser.username);
+            this.dataSource.addUser(thisUser).subscribe(b => {
+                this.user.push(thisUser);
+            });
+        }
+        else {
+            console.log('username:      ' + thisUser.username + '\n' +
+                'email:         ' + thisUser.email + '\n' +
+                'password:      ' + thisUser.password + '\n' +
+                'display name:  ' + thisUser.displayName);
+            this.dataSource.updateUser(thisUser).subscribe(book => {
+                this.user.splice(this.user.findIndex(b => b.username === thisUser.username), 1, thisUser);
+            });
+        }
+    }
+}
+UserRepository.ɵfac = function UserRepository_Factory(t) { return new (t || UserRepository)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_rest_datasource__WEBPACK_IMPORTED_MODULE_1__["RestDataSource"])); };
+UserRepository.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: UserRepository, factory: UserRepository.ɵfac });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](UserRepository, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
+    }], function () { return [{ type: _rest_datasource__WEBPACK_IMPORTED_MODULE_1__["RestDataSource"] }]; }, null); })();
 
 
 /***/ }),
@@ -1877,6 +1956,11 @@ class AuthService {
     }
     logout() {
         return this.datasource.logout();
+    }
+    // tslint:disable-next-line: typedef
+    create(user) {
+        console.log('IN auth.service.ts creat(user) ...');
+        return this.datasource.addUser(user);
     }
 }
 AuthService.ɵfac = function AuthService_Factory(t) { return new (t || AuthService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"])); };
