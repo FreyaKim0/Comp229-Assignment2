@@ -10,16 +10,14 @@
 
             <form autocomplete='off' #form='ngForm' (ngSubmit)='authenticate(form)'>
 
-              <span>
+              <span class="account_login">
                 ACCOUNT LOGIN
-              </span>
+              </span><br>
 
               <!--Authenicain error-->
               <span style="padding-left:20px; font-size:14px; color:red;" *ngIf='errorMessage != null'>
               {{errorMessage}}
-              </span>
-
-              <br><br>
+              </span><br>
 
               <span class="field_name">
                 USERNAME
