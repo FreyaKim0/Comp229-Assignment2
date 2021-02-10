@@ -20,6 +20,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
               private auth: AuthService,
+              // tslint:disable-next-line: variable-name
               @Inject(DOCUMENT) private _document ) { }
 
   ngOnInit(): void {

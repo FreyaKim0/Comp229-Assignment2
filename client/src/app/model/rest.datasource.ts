@@ -18,10 +18,10 @@ export class RestDataSource
 
   private httpOptions =
   {
-  headers: new HttpHeaders({
+    headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
-    'Access-control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+    'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept'
     })
   };
 

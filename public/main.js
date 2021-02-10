@@ -619,7 +619,7 @@ class RestDataSource {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
-                'Access-control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+                'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept'
             })
         };
         this.user = new _user_model__WEBPACK_IMPORTED_MODULE_2__["User"]();

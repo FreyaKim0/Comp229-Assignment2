@@ -203,7 +203,6 @@ class RegisterComponent {
         this.loading = false;
     }
     ngOnInit() {
-        // Assign new user
         this.user = new src_app_model_user_model__WEBPACK_IMPORTED_MODULE_1__["User"]();
     }
     register(form) {
@@ -823,7 +822,9 @@ function AuthComponent_div_8_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r1.errorMessage, " ");
 } }
 class AuthComponent {
-    constructor(router, auth, _document) {
+    constructor(router, auth, 
+    // tslint:disable-next-line: variable-name
+    _document) {
         this.router = router;
         this.auth = auth;
         this._document = _document;
