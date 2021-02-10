@@ -85,7 +85,7 @@ export class RestDataSource
   addUser(user: User): Observable<User>
   {
     console.log('addUser@ rest.datasources.ts');
-    // this.loadToken();
+    this.loadToken();
     return this.http.post<User>(this.baseUrl + 'register', user, this.httpOptions);
   }
 
@@ -93,7 +93,7 @@ export class RestDataSource
   {
     // this url?
     this.loadToken();
-    return this.http.post<User>(`${this.baseUrl}book-list/edit/${user.username}`, user , this.httpOptions);
+    return this.http.post<User>(this.baseUrl + 'register', user , this.httpOptions);
   }
 
 

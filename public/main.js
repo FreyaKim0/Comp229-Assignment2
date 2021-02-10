@@ -656,13 +656,13 @@ class RestDataSource {
     }
     addUser(user) {
         console.log('addUser@ rest.datasources.ts');
-        // this.loadToken();
+        this.loadToken();
         return this.http.post(this.baseUrl + 'register', user, this.httpOptions);
     }
     updateUser(user) {
         // this url?
         this.loadToken();
-        return this.http.post(`${this.baseUrl}book-list/edit/${user.username}`, user, this.httpOptions);
+        return this.http.post(this.baseUrl + 'register', user, this.httpOptions);
     }
     // get, add, update, delete books
     getBooks() {
@@ -756,7 +756,7 @@ class UserRepository {
                 'email:         ' + thisUser.email + '\n' +
                 'password:      ' + thisUser.password + '\n' +
                 'display name:  ' + thisUser.displayName);
-            this.dataSource.updateUser(thisUser).subscribe(book => {
+            this.dataSource.updateUser(thisUser).subscribe(user => {
                 this.user.splice(this.user.findIndex(b => b.username === thisUser.username), 1, thisUser);
             });
         }
