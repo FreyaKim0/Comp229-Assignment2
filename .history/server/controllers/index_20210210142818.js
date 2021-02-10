@@ -57,33 +57,19 @@ module.exports.processLoginPage = (req, res, next) => {
         // Server error?
         if(err)
         {
-            return res.json({success: false, msg: 'server error', user: {
-                id: user._id,
-                displayName: user.displayName,
-                username: user.username,
-                email: user.email
-            }, token: authToken});
+            return next(err);
         }
         // user login error?
         if(!user)
         {
-            return res.json({success: false, msg: 'user or password is not valid', user: {
-                id: user._id,
-                displayName: user.displayName,
-                username: user.username,
-                email: user.email
-            }, token: authToken});
+            req.flash('errorMessage', 'User login error (!user)');
+            //return res.redirect('/admin/auth');
         }
         req.login(user, (err) => {
             // Server error?
             if(err)
             {
-                return res.json({success: false, msg: 'password and username are correct, but server error while logging', user: {
-                    id: user._id,
-                    displayName: user.displayName,
-                    username: user.username,
-                    email: user.email
-                }, token: authToken});
+                return next(err);
             }
 
             const payload = 
