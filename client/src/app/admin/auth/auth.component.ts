@@ -48,6 +48,10 @@ export class AuthComponent implements OnInit, OnDestroy {
             this.auth.storeUserData(data.token, data.user);
             this.router.navigateByUrl('home');
           }
+        else
+        {
+          this.errorMessage = 'Login failed, username or password is worng.';
+        }
        });
     }
     else
