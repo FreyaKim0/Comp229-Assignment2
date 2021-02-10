@@ -33,6 +33,10 @@ export class RestDataSource
     this.baseUrl = `https://xu-tung-jin-assignment2.herokuapp.com/api/`;
   }
 
+
+
+
+
   // loggin, authenticate, loggout
   authenticate(user: User): Observable<any>
   {
@@ -53,6 +57,10 @@ export class RestDataSource
     return !this.jwtService.isTokenExpired(this.authToken);
   }
 
+
+
+
+
   // get, add, edit, update user (registration)
   storeUserData(token: any, user: User): void
   {
@@ -64,21 +72,33 @@ export class RestDataSource
 
   getUser(): Observable<User[]>
   {
+    // this url?
+    return this.http.get<User[]>(this.baseUrl + 'admin/register');
+  }
+
+  getUserbyId( id: string): Observable<User[]>
+  {
+    // this url?
     return this.http.get<User[]>(this.baseUrl + 'admin/register');
   }
 
   addUser(user: User): Observable<User>
   {
-    console.log('addUser function run...');
+    // this url?
     this.loadToken();
     return this.http.post<User>(this.baseUrl + 'admin/register', user, this.httpOptions);
   }
 
   updateUser(user: User): Observable<User>
   {
+    // this url?
     this.loadToken();
     return this.http.post<User>(`${this.baseUrl}book-list/edit/${user.username}`, user , this.httpOptions);
   }
+
+
+
+
 
   // get, add, update, delete books
   getBooks(): Observable<Book[]>
@@ -107,6 +127,10 @@ export class RestDataSource
     return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
   }
 
+
+
+
+
   // save, get, delete, update orders
   saveOrder(order: Order): Observable<Order>
   {
@@ -131,6 +155,10 @@ export class RestDataSource
     this.loadToken();
     return this.http.post<Order>(`${this.baseUrl}orders/edit/${order._id}`, order, this.httpOptions);
   }
+
+
+
+
 
   // load Token
   private loadToken(): void

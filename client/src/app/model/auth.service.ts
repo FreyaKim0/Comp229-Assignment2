@@ -33,4 +33,10 @@ export class AuthService
   {
     return this.datasource.logout();
   }
+
+  // tslint:disable-next-line: typedef
+  create(user: User)
+  {
+    return this.datasource.getUser();
+  }
 }
