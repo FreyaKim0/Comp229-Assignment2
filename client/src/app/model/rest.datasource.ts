@@ -86,6 +86,7 @@ export class RestDataSource
   {
     console.log('addUser@ rest.datasources.ts');
     this.loadToken();
+    console.log('go to server / controller post...');
     return this.http.post<User>(this.baseUrl + 'register', user, this.httpOptions);
   }
 

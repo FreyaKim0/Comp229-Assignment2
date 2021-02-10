@@ -657,6 +657,7 @@ class RestDataSource {
     addUser(user) {
         console.log('addUser@ rest.datasources.ts');
         this.loadToken();
+        console.log('go to server / controller post...');
         return this.http.post(this.baseUrl + 'register', user, this.httpOptions);
     }
     updateUser(user) {
