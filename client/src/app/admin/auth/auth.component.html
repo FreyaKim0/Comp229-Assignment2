@@ -10,16 +10,16 @@
 
             <form autocomplete='off' #form='ngForm' (ngSubmit)='authenticate(form)'>
 
-              <span class="
-              ">
-              <!--Authenicain error-->
-              <div class="bg-danger mt-2 text-center text-white"
-              *ngIf='errorMessage != null'>
-              {{errorMessage}}
-              </div>
-
+              <span>
                 ACCOUNT LOGIN
-              </span><br><br>
+              </span>
+
+              <!--Authenicain error-->
+              <span style="padding-left:20px; font-size:14px; color:red;" *ngIf='errorMessage != null'>
+              {{errorMessage}}
+              </span>
+
+              <br><br>
 
               <span class="field_name">
                 USERNAME
@@ -28,7 +28,13 @@
               <div class="wrap-input100" data-validate = "Username is required">
 
                   <!--username input-->
-                  <input id="username" required autofocus autocomplete='off' class="input100" [(ngModel)]='user.username' type="text" name="username" required>
+                  <input id="username"
+                         required autofocus autocomplete='off'
+                         class="input100"
+                         [(ngModel)]='user.username'
+                         type="text"
+                         name="username"
+                         required>
                   <span class="focus-input100"></span>
 
               </div>

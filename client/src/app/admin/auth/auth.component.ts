@@ -46,13 +46,13 @@ export class AuthComponent implements OnInit, OnDestroy {
         if (data.success)
           {
             this.auth.storeUserData(data.token, data.user);
-            this.router.navigateByUrl('admin/main');
+            this.router.navigateByUrl('home');
           }
        });
     }
     else
     {
-      this.errorMessage = 'Form Data Invalid';
+      this.errorMessage = 'Please fill in both rows .';
     }
   }
 }
