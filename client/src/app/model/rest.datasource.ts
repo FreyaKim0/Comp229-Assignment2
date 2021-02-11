@@ -80,19 +80,18 @@ export class RestDataSource
     return this.http.get<User[]>(this.baseUrl + 'users');
   }
 
-  addUser(user: User): Observable<User>
+  createUser(): Observable<User>
   {
-    console.log('addUser@ rest.datasources.ts');
+    console.log('addUser@ rest.datasources.ts===> load Token');
     this.loadToken();
-    console.log('go to server / controller post...');
-    return this.http.post<User>(this.baseUrl + 'register', user, this.httpOptions);
+    console.log('Go backend');
+    return this.http.post<User>(this.baseUrl + 'register', this.httpOptions);
   }
 
   updateUser(user: User): Observable<User>
   {
-    // this url?
     this.loadToken();
-    return this.http.post<User>(this.baseUrl + 'register', user , this.httpOptions);
+    return this.http.post<User>(this.baseUrl + 'register', this.httpOptions);
   }
 
 

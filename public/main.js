@@ -652,16 +652,15 @@ class RestDataSource {
     getUserbyId(id) {
         return this.http.get(this.baseUrl + 'users');
     }
-    addUser(user) {
-        console.log('addUser@ rest.datasources.ts');
+    createUser() {
+        console.log('addUser@ rest.datasources.ts===> load Token');
         this.loadToken();
-        console.log('go to server / controller post...');
-        return this.http.post(this.baseUrl + 'register', user, this.httpOptions);
+        console.log('Go backend');
+        return this.http.post(this.baseUrl + 'register', this.httpOptions);
     }
     updateUser(user) {
-        // this url?
         this.loadToken();
-        return this.http.post(this.baseUrl + 'register', user, this.httpOptions);
+        return this.http.post(this.baseUrl + 'register', this.httpOptions);
     }
     // get, add, update, delete books
     getBooks() {
@@ -746,7 +745,7 @@ class UserRepository {
     addUser(thisUser) {
         if (thisUser.username === null || thisUser.username === '' || thisUser.username === undefined) {
             console.log('if...username:' + thisUser.username);
-            this.dataSource.addUser(thisUser).subscribe(b => {
+            this.dataSource.createUser().subscribe(b => {
                 this.user.push(thisUser);
             });
         }
@@ -1957,9 +1956,9 @@ class AuthService {
         return this.datasource.logout();
     }
     // tslint:disable-next-line: typedef
-    create(user) {
-        console.log('IN auth.service.ts creat(user) ...');
-        return this.datasource.addUser(user);
+    createUser() {
+        console.log('IN auth.service.ts creat() ...');
+        return this.datasource.createUser();
     }
 }
 AuthService.ɵfac = function AuthService_Factory(t) { return new (t || AuthService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"])); };
