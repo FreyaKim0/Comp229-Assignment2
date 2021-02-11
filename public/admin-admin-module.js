@@ -214,9 +214,9 @@ class RegisterComponent {
         this.loading = false;
     }
     ngOnInit() {
-        this.user = new src_app_model_user_model__WEBPACK_IMPORTED_MODULE_1__["User"]();
     }
     register(form) {
+        this.user = new src_app_model_user_model__WEBPACK_IMPORTED_MODULE_1__["User"]();
         console.log('you are in...');
         if (form.valid) {
             console.log(this.user.displayName);
