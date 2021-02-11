@@ -72,14 +72,12 @@ export class RestDataSource
 
   getUser(): Observable<User[]>
   {
-    // this url?
-    return this.http.get<User[]>(this.baseUrl + 'register');
+    return this.http.get<User[]>(this.baseUrl + 'users');
   }
 
   getUserbyId( id: string): Observable<User[]>
   {
-    // this url?
-    return this.http.get<User[]>(this.baseUrl + 'register');
+    return this.http.get<User[]>(this.baseUrl + 'users');
   }
 
   addUser(user: User): Observable<User>

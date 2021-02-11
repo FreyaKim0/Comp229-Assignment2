@@ -647,12 +647,10 @@ class RestDataSource {
         this.user = user;
     }
     getUser() {
-        // this url?
-        return this.http.get(this.baseUrl + 'register');
+        return this.http.get(this.baseUrl + 'users');
     }
     getUserbyId(id) {
-        // this url?
-        return this.http.get(this.baseUrl + 'register');
+        return this.http.get(this.baseUrl + 'users');
     }
     addUser(user) {
         console.log('addUser@ rest.datasources.ts');
