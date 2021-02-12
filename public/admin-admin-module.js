@@ -840,8 +840,13 @@ class AuthComponent {
             this.auth.authenticate(this.user).subscribe(data => {
                 // if json data from processLogin coontroll successfully sent back
                 if (data.success) {
+                    console.log('this login user:' + data.token);
                     // assign this jason data(by token) to this.user
                     this.auth.storeUserData(data.token, data.user);
+                    console.log('After assign token to this login user:' + this.user.displayName + '\n' +
+                        this.user.username + '\n' +
+                        this.user.password + '\n' +
+                        this.user.email + '\n');
                     this.router.navigateByUrl('home');
                 }
                 else {
