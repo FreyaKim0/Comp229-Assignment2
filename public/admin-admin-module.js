@@ -840,7 +840,10 @@ class AuthComponent {
             this.auth.authenticate(this.user).subscribe(data => {
                 // if json data from processLogin coontroll successfully sent back
                 if (data.success) {
-                    console.log('Token:' + data.token);
+                    console.log('token:' + data.token);
+                    console.log('success:' + data.success);
+                    console.log('user:' + data.user);
+                    console.log('message:' + data.msg);
                     // assign this jason data(by token) to this.user
                     this.auth.storeUserData(data.token, data.user);
                     console.log('After storeUserData: \n display name:' + this.user.displayName + '\n' +
