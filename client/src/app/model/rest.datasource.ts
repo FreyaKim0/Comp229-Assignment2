@@ -77,7 +77,7 @@ export class RestDataSource
 
   addUser(user: User): Observable<User>
   {
-    this.loadToken();
+    // this.loadToken();
     return this.http.post<User>(this.baseUrl + 'register', this.httpOptions);
   }
 
