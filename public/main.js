@@ -723,32 +723,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class UserRepository {
-    constructor(dataSource) {
-        this.dataSource = dataSource;
+    // tslint:disable-next-line: variable-name
+    constructor(user_dataSource) {
+        this.user_dataSource = user_dataSource;
         this.user = [];
-        dataSource.getUser().subscribe(data => {
-            this.user = data;
-            this.username = data.map(b => b.username)
-                .filter((a, index, array) => array.indexOf(a) === index).sort();
-        });
-        // Check all users
-        // tslint:disable-next-line: prefer-for-of
     }
     getUser(username = null) {
         return this.user.filter(b => username == null || username === b.username);
     }
     addUser(thisUser) {
-        // tslint:disable-next-line: prefer-for-of
-        for (let i = 0; i < this.user.length; i++) {
-            console.log(this.user[i]);
-        }
         console.log('username:      ' + thisUser.username + '\n' +
             'email:         ' + thisUser.email + '\n' +
             'password:      ' + thisUser.password + '\n' +
             'display name:  ' + thisUser.displayName);
-        this.dataSource.addUser(thisUser).subscribe(b => {
-            this.user.push(thisUser);
-        });
+        this.user_dataSource.addUser(thisUser);
     }
 }
 UserRepository.ɵfac = function UserRepository_Factory(t) { return new (t || UserRepository)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_rest_datasource__WEBPACK_IMPORTED_MODULE_1__["RestDataSource"])); };
@@ -797,11 +785,13 @@ class BookRepository {
         return this.authors;
     }
     saveBook(savedBook) {
+        // add book
         if (savedBook._id === null || savedBook._id === 0 || savedBook._id === undefined) {
             this.dataSource.addBook(savedBook).subscribe(b => {
                 this.books.push(savedBook);
             });
         }
+        // update book
         else {
             this.dataSource.updateBook(savedBook).subscribe(book => {
                 this.books.splice(this.books.findIndex(b => b._id === savedBook._id), 1, savedBook);

@@ -35,12 +35,14 @@ export class BookRepository
 
   saveBook(savedBook: Book): void
   {
+    // add book
     if (savedBook._id === null || savedBook._id === 0 || savedBook._id === undefined)
     {
       this.dataSource.addBook(savedBook).subscribe(b => {
         this.books.push(savedBook);
       });
     }
+    // update book
     else
     {
       this.dataSource.updateBook(savedBook).subscribe(book => {
