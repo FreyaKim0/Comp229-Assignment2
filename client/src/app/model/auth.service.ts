@@ -38,6 +38,6 @@ export class AuthService
   createUser()
   {
     console.log('IN auth.service.ts creat() ...');
-    return this.datasource.createUser();
+    return this.datasource.createUser(this.user);
   }
 }

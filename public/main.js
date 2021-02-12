@@ -652,10 +652,9 @@ class RestDataSource {
     getUserbyId(id) {
         return this.http.get(this.baseUrl + 'users');
     }
-    createUser() {
-        console.log('addUser@ rest.datasources.ts===> load Token');
+    createUser(user) {
+        console.log('createUser@ rest.datasources.ts');
         this.loadToken();
-        console.log('Go backend');
         return this.http.post(this.baseUrl + 'register', this.httpOptions);
     }
     updateUser(user) {
@@ -743,24 +742,13 @@ class UserRepository {
     }
     // add or edit user
     createUser(thisUser) {
-        // If registration Ngform is NOT valid
-        if (thisUser.username === null || thisUser.username === '' || thisUser.username === undefined) {
-            console.log('if... username:' + thisUser.username);
-            this.dataSource.createUser().subscribe(b => {
-                this.user.push(thisUser);
-            });
-        }
-        else 
-        // if rigistration NgForm is valid
-        {
-            console.log('username:      ' + thisUser.username + '\n' +
-                'email:         ' + thisUser.email + '\n' +
-                'password:      ' + thisUser.password + '\n' +
-                'display name:  ' + thisUser.displayName);
-            this.dataSource.updateUser(thisUser); /*.subscribe(user => {
-            this.user.splice(this.user.findIndex(b => b.username === thisUser.username), 1, thisUser);
-            });*/
-        }
+        console.log('username:      ' + thisUser.username + '\n' +
+            'email:         ' + thisUser.email + '\n' +
+            'password:      ' + thisUser.password + '\n' +
+            'display name:  ' + thisUser.displayName);
+        this.dataSource.updateUser(thisUser); /*.subscribe(user => {
+        this.user.splice(this.user.findIndex(b => b.username === thisUser.username), 1, thisUser);
+        });*/
     }
 }
 UserRepository.ɵfac = function UserRepository_Factory(t) { return new (t || UserRepository)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_rest_datasource__WEBPACK_IMPORTED_MODULE_1__["RestDataSource"])); };
@@ -1961,7 +1949,7 @@ class AuthService {
     // tslint:disable-next-line: typedef
     createUser() {
         console.log('IN auth.service.ts creat() ...');
-        return this.datasource.createUser();
+        return this.datasource.createUser(this.user);
     }
 }
 AuthService.ɵfac = function AuthService_Factory(t) { return new (t || AuthService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"])); };
