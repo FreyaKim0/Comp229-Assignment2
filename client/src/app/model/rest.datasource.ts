@@ -5,6 +5,8 @@ import { Book } from './book.model';
 import { Order } from './order.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from './user.model';
+import { map } from 'rxjs/operators';
+import { Cart } from './cart.model';
 
 const PROTOCOL = 'https';
 const PORT = 3500;
@@ -32,6 +34,31 @@ export class RestDataSource
     // this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/api/`;
     this.baseUrl = `https://xu-tung-jin-assignment2.herokuapp.com/api/`;
   }
+
+
+
+
+
+  // get, add, update user (registration)
+  getUser(): Observable<User[]>
+  {
+    return this.http.get<User[]>(this.baseUrl + 'users');
+  }
+
+  addUser(user: User): Observable<User>
+  {
+    // this.loadToken();
+    return this.http.post<User>(this.baseUrl + 'register', this.httpOptions);
+  }
+
+  updateUser(user: User): Observable<User>
+  {
+    // this.loadToken();
+    return this.http.post<User>(this.baseUrl + 'register', this.httpOptions);
+  }
+
+
+
 
 
 
@@ -68,24 +95,6 @@ export class RestDataSource
 
 
 
-
-  // get, add, edit, update user (registration)
-  getUser(): Observable<User[]>
-  {
-    return this.http.get<User[]>(this.baseUrl + 'users');
-  }
-
-  addUser(user: User): Observable<User>
-  {
-    // this.loadToken();
-    return this.http.post<User>(this.baseUrl + 'register', this.httpOptions);
-  }
-
-  updateUser(user: User): Observable<User>
-  {
-    this.loadToken();
-    return this.http.post<User>(this.baseUrl + 'register', this.httpOptions);
-  }
 
 
 

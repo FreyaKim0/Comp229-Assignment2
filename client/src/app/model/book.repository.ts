@@ -1,3 +1,4 @@
+import { StaticDataSource } from './static.datasource';
 import { RestDataSource } from './rest.datasource';
 import { Injectable } from '@angular/core';
 import { Book } from './book.model';

@@ -626,6 +626,18 @@ class RestDataSource {
         // this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/api/`;
         this.baseUrl = `https://xu-tung-jin-assignment2.herokuapp.com/api/`;
     }
+    // get, add, update user (registration)
+    getUser() {
+        return this.http.get(this.baseUrl + 'users');
+    }
+    addUser(user) {
+        // this.loadToken();
+        return this.http.post(this.baseUrl + 'register', this.httpOptions);
+    }
+    updateUser(user) {
+        // this.loadToken();
+        return this.http.post(this.baseUrl + 'register', this.httpOptions);
+    }
     // loggin (storeUserData + authenticate) , loggout
     storeUserData(token, user) {
         localStorage.setItem('id_token', 'Bearer ' + token);
@@ -644,18 +656,6 @@ class RestDataSource {
     }
     loggedIn() {
         return !this.jwtService.isTokenExpired(this.authToken);
-    }
-    // get, add, edit, update user (registration)
-    getUser() {
-        return this.http.get(this.baseUrl + 'users');
-    }
-    addUser(user) {
-        // this.loadToken();
-        return this.http.post(this.baseUrl + 'register', this.httpOptions);
-    }
-    updateUser(user) {
-        this.loadToken();
-        return this.http.post(this.baseUrl + 'register', this.httpOptions);
     }
     // get, add, update, delete books
     getBooks() {
