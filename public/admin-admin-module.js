@@ -217,7 +217,7 @@ class RegisterComponent {
     // tslint:disable-next-line: typedef
     register(form) {
         if (form.valid) {
-            this.repository.createUser(this.user);
+            this.repository.addUser(this.user);
             this.router.navigateByUrl('/admin/auth');
         }
         else {

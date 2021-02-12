@@ -37,7 +37,15 @@ export class RestDataSource
 
 
 
-  // loggin, authenticate, loggout
+  // loggin (storeUserData + authenticate) , loggout
+  storeUserData(token: any, user: User): void
+  {
+    localStorage.setItem('id_token', 'Bearer ' + token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = token;
+    this.user = user;
+  }
+
   authenticate(user: User): Observable<any>
   {
     return this.http.post<any>(this.baseUrl + 'login', user, this.httpOptions);
@@ -62,27 +70,13 @@ export class RestDataSource
 
 
   // get, add, edit, update user (registration)
-  storeUserData(token: any, user: User): void
-  {
-    localStorage.setItem('id_token', 'Bearer ' + token);
-    localStorage.setItem('user', JSON.stringify(user));
-    this.authToken = token;
-    this.user = user;
-  }
-
   getUser(): Observable<User[]>
   {
     return this.http.get<User[]>(this.baseUrl + 'users');
   }
 
-  getUserbyId( id: string): Observable<User[]>
+  addUser(user: User): Observable<User>
   {
-    return this.http.get<User[]>(this.baseUrl + 'users');
-  }
-
-  createUser(user: User): Observable<User>
-  {
-    console.log('createUser@ rest.datasources.ts');
     this.loadToken();
     return this.http.post<User>(this.baseUrl + 'register', this.httpOptions);
   }

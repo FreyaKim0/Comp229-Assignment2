@@ -626,7 +626,13 @@ class RestDataSource {
         // this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/api/`;
         this.baseUrl = `https://xu-tung-jin-assignment2.herokuapp.com/api/`;
     }
-    // loggin, authenticate, loggout
+    // loggin (storeUserData + authenticate) , loggout
+    storeUserData(token, user) {
+        localStorage.setItem('id_token', 'Bearer ' + token);
+        localStorage.setItem('user', JSON.stringify(user));
+        this.authToken = token;
+        this.user = user;
+    }
     authenticate(user) {
         return this.http.post(this.baseUrl + 'login', user, this.httpOptions);
     }
@@ -640,20 +646,10 @@ class RestDataSource {
         return !this.jwtService.isTokenExpired(this.authToken);
     }
     // get, add, edit, update user (registration)
-    storeUserData(token, user) {
-        localStorage.setItem('id_token', 'Bearer ' + token);
-        localStorage.setItem('user', JSON.stringify(user));
-        this.authToken = token;
-        this.user = user;
-    }
     getUser() {
         return this.http.get(this.baseUrl + 'users');
     }
-    getUserbyId(id) {
-        return this.http.get(this.baseUrl + 'users');
-    }
-    createUser(user) {
-        console.log('createUser@ rest.datasources.ts');
+    addUser(user) {
         this.loadToken();
         return this.http.post(this.baseUrl + 'register', this.httpOptions);
     }
@@ -735,20 +731,23 @@ class UserRepository {
             this.username = data.map(b => b.username)
                 .filter((a, index, array) => array.indexOf(a) === index).sort();
         });
+        // Check all users
+        // tslint:disable-next-line: prefer-for-of
+        for (let i = 0; i < this.user.length; i++) {
+            console.log(this.user[i]);
+        }
     }
     getUser(username = null) {
-        return this.user
-            .filter(b => username == null || username === b.username);
+        return this.user.filter(b => username == null || username === b.username);
     }
-    // add or edit user
-    createUser(thisUser) {
+    addUser(thisUser) {
         console.log('username:      ' + thisUser.username + '\n' +
             'email:         ' + thisUser.email + '\n' +
             'password:      ' + thisUser.password + '\n' +
             'display name:  ' + thisUser.displayName);
-        this.dataSource.updateUser(thisUser); /*.subscribe(user => {
-        this.user.splice(this.user.findIndex(b => b.username === thisUser.username), 1, thisUser);
-        });*/
+        this.dataSource.addUser(thisUser).subscribe(b => {
+            this.user.push(thisUser);
+        });
     }
 }
 UserRepository.ɵfac = function UserRepository_Factory(t) { return new (t || UserRepository)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_rest_datasource__WEBPACK_IMPORTED_MODULE_1__["RestDataSource"])); };
@@ -1949,7 +1948,7 @@ class AuthService {
     // tslint:disable-next-line: typedef
     createUser() {
         console.log('IN auth.service.ts creat() ...');
-        return this.datasource.createUser(this.user);
+        return this.datasource.addUser(this.user);
     }
 }
 AuthService.ɵfac = function AuthService_Factory(t) { return new (t || AuthService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"])); };
