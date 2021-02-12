@@ -14,9 +14,10 @@ const PORT = 3500;
 @Injectable()
 export class RestDataSource
 {
-  user: User;
-  baseUrl: string;
+  // Who is logging as user in this browser...
+  user: User;  // username , displayname and email
   authToken: string;
+  baseUrl: string;
 
   private httpOptions =
   {
@@ -71,6 +72,12 @@ export class RestDataSource
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
+
+    console.log('rest.datasource:');
+    console.log('authToken:' + this.authToken);
+    console.log('user displayname:' + this.user.displayName);
+    console.log('user email:' + this.user.email);
+    console.log('user username:' + this.user.username);
   }
 
   authenticate(user: User): Observable<any>

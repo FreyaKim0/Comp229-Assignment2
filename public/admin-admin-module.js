@@ -840,19 +840,8 @@ class AuthComponent {
             this.auth.authenticate(this.user).subscribe(data => {
                 // if json data from processLogin coontroll successfully sent back
                 if (data.success) {
-                    console.log('token:' + data.token);
-                    console.log('success:' + data.success);
-                    console.log('user name:' + data.user.username);
-                    console.log('user password:' + data.user.password);
-                    console.log('user email:' + data.user.email);
-                    console.log('user display name:' + data.user.displayName);
-                    console.log('message:' + data.msg);
-                    // assign this jason data(by token) to this.user
+                    // Store token and user information in this browser page
                     this.auth.storeUserData(data.token, data.user);
-                    console.log('After storeUserData: \n display name:' + this.user.displayName + '\n' +
-                        'username:' + this.user.username + '\n' +
-                        'password:' + this.user.password + '\n' +
-                        'email:' + this.user.email + '\n');
                     this.router.navigateByUrl('home');
                 }
                 else {

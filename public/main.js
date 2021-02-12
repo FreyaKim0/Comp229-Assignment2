@@ -645,6 +645,11 @@ class RestDataSource {
         localStorage.setItem('user', JSON.stringify(user));
         this.authToken = token;
         this.user = user;
+        console.log('rest.datasource:');
+        console.log('authToken:' + this.authToken);
+        console.log('user displayname:' + this.user.displayName);
+        console.log('user email:' + this.user.email);
+        console.log('user username:' + this.user.username);
     }
     authenticate(user) {
         return this.http.post(this.baseUrl + 'login', user, this.httpOptions);
