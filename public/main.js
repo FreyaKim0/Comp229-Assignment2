@@ -742,21 +742,24 @@ class UserRepository {
             .filter(b => username == null || username === b.username);
     }
     // add or edit user
-    addUser(thisUser) {
+    createUser(thisUser) {
+        // If registration Ngform is NOT valid
         if (thisUser.username === null || thisUser.username === '' || thisUser.username === undefined) {
-            console.log('if...username:' + thisUser.username);
+            console.log('if... username:' + thisUser.username);
             this.dataSource.createUser().subscribe(b => {
                 this.user.push(thisUser);
             });
         }
-        else {
+        else 
+        // if rigistration NgForm is valid
+        {
             console.log('username:      ' + thisUser.username + '\n' +
                 'email:         ' + thisUser.email + '\n' +
                 'password:      ' + thisUser.password + '\n' +
                 'display name:  ' + thisUser.displayName);
-            this.dataSource.updateUser(thisUser).subscribe(user => {
-                this.user.splice(this.user.findIndex(b => b.username === thisUser.username), 1, thisUser);
-            });
+            this.dataSource.updateUser(thisUser); /*.subscribe(user => {
+            this.user.splice(this.user.findIndex(b => b.username === thisUser.username), 1, thisUser);
+            });*/
         }
     }
 }

@@ -43,19 +43,24 @@ export class AuthComponent implements OnInit, OnDestroy {
     if (form.valid)
     {
       this.auth.authenticate(this.user).subscribe(data => {
+
+        // if json data from processLogin coontroll successfully sent back
         if (data.success)
           {
+            // assign this jason data(by token) to this.user
             this.auth.storeUserData(data.token, data.user);
             this.router.navigateByUrl('home');
           }
         else
         {
-          this.errorMessage = 'Login failed, username or password is worng.';
+          // if no data is coming back from controller
+          this.errorMessage = 'username or password is worng.';
         }
        });
     }
     else
     {
+      // webpage data contraints
       this.errorMessage = 'Please fill in both rows .';
     }
   }
