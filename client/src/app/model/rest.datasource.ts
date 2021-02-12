@@ -109,8 +109,9 @@ export class RestDataSource
   addBook(book: Book): Observable<Book>
   {
     this.loadToken();
-    return this.http.post<Book>(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
+    return this.http.post<Book>(this.baseUrl + 'book-list/add', book, this.httpOptions);
   }
+
 
   updateBook(book: Book): Observable<Book>
   {
