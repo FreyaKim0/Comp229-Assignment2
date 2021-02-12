@@ -49,7 +49,10 @@ export class AuthComponent implements OnInit, OnDestroy {
           {
             console.log('token:' + data.token);
             console.log('success:' + data.success);
-            console.log('user:' + data.user);
+            console.log('user name:' + data.user.username);
+            console.log('user password' + data.user.password);
+            console.log('user email' + data.user.email);
+            console.log('user display name' + data.user.displayName);
             console.log('message:' + data.msg);
             // assign this jason data(by token) to this.user
             this.auth.storeUserData(data.token, data.user);
