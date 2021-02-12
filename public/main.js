@@ -663,7 +663,7 @@ class RestDataSource {
     }
     addBook(book) {
         this.loadToken();
-        return this.http.post(this.baseUrl + 'book-list/add', book, this.httpOptions);
+        return this.http.post(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
     }
     updateBook(book) {
         this.loadToken();
