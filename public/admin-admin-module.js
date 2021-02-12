@@ -344,11 +344,11 @@ class AuthGuard {
     }
     canActivate(route, state) {
         if (this.auth.authenticated) {
-            console.log('authenticated!!!!!!!!!!!!!');
+            console.log('auth.guard: authenticated');
             return true;
         }
         else {
-            console.log('cannot authenticate');
+            console.log('auth.guard: cannot authenticate, go back to login page');
             this.router.navigate(['/admin/auth']);
             return false;
         }
