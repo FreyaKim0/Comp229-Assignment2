@@ -13,7 +13,7 @@ import { CartDetailComponent } from '../book-store/cart-detail/cart-detail.compo
 import { RegisterComponent } from './register/register.component';
 
 const routing = RouterModule.forChild([
-  {path: 'register', component: RegisterComponent/*, canActivate: [AuthGuard]*/},
+  {path: 'register', component: RegisterComponent, canActivate: [AuthGuard]},
   {path: 'auth', component: AuthComponent},
   {path: 'main', component: AdminComponent, canActivate: [AuthGuard] ,
    children: [

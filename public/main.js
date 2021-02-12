@@ -632,8 +632,8 @@ class RestDataSource {
         return this.http.get(this.baseUrl + 'users');
     }
     addUser(user) {
-        // this.loadToken();
-        return this.http.post(this.baseUrl + 'register', this.httpOptions);
+        this.loadToken();
+        return this.http.post(this.baseUrl + 'register', user, this.httpOptions);
     }
     updateUser(user) {
         // this.loadToken();
@@ -702,6 +702,9 @@ class RestDataSource {
         const token = localStorage.getItem('id_token');
         this.authToken = token;
         this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
+        console.log('rest.datasource => loadToken():');
+        console.log('authToken:' + this.authToken);
+        console.log('httpOptions.header:' + this.httpOptions.headers);
     }
 }
 RestDataSource.ɵfac = function RestDataSource_Factory(t) { return new (t || RestDataSource)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"])); };
@@ -738,6 +741,7 @@ class UserRepository {
         return this.user.filter(b => username == null || username === b.username);
     }
     addUser(thisUser) {
+        console.log('user.repositry:');
         console.log('username:      ' + thisUser.username + '\n' +
             'email:         ' + thisUser.email + '\n' +
             'password:      ' + thisUser.password + '\n' +

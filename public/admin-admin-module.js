@@ -606,7 +606,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routing = _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild([
-    { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_12__["RegisterComponent"] /*, canActivate: [AuthGuard]*/ },
+    { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_12__["RegisterComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
     { path: 'auth', component: _auth_auth_component__WEBPACK_IMPORTED_MODULE_2__["AuthComponent"] },
     { path: 'main', component: _admin_component__WEBPACK_IMPORTED_MODULE_7__["AdminComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]],
         children: [

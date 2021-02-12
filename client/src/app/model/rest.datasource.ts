@@ -48,8 +48,8 @@ export class RestDataSource
 
   addUser(user: User): Observable<User>
   {
-    // this.loadToken();
-    return this.http.post<User>(this.baseUrl + 'register', this.httpOptions);
+    this.loadToken();
+    return this.http.post<User>(this.baseUrl + 'register', user, this.httpOptions);
   }
 
   updateUser(user: User): Observable<User>
@@ -174,6 +174,10 @@ export class RestDataSource
     const token = localStorage.getItem('id_token');
     this.authToken = token;
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
+
+    console.log('rest.datasource => loadToken():');
+    console.log('authToken:' + this.authToken);
+    console.log('httpOptions.header:' + this.httpOptions.headers);
   }
 
 
