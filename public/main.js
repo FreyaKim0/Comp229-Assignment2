@@ -733,14 +733,15 @@ class UserRepository {
         });
         // Check all users
         // tslint:disable-next-line: prefer-for-of
-        for (let i = 0; i < this.user.length; i++) {
-            console.log(this.user[i]);
-        }
     }
     getUser(username = null) {
         return this.user.filter(b => username == null || username === b.username);
     }
     addUser(thisUser) {
+        // tslint:disable-next-line: prefer-for-of
+        for (let i = 0; i < this.user.length; i++) {
+            console.log(this.user[i]);
+        }
         console.log('username:      ' + thisUser.username + '\n' +
             'email:         ' + thisUser.email + '\n' +
             'password:      ' + thisUser.password + '\n' +
