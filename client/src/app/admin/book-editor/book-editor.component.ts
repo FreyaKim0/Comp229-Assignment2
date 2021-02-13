@@ -37,6 +37,7 @@ export class BookEditorComponent implements OnInit {
         console.log('Adding new book status:' + data.success.toString + '\nServer:' + data.msg);
         this.router.navigateByUrl('admin/auth');
       }
+
      });
 
     this.router.navigateByUrl('/admin/main/books');

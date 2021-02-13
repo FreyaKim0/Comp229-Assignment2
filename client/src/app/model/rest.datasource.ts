@@ -113,7 +113,7 @@ export class RestDataSource
     return this.http.get<Book[]>(this.baseUrl + 'book-list');
   }
 
-  addBook(book: Book): Observable<Book>
+  addBook(book: Book): Observable<any>
   {
     this.loadToken();
     return this.http.post<Book>(this.baseUrl + 'book-list/add', book, this.httpOptions);
