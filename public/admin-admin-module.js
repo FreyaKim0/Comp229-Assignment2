@@ -217,8 +217,15 @@ class RegisterComponent {
     // tslint:disable-next-line: typedef
     register(form) {
         if (form.valid) {
-            this.repository.addUser(this.user);
-            this.router.navigateByUrl('/admin/auth');
+            this.repository.addUser(this.user).subscribe(data => {
+                if (data.success) {
+                    console.log('Message from backend:' + data.msg);
+                    this.router.navigateByUrl('admin/auth');
+                }
+                else {
+                    this.errorMessage = 'registration status:' + data.success + '\nServer:' + data.msg;
+                }
+            });
         }
         else {
             this.errorMessage = 'Please complete all rows.';

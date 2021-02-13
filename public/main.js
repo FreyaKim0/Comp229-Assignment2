@@ -746,7 +746,7 @@ class UserRepository {
             'email:         ' + thisUser.email + '\n' +
             'password:      ' + thisUser.password + '\n' +
             'display name:  ' + thisUser.displayName);
-        this.user_dataSource.addUser(thisUser);
+        return this.user_dataSource.addUser(thisUser);
     }
 }
 UserRepository.ɵfac = function UserRepository_Factory(t) { return new (t || UserRepository)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_rest_datasource__WEBPACK_IMPORTED_MODULE_1__["RestDataSource"])); };
