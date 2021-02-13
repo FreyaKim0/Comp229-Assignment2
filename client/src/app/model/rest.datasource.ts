@@ -177,7 +177,6 @@ export class RestDataSource
 
     console.log('rest.datasource => loadToken():');
     console.log('authToken:' + this.authToken);
-    console.log('httpOptions.header:' + this.httpOptions.headers);
   }
 
 

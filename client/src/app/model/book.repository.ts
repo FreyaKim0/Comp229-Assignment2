@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { StaticDataSource } from './static.datasource';
 import { RestDataSource } from './rest.datasource';
 import { Injectable } from '@angular/core';
@@ -34,14 +35,13 @@ export class BookRepository
     return this.authors;
   }
 
-  saveBook(savedBook: Book): void
+  saveBook(savedBook: Book): Observable<any>
   {
     // add book
     if (savedBook._id === null || savedBook._id === 0 || savedBook._id === undefined)
     {
-      this.dataSource.addBook(savedBook).subscribe(b => {
-        this.books.push(savedBook);
-      });
+      this.books.push(savedBook);
+      return this.dataSource.addBook(savedBook);
     }
     // update book
     else

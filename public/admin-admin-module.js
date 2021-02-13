@@ -196,7 +196,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function RegisterComponent_span_9_Template(rf, ctx) { if (rf & 1) {
+function RegisterComponent_span_10_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -218,12 +218,12 @@ class RegisterComponent {
     register(form) {
         if (form.valid) {
             this.repository.addUser(this.user).subscribe(data => {
-                if (data.success) {
+                if (!data.success) {
                     console.log('Message from backend:' + data.msg);
-                    this.router.navigateByUrl('admin/auth');
                 }
                 else {
-                    this.errorMessage = 'registration status:' + data.success + '\nServer:' + data.msg;
+                    console.log('registration status:' + data.success.toString + '\nServer:' + data.msg);
+                    this.router.navigateByUrl('admin/auth');
                 }
             });
         }
@@ -245,8 +245,8 @@ RegisterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "span", 7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, " REGISTER ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, RegisterComponent_span_9_Template, 2, 1, "span", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, RegisterComponent_span_10_Template, 2, 1, "span", 8);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "span", 9);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, " USERNAME ");
@@ -304,9 +304,9 @@ RegisterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.errorMessage != null);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.user.username);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.user.password);
@@ -671,6 +671,7 @@ class BookEditorComponent {
         this.router = router;
         this.editing = false;
         this.book = new src_app_model_book_model__WEBPACK_IMPORTED_MODULE_1__["Book"]();
+        // Assign that book's data into webpage
         this.editing = activeRoute.snapshot.params.mode === 'edit';
         if (this.editing) {
             console.log('This one:' + activeRoute.snapshot.params.id);
@@ -680,7 +681,15 @@ class BookEditorComponent {
     ngOnInit() {
     }
     save(form) {
-        this.repository.saveBook(this.book);
+        this.repository.saveBook(this.book).subscribe(data => {
+            if (!data.success) {
+                console.log('Message from backend:' + data.msg);
+            }
+            else {
+                console.log('Adding new book status:' + data.success.toString + '\nServer:' + data.msg);
+                this.router.navigateByUrl('admin/auth');
+            }
+        });
         this.router.navigateByUrl('/admin/main/books');
     }
 }

@@ -14,6 +14,7 @@ export class BookEditorComponent implements OnInit {
               private router: Router,
               activeRoute: ActivatedRoute)
   {
+    // Assign that book's data into webpage
     this.editing = activeRoute.snapshot.params.mode === 'edit';
     if (this.editing)
     {
@@ -25,7 +26,19 @@ export class BookEditorComponent implements OnInit {
   }
   save(form: NgForm): void
   {
-    this.repository.saveBook(this.book);
+    this.repository.saveBook(this.book).subscribe(data => {
+
+      if (!data.success)
+      {
+        console.log('Message from backend:' + data.msg);
+      }
+      else
+      {
+        console.log('Adding new book status:' + data.success.toString + '\nServer:' + data.msg);
+        this.router.navigateByUrl('admin/auth');
+      }
+     });
+
     this.router.navigateByUrl('/admin/main/books');
   }
 }

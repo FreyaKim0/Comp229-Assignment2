@@ -704,7 +704,6 @@ class RestDataSource {
         this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
         console.log('rest.datasource => loadToken():');
         console.log('authToken:' + this.authToken);
-        console.log('httpOptions.header:' + this.httpOptions.headers);
     }
 }
 RestDataSource.ɵfac = function RestDataSource_Factory(t) { return new (t || RestDataSource)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"])); };
@@ -797,9 +796,8 @@ class BookRepository {
     saveBook(savedBook) {
         // add book
         if (savedBook._id === null || savedBook._id === 0 || savedBook._id === undefined) {
-            this.dataSource.addBook(savedBook).subscribe(b => {
-                this.books.push(savedBook);
-            });
+            this.books.push(savedBook);
+            return this.dataSource.addBook(savedBook);
         }
         // update book
         else {
