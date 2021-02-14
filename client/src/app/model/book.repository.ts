@@ -35,13 +35,14 @@ export class BookRepository
     return this.authors;
   }
 
-  saveBook(savedBook: Book): Observable<any>
+  saveBook(savedBook: Book): void
   {
     // add book
     if (savedBook._id === null || savedBook._id === 0 || savedBook._id === undefined)
     {
-      this.books.push(savedBook);
-      return this.dataSource.addBook(savedBook);
+      this.dataSource.addBook(savedBook).subscribe(b => {
+        this.books.push(savedBook);
+      });
     }
     // update book
     else

@@ -20,26 +20,15 @@ export class BookEditorComponent implements OnInit {
     {
       console.log('This one:' + activeRoute.snapshot.params.id);
       Object.assign(this.book, repository.getBook(activeRoute.snapshot.params.id));
+
+      console.log('constructor(edit): this.book.name: ' + this.book.name);
     }
   }
   ngOnInit(): void {
   }
   save(form: NgForm): void
   {
-    this.repository.saveBook(this.book).subscribe(data => {
-
-      if (!data.success)
-      {
-        console.log('Message from backend:' + data.msg);
-      }
-      else
-      {
-        console.log('Adding new book status:' + data.success.toString + '\nServer:' + data.msg);
-        this.router.navigateByUrl('admin/auth');
-      }
-
-     });
-
+    this.repository.saveBook(this.book);
     this.router.navigateByUrl('/admin/main/books');
   }
 }
