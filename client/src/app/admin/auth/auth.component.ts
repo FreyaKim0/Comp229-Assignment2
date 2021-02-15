@@ -14,8 +14,6 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AuthComponent implements OnInit, OnDestroy {
   public user: User;
-  public username: string;
-  public password: string;
   public errorMessage: string;
 
   constructor(private router: Router,

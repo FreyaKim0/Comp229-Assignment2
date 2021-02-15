@@ -673,6 +673,7 @@ class RestDataSource {
     }
     updateBook(book) {
         this.loadToken();
+        console.log('rest.datasource.updateBook(book):' + book.name);
         return this.http.post(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
     }
     deleteBook(id) {
