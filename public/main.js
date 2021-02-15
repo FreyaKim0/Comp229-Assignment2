@@ -629,7 +629,6 @@ class RestDataSource {
     }
     // get, add, update user (registration)
     getUser() {
-        this.loadToken();
         return this.http.get(this.baseUrl + 'users');
     }
     addUser(user) {

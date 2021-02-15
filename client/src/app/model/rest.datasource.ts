@@ -43,7 +43,6 @@ export class RestDataSource
   // get, add, update user (registration)
   getUser(): Observable<User[]>
   {
-    this.loadToken();
     return this.http.get<User[]>(this.baseUrl + 'users');
   }
 
