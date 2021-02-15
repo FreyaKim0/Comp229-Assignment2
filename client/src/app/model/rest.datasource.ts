@@ -43,6 +43,7 @@ export class RestDataSource
   // get, add, update user (registration)
   getUser(): Observable<User[]>
   {
+    this.loadToken();
     return this.http.get<User[]>(this.baseUrl + 'users');
   }
 
@@ -54,7 +55,7 @@ export class RestDataSource
 
   updateUser(user: User): Observable<User>
   {
-    // this.loadToken();
+    this.loadToken();
     return this.http.post<User>(this.baseUrl + 'register', this.httpOptions);
   }
 
