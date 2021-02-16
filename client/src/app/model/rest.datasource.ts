@@ -110,26 +110,26 @@ export class RestDataSource
   // get, add, update, delete books
   getBooks(): Observable<Book[]>
   {
-    return this.http.get<Book[]>(this.baseUrl + 'book-list');
+    return this.http.get<Book[]>(this.baseUrl + 'book');
   }
 
   addBook(book: Book): Observable<any>
   {
     this.loadToken();
-    return this.http.post<Book>(this.baseUrl + 'book-list/add', book, this.httpOptions);
+    return this.http.post<Book>(this.baseUrl + 'book/add', book, this.httpOptions);
   }
 
 
   updateBook(book: Book): Observable<Book>
   {
     this.loadToken();
-      console.log('Book repository,update book id:' + book._id);
-      console.log('Book repository,update book name:' + book.name);
-      console.log('Book repository,update book author:' + book.author);
-      console.log('Book repository,update book description:' + book.description);
-      console.log('Book repository,update book price:' + book.price);
-      console.log('Book repository,update book published:' + book.published);
-    return this.http.post<Book>(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
+    console.log('rest.datasources,update book id:' + book._id);
+    console.log('rest.datasources,update book name:' + book.name);
+    console.log('rest.datasources,update book author:' + book.author);
+    console.log('rest.datasources,update book description:' + book.description);
+    console.log('rest.datasources,update book price:' + book.price);
+    console.log('rest.datasources,update book published:' + book.published);
+    return this.http.post<Book>(`${this.baseUrl}book/edit/${book._id}`, book, this.httpOptions);
   }
 
   deleteBook(id: number): Observable<Book>
@@ -138,7 +138,7 @@ export class RestDataSource
 
     console.log(id);
 
-    return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
+    return this.http.get<Book>(`${this.baseUrl}book/delete/${id}`, this.httpOptions);
   }
 
 
