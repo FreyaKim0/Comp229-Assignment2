@@ -1,3 +1,5 @@
+/* LOCAL MOCK DATA -  BOOKS */
+
 import { Injectable } from '@angular/core';
 import { Book } from './book.model';
 import { Observable, from } from 'rxjs';

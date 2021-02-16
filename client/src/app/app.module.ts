@@ -1,7 +1,7 @@
 
 
-import { NgModule, OnInit } from '@angular/core';
-import { ModelModule } from './model/model.module';
+import { NgModule } from '@angular/core';
+// import { ModelModule } from './model/model.module';
 import { PagesModule } from './pages/pages.module';
 import { PartialsModule } from './partials/partials.module';
 
@@ -9,7 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BookStoreModule } from './book-store/book-store.module';
-import { JwtModule } from '@auth0/angular-jwt';
+import { JwtModule, JwtHelperService, JwtInterceptor } from '@auth0/angular-jwt';
 
 
 export function jwtTokenGetter(): string
@@ -19,7 +19,7 @@ export function jwtTokenGetter(): string
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +27,7 @@ export function jwtTokenGetter(): string
     BookStoreModule,
     PartialsModule,
     PagesModule,
-    ModelModule,
+    // ModelModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: jwtTokenGetter

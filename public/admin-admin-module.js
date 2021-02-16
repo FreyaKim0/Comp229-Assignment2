@@ -327,6 +327,48 @@ RegisterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
 
 /***/ }),
 
+/***/ "DoVm":
+/*!******************************************!*\
+  !*** ./src/app/model/user.repository.ts ***!
+  \******************************************/
+/*! exports provided: UserRepository */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserRepository", function() { return UserRepository; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _rest_datasource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rest.datasource */ "DZdm");
+
+
+
+class UserRepository {
+    // tslint:disable-next-line: variable-name
+    constructor(user_dataSource) {
+        this.user_dataSource = user_dataSource;
+        this.user = [];
+    }
+    getUser(username = null) {
+        return this.user.filter(b => username == null || username === b.username);
+    }
+    addUser(thisUser) {
+        console.log('user.repositry:');
+        console.log('username:      ' + thisUser.username + '\n' +
+            'email:         ' + thisUser.email + '\n' +
+            'password:      ' + thisUser.password + '\n' +
+            'display name:  ' + thisUser.displayName);
+        return this.user_dataSource.addUser(thisUser);
+    }
+}
+UserRepository.ɵfac = function UserRepository_Factory(t) { return new (t || UserRepository)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_rest_datasource__WEBPACK_IMPORTED_MODULE_1__["RestDataSource"])); };
+UserRepository.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: UserRepository, factory: UserRepository.ɵfac });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](UserRepository, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
+    }], function () { return [{ type: _rest_datasource__WEBPACK_IMPORTED_MODULE_1__["RestDataSource"] }]; }, null); })();
+
+
+/***/ }),
+
 /***/ "HpBV":
 /*!******************************************!*\
   !*** ./src/app/admin/auth/auth.guard.ts ***!

@@ -525,71 +525,6 @@ ServiceComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineC
 
 /***/ }),
 
-/***/ "DIJg":
-/*!***************************************!*\
-  !*** ./src/app/model/model.module.ts ***!
-  \***************************************/
-/*! exports provided: ModelModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModelModule", function() { return ModelModule; });
-/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auth.service */ "hO0c");
-/* harmony import */ var _order_repository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./order.repository */ "hf/X");
-/* harmony import */ var _rest_datasource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./rest.datasource */ "DZdm");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
-/* harmony import */ var _static_datasource__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./static.datasource */ "cPHl");
-/* harmony import */ var _book_repository__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./book.repository */ "EnQi");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _cart_model__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./cart.model */ "b/QR");
-/* harmony import */ var _order_model__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./order.model */ "sKKC");
-/* harmony import */ var _user_repository__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./user.repository */ "DoVm");
-
-
-
-
-
-
-
-
-
-
-
-class ModelModule {
-}
-ModelModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineNgModule"]({ type: ModelModule });
-ModelModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineInjector"]({ factory: function ModelModule_Factory(t) { return new (t || ModelModule)(); }, providers: [_book_repository__WEBPACK_IMPORTED_MODULE_5__["BookRepository"],
-        _user_repository__WEBPACK_IMPORTED_MODULE_9__["UserRepository"],
-        _static_datasource__WEBPACK_IMPORTED_MODULE_4__["StaticDataSource"],
-        _cart_model__WEBPACK_IMPORTED_MODULE_7__["Cart"],
-        _order_model__WEBPACK_IMPORTED_MODULE_8__["Order"],
-        _order_repository__WEBPACK_IMPORTED_MODULE_1__["OrderRepository"],
-        { provide: _static_datasource__WEBPACK_IMPORTED_MODULE_4__["StaticDataSource"],
-            useClass: _rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"] },
-        _rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"],
-        _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]], imports: [[_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵsetNgModuleScope"](ModelModule, { imports: [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵsetClassMetadata"](ModelModule, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_6__["NgModule"],
-        args: [{
-                imports: [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]],
-                providers: [_book_repository__WEBPACK_IMPORTED_MODULE_5__["BookRepository"],
-                    _user_repository__WEBPACK_IMPORTED_MODULE_9__["UserRepository"],
-                    _static_datasource__WEBPACK_IMPORTED_MODULE_4__["StaticDataSource"],
-                    _cart_model__WEBPACK_IMPORTED_MODULE_7__["Cart"],
-                    _order_model__WEBPACK_IMPORTED_MODULE_8__["Order"],
-                    _order_repository__WEBPACK_IMPORTED_MODULE_1__["OrderRepository"],
-                    { provide: _static_datasource__WEBPACK_IMPORTED_MODULE_4__["StaticDataSource"],
-                        useClass: _rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"] },
-                    _rest_datasource__WEBPACK_IMPORTED_MODULE_2__["RestDataSource"],
-                    _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]]
-            }]
-    }], null, null); })();
-
-
-/***/ }),
-
 /***/ "DZdm":
 /*!******************************************!*\
   !*** ./src/app/model/rest.datasource.ts ***!
@@ -604,6 +539,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
 /* harmony import */ var _user_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user.model */ "UbF0");
 /* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @auth0/angular-jwt */ "Nm8O");
+/* Online Middleware To Backend */
 
 
 
@@ -716,48 +652,6 @@ RestDataSource.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineIn
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](RestDataSource, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }, { type: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"] }]; }, null); })();
-
-
-/***/ }),
-
-/***/ "DoVm":
-/*!******************************************!*\
-  !*** ./src/app/model/user.repository.ts ***!
-  \******************************************/
-/*! exports provided: UserRepository */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserRepository", function() { return UserRepository; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _rest_datasource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rest.datasource */ "DZdm");
-
-
-
-class UserRepository {
-    // tslint:disable-next-line: variable-name
-    constructor(user_dataSource) {
-        this.user_dataSource = user_dataSource;
-        this.user = [];
-    }
-    getUser(username = null) {
-        return this.user.filter(b => username == null || username === b.username);
-    }
-    addUser(thisUser) {
-        console.log('user.repositry:');
-        console.log('username:      ' + thisUser.username + '\n' +
-            'email:         ' + thisUser.email + '\n' +
-            'password:      ' + thisUser.password + '\n' +
-            'display name:  ' + thisUser.displayName);
-        return this.user_dataSource.addUser(thisUser);
-    }
-}
-UserRepository.ɵfac = function UserRepository_Factory(t) { return new (t || UserRepository)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_rest_datasource__WEBPACK_IMPORTED_MODULE_1__["RestDataSource"])); };
-UserRepository.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: UserRepository, factory: UserRepository.ɵfac });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](UserRepository, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
-    }], function () { return [{ type: _rest_datasource__WEBPACK_IMPORTED_MODULE_1__["RestDataSource"] }]; }, null); })();
 
 
 /***/ }),
@@ -1475,16 +1369,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jwtTokenGetter", function() { return jwtTokenGetter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _model_model_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./model/model.module */ "DIJg");
-/* harmony import */ var _pages_pages_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/pages.module */ "dgmN");
-/* harmony import */ var _partials_partials_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./partials/partials.module */ "rERZ");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ "jhN1");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "Sy1n");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app-routing.module */ "vY5A");
-/* harmony import */ var _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./book-store/book-store.module */ "Blh2");
-/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @auth0/angular-jwt */ "Nm8O");
+/* harmony import */ var _pages_pages_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/pages.module */ "dgmN");
+/* harmony import */ var _partials_partials_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./partials/partials.module */ "rERZ");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ "jhN1");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "Sy1n");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "vY5A");
+/* harmony import */ var _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./book-store/book-store.module */ "Blh2");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @auth0/angular-jwt */ "Nm8O");
 
-
+// import { ModelModule } from './model/model.module';
 
 
 
@@ -1499,47 +1392,46 @@ function jwtTokenGetter() {
 }
 class AppModule {
 }
-AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]] });
+AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]] });
 AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [], imports: [[
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["BrowserModule"],
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
-            _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_7__["BookStoreModule"],
-            _partials_partials_module__WEBPACK_IMPORTED_MODULE_3__["PartialsModule"],
-            _pages_pages_module__WEBPACK_IMPORTED_MODULE_2__["PagesModule"],
-            _model_model_module__WEBPACK_IMPORTED_MODULE_1__["ModelModule"],
-            _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__["JwtModule"].forRoot({
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["BrowserModule"],
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+            _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_6__["BookStoreModule"],
+            _partials_partials_module__WEBPACK_IMPORTED_MODULE_2__["PartialsModule"],
+            _pages_pages_module__WEBPACK_IMPORTED_MODULE_1__["PagesModule"],
+            // ModelModule,
+            _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_7__["JwtModule"].forRoot({
                 config: {
                     tokenGetter: jwtTokenGetter
                 }
             })
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["BrowserModule"],
-        _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
-        _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_7__["BookStoreModule"],
-        _partials_partials_module__WEBPACK_IMPORTED_MODULE_3__["PartialsModule"],
-        _pages_pages_module__WEBPACK_IMPORTED_MODULE_2__["PagesModule"],
-        _model_model_module__WEBPACK_IMPORTED_MODULE_1__["ModelModule"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__["JwtModule"]] }); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["BrowserModule"],
+        _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+        _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_6__["BookStoreModule"],
+        _partials_partials_module__WEBPACK_IMPORTED_MODULE_2__["PartialsModule"],
+        _pages_pages_module__WEBPACK_IMPORTED_MODULE_1__["PagesModule"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_7__["JwtModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 declarations: [
-                    _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
+                    _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
                 ],
                 imports: [
-                    _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["BrowserModule"],
-                    _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
-                    _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_7__["BookStoreModule"],
-                    _partials_partials_module__WEBPACK_IMPORTED_MODULE_3__["PartialsModule"],
-                    _pages_pages_module__WEBPACK_IMPORTED_MODULE_2__["PagesModule"],
-                    _model_model_module__WEBPACK_IMPORTED_MODULE_1__["ModelModule"],
-                    _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__["JwtModule"].forRoot({
+                    _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["BrowserModule"],
+                    _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+                    _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_6__["BookStoreModule"],
+                    _partials_partials_module__WEBPACK_IMPORTED_MODULE_2__["PartialsModule"],
+                    _pages_pages_module__WEBPACK_IMPORTED_MODULE_1__["PagesModule"],
+                    // ModelModule,
+                    _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_7__["JwtModule"].forRoot({
                         config: {
                             tokenGetter: jwtTokenGetter
                         }
                     })
                 ],
                 providers: [],
-                bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+                bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
             }]
     }], null, null); })();
 
@@ -1616,60 +1508,6 @@ class CartLine {
         return this.quantity * this.book.price;
     }
 }
-
-
-/***/ }),
-
-/***/ "cPHl":
-/*!********************************************!*\
-  !*** ./src/app/model/static.datasource.ts ***!
-  \********************************************/
-/*! exports provided: StaticDataSource */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StaticDataSource", function() { return StaticDataSource; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _book_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./book.model */ "47DY");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "qCKp");
-
-
-
-
-class StaticDataSource {
-    constructor() {
-        this.books = [
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](1, 'Book 1', 'Author 1', 'Year 1', 'Short Description 1', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](2, 'Book 2', 'Author 1', 'Year 2', 'Short Description 2', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](3, 'Book 3', 'Author 1', 'Year 3', 'Short Description 3', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](4, 'Book 4', 'Author 2', 'Year 4', 'Short Description 4', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](5, 'Book 5', 'Author 2', 'Year 5', 'Short Description 5', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](6, 'Book 6', 'Author 2', 'Year 6', 'Short Description 6', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](7, 'Book 7', 'Author 2', 'Year 7', 'Short Description 7', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](8, 'Book 8', 'Author 3', 'Year 8', 'Short Description 8', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](9, 'Book 9', 'Author 3', 'Year 9', 'Short Description 9', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](10, 'Book 10', 'Author 4', 'Year 10', 'Short Description 10', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](11, 'Book 11', 'Author 4', 'Year 11', 'Short Description 11', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](12, 'Book 12', 'Author 5', 'Year 12', 'Short Description 12', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](13, 'Book 13', 'Author 5', 'Year 13', 'Short Description 13', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](14, 'Book 14', 'Author 5', 'Year 14', 'Short Description 14', 10),
-            new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](15, 'Book 15', 'Author 5', 'Year 15', 'Short Description 15', 10),
-        ];
-    }
-    getBooks() {
-        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])([this.books]);
-    }
-    saveOrder(order) {
-        console.log(JSON.stringify(order));
-        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])([order]);
-    }
-}
-StaticDataSource.ɵfac = function StaticDataSource_Factory(t) { return new (t || StaticDataSource)(); };
-StaticDataSource.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: StaticDataSource, factory: StaticDataSource.ɵfac });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](StaticDataSource, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
-    }], null, null); })();
 
 
 /***/ }),

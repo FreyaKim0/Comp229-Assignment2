@@ -1,3 +1,5 @@
+/* LOCAL MOCK DATA -  SERVER + USER LOGIN TOKEN */
+
 const jwt = require('jsonwebtoken');
 const APP_SECRET = 'Secret';
 const USERNAME = 'admin';
