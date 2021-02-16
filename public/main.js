@@ -673,7 +673,12 @@ class RestDataSource {
     }
     updateBook(book) {
         this.loadToken();
-        console.log('rest.datasource.updateBook(book):' + book.name);
+        console.log('Book repository,update book id:' + book._id);
+        console.log('Book repository,update book name:' + book.name);
+        console.log('Book repository,update book author:' + book.author);
+        console.log('Book repository,update book description:' + book.description);
+        console.log('Book repository,update book price:' + book.price);
+        console.log('Book repository,update book published:' + book.published);
         return this.http.post(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
     }
     deleteBook(id) {
@@ -803,6 +808,12 @@ class BookRepository {
         }
         // update book
         else {
+            console.log('Book repository,update book id:' + savedBook._id);
+            console.log('Book repository,update book name:' + savedBook.name);
+            console.log('Book repository,update book author:' + savedBook.author);
+            console.log('Book repository,update book description:' + savedBook.description);
+            console.log('Book repository,update book price:' + savedBook.price);
+            console.log('Book repository,update book published:' + savedBook.published);
             this.dataSource.updateBook(savedBook).subscribe(book => {
                 this.books.splice(this.books.findIndex(b => b._id === savedBook._id), 1, savedBook);
             });

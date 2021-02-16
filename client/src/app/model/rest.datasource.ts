@@ -123,7 +123,12 @@ export class RestDataSource
   updateBook(book: Book): Observable<Book>
   {
     this.loadToken();
-    console.log('rest.datasource.updateBook(book):' + book.name);
+      console.log('Book repository,update book id:' + book._id);
+      console.log('Book repository,update book name:' + book.name);
+      console.log('Book repository,update book author:' + book.author);
+      console.log('Book repository,update book description:' + book.description);
+      console.log('Book repository,update book price:' + book.price);
+      console.log('Book repository,update book published:' + book.published);
     return this.http.post<Book>(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
   }
 

@@ -47,6 +47,13 @@ export class BookRepository
     // update book
     else
     {
+      console.log('Book repository,update book id:' + savedBook._id);
+      console.log('Book repository,update book name:' + savedBook.name);
+      console.log('Book repository,update book author:' + savedBook.author);
+      console.log('Book repository,update book description:' + savedBook.description);
+      console.log('Book repository,update book price:' + savedBook.price);
+      console.log('Book repository,update book published:' + savedBook.published);
+
       this.dataSource.updateBook(savedBook).subscribe(book => {
         this.books.splice(this.books.findIndex(b => b._id === savedBook._id), 1, savedBook);
       });
