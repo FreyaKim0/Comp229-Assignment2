@@ -1,7 +1,7 @@
 
 
 import { NgModule } from '@angular/core';
-// import { ModelModule } from './model/model.module';
+import { ModelModule } from './model/model.module';
 import { PagesModule } from './pages/pages.module';
 import { PartialsModule } from './partials/partials.module';
 
@@ -27,7 +27,7 @@ export function jwtTokenGetter(): string
     BookStoreModule,
     PartialsModule,
     PagesModule,
-    // ModelModule,
+    ModelModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: jwtTokenGetter
