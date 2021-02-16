@@ -110,13 +110,13 @@ export class RestDataSource
   // get, add, update, delete books
   getBooks(): Observable<Book[]>
   {
-    return this.http.get<Book[]>(this.baseUrl + 'book');
+    return this.http.get<Book[]>(this.baseUrl + 'book-list');
   }
 
   addBook(book: Book): Observable<any>
   {
     this.loadToken();
-    return this.http.post<Book>(this.baseUrl + 'book/add', book, this.httpOptions);
+    return this.http.post<Book>(this.baseUrl + 'book-list/add', book, this.httpOptions);
   }
 
 
@@ -129,7 +129,7 @@ export class RestDataSource
     console.log('rest.datasources,update book description:' + book.description);
     console.log('rest.datasources,update book price:' + book.price);
     console.log('rest.datasources,update book published:' + book.published);
-    return this.http.post<Book>(`${this.baseUrl}book/edit/${book._id}`, book, this.httpOptions);
+    return this.http.post<Book>(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
   }
 
   deleteBook(id: number): Observable<Book>
@@ -138,7 +138,7 @@ export class RestDataSource
 
     console.log(id);
 
-    return this.http.get<Book>(`${this.baseUrl}book/delete/${id}`, this.httpOptions);
+    return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
   }
 
 
