@@ -21,11 +21,14 @@ module.exports = function (req, res, next)
   {
     if (req.body && req.body.name == USERNAME && req.body.password == PASSWORD)
     {
+      console.log('-----------auth Middleware-----------true--');
       let token = jwt.sign({ data: USERNAME, expiresIn: "1h" }, APP_SECRET);
       res.json({ success: true, token: token });
+
     }
     else
     {
+      console.log('-----------auth Middleware------------flase-');
       res.json({ success:false });
     }
     res.end();
