@@ -642,7 +642,7 @@ class RestDataSource {
     }
     // loggin (storeUserData + authenticate) , loggout
     storeUserData(token, user) {
-        localStorage.setItem('id_token', 'Bearer ' + token);
+        localStorage.setItem('id_token', token);
         localStorage.setItem('user', JSON.stringify(user));
         this.authToken = token;
         this.user = user;
