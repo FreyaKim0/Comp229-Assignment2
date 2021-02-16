@@ -136,8 +136,6 @@ export class RestDataSource
   {
     this.loadToken();
 
-    console.log(id);
-
     return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
   }
 

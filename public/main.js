@@ -683,7 +683,6 @@ class RestDataSource {
     }
     deleteBook(id) {
         this.loadToken();
-        console.log(id);
         return this.http.get(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
     }
     // save, get, delete, update orders

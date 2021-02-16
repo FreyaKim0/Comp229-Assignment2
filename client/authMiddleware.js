@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const APP_SECRET = 'secret';
+const APP_SECRET = 'Secret';
 const USERNAME = 'admin';
 const PASSWORD = '123456';
 
@@ -17,9 +17,9 @@ function requiresAuth(method, url)
 
 module.exports = function (req, res, next)
 {
-  if (req.body && req.url.endsWith("/login") && req.method == "POST")
+  if (req.url.endsWith("/login") && req.method == "POST")
   {
-    if (req.body && req.body.name == USERNAME && req.body.PASSWORD == PASSWORD)
+    if (req.body && req.body.name == USERNAME && req.body.password == PASSWORD)
     {
       let token = jwt.sign({ data: USERNAME, expiresIn: "1h" }, APP_SECRET);
       res.json({ success: true, token: token });
