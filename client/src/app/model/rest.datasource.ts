@@ -187,7 +187,7 @@ export class RestDataSource
 
     for (const key in a){
       if (a.hasOwnProperty(key)){
-        if (a[key].hasOwnProperty(key))
+        if (a[key] !== null && a[key].hasOwnProperty(key))
         {
           show.push('key : ' + key + '\n' +
           'vlaue :' + a[key]);
@@ -203,9 +203,9 @@ export class RestDataSource
     const show2 = [];
     for (const key2 in a2){
       if (a2.hasOwnProperty(key2)){
-        if (a2[key2].hasOwnProperty(key2))
+        if (a2[key2] !== null && a2[key2].hasOwnProperty(key2))
         {
-          show.push('key : ' + key2 + '\n' +
+          show2.push('key : ' + key2 + '\n' +
           'vlaue :' + a[key2]);
         }
       }
