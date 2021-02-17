@@ -1,14 +1,15 @@
 /* Online Middleware To Backend */
 
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpHeaders , HttpInterceptor, HttpRequest} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Book } from './book.model';
 import { Order } from './order.model';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtHelperService, JwtInterceptor } from '@auth0/angular-jwt';
 import { User } from './user.model';
 import { map } from 'rxjs/operators';
 import { Cart } from './cart.model';
+import { Type } from '@angular/compiler/src/core';
 
 const PROTOCOL = 'https';
 const PORT = 3500;
@@ -137,7 +138,6 @@ export class RestDataSource
   deleteBook(id: number): Observable<Book>
   {
     this.loadToken();
-
     return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
   }
 
@@ -154,7 +154,6 @@ export class RestDataSource
 
   getOrders(): Observable<Order[]>
   {
-    this.loadToken();
     return this.http.get<Order[]>(this.baseUrl + 'orders');
   }
 
@@ -175,14 +174,19 @@ export class RestDataSource
 
 
   // load Token
+  // the token be sent back to server side
+  // each time when requiring some personal data from backend
   private loadToken(): void
   {
     const token = localStorage.getItem('id_token');
     this.authToken = token;
-    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
 
-    console.log('rest.datasource => loadToken():');
-    console.log('authToken:' + this.authToken);
+    console.log('loadToken: httpOptions.Httpheader:');
+    console.log(' Before load: ' + this.httpOptions.headers );
+    // this may wrong
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
+    console.log('loadToken: httpOptions.Httpheader:');
+    console.log(' After load:  ' + this.httpOptions.headers );
   }
 
 

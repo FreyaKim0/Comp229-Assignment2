@@ -692,7 +692,6 @@ class RestDataSource {
         return this.http.post(this.baseUrl + 'orders/add', order);
     }
     getOrders() {
-        this.loadToken();
         return this.http.get(this.baseUrl + 'orders');
     }
     deleteOrder(id) {
@@ -704,12 +703,17 @@ class RestDataSource {
         return this.http.post(`${this.baseUrl}orders/edit/${order._id}`, order, this.httpOptions);
     }
     // load Token
+    // the token be sent back to server side
+    // each time when requiring some personal data from backend
     loadToken() {
         const token = localStorage.getItem('id_token');
         this.authToken = token;
+        console.log('loadToken: httpOptions.Httpheader:');
+        console.log(' Before load: ' + this.httpOptions.headers);
+        // this may wrong
         this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
-        console.log('rest.datasource => loadToken():');
-        console.log('authToken:' + this.authToken);
+        console.log('loadToken: httpOptions.Httpheader:');
+        console.log(' After load:  ' + this.httpOptions.headers);
     }
 }
 RestDataSource.ɵfac = function RestDataSource_Factory(t) { return new (t || RestDataSource)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"])); };
