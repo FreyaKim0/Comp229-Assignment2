@@ -203,10 +203,15 @@ export class RestDataSource
     const show2 = [];
     for (const key2 in a2){
       if (a2.hasOwnProperty(key2)){
-        if (a2[key2] !== null && a2[key2].hasOwnProperty(key2))
+        if (key2 === 'lazyInit')
         {
-          show2.push('key : ' + key2 + '\n' +
-          'vlaue :' + a[key2]);
+          // tslint:disable-next-line: forin
+          for (const key3 in a2[key2])
+          {
+            show2.push('Main key : ' + key2 + '\n' +
+            'sub key:' + key3 + '\n' +
+            'vlaue :' + a2[key2][key3]);
+          }
         }
       }
       }
