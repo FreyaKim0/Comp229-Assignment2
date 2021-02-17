@@ -181,12 +181,15 @@ export class RestDataSource
     const token = localStorage.getItem('id_token');
     this.authToken = token;
 
+
     console.log('loadToken: httpOptions.Httpheader:');
-    console.log(' Before load: ' + this.httpOptions.headers );
+    console.log(' Before load: ' + this.httpOptions.headers.toString() );
     // this may wrong
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
     console.log('loadToken: httpOptions.Httpheader:');
-    console.log(' After load:  ' + this.httpOptions.headers );
+    console.log(' After load:  ' + this.httpOptions.headers.toString() );
+
+
   }
 
 

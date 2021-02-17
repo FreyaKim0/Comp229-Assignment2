@@ -709,11 +709,11 @@ class RestDataSource {
         const token = localStorage.getItem('id_token');
         this.authToken = token;
         console.log('loadToken: httpOptions.Httpheader:');
-        console.log(' Before load: ' + this.httpOptions.headers);
+        console.log(' Before load: ' + this.httpOptions.headers.toString());
         // this may wrong
         this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
         console.log('loadToken: httpOptions.Httpheader:');
-        console.log(' After load:  ' + this.httpOptions.headers);
+        console.log(' After load:  ' + this.httpOptions.headers.toString());
     }
 }
 RestDataSource.ɵfac = function RestDataSource_Factory(t) { return new (t || RestDataSource)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"])); };
