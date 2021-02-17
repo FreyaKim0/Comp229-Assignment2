@@ -10,6 +10,7 @@ import { User } from './user.model';
 import { map } from 'rxjs/operators';
 import { Cart } from './cart.model';
 import { Type } from '@angular/compiler/src/core';
+import { faShoePrints } from '@fortawesome/free-solid-svg-icons';
 
 const PROTOCOL = 'https';
 const PORT = 3500;
@@ -181,15 +182,29 @@ export class RestDataSource
     const token = localStorage.getItem('id_token');
     this.authToken = token;
 
-
+    const a = this.httpOptions.headers;
+    const show = [];
+    for (const key in a){
+      if (a.hasOwnProperty(key)){
+        show.push('key : ' + key + '\n' +
+                  'vlaue :' + a[key]);
+      }
+    }
     console.log('loadToken: httpOptions.Httpheader:');
-    console.log(' Before load: ' + this.httpOptions.headers.toString() );
+    console.log(' Before load: ' + show.join('\n\n') );
     // this may wrong
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
+
+    const a2 = this.httpOptions.headers;
+    const show2 = [];
+    for (const key2 in a2){
+      if (a2.hasOwnProperty(key2)){
+        show2.push('key : ' + key2 + '\n' +
+                  'vlaue :' + a2[key2]);
+      }
+    }
     console.log('loadToken: httpOptions.Httpheader:');
-    console.log(' After load:  ' + this.httpOptions.headers.toString() );
-
-
+    console.log(' after load: ' + show2.join('\n\n') );
   }
 
 

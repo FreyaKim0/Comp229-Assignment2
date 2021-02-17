@@ -708,12 +708,28 @@ class RestDataSource {
     loadToken() {
         const token = localStorage.getItem('id_token');
         this.authToken = token;
+        const a = this.httpOptions.headers;
+        const show = [];
+        for (const key in a) {
+            if (a.hasOwnProperty(key)) {
+                show.push('key : ' + key + '\n' +
+                    'vlaue :' + a[key]);
+            }
+        }
         console.log('loadToken: httpOptions.Httpheader:');
-        console.log(' Before load: ' + this.httpOptions.headers.toString());
+        console.log(' Before load: ' + show.join('\n\n'));
         // this may wrong
         this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
+        const a2 = this.httpOptions.headers;
+        const show2 = [];
+        for (const key2 in a2) {
+            if (a2.hasOwnProperty(key2)) {
+                show2.push('key : ' + key2 + '\n' +
+                    'vlaue :' + a2[key2]);
+            }
+        }
         console.log('loadToken: httpOptions.Httpheader:');
-        console.log(' After load:  ' + this.httpOptions.headers.toString());
+        console.log(' after load: ' + show2.join('\n\n'));
     }
 }
 RestDataSource.ɵfac = function RestDataSource_Factory(t) { return new (t || RestDataSource)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"])); };
