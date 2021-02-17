@@ -27,6 +27,7 @@ export class RestDataSource
   {
     headers: new HttpHeaders({
     'Content-Type': 'application/json',
+    'Authorization': 'this.authToken',
     'Access-Control-Allow-Origin': '*',
     'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept'
     })
@@ -182,7 +183,7 @@ export class RestDataSource
     const token = localStorage.getItem('id_token');
     this.authToken = token;
 
-    const a = this.httpOptions.headers;
+    /*const a = this.httpOptions.headers;
     const show = [];
 
     for (const key in a){
@@ -195,11 +196,11 @@ export class RestDataSource
       }
     }
     console.log('loadToken: httpOptions.Httpheader:');
-    console.log(' Before load: ' + show.join('\n\n') );
+    console.log(' Before load: ' + show.join('\n\n') );*/
     // this may wrong
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
 
-    const a2 = this.httpOptions.headers;
+    /*const a2 = this.httpOptions.headers;
     const show2 = [];
     for (const key2 in a2){
       if (a2.hasOwnProperty(key2)){
@@ -214,11 +215,8 @@ export class RestDataSource
           }
         }
       }
-      }
-    console.log('loadToken: httpOptions.Httpheader:');
-    console.log(' after load: ' + show2.join('\n\n') );
+      }*/
+
   }
-
-
 }
 
