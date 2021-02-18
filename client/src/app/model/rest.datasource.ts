@@ -11,6 +11,8 @@ import { map } from 'rxjs/operators';
 import { Cart } from './cart.model';
 import { Type } from '@angular/compiler/src/core';
 import { faShoePrints } from '@fortawesome/free-solid-svg-icons';
+import * as moment from 'moment';
+import { nextTick } from 'process';
 
 const PROTOCOL = 'https';
 const PORT = 3500;
@@ -62,7 +64,32 @@ export class RestDataSource
 
 
 
+/*
+const payload =
+                {
+                  id: user._id,
+                  displayName: user.displayName,
+                  username: user.username,
+                  email: user.email
+                }
 
+const authToken = jwt.sign(
+                            payload,
+                            DB.Secret,
+                            {expiresIn: 604800,}
+                          );
+
+  return res.json({ success: true,
+                    msg: 'User Logged in Successfully!',
+                    user: {
+                              id: user._id,
+                              displayName: user.displayName,
+                              username: user.username,
+                              email: user.email
+                          },
+                    token: authToken
+                });
+*/
 
 
 
@@ -173,16 +200,23 @@ export class RestDataSource
 
 
   // load Token
-  // the token be sent back to server side
-  // each time when requiring some personal data from backend
+  // clone the local storage token....
   private loadToken(): void
   {
+    console.log('loadToken start....');
     const token = localStorage.getItem('id_token');
-    this.authToken = token;
 
-    // this IS wrong
-    this.httpOptions.headers = new HttpHeaders().set('Authorization', this.authToken);
+    console.log('token I get: ' + token);
 
+    if (token){
+      this.authToken = token;
+      this.httpOptions.headers = new HttpHeaders().set('Authorization', this.authToken);
+      console.log('loadToken finish....HttpHeaders updated with token');
+    }
+    else{
+      console.log('loadToken has error, localStorage is empty!');
+      console.log('loadToken finish....');
+    }
   }
 
 

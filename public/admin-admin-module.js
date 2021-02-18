@@ -349,6 +349,8 @@ class AuthGuard {
         this.router = router;
         this.auth = auth;
     }
+    ngOnInit() {
+    }
     canActivate(route, state) {
         if (this.auth.authenticated) {
             console.log('auth.guard: authenticated');

@@ -638,6 +638,32 @@ class RestDataSource {
         this.loadToken();
         return this.http.post(this.baseUrl + 'register', this.httpOptions);
     }
+    /*
+    const payload =
+                    {
+                      id: user._id,
+                      displayName: user.displayName,
+                      username: user.username,
+                      email: user.email
+                    }
+    
+    const authToken = jwt.sign(
+                                payload,
+                                DB.Secret,
+                                {expiresIn: 604800,}
+                              );
+    
+      return res.json({ success: true,
+                        msg: 'User Logged in Successfully!',
+                        user: {
+                                  id: user._id,
+                                  displayName: user.displayName,
+                                  username: user.username,
+                                  email: user.email
+                              },
+                        token: authToken
+                    });
+    */
     // loggin (storeUserData + authenticate) , loggout
     storeUserData(token, user) {
         localStorage.setItem('id_token', 'bearer ' + token);
@@ -701,13 +727,20 @@ class RestDataSource {
         return this.http.post(`${this.baseUrl}orders/edit/${order._id}`, order, this.httpOptions);
     }
     // load Token
-    // the token be sent back to server side
-    // each time when requiring some personal data from backend
+    // clone the local storage token....
     loadToken() {
+        console.log('loadToken start....');
         const token = localStorage.getItem('id_token');
-        this.authToken = token;
-        // this IS wrong
-        this.httpOptions.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Authorization', this.authToken);
+        console.log('token I get: ' + token);
+        if (token) {
+            this.authToken = token;
+            this.httpOptions.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Authorization', this.authToken);
+            console.log('loadToken finish....HttpHeaders updated with token');
+        }
+        else {
+            console.log('loadToken has error, localStorage is empty!');
+            console.log('loadToken finish....');
+        }
     }
 }
 RestDataSource.ɵfac = function RestDataSource_Factory(t) { return new (t || RestDataSource)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"])); };
@@ -1937,22 +1970,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class AuthService {
+    // Initial constructor
     constructor(datasource) {
         this.datasource = datasource;
         this.user = new _user_model__WEBPACK_IMPORTED_MODULE_1__["User"]();
     }
+    // login
     authenticate(user) {
         return this.datasource.authenticate(user);
     }
+    // local storage
     storeUserData(token, user) {
         this.datasource.storeUserData(token, user);
     }
+    // is logged in
     get authenticated() {
         return this.datasource.loggedIn();
     }
+    // is logged out
     logout() {
         return this.datasource.logout();
     }
+    // rigister new user
     // tslint:disable-next-line: typedef
     createUser() {
         console.log('IN auth.service.ts creat() ...');

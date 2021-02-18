@@ -12,6 +12,11 @@ export class AuthGuard
   constructor(private router: Router,
               private auth: AuthService){ }
 
+  ngOnInit()
+  {
+
+  }
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean
   {
     if (this.auth.authenticated)

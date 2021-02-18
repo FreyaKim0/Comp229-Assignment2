@@ -9,31 +9,37 @@ export class AuthService
 {
   user: User;
 
+  // Initial constructor
   constructor(private datasource: RestDataSource)
   {
    this.user = new User();
   }
 
+  // login
   authenticate(user: User): Observable<any>
   {
      return this.datasource.authenticate(user);
   }
 
+  // local storage
   storeUserData(token: any, user: User): void
   {
     this.datasource.storeUserData(token, user);
   }
 
+  // is logged in
   get authenticated(): boolean
   {
    return this.datasource.loggedIn();
   }
 
+  // is logged out
   logout(): Observable<any>
   {
     return this.datasource.logout();
   }
 
+  // rigister new user
   // tslint:disable-next-line: typedef
   createUser()
   {
