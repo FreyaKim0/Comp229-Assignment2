@@ -637,8 +637,6 @@ class RestDataSource {
     addUser(user) {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
             Authorization: 'this.authToken',
         });
         this.loadToken();
@@ -648,8 +646,6 @@ class RestDataSource {
     updateUser(user) {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
             Authorization: 'this.authToken',
         });
         this.loadToken();
@@ -687,8 +683,6 @@ class RestDataSource {
     addBook(book) {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
             Authorization: 'this.authToken',
         });
         this.loadToken();
@@ -698,8 +692,6 @@ class RestDataSource {
     updateBook(book) {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
             Authorization: 'this.authToken',
         });
         this.loadToken();
@@ -714,8 +706,6 @@ class RestDataSource {
     deleteBook(id) {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
             Authorization: 'this.authToken',
         });
         this.loadToken();
@@ -732,8 +722,6 @@ class RestDataSource {
     deleteOrder(id) {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
             Authorization: 'this.authToken',
         });
         this.loadToken();
@@ -742,8 +730,6 @@ class RestDataSource {
     updateOrder(order) {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
             Authorization: 'this.authToken',
         });
         this.loadToken();

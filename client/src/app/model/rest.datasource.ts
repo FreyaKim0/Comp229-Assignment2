@@ -55,8 +55,6 @@ export class RestDataSource
     const headers = new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
         Authorization: 'this.authToken',
       }
     );
@@ -70,8 +68,6 @@ export class RestDataSource
     const headers = new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
         Authorization: 'this.authToken',
       }
     );
@@ -140,8 +136,6 @@ export class RestDataSource
     const headers = new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
         Authorization: 'this.authToken',
       }
     );
@@ -155,8 +149,6 @@ export class RestDataSource
   {   const headers = new HttpHeaders(
     {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
       Authorization: 'this.authToken',
     }
     );
@@ -174,8 +166,6 @@ export class RestDataSource
   {   const headers = new HttpHeaders(
     {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
       Authorization: 'this.authToken',
     }
   );
@@ -204,8 +194,6 @@ export class RestDataSource
     const headers = new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
         Authorization: 'this.authToken',
       }
     );
@@ -218,8 +206,6 @@ export class RestDataSource
     const headers = new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
         Authorization: 'this.authToken',
       }
     );
