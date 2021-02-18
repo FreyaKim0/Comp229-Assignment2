@@ -620,7 +620,7 @@ class RestDataSource {
         this.httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-Type': 'application/json',
-                'Authorization': 'this.authToken',
+                Authorization: 'this.authToken',
                 'Access-Control-Allow-Origin': '*',
                 'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept'
             })

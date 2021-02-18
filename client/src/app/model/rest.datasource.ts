@@ -27,7 +27,7 @@ export class RestDataSource
   {
     headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'this.authToken',
+    Authorization: 'this.authToken',
     'Access-Control-Allow-Origin': '*',
     'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept'
     })
