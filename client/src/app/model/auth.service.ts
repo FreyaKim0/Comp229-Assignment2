@@ -22,9 +22,9 @@ export class AuthService
   }
 
   // local storage
-  storeUserData(token: any, user: User): void
+  storeUserData(token: any, user: User, expireIn: any): void
   {
-    this.datasource.storeUserData(token, user);
+    this.datasource.storeUserData(token, user, expireIn);
   }
 
   // is logged in

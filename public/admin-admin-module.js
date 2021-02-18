@@ -349,8 +349,6 @@ class AuthGuard {
         this.router = router;
         this.auth = auth;
     }
-    ngOnInit() {
-    }
     canActivate(route, state) {
         if (this.auth.authenticated) {
             console.log('auth.guard: authenticated');
@@ -852,7 +850,7 @@ class AuthComponent {
                 if (data.success) {
                     console.log('auth.component.ts,data token:' + data.token);
                     // Store token and user information in this browser page
-                    this.auth.storeUserData(data.token, data.user);
+                    this.auth.storeUserData(data.token, data.user, data.expireIn);
                     this.router.navigateByUrl('home');
                 }
                 else {

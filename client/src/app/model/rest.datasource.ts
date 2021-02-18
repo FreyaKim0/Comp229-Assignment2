@@ -95,10 +95,14 @@ const authToken = jwt.sign(
 
 
   // loggin (storeUserData + authenticate) , loggout
-  storeUserData(token: any, user: User): void
+  storeUserData(token: any, user: User, expiresIn: any): void
   {
+    const expires = moment().add(expiresIn);
+
     localStorage.setItem('id_token', 'bearer ' + token);
     localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('expires', JSON.stringify(expires.valueOf()));
+
     this.authToken = token;
     this.user = user;
 
@@ -107,6 +111,13 @@ const authToken = jwt.sign(
     console.log('user displayname:' + this.user.displayName);
     console.log('user email:' + this.user.email);
     console.log('user username:' + this.user.username);
+  }
+
+  // tslint:disable-next-line: typedef
+  getExpiration(){
+    const expiration = localStorage.getItem('expires');
+    const expiresAt = JSON.parse(expiration);
+    return moment(expiresAt);
   }
 
   authenticate(user: User): Observable<any>
@@ -125,6 +136,7 @@ const authToken = jwt.sign(
 
   loggedIn(): boolean
   {
+    // Maybe error by I changed the return json value from server
     return !this.jwtService.isTokenExpired(this.authToken);
   }
 
