@@ -179,18 +179,16 @@ export class RestDataSource
   // each time when requiring some personal data from backend
   private loadToken(): void
   {
-    const token = localStorage.getItem('id_token');
-    this.authToken = token;
-
-    // this IS wrong
-    this.httpOptions =
-  {
-    headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'this.authToken'
-    })
-  };
-
+      // this IS wrong
+      this.httpOptions =
+      {
+        headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'this.authToken'
+        })
+      };
+      const token = localStorage.getItem('id_token');
+      this.authToken = token;
   }
 
 
