@@ -706,16 +706,10 @@ class RestDataSource {
     // the token be sent back to server side
     // each time when requiring some personal data from backend
     loadToken() {
-        // this IS wrong
-        this.httpOptions =
-            {
-                headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                    'Content-Type': 'application/json',
-                    Authorization: 'this.authToken'
-                })
-            };
         const token = localStorage.getItem('id_token');
         this.authToken = token;
+        // this IS wrong
+        this.httpOptions.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Authorization', this.authToken);
     }
 }
 RestDataSource.ɵfac = function RestDataSource_Factory(t) { return new (t || RestDataSource)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"])); };
