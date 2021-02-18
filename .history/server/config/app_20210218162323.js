@@ -83,11 +83,11 @@ passport.deserializeUser(User.deserializeUser());
 
 // Web token authentication
 let jwtOptions = {};
-jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderWithScheme("bearer");
+jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderWithScheme('bearer');
 jwtOptions.secretOrKey = DB.Secret;
 
 let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
-  User.findById(jwt_payload._id)
+  User.findById(jwt_payload.id)
     .then(user => {
       return done(null, user);
     })

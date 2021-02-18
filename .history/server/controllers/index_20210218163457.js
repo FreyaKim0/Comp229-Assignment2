@@ -85,7 +85,7 @@ module.exports.processLoginPage = (req, res, next) => {
                 __v:user.__v
             }
 
-            const authToken = jwt.sign(payload, 
+            const  = jwt.sign(payload, 
                                        DB.Secret, 
                                        {
                                         expiresIn: 604800, /* =expired in a week */
@@ -93,6 +93,7 @@ module.exports.processLoginPage = (req, res, next) => {
             
             // Return the user data that matched and returen in to the client side
             return res.json({success: true, 
+                             msg: 'User Logged in Successfully!', 
                              user: {
                                         _id: user._id,
                                         username: user.username,

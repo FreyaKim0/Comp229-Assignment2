@@ -113,7 +113,7 @@ const authToken = jwt.sign(
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('expires', JSON.stringify(expires.valueOf()));
 
-    this.authToken = token;
+    this.authToken = 'bearer ' + token;
     this.user = user;
 
     console.log('rest.datasource:');

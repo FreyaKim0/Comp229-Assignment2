@@ -990,7 +990,7 @@ class RestDataSource {
         localStorage.setItem('id_token', 'bearer ' + token);
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('expires', JSON.stringify(expires.valueOf()));
-        this.authToken = token;
+        this.authToken = 'bearer ' + token;
         this.user = user;
         console.log('rest.datasource:');
         console.log('authToken:' + this.authToken);

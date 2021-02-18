@@ -85,7 +85,7 @@ module.exports.processLoginPage = (req, res, next) => {
                 __v:user.__v
             }
 
-            const authToken = jwt.sign(payload, 
+            const authToken = jwt.sign(payload.toJSON(), 
                                        DB.Secret, 
                                        {
                                         expiresIn: 604800, /* =expired in a week */
