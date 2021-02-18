@@ -679,8 +679,7 @@ class BookEditorComponent {
             console.log('constructor(edit): this.book.name: ' + this.book.name);
         }
     }
-    ngOnInit() {
-    }
+    ngOnInit() { }
     save(form) {
         this.repository.saveBook(this.book);
         this.router.navigateByUrl('/admin/main/books');

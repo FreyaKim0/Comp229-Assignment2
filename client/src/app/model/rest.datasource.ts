@@ -23,12 +23,12 @@ export class RestDataSource
   authToken: string;
   baseUrl: string;
 
- private httpOptions =
+  private httpOptions =
   {
     headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
-    'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
+    'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept'
     })
   };
 
@@ -52,28 +52,14 @@ export class RestDataSource
 
   addUser(user: User): Observable<User>
   {
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        Authorization: 'this.authToken',
-      }
-    );
     this.loadToken();
-    // tslint:disable-next-line: object-literal-shorthand
-    return this.http.post<User>(this.baseUrl + 'register', user, { headers: headers }).pipe(map(res => res));
+    return this.http.post<User>(this.baseUrl + 'register', user, this.httpOptions);
   }
 
   updateUser(user: User): Observable<User>
   {
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        Authorization: 'this.authToken',
-      }
-    );
     this.loadToken();
-     // tslint:disable-next-line: object-literal-shorthand
-    return this.http.post<User>(this.baseUrl + 'register',  { headers: headers }).pipe(map(res => res));
+    return this.http.post<User>(this.baseUrl + 'register', this.httpOptions);
   }
 
 
@@ -133,44 +119,27 @@ export class RestDataSource
 
   addBook(book: Book): Observable<any>
   {
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        Authorization: 'this.authToken',
-      }
-    );
     this.loadToken();
-    // tslint:disable-next-line: object-literal-shorthand
-    return this.http.post<Book>(this.baseUrl + 'book-list/add', book, {headers: headers}).pipe(map(res => res));
+    return this.http.post<Book>(this.baseUrl + 'book-list/add', book, this.httpOptions);
   }
 
 
   updateBook(book: Book): Observable<Book>
-  {   const headers = new HttpHeaders(
-    {
-      'Content-Type': 'application/json',
-      Authorization: 'this.authToken',
-    }
-    );
-      this.loadToken();
-      console.log('rest.datasources,update book id:' + book._id);
-      console.log('rest.datasources,update book name:' + book.name);
-      console.log('rest.datasources,update book author:' + book.author);
-      console.log('rest.datasources,update book description:' + book.description);
-      console.log('rest.datasources,update book price:' + book.price);
-      console.log('rest.datasources,update book published:' + book.published);
-      return this.http.post<Book>(`${this.baseUrl}book-list/edit/${book._id}`, book, {headers: headers}).pipe(map(res => res));
+  {
+    this.loadToken();
+    console.log('rest.datasources,update book id:' + book._id);
+    console.log('rest.datasources,update book name:' + book.name);
+    console.log('rest.datasources,update book author:' + book.author);
+    console.log('rest.datasources,update book description:' + book.description);
+    console.log('rest.datasources,update book price:' + book.price);
+    console.log('rest.datasources,update book published:' + book.published);
+    return this.http.post<Book>(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
   }
 
   deleteBook(id: number): Observable<Book>
-  {   const headers = new HttpHeaders(
-    {
-      'Content-Type': 'application/json',
-      Authorization: 'this.authToken',
-    }
-  );
-      this.loadToken();
-      return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`, {headers: headers}).pipe(map(res => res));
+  {
+    this.loadToken();
+    return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
   }
 
 
@@ -191,26 +160,14 @@ export class RestDataSource
 
   deleteOrder(id: number): Observable<Order>
   {
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        Authorization: 'this.authToken',
-      }
-    );
     this.loadToken();
-    return this.http.get<Order>(`${this.baseUrl}orders/delete/${id}`, {headers:headers}).pipe(map(res => res));
+    return this.http.get<Order>(`${this.baseUrl}orders/delete/${id}`, this.httpOptions);
   }
 
   updateOrder(order: Order): Observable<Order>
   {
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        Authorization: 'this.authToken',
-      }
-    );
     this.loadToken();
-    return this.http.post<Order>(`${this.baseUrl}orders/edit/${order._id}`, order, {headers: headers}).pipe(map(res => res));
+    return this.http.post<Order>(`${this.baseUrl}orders/edit/${order._id}`, order, this.httpOptions);
   }
 
 
@@ -225,41 +182,17 @@ export class RestDataSource
     const token = localStorage.getItem('id_token');
     this.authToken = token;
 
-    /*const a = this.httpOptions.headers;
-    const show = [];
-
-    for (const key in a){
-      if (a.hasOwnProperty(key)){
-        if (a[key] !== null && a[key].hasOwnProperty(key))
-        {
-          show.push('key : ' + key + '\n' +
-          'vlaue :' + a[key]);
-        }
-      }
-    }
-    console.log('loadToken: httpOptions.Httpheader:');
-    console.log(' Before load: ' + show.join('\n\n') );*/
-    // this may wrong
-
-    // this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
-
-    /*const a2 = this.httpOptions.headers;
-    const show2 = [];
-    for (const key2 in a2){
-      if (a2.hasOwnProperty(key2)){
-        if (key2 === 'lazyInit')
-        {
-          // tslint:disable-next-line: forin
-          for (const key3 in a2[key2])
-          {
-            show2.push('Main key : ' + key2 + '\n' +
-            'sub key:' + key3 + '\n' +
-            'vlaue :' + a2[key2][key3]);
-          }
-        }
-      }
-      }*/
+    // this IS wrong
+    this.httpOptions =
+  {
+    headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': 'this.authToken'
+    })
+  };
 
   }
+
+
 }
 

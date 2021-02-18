@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,8 +25,7 @@ export class BookEditorComponent implements OnInit {
       console.log('constructor(edit): this.book.name: ' + this.book.name);
     }
   }
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   save(form: NgForm): void
   {
     this.repository.saveBook(this.book);

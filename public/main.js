@@ -603,10 +603,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
 /* harmony import */ var _user_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user.model */ "UbF0");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
-/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @auth0/angular-jwt */ "Nm8O");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @auth0/angular-jwt */ "Nm8O");
 /* Online Middleware To Backend */
-
 
 
 
@@ -623,7 +621,7 @@ class RestDataSource {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
-                'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept',
+                'Access-control-Allow-Headers': 'Origin, X-Requested-With,Content-Type, Accept'
             })
         };
         this.user = new _user_model__WEBPACK_IMPORTED_MODULE_2__["User"]();
@@ -635,22 +633,12 @@ class RestDataSource {
         return this.http.get(this.baseUrl + 'users');
     }
     addUser(user) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-            'Content-Type': 'application/json',
-            Authorization: 'this.authToken',
-        });
         this.loadToken();
-        // tslint:disable-next-line: object-literal-shorthand
-        return this.http.post(this.baseUrl + 'register', user, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(res => res));
+        return this.http.post(this.baseUrl + 'register', user, this.httpOptions);
     }
     updateUser(user) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-            'Content-Type': 'application/json',
-            Authorization: 'this.authToken',
-        });
         this.loadToken();
-        // tslint:disable-next-line: object-literal-shorthand
-        return this.http.post(this.baseUrl + 'register', { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(res => res));
+        return this.http.post(this.baseUrl + 'register', this.httpOptions);
     }
     // loggin (storeUserData + authenticate) , loggout
     storeUserData(token, user) {
@@ -681,19 +669,10 @@ class RestDataSource {
         return this.http.get(this.baseUrl + 'book-list');
     }
     addBook(book) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-            'Content-Type': 'application/json',
-            Authorization: 'this.authToken',
-        });
         this.loadToken();
-        // tslint:disable-next-line: object-literal-shorthand
-        return this.http.post(this.baseUrl + 'book-list/add', book, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(res => res));
+        return this.http.post(this.baseUrl + 'book-list/add', book, this.httpOptions);
     }
     updateBook(book) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-            'Content-Type': 'application/json',
-            Authorization: 'this.authToken',
-        });
         this.loadToken();
         console.log('rest.datasources,update book id:' + book._id);
         console.log('rest.datasources,update book name:' + book.name);
@@ -701,15 +680,11 @@ class RestDataSource {
         console.log('rest.datasources,update book description:' + book.description);
         console.log('rest.datasources,update book price:' + book.price);
         console.log('rest.datasources,update book published:' + book.published);
-        return this.http.post(`${this.baseUrl}book-list/edit/${book._id}`, book, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(res => res));
+        return this.http.post(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
     }
     deleteBook(id) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-            'Content-Type': 'application/json',
-            Authorization: 'this.authToken',
-        });
         this.loadToken();
-        return this.http.get(`${this.baseUrl}book-list/delete/${id}`, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(res => res));
+        return this.http.get(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
     }
     // save, get, delete, update orders
     saveOrder(order) {
@@ -720,20 +695,12 @@ class RestDataSource {
         return this.http.get(this.baseUrl + 'orders');
     }
     deleteOrder(id) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-            'Content-Type': 'application/json',
-            Authorization: 'this.authToken',
-        });
         this.loadToken();
-        return this.http.get(`${this.baseUrl}orders/delete/${id}`, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(res => res));
+        return this.http.get(`${this.baseUrl}orders/delete/${id}`, this.httpOptions);
     }
     updateOrder(order) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-            'Content-Type': 'application/json',
-            Authorization: 'this.authToken',
-        });
         this.loadToken();
-        return this.http.post(`${this.baseUrl}orders/edit/${order._id}`, order, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(res => res));
+        return this.http.post(`${this.baseUrl}orders/edit/${order._id}`, order, this.httpOptions);
     }
     // load Token
     // the token be sent back to server side
@@ -741,45 +708,21 @@ class RestDataSource {
     loadToken() {
         const token = localStorage.getItem('id_token');
         this.authToken = token;
-        /*const a = this.httpOptions.headers;
-        const show = [];
-    
-        for (const key in a){
-          if (a.hasOwnProperty(key)){
-            if (a[key] !== null && a[key].hasOwnProperty(key))
+        // this IS wrong
+        this.httpOptions =
             {
-              show.push('key : ' + key + '\n' +
-              'vlaue :' + a[key]);
-            }
-          }
-        }
-        console.log('loadToken: httpOptions.Httpheader:');
-        console.log(' Before load: ' + show.join('\n\n') );*/
-        // this may wrong
-        // this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
-        /*const a2 = this.httpOptions.headers;
-        const show2 = [];
-        for (const key2 in a2){
-          if (a2.hasOwnProperty(key2)){
-            if (key2 === 'lazyInit')
-            {
-              // tslint:disable-next-line: forin
-              for (const key3 in a2[key2])
-              {
-                show2.push('Main key : ' + key2 + '\n' +
-                'sub key:' + key3 + '\n' +
-                'vlaue :' + a2[key2][key3]);
-              }
-            }
-          }
-          }*/
+                headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+                    'Content-Type': 'application/json',
+                    'Authorization': 'this.authToken'
+                })
+            };
     }
 }
-RestDataSource.ɵfac = function RestDataSource_Factory(t) { return new (t || RestDataSource)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"])); };
+RestDataSource.ɵfac = function RestDataSource_Factory(t) { return new (t || RestDataSource)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"])); };
 RestDataSource.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: RestDataSource, factory: RestDataSource.ɵfac });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](RestDataSource, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
-    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }, { type: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"] }]; }, null); })();
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }, { type: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"] }]; }, null); })();
 
 
 /***/ }),
