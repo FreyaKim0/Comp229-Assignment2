@@ -67,7 +67,7 @@ app.set('view engine', 'ejs'); // express  -e
 
 app.use(logger('dev')); // Morgan logger is for simplifies the process of logging req
 app.use(express.json()); // recognize incoming req obj as JSON obj
-app.use(express.urlencoded({ extended: false })); // parse incoming req with urlencoded payload
+app.use(express.urlencoded({ extended: true })); // parse incoming req with urlencoded payload
 app.use(cookieParser()); // parse cookie header with keys by cookie name
 
 

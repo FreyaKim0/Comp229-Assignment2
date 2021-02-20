@@ -124,6 +124,7 @@ export class RestDataSource
 
   updateBook(book: Book): Observable<Book>
   {
+    console.log('update Book start running..');
     this.loadToken();
     console.log('rest.datasources,update book id:' + book._id);
     console.log('rest.datasources,update book name:' + book.name);
@@ -136,6 +137,7 @@ export class RestDataSource
 
   deleteBook(id: number): Observable<Book>
   {
+    console.log('delete Book start running..');
     this.loadToken();
     return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
   }

@@ -640,7 +640,7 @@ class RestDataSource {
     }
     // loggin (storeUserData + authenticate) , loggout
     storeUserData(token, user) {
-        localStorage.setItem('id_token', 'bearer ' + token);
+        localStorage.setItem('id_token', token);
         localStorage.setItem('user', JSON.stringify(user));
         this.authToken = token;
         this.user = user;
@@ -671,6 +671,7 @@ class RestDataSource {
         return this.http.post(this.baseUrl + 'book-list/add', book, this.httpOptions);
     }
     updateBook(book) {
+        console.log('update Book start running..');
         this.loadToken();
         console.log('rest.datasources,update book id:' + book._id);
         console.log('rest.datasources,update book name:' + book.name);
@@ -681,6 +682,7 @@ class RestDataSource {
         return this.http.post(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
     }
     deleteBook(id) {
+        console.log('delete Book start running..');
         this.loadToken();
         return this.http.get(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
     }
@@ -705,7 +707,8 @@ class RestDataSource {
     // each time when requiring some personal data from backend
     loadToken() {
         const token = localStorage.getItem('id_token');
-        this.authToken = token;
+        this.authToken = 'bearer ' + token;
+        console.log('loadToken()\nthis.aythToken: ' + this.authToken);
         // this IS wrong
         this.httpOptions.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Authorization', this.authToken);
     }
