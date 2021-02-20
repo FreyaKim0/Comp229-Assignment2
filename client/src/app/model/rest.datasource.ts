@@ -70,7 +70,7 @@ export class RestDataSource
   // loggin (storeUserData + authenticate) , loggout
   storeUserData(token: any, user: User): void
   {
-    localStorage.setItem('id_token', 'bearer ' + token);
+    localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
@@ -178,7 +178,9 @@ export class RestDataSource
   private loadToken(): void
   {
     const token = localStorage.getItem('id_token');
-    this.authToken = token;
+    this.authToken = 'bearer '+token;
+
+    console.log('loadToken()\nthis.aythToken: '+this.authToken)
 
     // this IS wrong
     this.httpOptions.headers = new HttpHeaders().set('Authorization', this.authToken);
