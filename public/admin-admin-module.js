@@ -850,7 +850,7 @@ class AuthComponent {
                 if (data.success) {
                     console.log('auth.component.ts,data token:' + data.token);
                     // Store token and user information in this browser page
-                    this.auth.storeUserData(data.token, data.user, data.expireIn);
+                    this.auth.storeUserData(data.token, data.user);
                     this.router.navigateByUrl('home');
                 }
                 else {

@@ -5,47 +5,30 @@ import { HttpClient, HttpHandler, HttpHeaders , HttpInterceptor, HttpRequest} fr
 import { Observable } from 'rxjs';
 import { Book } from './book.model';
 import { Order } from './order.model';
-import { JwtHelperService} from '@auth0/angular-jwt';
+import { JwtHelperService, JwtInterceptor } from '@auth0/angular-jwt';
 import { User } from './user.model';
-import * as moment from 'moment';
+import { map } from 'rxjs/operators';
+import { Cart } from './cart.model';
+import { Type } from '@angular/compiler/src/core';
+import { faShoePrints } from '@fortawesome/free-solid-svg-icons';
 
 const PROTOCOL = 'https';
 const PORT = 3500;
 
 @Injectable()
-export class RestDataSource implements HttpInterceptor
+export class RestDataSource
 {
   // Who is logging as user in this browser...
-  user: User;      // All user data from MongoDB except password
-  authToken: string;   //   Brearer ...
-  baseUrl: string;   //   my webname/api/
+  user: User;  // username , displayname and email
+  authToken: string;
+  baseUrl: string;
 
-  // Interceptor for passing JWT to server
-  intercept(req: HttpRequest<any>, next: HttpHandler): any
-  {
-    const idToken = localStorage.getItem('id_token');
-
-    if (idToken)
-    // Clone the previous request, and add on the token from local storage
-    {
-      const cloned = req.clone({
-        headers: req.headers.set('Authorization', idToken)
-      });
-      return next.handle(cloned);
-    }
-    else
-    // Ask user to login cuz there is no token
-    {
-      return next.handle(req);
-    }
-  }
-
-  /*private httpOptions =
+  private httpOptions =
   {
     headers: new HttpHeaders({
     'Content-Type': 'application/json'
     })
-  };*/
+  };
 
   constructor(private http: HttpClient,
               private jwtService: JwtHelperService)
@@ -56,6 +39,9 @@ export class RestDataSource implements HttpInterceptor
   }
 
 
+
+
+
   // get, add, update user (registration)
   getUser(): Observable<User[]>
   {
@@ -64,56 +50,29 @@ export class RestDataSource implements HttpInterceptor
 
   addUser(user: User): Observable<User>
   {
-    return this.http.post<User>(this.baseUrl + 'register', user);
+    this.loadToken();
+    return this.http.post<User>(this.baseUrl + 'register', user, this.httpOptions);
   }
 
   updateUser(user: User): Observable<User>
   {
-    return this.http.post<User>(this.baseUrl + 'register', user);
+    this.loadToken();
+    return this.http.post<User>(this.baseUrl + 'register', this.httpOptions);
   }
 
 
 
-/*
-const payload =
-                {
-                  id: user._id,
-                  displayName: user.displayName,
-                  username: user.username,
-                  email: user.email
-                }
 
-const authToken = jwt.sign(
-                            payload,
-                            DB.Secret,
-                            {expiresIn: 604800,}
-                          );
-
-  return res.json({ success: true,
-                    msg: 'User Logged in Successfully!',
-                    user: {
-                              id: user._id,
-                              displayName: user.displayName,
-                              username: user.username,
-                              email: user.email
-                          },
-                    token: authToken
-                });
-*/
 
 
 
 
   // loggin (storeUserData + authenticate) , loggout
-  storeUserData(token: any, user: User, expiresIn: any): void
+  storeUserData(token: any, user: User): void
   {
-    const expires = moment().add(expiresIn);
-
     localStorage.setItem('id_token', 'bearer ' + token);
     localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('expires', JSON.stringify(expires.valueOf()));
-
-    this.authToken = 'bearer ' + token;
+    this.authToken = token;
     this.user = user;
 
     console.log('rest.datasource:');
@@ -123,16 +82,9 @@ const authToken = jwt.sign(
     console.log('user username:' + this.user.username);
   }
 
-  // tslint:disable-next-line: typedef
-  getExpiration(){
-    const expiration = localStorage.getItem('expires');
-    const expiresAt = JSON.parse(expiration);
-    return moment(expiresAt);
-  }
-
   authenticate(user: User): Observable<any>
   {
-    return this.http.post<any>(this.baseUrl + 'login', user);
+    return this.http.post<any>(this.baseUrl + 'login', user, this.httpOptions);
   }
 
   logout(): Observable<any>
@@ -141,7 +93,7 @@ const authToken = jwt.sign(
     this.user = null;
     localStorage.clear();
 
-    return this.http.get<any>(this.baseUrl + 'logout');
+    return this.http.get<any>(this.baseUrl + 'logout', this.httpOptions);
   }
 
   loggedIn(): boolean
@@ -165,24 +117,27 @@ const authToken = jwt.sign(
 
   addBook(book: Book): Observable<any>
   {
-    return this.http.post<Book>(this.baseUrl + 'book-list/add', book);
+    this.loadToken();
+    return this.http.post<Book>(this.baseUrl + 'book-list/add', book, this.httpOptions);
   }
 
 
   updateBook(book: Book): Observable<Book>
   {
+    this.loadToken();
     console.log('rest.datasources,update book id:' + book._id);
     console.log('rest.datasources,update book name:' + book.name);
     console.log('rest.datasources,update book author:' + book.author);
     console.log('rest.datasources,update book description:' + book.description);
     console.log('rest.datasources,update book price:' + book.price);
     console.log('rest.datasources,update book published:' + book.published);
-    return this.http.post<Book>(`${this.baseUrl}book-list/edit/${book._id}`, book);
+    return this.http.post<Book>(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
   }
 
   deleteBook(id: number): Observable<Book>
   {
-    return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`);
+    this.loadToken();
+    return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
   }
 
 
@@ -203,12 +158,33 @@ const authToken = jwt.sign(
 
   deleteOrder(id: number): Observable<Order>
   {
-    return this.http.get<Order>(`${this.baseUrl}orders/delete/${id}`);
+    this.loadToken();
+    return this.http.get<Order>(`${this.baseUrl}orders/delete/${id}`, this.httpOptions);
   }
 
   updateOrder(order: Order): Observable<Order>
   {
-    return this.http.post<Order>(`${this.baseUrl}orders/edit/${order._id}`, order);
+    this.loadToken();
+    return this.http.post<Order>(`${this.baseUrl}orders/edit/${order._id}`, order, this.httpOptions);
   }
+
+
+
+
+
+  // load Token
+  // the token be sent back to server side
+  // each time when requiring some personal data from backend
+  private loadToken(): void
+  {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
+
+    // this IS wrong
+    this.httpOptions.headers = new HttpHeaders().set('Authorization', this.authToken);
+
+  }
+
+
 }
 

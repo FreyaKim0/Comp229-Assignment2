@@ -1,27 +1,24 @@
 let express = require('express');
 let passport = require('passport');
 let jwt = require('jsonwebtoken');
+
 let mongoose = require('mongoose');
 let DB = require('../config/db');
+
 let router = express.Router();
 let userModel = require('../models/user');
-const { token } = require('morgan');
 let User = userModel.User; 
 
 
 // Register
+
 module.exports.processRegisterPage = (req, res, next) => {
-
-    const saltHash = utils.genPassword(req.body.password);
-    const salt = saltHash.salt;
-    const hash = saltHash.hash;
-
+    // instantiate a user object from Ngform
     let newUser = new User({
         username: req.body.username,
+        //password: req.body.password,
         email: req.body.email,
-        displayName: req.body.displayName,
-        hash: hash,
-        salt: salt
+        displayName: req.body.displayName
     });
 
     User.register(newUser, req.body.password, (err) => {
@@ -38,18 +35,21 @@ module.exports.processRegisterPage = (req, res, next) => {
         }
         else
         {
-            const id=user._id;
-            const jwt=utils.issueJWT(user);
             // if no error exists, then registration is successful
-            return res.json({success: true,
-                             user: user, 
-                             token: jwt.token, 
-                             expiresIn: jwt.expires});
+            return res.json({msg: 'Registration success'});
         }
     });
 }
 
+
+
+
+
+
+
+
 // login logout
+
 module.exports.processLoginPage = (req, res, next) => {
     passport.authenticate('local',
     (err, user, info) => {
@@ -72,31 +72,32 @@ module.exports.processLoginPage = (req, res, next) => {
             }
 
             // If Server processes without error ...
+            const payload = 
+            {
+                id: user._id,
+                displayName: user.displayName,
+                username: user.username,
+                email: user.email
+            }
 
-            const tokenObject = utils.issueJWT(user);
-
-            // const payload = 
-            // {
-            //     _id: user._id,
-            //     username: user.username,
-            //     email: user.email,
-            //     displayName: user.displayName,
-            //     created: user.created,
-            //     update: user.update,
-            //     salt: user.salt,
-            //     hash: user.hash,
-            //     __v:user.__v
-            // }
-
-            // const authToken = jwt.sign(payload, 
-            //                            DB.Secret, 
-            //                            {expiresIn: 604800});
+            const authToken = jwt.sign(payload, 
+                                       DB.Secret, 
+                                       {
+                                        expiresIn: 604800, /* =expired in a week */
+                                        algorithm:'RS256',
+                                        subject:userId
+                                       });
             
             // Return the user data that matched and returen in to the client side
             return res.json({success: true, 
-                             user: user,
-                             token: tokenObject.token,
-                             expiresIn: tokenObject.expires});
+                             msg: 'User Logged in Successfully!', 
+                             user: {
+                                        id: user._id,
+                                        displayName: user.displayName,
+                                        username: user.username,
+                                        email: user.email
+                                   },
+                             token: authToken});
         });
     })(req, res, next);
 }
@@ -106,6 +107,13 @@ module.exports.performLogout = (req, res, next) => {
     //res.redirect('/');
     res.json({success: true, msg: 'User Successfully Logged out!'});
 }
+
+
+
+
+
+
+
 
 
 
@@ -129,3 +137,5 @@ module.exports.displayServicesPage = (req, res, next) => {
 module.exports.displayContactPage = (req, res, next) => {
     res.render('index', { title: 'Contact', displayName: req.user ? req.user.displayName : ''});
 }
+
+

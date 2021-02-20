@@ -1,5 +1,5 @@
 
-/*
+
 
 const jwt = require('jsonwebtoken');
 const APP_SECRET = 'Secret';
@@ -58,7 +58,6 @@ module.exports = function (req, res, next)
   }
   next();
 }
-*/
 
 
 

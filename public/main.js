@@ -525,308 +525,6 @@ ServiceComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineC
 
 /***/ }),
 
-/***/ "D9WN":
-/*!***************************************************!*\
-  !*** ../node_modules/moment/locale sync ^\.\/.*$ ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./af": "ggbP",
-	"./af.js": "ggbP",
-	"./ar": "zaxx",
-	"./ar-dz": "fyYX",
-	"./ar-dz.js": "fyYX",
-	"./ar-kw": "jogf",
-	"./ar-kw.js": "jogf",
-	"./ar-ly": "zWXE",
-	"./ar-ly.js": "zWXE",
-	"./ar-ma": "6Nbo",
-	"./ar-ma.js": "6Nbo",
-	"./ar-sa": "ooRU",
-	"./ar-sa.js": "ooRU",
-	"./ar-tn": "ZPeb",
-	"./ar-tn.js": "ZPeb",
-	"./ar.js": "zaxx",
-	"./az": "sTnJ",
-	"./az.js": "sTnJ",
-	"./be": "mOKi",
-	"./be.js": "mOKi",
-	"./bg": "oaWn",
-	"./bg.js": "oaWn",
-	"./bm": "TQ38",
-	"./bm.js": "TQ38",
-	"./bn": "6K5y",
-	"./bn-bd": "XdjO",
-	"./bn-bd.js": "XdjO",
-	"./bn.js": "6K5y",
-	"./bo": "vPIy",
-	"./bo.js": "vPIy",
-	"./br": "afE2",
-	"./br.js": "afE2",
-	"./bs": "JNFb",
-	"./bs.js": "JNFb",
-	"./ca": "NQcR",
-	"./ca.js": "NQcR",
-	"./cs": "0V88",
-	"./cs.js": "0V88",
-	"./cv": "e/5r",
-	"./cv.js": "e/5r",
-	"./cy": "HTX9",
-	"./cy.js": "HTX9",
-	"./da": "oBlQ",
-	"./da.js": "oBlQ",
-	"./de": "DPpk",
-	"./de-at": "7epm",
-	"./de-at.js": "7epm",
-	"./de-ch": "mq6o",
-	"./de-ch.js": "mq6o",
-	"./de.js": "DPpk",
-	"./dv": "FyKI",
-	"./dv.js": "FyKI",
-	"./el": "U5Cp",
-	"./el.js": "U5Cp",
-	"./en-au": "2tm8",
-	"./en-au.js": "2tm8",
-	"./en-ca": "bxNt",
-	"./en-ca.js": "bxNt",
-	"./en-gb": "YmdP",
-	"./en-gb.js": "YmdP",
-	"./en-ie": "gLHG",
-	"./en-ie.js": "gLHG",
-	"./en-il": "rTiS",
-	"./en-il.js": "rTiS",
-	"./en-in": "62Az",
-	"./en-in.js": "62Az",
-	"./en-nz": "Odsn",
-	"./en-nz.js": "Odsn",
-	"./en-sg": "ww2P",
-	"./en-sg.js": "ww2P",
-	"./eo": "GjBA",
-	"./eo.js": "GjBA",
-	"./es": "SKOl",
-	"./es-do": "8wa+",
-	"./es-do.js": "8wa+",
-	"./es-mx": "Vtn2",
-	"./es-mx.js": "Vtn2",
-	"./es-us": "YL9C",
-	"./es-us.js": "YL9C",
-	"./es.js": "SKOl",
-	"./et": "+JHh",
-	"./et.js": "+JHh",
-	"./eu": "pAPS",
-	"./eu.js": "pAPS",
-	"./fa": "zhSd",
-	"./fa.js": "zhSd",
-	"./fi": "/BTK",
-	"./fi.js": "/BTK",
-	"./fil": "9G7C",
-	"./fil.js": "9G7C",
-	"./fo": "K/JZ",
-	"./fo.js": "K/JZ",
-	"./fr": "wehu",
-	"./fr-ca": "UKIa",
-	"./fr-ca.js": "UKIa",
-	"./fr-ch": "sIcz",
-	"./fr-ch.js": "sIcz",
-	"./fr.js": "wehu",
-	"./fy": "RmWi",
-	"./fy.js": "RmWi",
-	"./ga": "s5bY",
-	"./ga.js": "s5bY",
-	"./gd": "BWwv",
-	"./gd.js": "BWwv",
-	"./gl": "794S",
-	"./gl.js": "794S",
-	"./gom-deva": "EurX",
-	"./gom-deva.js": "EurX",
-	"./gom-latn": "jixF",
-	"./gom-latn.js": "jixF",
-	"./gu": "Uz2K",
-	"./gu.js": "Uz2K",
-	"./he": "dSB2",
-	"./he.js": "dSB2",
-	"./hi": "0vPu",
-	"./hi.js": "0vPu",
-	"./hr": "fnly",
-	"./hr.js": "fnly",
-	"./hu": "FI+y",
-	"./hu.js": "FI+y",
-	"./hy-am": "ZxHn",
-	"./hy-am.js": "ZxHn",
-	"./id": "KxDR",
-	"./id.js": "KxDR",
-	"./is": "H+sD",
-	"./is.js": "H+sD",
-	"./it": "GyEJ",
-	"./it-ch": "jSwB",
-	"./it-ch.js": "jSwB",
-	"./it.js": "GyEJ",
-	"./ja": "km6H",
-	"./ja.js": "km6H",
-	"./jv": "WnjQ",
-	"./jv.js": "WnjQ",
-	"./ka": "WXVf",
-	"./ka.js": "WXVf",
-	"./kk": "zJNk",
-	"./kk.js": "zJNk",
-	"./km": "ZuGE",
-	"./km.js": "ZuGE",
-	"./kn": "VCFo",
-	"./kn.js": "VCFo",
-	"./ko": "EpfC",
-	"./ko.js": "EpfC",
-	"./ku": "FvgC",
-	"./ku.js": "FvgC",
-	"./ky": "Pfmo",
-	"./ky.js": "Pfmo",
-	"./lb": "wSTE",
-	"./lb.js": "wSTE",
-	"./lo": "IKWk",
-	"./lo.js": "IKWk",
-	"./lt": "wUrv",
-	"./lt.js": "wUrv",
-	"./lv": "xVOH",
-	"./lv.js": "xVOH",
-	"./me": "riUx",
-	"./me.js": "riUx",
-	"./mi": "b1YN",
-	"./mi.js": "b1YN",
-	"./mk": "yPwC",
-	"./mk.js": "yPwC",
-	"./ml": "dS3T",
-	"./ml.js": "dS3T",
-	"./mn": "8J7P",
-	"./mn.js": "8J7P",
-	"./mr": "Cla+",
-	"./mr.js": "Cla+",
-	"./ms": "Vbbc",
-	"./ms-my": "qelJ",
-	"./ms-my.js": "qelJ",
-	"./ms.js": "Vbbc",
-	"./mt": "YkvB",
-	"./mt.js": "YkvB",
-	"./my": "4lZK",
-	"./my.js": "4lZK",
-	"./nb": "4dXb",
-	"./nb.js": "4dXb",
-	"./ne": "dhqa",
-	"./ne.js": "dhqa",
-	"./nl": "oPI1",
-	"./nl-be": "XLIu",
-	"./nl-be.js": "XLIu",
-	"./nl.js": "oPI1",
-	"./nn": "T9ox",
-	"./nn.js": "T9ox",
-	"./oc-lnc": "7D2V",
-	"./oc-lnc.js": "7D2V",
-	"./pa-in": "Ly9c",
-	"./pa-in.js": "Ly9c",
-	"./pl": "MX9p",
-	"./pl.js": "MX9p",
-	"./pt": "VVP3",
-	"./pt-br": "qatJ",
-	"./pt-br.js": "qatJ",
-	"./pt.js": "VVP3",
-	"./ro": "2xJO",
-	"./ro.js": "2xJO",
-	"./ru": "eqS4",
-	"./ru.js": "eqS4",
-	"./sd": "6Huv",
-	"./sd.js": "6Huv",
-	"./se": "opZB",
-	"./se.js": "opZB",
-	"./si": "Ueyn",
-	"./si.js": "Ueyn",
-	"./sk": "YIvA",
-	"./sk.js": "YIvA",
-	"./sl": "s2ex",
-	"./sl.js": "s2ex",
-	"./sq": "9o/V",
-	"./sq.js": "9o/V",
-	"./sr": "CZE8",
-	"./sr-cyrl": "xXeP",
-	"./sr-cyrl.js": "xXeP",
-	"./sr.js": "CZE8",
-	"./ss": "z3ad",
-	"./ss.js": "z3ad",
-	"./sv": "AVN5",
-	"./sv.js": "AVN5",
-	"./sw": "y2+C",
-	"./sw.js": "y2+C",
-	"./ta": "i/qy",
-	"./ta.js": "i/qy",
-	"./te": "Zov1",
-	"./te.js": "Zov1",
-	"./tet": "6ucV",
-	"./tet.js": "6ucV",
-	"./tg": "cLEX",
-	"./tg.js": "cLEX",
-	"./th": "cYD4",
-	"./th.js": "cYD4",
-	"./tk": "SRLO",
-	"./tk.js": "SRLO",
-	"./tl-ph": "+Ls2",
-	"./tl-ph.js": "+Ls2",
-	"./tlh": "sCZo",
-	"./tlh.js": "sCZo",
-	"./tr": "Nx06",
-	"./tr.js": "Nx06",
-	"./tzl": "x0TR",
-	"./tzl.js": "x0TR",
-	"./tzm": "eHpI",
-	"./tzm-latn": "ceDr",
-	"./tzm-latn.js": "ceDr",
-	"./tzm.js": "eHpI",
-	"./ug-cn": "a1x9",
-	"./ug-cn.js": "a1x9",
-	"./uk": "jAw7",
-	"./uk.js": "jAw7",
-	"./ur": "UZ6Q",
-	"./ur.js": "UZ6Q",
-	"./uz": "eYI/",
-	"./uz-latn": "MTcW",
-	"./uz-latn.js": "MTcW",
-	"./uz.js": "eYI/",
-	"./vi": "riLI",
-	"./vi.js": "riLI",
-	"./x-pseudo": "ESkz",
-	"./x-pseudo.js": "ESkz",
-	"./yo": "tL86",
-	"./yo.js": "tL86",
-	"./zh-cn": "/cTU",
-	"./zh-cn.js": "/cTU",
-	"./zh-hk": "dH0k",
-	"./zh-hk.js": "dH0k",
-	"./zh-mo": "/jmH",
-	"./zh-mo.js": "/jmH",
-	"./zh-tw": "0+Cr",
-	"./zh-tw.js": "0+Cr"
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "D9WN";
-
-/***/ }),
-
 /***/ "DIJg":
 /*!***************************************!*\
   !*** ./src/app/model/model.module.ts ***!
@@ -903,11 +601,9 @@ ModelModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineInject
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RestDataSource", function() { return RestDataSource; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _user_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user.model */ "UbF0");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "TiKg");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
-/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @auth0/angular-jwt */ "Nm8O");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var _user_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user.model */ "UbF0");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @auth0/angular-jwt */ "Nm8O");
 /* Online Middleware To Backend */
 
 
@@ -918,79 +614,35 @@ __webpack_require__.r(__webpack_exports__);
 const PROTOCOL = 'https';
 const PORT = 3500;
 class RestDataSource {
-    /*private httpOptions =
-    {
-      headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-      })
-    };*/
     constructor(http, jwtService) {
         this.http = http;
         this.jwtService = jwtService;
-        this.user = new _user_model__WEBPACK_IMPORTED_MODULE_1__["User"]();
+        this.httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+                'Content-Type': 'application/json'
+            })
+        };
+        this.user = new _user_model__WEBPACK_IMPORTED_MODULE_2__["User"]();
         // this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/api/`;
         this.baseUrl = `https://xu-tung-jin-assignment2.herokuapp.com/api/`;
-    }
-    // Interceptor for passing JWT to server
-    intercept(req, next) {
-        const idToken = localStorage.getItem('id_token');
-        if (idToken) 
-        // Clone the previous request, and add on the token from local storage
-        {
-            const cloned = req.clone({
-                headers: req.headers.set('Authorization', idToken)
-            });
-            return next.handle(cloned);
-        }
-        else 
-        // Ask user to login cuz there is no token
-        {
-            return next.handle(req);
-        }
     }
     // get, add, update user (registration)
     getUser() {
         return this.http.get(this.baseUrl + 'users');
     }
     addUser(user) {
-        return this.http.post(this.baseUrl + 'register', user);
+        this.loadToken();
+        return this.http.post(this.baseUrl + 'register', user, this.httpOptions);
     }
     updateUser(user) {
-        return this.http.post(this.baseUrl + 'register', user);
+        this.loadToken();
+        return this.http.post(this.baseUrl + 'register', this.httpOptions);
     }
-    /*
-    const payload =
-                    {
-                      id: user._id,
-                      displayName: user.displayName,
-                      username: user.username,
-                      email: user.email
-                    }
-    
-    const authToken = jwt.sign(
-                                payload,
-                                DB.Secret,
-                                {expiresIn: 604800,}
-                              );
-    
-      return res.json({ success: true,
-                        msg: 'User Logged in Successfully!',
-                        user: {
-                                  id: user._id,
-                                  displayName: user.displayName,
-                                  username: user.username,
-                                  email: user.email
-                              },
-                        token: authToken
-                    });
-    */
     // loggin (storeUserData + authenticate) , loggout
-    storeUserData(token, user, expiresIn) {
-        const expires = moment__WEBPACK_IMPORTED_MODULE_2__().add(expiresIn);
+    storeUserData(token, user) {
         localStorage.setItem('id_token', 'bearer ' + token);
         localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('expires', JSON.stringify(expires.valueOf()));
-        this.authToken = 'bearer ' + token;
+        this.authToken = token;
         this.user = user;
         console.log('rest.datasource:');
         console.log('authToken:' + this.authToken);
@@ -998,20 +650,14 @@ class RestDataSource {
         console.log('user email:' + this.user.email);
         console.log('user username:' + this.user.username);
     }
-    // tslint:disable-next-line: typedef
-    getExpiration() {
-        const expiration = localStorage.getItem('expires');
-        const expiresAt = JSON.parse(expiration);
-        return moment__WEBPACK_IMPORTED_MODULE_2__(expiresAt);
-    }
     authenticate(user) {
-        return this.http.post(this.baseUrl + 'login', user);
+        return this.http.post(this.baseUrl + 'login', user, this.httpOptions);
     }
     logout() {
         this.authToken = null;
         this.user = null;
         localStorage.clear();
-        return this.http.get(this.baseUrl + 'logout');
+        return this.http.get(this.baseUrl + 'logout', this.httpOptions);
     }
     loggedIn() {
         return !this.jwtService.isTokenExpired(this.authToken);
@@ -1021,19 +667,22 @@ class RestDataSource {
         return this.http.get(this.baseUrl + 'book-list');
     }
     addBook(book) {
-        return this.http.post(this.baseUrl + 'book-list/add', book);
+        this.loadToken();
+        return this.http.post(this.baseUrl + 'book-list/add', book, this.httpOptions);
     }
     updateBook(book) {
+        this.loadToken();
         console.log('rest.datasources,update book id:' + book._id);
         console.log('rest.datasources,update book name:' + book.name);
         console.log('rest.datasources,update book author:' + book.author);
         console.log('rest.datasources,update book description:' + book.description);
         console.log('rest.datasources,update book price:' + book.price);
         console.log('rest.datasources,update book published:' + book.published);
-        return this.http.post(`${this.baseUrl}book-list/edit/${book._id}`, book);
+        return this.http.post(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
     }
     deleteBook(id) {
-        return this.http.get(`${this.baseUrl}book-list/delete/${id}`);
+        this.loadToken();
+        return this.http.get(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
     }
     // save, get, delete, update orders
     saveOrder(order) {
@@ -1044,17 +693,28 @@ class RestDataSource {
         return this.http.get(this.baseUrl + 'orders');
     }
     deleteOrder(id) {
-        return this.http.get(`${this.baseUrl}orders/delete/${id}`);
+        this.loadToken();
+        return this.http.get(`${this.baseUrl}orders/delete/${id}`, this.httpOptions);
     }
     updateOrder(order) {
-        return this.http.post(`${this.baseUrl}orders/edit/${order._id}`, order);
+        this.loadToken();
+        return this.http.post(`${this.baseUrl}orders/edit/${order._id}`, order, this.httpOptions);
+    }
+    // load Token
+    // the token be sent back to server side
+    // each time when requiring some personal data from backend
+    loadToken() {
+        const token = localStorage.getItem('id_token');
+        this.authToken = token;
+        // this IS wrong
+        this.httpOptions.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Authorization', this.authToken);
     }
 }
-RestDataSource.ɵfac = function RestDataSource_Factory(t) { return new (t || RestDataSource)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"])); };
+RestDataSource.ɵfac = function RestDataSource_Factory(t) { return new (t || RestDataSource)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"])); };
 RestDataSource.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: RestDataSource, factory: RestDataSource.ɵfac });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](RestDataSource, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
-    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }, { type: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"] }]; }, null); })();
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }, { type: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"] }]; }, null); })();
 
 
 /***/ }),
@@ -1813,21 +1473,15 @@ ContactComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineC
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jwtTokenGetter", function() { return jwtTokenGetter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
-/* harmony import */ var _model_rest_datasource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./model/rest.datasource */ "DZdm");
-/* harmony import */ var _model_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./model/auth.service */ "hO0c");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _model_model_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./model/model.module */ "DIJg");
-/* harmony import */ var _pages_pages_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/pages.module */ "dgmN");
-/* harmony import */ var _partials_partials_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./partials/partials.module */ "rERZ");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser */ "jhN1");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "Sy1n");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "vY5A");
-/* harmony import */ var _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./book-store/book-store.module */ "Blh2");
-/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @auth0/angular-jwt */ "Nm8O");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
-
-
-
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _model_model_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./model/model.module */ "DIJg");
+/* harmony import */ var _pages_pages_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/pages.module */ "dgmN");
+/* harmony import */ var _partials_partials_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./partials/partials.module */ "rERZ");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ "jhN1");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "Sy1n");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app-routing.module */ "vY5A");
+/* harmony import */ var _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./book-store/book-store.module */ "Blh2");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @auth0/angular-jwt */ "Nm8O");
 
 
 
@@ -1844,61 +1498,47 @@ function jwtTokenGetter() {
 }
 class AppModule {
 }
-AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [
-        _model_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"],
-        {
-            provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HTTP_INTERCEPTORS"],
-            useClass: _model_rest_datasource__WEBPACK_IMPORTED_MODULE_0__["RestDataSource"],
-            multi: true
-        }
-    ], imports: [[
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"],
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
-            _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_9__["BookStoreModule"],
-            _partials_partials_module__WEBPACK_IMPORTED_MODULE_5__["PartialsModule"],
-            _pages_pages_module__WEBPACK_IMPORTED_MODULE_4__["PagesModule"],
-            _model_model_module__WEBPACK_IMPORTED_MODULE_3__["ModelModule"],
-            _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_10__["JwtModule"].forRoot({
+AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]] });
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [], imports: [[
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["BrowserModule"],
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
+            _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_7__["BookStoreModule"],
+            _partials_partials_module__WEBPACK_IMPORTED_MODULE_3__["PartialsModule"],
+            _pages_pages_module__WEBPACK_IMPORTED_MODULE_2__["PagesModule"],
+            _model_model_module__WEBPACK_IMPORTED_MODULE_1__["ModelModule"],
+            _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__["JwtModule"].forRoot({
                 config: {
                     tokenGetter: jwtTokenGetter
                 }
             })
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"],
-        _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
-        _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_9__["BookStoreModule"],
-        _partials_partials_module__WEBPACK_IMPORTED_MODULE_5__["PartialsModule"],
-        _pages_pages_module__WEBPACK_IMPORTED_MODULE_4__["PagesModule"],
-        _model_model_module__WEBPACK_IMPORTED_MODULE_3__["ModelModule"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_10__["JwtModule"]] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](AppModule, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["BrowserModule"],
+        _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
+        _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_7__["BookStoreModule"],
+        _partials_partials_module__WEBPACK_IMPORTED_MODULE_3__["PartialsModule"],
+        _pages_pages_module__WEBPACK_IMPORTED_MODULE_2__["PagesModule"],
+        _model_model_module__WEBPACK_IMPORTED_MODULE_1__["ModelModule"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__["JwtModule"]] }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AppModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 declarations: [
-                    _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]
+                    _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]
                 ],
                 imports: [
-                    _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"],
-                    _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
-                    _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_9__["BookStoreModule"],
-                    _partials_partials_module__WEBPACK_IMPORTED_MODULE_5__["PartialsModule"],
-                    _pages_pages_module__WEBPACK_IMPORTED_MODULE_4__["PagesModule"],
-                    _model_model_module__WEBPACK_IMPORTED_MODULE_3__["ModelModule"],
-                    _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_10__["JwtModule"].forRoot({
+                    _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["BrowserModule"],
+                    _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
+                    _book_store_book_store_module__WEBPACK_IMPORTED_MODULE_7__["BookStoreModule"],
+                    _partials_partials_module__WEBPACK_IMPORTED_MODULE_3__["PartialsModule"],
+                    _pages_pages_module__WEBPACK_IMPORTED_MODULE_2__["PagesModule"],
+                    _model_model_module__WEBPACK_IMPORTED_MODULE_1__["ModelModule"],
+                    _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__["JwtModule"].forRoot({
                         config: {
                             tokenGetter: jwtTokenGetter
                         }
                     })
                 ],
-                providers: [
-                    _model_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"],
-                    {
-                        provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HTTP_INTERCEPTORS"],
-                        useClass: _model_rest_datasource__WEBPACK_IMPORTED_MODULE_0__["RestDataSource"],
-                        multi: true
-                    }
-                ],
-                bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+                providers: [],
+                bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
             }]
     }], null, null); })();
 
@@ -2307,8 +1947,8 @@ class AuthService {
         return this.datasource.authenticate(user);
     }
     // local storage
-    storeUserData(token, user, expireIn) {
-        this.datasource.storeUserData(token, user, expireIn);
+    storeUserData(token, user) {
+        this.datasource.storeUserData(token, user);
     }
     // is logged in
     get authenticated() {
@@ -3090,12 +2730,12 @@ const routes = [
 class AppRoutingModule {
 }
 AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
-AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector"]({ factory: function AppRoutingModule_Factory(t) { return new (t || AppRoutingModule)(); }, providers: [_guard_storeFirst_guard__WEBPACK_IMPORTED_MODULE_0__["StoreFirstGuard"]], imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(routes, { useHash: true })], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"]] });
+AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector"]({ factory: function AppRoutingModule_Factory(t) { return new (t || AppRoutingModule)(); }, providers: [_guard_storeFirst_guard__WEBPACK_IMPORTED_MODULE_0__["StoreFirstGuard"]], imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](AppRoutingModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"],
         args: [{
-                imports: [_angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(routes, { useHash: true })],
+                imports: [_angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(routes)],
                 exports: [_angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"]],
                 providers: [_guard_storeFirst_guard__WEBPACK_IMPORTED_MODULE_0__["StoreFirstGuard"]]
             }]
