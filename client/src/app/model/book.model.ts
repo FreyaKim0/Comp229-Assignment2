@@ -7,9 +7,9 @@ export class Book
    public author?: string,
    public published?: string,
    public description?: string,
-   // public originalPrice?: number,
-   public price?: number
-   // public store?: string
+   public originalPrice?: number,
+   public price?: number,
+   public store?: string
   ){}
 
   public toString(): string
@@ -21,6 +21,7 @@ export class Book
     Author:     ${this.author}
     Published:  ${this.published}
     Description:${this.description}
+    Original$:  ${this.originalPrice}
     Price:      ${this.price}
     -------------------------
     `;

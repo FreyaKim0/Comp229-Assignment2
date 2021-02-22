@@ -71,7 +71,7 @@
 
                 <!--price-->
                 <div>
-                  <span style="text-decoration: line-through; font-size: 12px;">=____=</span>&nbsp;
+                  <span style="text-decoration: line-through; font-size: 12px;">{{ book.originalPrice | currency: 'USD': 'symbol': '2.2-2'}}</span>&nbsp;
                   <span style="font-size:12px; color:red;">{{ book.price | currency: 'USD': 'symbol': '2.2-2'}}</span>
                 </div>
 

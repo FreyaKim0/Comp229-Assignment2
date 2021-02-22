@@ -186,7 +186,6 @@ export class RestDataSource
 
     // this IS wrong
     this.httpOptions.headers = new HttpHeaders().set('Authorization', this.authToken);
-
   }
 
 
