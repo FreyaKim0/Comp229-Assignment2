@@ -34,12 +34,15 @@
 
           <!--book name-->
           <div class="bookName">
+            {{ b.store }}
+          </div>
+          <div class="bookName">
             {{ b.name }}
           </div>
 
           <!--price-->
           <div>
-            <span style="text-decoration: line-through; font-size: 12px;">$100.00</span>&nbsp;
+            <span style="text-decoration: line-through; font-size: 12px;">{{ b.originalPrice | currency: 'USD': 'symbol': '2.2-2'}}</span>&nbsp;
             <span style="font-size:12px; color:red;">{{ b.price | currency: 'USD': 'symbol': '2.2-2'}}</span>
           </div>
 

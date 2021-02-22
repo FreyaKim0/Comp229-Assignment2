@@ -412,14 +412,18 @@ function BookTableComponent_div_7_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "span", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "$100.00");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "\u00A0 ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "span", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](18, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "span", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](17, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "\u00A0 ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "span", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](21, "currency");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -427,9 +431,13 @@ function BookTableComponent_div_7_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const b_r1 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", b_r1.store, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", b_r1.name, " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind4"](18, 2, b_r1.price, "USD", "symbol", "2.2-2"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind4"](17, 4, b_r1.originalPrice, "USD", "symbol", "2.2-2"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind4"](21, 9, b_r1.price, "USD", "symbol", "2.2-2"));
 } }
 class BookTableComponent {
     constructor(repository, router) {
@@ -470,7 +478,7 @@ BookTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " \u00A0 View As Public\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, BookTableComponent_div_7_Template, 19, 7, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, BookTableComponent_div_7_Template, 22, 14, "div", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
@@ -689,7 +697,7 @@ class BookEditorComponent {
     }
 }
 BookEditorComponent.ɵfac = function BookEditorComponent_Factory(t) { return new (t || BookEditorComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_model_book_repository__WEBPACK_IMPORTED_MODULE_2__["BookRepository"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"])); };
-BookEditorComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BookEditorComponent, selectors: [["ng-component"]], decls: 50, vars: 10, consts: [[1, "displaySetting"], ["novalidate", "", 3, "ngSubmit"], ["form", "ngForm"], ["rowspan", "6", 2, "vertical-align", "top"], [1, "imageDiv"], ["type", "text", "name", "price", 1, "input-control", 3, "ngModel", "ngModelChange"], ["type", "text", "name", "originalPrice", 1, "input-control", 3, "ngModel", "ngModelChange"], ["type", "text", "name", "name", 1, "input-control", 3, "ngModel", "ngModelChange"], ["type", "text", "name", "published", 1, "input-control", 3, "ngModel", "ngModelChange"], ["type", "text", "name", "author", 1, "input-control", 3, "ngModel", "ngModelChange"], ["cols", "60", "name", "description", "rows", "5", 3, "ngModel", "ngModelChange"], ["type", "submit", 1, "buttonS"], ["type", "reset", "routerLink", "/admin/main/books", 1, "buttonS"], [1, "fas", "fa-undo"]], template: function BookEditorComponent_Template(rf, ctx) { if (rf & 1) {
+BookEditorComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BookEditorComponent, selectors: [["ng-component"]], decls: 50, vars: 11, consts: [[1, "displaySetting"], ["novalidate", "", 3, "ngSubmit"], ["form", "ngForm"], ["rowspan", "6", 2, "vertical-align", "top"], [1, "imageDiv"], ["type", "text", "name", "price", 1, "input-control", 3, "ngModel", "ngModelChange"], ["type", "text", "name", "originalPrice", 1, "input-control", 3, "ngModel", "ngModelChange"], ["type", "text", "name", "name", 1, "input-control", 3, "ngModel", "ngModelChange"], ["type", "text", "name", "published", 1, "input-control", 3, "ngModel", "ngModelChange"], ["type", "text", "name", "author", 1, "input-control", 3, "ngModel", "ngModelChange"], ["cols", "60", "name", "description", "rows", "5", 3, "ngModel", "ngModelChange"], ["type", "submit", 1, "buttonS"], ["type", "reset", "routerLink", "/admin/main/books", 1, "buttonS"], [1, "fas", "fa-undo"]], template: function BookEditorComponent_Template(rf, ctx) { if (rf & 1) {
         const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "form", 1, 2);
@@ -748,7 +756,7 @@ BookEditorComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "tr");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "td");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](34, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](35, " Sale by ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](35);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "tr");
@@ -785,7 +793,9 @@ BookEditorComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.book.published);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.book.author);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" Sale by ", ctx.book.store, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.book.description);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMap"](ctx.editing ? "fas fa-save" : "fas fa-plus-circle");
