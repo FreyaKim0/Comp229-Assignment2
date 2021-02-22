@@ -1,3 +1,4 @@
+import { CheckoutComponent } from './../book-store/checkout/checkout.component';
 import { UserRepository } from 'src/app/model/user.repository';
 import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
@@ -22,6 +23,7 @@ const routing = RouterModule.forChild([
     { path: 'books', component: BookTableComponent, data: {title: 'Book Table'}, canActivate: [AuthGuard]},
     { path: 'orders', component: OrderTableComponent, data: {title: 'Order Table'}, canActivate: [AuthGuard]},
     { path: 'mycart', component: CartDetailComponent, data: {title: 'My Shopping Cart'}, canActivate: [AuthGuard]},
+    { path: 'checkout', component: CheckoutComponent, data: {title: 'Check Out Page'}, canActivate: [AuthGuard]},
     { path: '**', redirectTo: 'book-list'}]
   },
   {path: '**', redirectTo: 'auth'},

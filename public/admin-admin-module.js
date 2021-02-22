@@ -584,19 +584,20 @@ AdminComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminModule", function() { return AdminModule; });
-/* harmony import */ var src_app_model_user_repository__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/model/user.repository */ "DoVm");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
-/* harmony import */ var _auth_auth_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth/auth.component */ "tmIX");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth/auth.guard */ "HpBV");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _admin_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./admin.component */ "TRGY");
-/* harmony import */ var _order_table_order_table_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./order-table/order-table.component */ "2aM0");
-/* harmony import */ var _book_editor_book_editor_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./book-editor/book-editor.component */ "tYfX");
-/* harmony import */ var _book_table_book_table_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./book-table/book-table.component */ "J/3F");
-/* harmony import */ var _book_store_cart_detail_cart_detail_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../book-store/cart-detail/cart-detail.component */ "wZ8A");
-/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./register/register.component */ "9LZo");
+/* harmony import */ var _book_store_checkout_checkout_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../book-store/checkout/checkout.component */ "S4ta");
+/* harmony import */ var src_app_model_user_repository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/model/user.repository */ "DoVm");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _auth_auth_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth/auth.component */ "tmIX");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth/auth.guard */ "HpBV");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _admin_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./admin.component */ "TRGY");
+/* harmony import */ var _order_table_order_table_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./order-table/order-table.component */ "2aM0");
+/* harmony import */ var _book_editor_book_editor_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./book-editor/book-editor.component */ "tYfX");
+/* harmony import */ var _book_table_book_table_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./book-table/book-table.component */ "J/3F");
+/* harmony import */ var _book_store_cart_detail_cart_detail_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../book-store/cart-detail/cart-detail.component */ "wZ8A");
+/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./register/register.component */ "9LZo");
 
 
 
@@ -612,16 +613,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const routing = _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild([
-    { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_12__["RegisterComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
-    { path: 'auth', component: _auth_auth_component__WEBPACK_IMPORTED_MODULE_2__["AuthComponent"] },
-    { path: 'main', component: _admin_component__WEBPACK_IMPORTED_MODULE_7__["AdminComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]],
+
+const routing = _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forChild([
+    { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_13__["RegisterComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]] },
+    { path: 'auth', component: _auth_auth_component__WEBPACK_IMPORTED_MODULE_3__["AuthComponent"] },
+    { path: 'main', component: _admin_component__WEBPACK_IMPORTED_MODULE_8__["AdminComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]],
         children: [
-            { path: 'books/:mode/:id', component: _book_editor_book_editor_component__WEBPACK_IMPORTED_MODULE_9__["BookEditorComponent"], data: { title: 'Edit Book' }, canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
-            { path: 'books/:mode', component: _book_editor_book_editor_component__WEBPACK_IMPORTED_MODULE_9__["BookEditorComponent"], data: { title: 'Add Book' }, canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
-            { path: 'books', component: _book_table_book_table_component__WEBPACK_IMPORTED_MODULE_10__["BookTableComponent"], data: { title: 'Book Table' }, canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
-            { path: 'orders', component: _order_table_order_table_component__WEBPACK_IMPORTED_MODULE_8__["OrderTableComponent"], data: { title: 'Order Table' }, canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
-            { path: 'mycart', component: _book_store_cart_detail_cart_detail_component__WEBPACK_IMPORTED_MODULE_11__["CartDetailComponent"], data: { title: 'My Shopping Cart' }, canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
+            { path: 'books/:mode/:id', component: _book_editor_book_editor_component__WEBPACK_IMPORTED_MODULE_10__["BookEditorComponent"], data: { title: 'Edit Book' }, canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]] },
+            { path: 'books/:mode', component: _book_editor_book_editor_component__WEBPACK_IMPORTED_MODULE_10__["BookEditorComponent"], data: { title: 'Add Book' }, canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]] },
+            { path: 'books', component: _book_table_book_table_component__WEBPACK_IMPORTED_MODULE_11__["BookTableComponent"], data: { title: 'Book Table' }, canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]] },
+            { path: 'orders', component: _order_table_order_table_component__WEBPACK_IMPORTED_MODULE_9__["OrderTableComponent"], data: { title: 'Order Table' }, canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]] },
+            { path: 'mycart', component: _book_store_cart_detail_cart_detail_component__WEBPACK_IMPORTED_MODULE_12__["CartDetailComponent"], data: { title: 'My Shopping Cart' }, canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]] },
+            { path: 'checkout', component: _book_store_checkout_checkout_component__WEBPACK_IMPORTED_MODULE_0__["CheckoutComponent"], data: { title: 'Check Out Page' }, canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]] },
             { path: '**', redirectTo: 'book-list' }
         ]
     },
@@ -629,15 +632,15 @@ const routing = _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].for
 ]);
 class AdminModule {
 }
-AdminModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineNgModule"]({ type: AdminModule });
-AdminModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector"]({ factory: function AdminModule_Factory(t) { return new (t || AdminModule)(); }, providers: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"], src_app_model_user_repository__WEBPACK_IMPORTED_MODULE_0__["UserRepository"]], imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_6__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], routing]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsetNgModuleScope"](AdminModule, { declarations: [_auth_auth_component__WEBPACK_IMPORTED_MODULE_2__["AuthComponent"], _admin_component__WEBPACK_IMPORTED_MODULE_7__["AdminComponent"], _order_table_order_table_component__WEBPACK_IMPORTED_MODULE_8__["OrderTableComponent"], _book_editor_book_editor_component__WEBPACK_IMPORTED_MODULE_9__["BookEditorComponent"], _book_table_book_table_component__WEBPACK_IMPORTED_MODULE_10__["BookTableComponent"], _register_register_component__WEBPACK_IMPORTED_MODULE_12__["RegisterComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"]] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](AdminModule, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"],
+AdminModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineNgModule"]({ type: AdminModule });
+AdminModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjector"]({ factory: function AdminModule_Factory(t) { return new (t || AdminModule)(); }, providers: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"], src_app_model_user_repository__WEBPACK_IMPORTED_MODULE_1__["UserRepository"]], imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_7__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], routing]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsetNgModuleScope"](AdminModule, { declarations: [_auth_auth_component__WEBPACK_IMPORTED_MODULE_3__["AuthComponent"], _admin_component__WEBPACK_IMPORTED_MODULE_8__["AdminComponent"], _order_table_order_table_component__WEBPACK_IMPORTED_MODULE_9__["OrderTableComponent"], _book_editor_book_editor_component__WEBPACK_IMPORTED_MODULE_10__["BookEditorComponent"], _book_table_book_table_component__WEBPACK_IMPORTED_MODULE_11__["BookTableComponent"], _register_register_component__WEBPACK_IMPORTED_MODULE_13__["RegisterComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"]] }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵsetClassMetadata"](AdminModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["NgModule"],
         args: [{
-                imports: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], routing],
-                providers: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"], src_app_model_user_repository__WEBPACK_IMPORTED_MODULE_0__["UserRepository"]],
-                declarations: [_auth_auth_component__WEBPACK_IMPORTED_MODULE_2__["AuthComponent"], _admin_component__WEBPACK_IMPORTED_MODULE_7__["AdminComponent"], _order_table_order_table_component__WEBPACK_IMPORTED_MODULE_8__["OrderTableComponent"], _book_editor_book_editor_component__WEBPACK_IMPORTED_MODULE_9__["BookEditorComponent"], _book_table_book_table_component__WEBPACK_IMPORTED_MODULE_10__["BookTableComponent"], _register_register_component__WEBPACK_IMPORTED_MODULE_12__["RegisterComponent"]]
+                imports: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], routing],
+                providers: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"], src_app_model_user_repository__WEBPACK_IMPORTED_MODULE_1__["UserRepository"]],
+                declarations: [_auth_auth_component__WEBPACK_IMPORTED_MODULE_3__["AuthComponent"], _admin_component__WEBPACK_IMPORTED_MODULE_8__["AdminComponent"], _order_table_order_table_component__WEBPACK_IMPORTED_MODULE_9__["OrderTableComponent"], _book_editor_book_editor_component__WEBPACK_IMPORTED_MODULE_10__["BookEditorComponent"], _book_table_book_table_component__WEBPACK_IMPORTED_MODULE_11__["BookTableComponent"], _register_register_component__WEBPACK_IMPORTED_MODULE_13__["RegisterComponent"]]
             }]
     }], null, null); })();
 
