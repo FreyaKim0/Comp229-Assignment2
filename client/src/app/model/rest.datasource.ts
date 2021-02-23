@@ -117,15 +117,12 @@ export class RestDataSource
 
   addBook(book: Book): Observable<any>
   {
-    book.store = this.user.displayName;
     this.loadToken();
     return this.http.post<Book>(this.baseUrl + 'book-list/add', book, this.httpOptions);
   }
 
-
   updateBook(book: Book): Observable<Book>
   {
-    console.log('update Book start running..');
     this.loadToken();
     console.log('rest.datasources,update book id:' + book._id);
     console.log('rest.datasources,update book name:' + book.name);

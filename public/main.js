@@ -666,12 +666,10 @@ class RestDataSource {
         return this.http.get(this.baseUrl + 'book-list');
     }
     addBook(book) {
-        book.store = this.user.displayName;
         this.loadToken();
         return this.http.post(this.baseUrl + 'book-list/add', book, this.httpOptions);
     }
     updateBook(book) {
-        console.log('update Book start running..');
         this.loadToken();
         console.log('rest.datasources,update book id:' + book._id);
         console.log('rest.datasources,update book name:' + book.name);
@@ -1020,7 +1018,7 @@ function BookStoreComponent_div_38_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const book_r6 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", book_r6.store, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", book_r6.store, " <----store name ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", book_r6.name, " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
