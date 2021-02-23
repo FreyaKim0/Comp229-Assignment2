@@ -10,13 +10,14 @@ import { User } from '../model/user.model';
 export class AdminComponent
 {
   public thisUserDisplayName;
+  public thisUserAlphabet;
 
   constructor(private auth: AuthService,
               private router: Router)
               {
                 const userInfo = JSON.parse(localStorage.getItem('user'));
                 this.thisUserDisplayName = userInfo['displayName'];
-                console.log(this.thisUserDisplayName);
+                this.thisUserAlphabet = this.thisUserDisplayName.substring(0,1);
               }
   logout(): void
   {
