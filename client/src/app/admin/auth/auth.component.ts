@@ -45,7 +45,6 @@ export class AuthComponent implements OnInit, OnDestroy {
         // if json data from processLogin coontroll successfully sent back
         if (data.success)
           {
-            console.log('auth.component.ts,data token:' + data.token);
             // Store token and user information in this browser page
             this.auth.storeUserData(data.token, data.user);
             this.router.navigateByUrl('home');

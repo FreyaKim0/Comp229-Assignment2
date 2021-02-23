@@ -117,6 +117,7 @@ export class RestDataSource
 
   addBook(book: Book): Observable<any>
   {
+    book.store = this.user.displayName;
     this.loadToken();
     return this.http.post<Book>(this.baseUrl + 'book-list/add', book, this.httpOptions);
   }
@@ -181,8 +182,6 @@ export class RestDataSource
   {
     const token = localStorage.getItem('id_token');
     this.authToken = 'bearer '+token;
-
-    console.log('loadToken()\nthis.aythToken: '+this.authToken)
 
     // this IS wrong
     this.httpOptions.headers = new HttpHeaders().set('Authorization', this.authToken);

@@ -666,6 +666,7 @@ class RestDataSource {
         return this.http.get(this.baseUrl + 'book-list');
     }
     addBook(book) {
+        book.store = this.user.displayName;
         this.loadToken();
         return this.http.post(this.baseUrl + 'book-list/add', book, this.httpOptions);
     }
@@ -707,7 +708,6 @@ class RestDataSource {
     loadToken() {
         const token = localStorage.getItem('id_token');
         this.authToken = 'bearer ' + token;
-        console.log('loadToken()\nthis.aythToken: ' + this.authToken);
         // this IS wrong
         this.httpOptions.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Authorization', this.authToken);
     }
