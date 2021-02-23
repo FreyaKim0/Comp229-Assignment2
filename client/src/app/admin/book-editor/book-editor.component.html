@@ -46,7 +46,7 @@
     <tr>
       <td>
         <br> <span>Sale by {{ thisUserDisplayName }}</span>
-             <input type="text" display="none" class="input-control" name="store" [(ngModel)]='book.store'>
+             <input type="text" style="display:none" class="input-control" name="store" [(ngModel)]='book.store' value="{{ thisUserDisplayName }}">
       </td>
     </tr>
     <tr>
@@ -72,10 +72,3 @@
 </form>
 <br><br>
 </div>
-
-<!--Old-->
-
-
-
-
-
