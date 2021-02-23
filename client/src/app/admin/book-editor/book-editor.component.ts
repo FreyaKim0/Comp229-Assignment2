@@ -9,12 +9,19 @@ import { BookRepository } from 'src/app/model/book.repository';
   styleUrls: ['./book-editor.component.css']
 })
 export class BookEditorComponent implements OnInit {
+
   editing = false;
   book: Book = new Book();
+  public thisUserDisplayName;
+
   constructor(private repository: BookRepository,
               private router: Router,
               activeRoute: ActivatedRoute)
   {
+    // Assign shop's name
+    const userInfo = JSON.parse(localStorage.getItem('user'));
+    this.thisUserDisplayName = userInfo['displayName'];
+
     // Assign that book's data into webpage
     this.editing = activeRoute.snapshot.params.mode === 'edit';
     if (this.editing)
