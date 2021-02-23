@@ -517,7 +517,7 @@ class AdminComponent {
         this.auth = auth;
         this.router = router;
         const userInfo = JSON.parse(localStorage.getItem('user'));
-        this.thisUserDisplayName = userInfo('displayName');
+        this.thisUserDisplayName = userInfo['displayName'];
         console.log(this.thisUserDisplayName);
     }
     logout() {
