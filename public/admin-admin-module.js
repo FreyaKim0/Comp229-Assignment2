@@ -516,6 +516,9 @@ class AdminComponent {
     constructor(auth, router) {
         this.auth = auth;
         this.router = router;
+        const userInfo = JSON.parse(localStorage.getItem('user'));
+        this.thisUserDisplayName = userInfo('displayName');
+        console.log(this.thisUserDisplayName);
     }
     logout() {
         this.auth.logout();
@@ -523,7 +526,7 @@ class AdminComponent {
     }
 }
 AdminComponent.ɵfac = function AdminComponent_Factory(t) { return new (t || AdminComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_model_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
-AdminComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AdminComponent, selectors: [["ng-component"]], decls: 33, vars: 0, consts: [[1, "text-center", "mt-3"], [1, "container-fluid"], [1, "row", "mt-2"], [1, "col-3", "mt-5"], ["id", "x"], [1, "name_bar"], [2, "width", "200px"], ["routerLink", "/admin/main/books", "routerLinkActive", "active", 1, "buttonS"], ["routerLink", "/admin/main/mycart", "routerLinkActive", "active", 1, "buttonS"], ["routerLink", "/admin/main/orders", "routerLinkActive", "active", 1, "buttonS"], ["routerLink", "/book-list", "routerLinkActive", "active", 1, "buttonS"], [1, "col-9"]], template: function AdminComponent_Template(rf, ctx) { if (rf & 1) {
+AdminComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AdminComponent, selectors: [["ng-component"]], decls: 33, vars: 1, consts: [[1, "text-center", "mt-3"], [1, "container-fluid"], [1, "row", "mt-2"], [1, "col-3", "mt-5"], ["id", "x"], [1, "name_bar"], [2, "width", "200px"], ["routerLink", "/admin/main/books", "routerLinkActive", "active", 1, "buttonS"], ["routerLink", "/admin/main/mycart", "routerLinkActive", "active", 1, "buttonS"], ["routerLink", "/admin/main/orders", "routerLinkActive", "active", 1, "buttonS"], ["routerLink", "/book-list", "routerLinkActive", "active", 1, "buttonS"], [1, "col-9"]], template: function AdminComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "MOCK BOOK STORE");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -535,7 +538,7 @@ AdminComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "H");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "span");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Human Resources");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "hr", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -570,6 +573,9 @@ AdminComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.thisUserDisplayName);
     } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterOutlet"]], styles: [".account[_ngcontent-%COMP%]{\r\n  font-size: 18px;\r\n  border: 1px solid grey;\r\n  width: 250px;\r\n}\r\n.name_bar[_ngcontent-%COMP%]{\r\n  margin-top:40px;\r\n  margin-right: auto;\r\n  margin-left: auto;\r\n  margin-bottom:10px;\r\n  height: 80px;\r\n  width: 80px;\r\n  border-radius: 10px;\r\n  background-color: rgb(115, 108, 121);\r\n  text-align: center;\r\n  font-size: 50px;\r\n  color:gainsboro;\r\n}\r\n#x[_ngcontent-%COMP%]{\r\n  height: 300px;\r\n  font-family:Verdana, Geneva, Tahoma, sans-serif;\r\n  font-size: 14px;\r\n}\r\n\r\n.buttonS[_ngcontent-%COMP%]{\r\n  border: 1px solid grey;\r\n  width:50%;\r\n  background-color: #ffffff;\r\n  font-size: 14px;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWRtaW4vYWRtaW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxpQkFBaUI7QUFDakI7RUFDRSxlQUFlO0VBQ2Ysc0JBQXNCO0VBQ3RCLFlBQVk7QUFDZDtBQUNBO0VBQ0UsZUFBZTtFQUNmLGtCQUFrQjtFQUNsQixpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLFlBQVk7RUFDWixXQUFXO0VBQ1gsbUJBQW1CO0VBQ25CLG9DQUFvQztFQUNwQyxrQkFBa0I7RUFDbEIsZUFBZTtFQUNmLGVBQWU7QUFDakI7QUFDQTtFQUNFLGFBQWE7RUFDYiwrQ0FBK0M7RUFDL0MsZUFBZTtBQUNqQjtBQUVBLFlBQVk7QUFDWjtFQUNFLHNCQUFzQjtFQUN0QixTQUFTO0VBQ1QseUJBQXlCO0VBQ3pCLGVBQWU7QUFDakIiLCJmaWxlIjoic3JjL2FwcC9hZG1pbi9hZG1pbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyogQWRtaW5pc3RyYW9yICovXHJcbi5hY2NvdW50e1xyXG4gIGZvbnQtc2l6ZTogMThweDtcclxuICBib3JkZXI6IDFweCBzb2xpZCBncmV5O1xyXG4gIHdpZHRoOiAyNTBweDtcclxufVxyXG4ubmFtZV9iYXJ7XHJcbiAgbWFyZ2luLXRvcDo0MHB4O1xyXG4gIG1hcmdpbi1yaWdodDogYXV0bztcclxuICBtYXJnaW4tbGVmdDogYXV0bztcclxuICBtYXJnaW4tYm90dG9tOjEwcHg7XHJcbiAgaGVpZ2h0OiA4MHB4O1xyXG4gIHdpZHRoOiA4MHB4O1xyXG4gIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDExNSwgMTA4LCAxMjEpO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBmb250LXNpemU6IDUwcHg7XHJcbiAgY29sb3I6Z2FpbnNib3JvO1xyXG59XHJcbiN4e1xyXG4gIGhlaWdodDogMzAwcHg7XHJcbiAgZm9udC1mYW1pbHk6VmVyZGFuYSwgR2VuZXZhLCBUYWhvbWEsIHNhbnMtc2VyaWY7XHJcbiAgZm9udC1zaXplOiAxNHB4O1xyXG59XHJcblxyXG4vKiBCdXR0b25zICovXHJcbi5idXR0b25Te1xyXG4gIGJvcmRlcjogMXB4IHNvbGlkIGdyZXk7XHJcbiAgd2lkdGg6NTAlO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7XHJcbiAgZm9udC1zaXplOiAxNHB4O1xyXG59XHJcbiJdfQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AdminComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
