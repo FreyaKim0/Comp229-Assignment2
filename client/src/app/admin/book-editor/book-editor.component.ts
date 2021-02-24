@@ -1,3 +1,4 @@
+import { Store } from 'express-session';
 import { Component, OnInit,AfterViewInit, Input} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -31,12 +32,15 @@ export class BookEditorComponent implements OnInit {
      // Assign shop's name
      const userInfo = JSON.parse(localStorage.getItem('user'));
      this.thisUserDisplayName = userInfo['displayName'];
+     this.book.store = this.thisUserDisplayName;
   }
 
   ngOnInit(): void {}
 
   save(form: NgForm): void
   {
+    console.log(form);
+
     this.repository.saveBook(this.book);
     this.router.navigateByUrl('/admin/main/books');
   }
