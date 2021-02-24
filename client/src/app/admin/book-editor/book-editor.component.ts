@@ -1,5 +1,4 @@
-
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/model/book.model';
@@ -18,10 +17,6 @@ export class BookEditorComponent implements OnInit {
               private router: Router,
               activeRoute: ActivatedRoute)
   {
-    // Assign shop's name
-    const userInfo = JSON.parse(localStorage.getItem('user'));
-    this.thisUserDisplayName = userInfo['displayName'];
-
     // Assign that book's data into webpage
     this.editing = activeRoute.snapshot.params.mode === 'edit';
     if (this.editing)
@@ -31,8 +26,14 @@ export class BookEditorComponent implements OnInit {
 
       console.log('constructor(edit): this.book.name: ' + this.book.name);
     }
+
+     // Assign shop's name
+     const userInfo = JSON.parse(localStorage.getItem('user'));
+     this.thisUserDisplayName = userInfo['displayName'];
   }
+
   ngOnInit(): void {}
+
   save(form: NgForm): void
   {
     this.repository.saveBook(this.book);

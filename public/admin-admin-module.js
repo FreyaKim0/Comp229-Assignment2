@@ -690,9 +690,6 @@ class BookEditorComponent {
         this.router = router;
         this.editing = false;
         this.book = new src_app_model_book_model__WEBPACK_IMPORTED_MODULE_1__["Book"]();
-        // Assign shop's name
-        const userInfo = JSON.parse(localStorage.getItem('user'));
-        this.thisUserDisplayName = userInfo['displayName'];
         // Assign that book's data into webpage
         this.editing = activeRoute.snapshot.params.mode === 'edit';
         if (this.editing) {
@@ -700,6 +697,9 @@ class BookEditorComponent {
             Object.assign(this.book, repository.getBook(activeRoute.snapshot.params.id));
             console.log('constructor(edit): this.book.name: ' + this.book.name);
         }
+        // Assign shop's name
+        const userInfo = JSON.parse(localStorage.getItem('user'));
+        this.thisUserDisplayName = userInfo['displayName'];
     }
     ngOnInit() { }
     save(form) {
@@ -812,8 +812,7 @@ BookEditorComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Sale by ", ctx.thisUserDisplayName, "");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", ctx.thisUserDisplayName);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.book.store);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.book.store)("value", ctx.thisUserDisplayName);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.book.description);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
