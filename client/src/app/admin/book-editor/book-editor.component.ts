@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit} from '@angular/core';
+import { Component, OnInit,AfterViewInit, Input} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/model/book.model';
@@ -12,6 +12,7 @@ export class BookEditorComponent implements OnInit {
   editing = false;
   book: Book = new Book();
   public thisUserDisplayName;
+
 
   constructor(private repository: BookRepository,
               private router: Router,
