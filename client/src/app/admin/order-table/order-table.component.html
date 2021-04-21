@@ -75,23 +75,7 @@
           <td
             *ngIf="title === 'Manage Order'"
             style="width: 150px; padding-top: 10px; color: maroon"
-          >
-            <span
-              *ngIf="title != 'Manage Payment'"
-              style="
-                color: rgb(122, 56, 56);
-                font-size: 12px;
-                text-align: center;
-              "
-            >
-              <input
-                type="checkbox"
-                style="font-size: 12px; text-align: left"
-                [(ngModel)]="includeShipped"
-              />
-              &nbsp;Shipped
-            </span>
-          </td>
+          ></td>
 
           <!--Details-->
           <td style="width: 100px; padding-top: 10px">
