@@ -1,8 +1,53 @@
-input.ng-dirty.ng-invalid
-{
-  border:2px solid #ff0000;
+input.ng-dirty.ng-invalid {
+  border: 2px solid #ff0000;
 }
-input.ng-dirty.ng-valid
-{
-  border:2px solid #6bc502;
+input.ng-dirty.ng-valid {
+  border: 2px solid #6bc502;
+}
+.form-group {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 800;
+}
+.buttonS,
+.buttonP,
+.buttonE {
+  padding: 10px;
+  font-weight: 600;
+  border: 0px solid grey;
+  margin: 20px 10px;
+
+  font-size: 14px;
+  width: 180px;
+  background-color: maroon;
+  color: beige;
+}
+.buttonE {
+  background-color: #646262;
+}
+#right {
+  width: 300px;
+  padding: 20px;
+}
+.line_title {
+  margin-top: 20px;
+  margin-bottom: -20px;
+  font-size: 17px;
+  text-align: left;
+}
+.summary {
+  font-size: 14px;
+}
+
+.checkout {
+  background-color: rgb(158, 51, 51);
+  color: #f1f1f1;
+}
+/*Input*/
+input[type="text"] {
+  padding-left: 15px;
+  width: 100%;
+  border: 1px solid #eeeeee;
+  background-color: seashell;
+  height: 40px;
 }

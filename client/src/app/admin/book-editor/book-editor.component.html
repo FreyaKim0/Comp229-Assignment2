@@ -1,73 +1,173 @@
 <!--Edit single book content-->
 
-
-<!--Table-->
+<!--Book Form-->
 <div class="displaySetting">
-<form novalidate #form='ngForm' (ngSubmit)='save(form)'>
-  <table>
-    <tr>
-      <td rowspan="6" style="vertical-align: top;">
-          <div class="imageDiv">Picture</div>
-      </td>
+  <form novalidate [formGroup]="form" (submit)="onSubmit()">
+    <table style="font-size: 12px; line-height: 30px">
+      <tr>
+        <!--Main picture-->
+        <td rowspan="5" style="padding-right: 50px; width: 200px; margin: 0">
+          <!--Before upload-->
+          <div *ngIf="!imageData">
+            <input
+              #image0
+              (change)="onFileSelect($event, image0.name)"
+              style="display: none"
+              id="image_upload"
+              name="image0"
+              type="file"
+            />
+            <label for="image_upload" class="custom-file-upload">
+              <div class="imageDiv">
+                <i
+                  style="opacity: 0.5; font-size: 5em; color: white; padding: 0"
+                  class="fas fa-plus-square"
+                ></i>
+              </div>
+            </label>
+          </div>
 
-      <td>
-        Discount Price<br>
-        <input type="text" class="input-control" name="price" [(ngModel)]='book.price'>
-      </td>
+          <!--After Upload-->
+          <div class="image_wrap" *ngIf="imageData">
+            <!--Display Picture-->
+            <div class="image_display">
+              <div class="d-flex justify-content-center">
+                <div>
+                  <img
+                    [src]="imageData"
+                    style="max-width: 400px; max-height: 350px"
+                  />
+                </div>
+              </div>
+            </div>
+            <!--Edit layer-->
+            <div class="image_edit">
+              <button
+                #image0_btn
+                name="image0_btn"
+                class="w-100 h-100 border-0 bg-transparent"
+                (click)="deleteImage()"
+              >
+                <i
+                  style="
+                    position: absoluste;
+                    padding-left: 20px;
+                    padding-top: 10px;
+                    opacity: 0.5;
+                    font-size: 5em;
+                    color: white;
+                  "
+                  class="fas fa-times-circle"
+                ></i>
+              </button>
+            </div>
+          </div>
+        </td>
 
-    </tr>
-    <tr>
-      <td>
-        Original Price<br>
-        <input type="text" class="input-control" name="originalPrice" [(ngModel)]='book.originalPrice'>
-      </td>
-    </tr>
-    <tr>
-      <td>
-         <!--Book Name-->
-         Book Name<br>
-         <input type="text" class="input-control" name="name" [(ngModel)]='book.name'>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <!--Publish date-->
-        Publish date<br>
-        <input type="text" class="input-control" name="published" [(ngModel)]='book.published'>
-      </td>
-    </tr>
-    <tr>
-      <td>
+        <!--Book Name-->
+        <td>
+          Book Name<br />
+          <input
+            type="text"
+            class="input-control"
+            name="name"
+            formControlName="name"
+          />
+        </td>
+      </tr>
+      <tr>
         <!--Author-->
-        Author<br>
-        <input type="text" class="input-control" name="author" [(ngModel)]='book.author'>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <br> <span>Sale by {{ thisUserDisplayName }}</span>
-      </td>
-    </tr>
-    <tr>
-      <td>
+        <td>
+          Author<br />
+          <input
+            type="text"
+            class="input-control"
+            name="author"
+            formControlName="author"
+          />
+        </td>
+      </tr>
+      <tr>
+        <!--Publish date-->
+        <td>
+          Publish date<br />
+          <input
+            type="text"
+            class="input-control"
+            name="published"
+            formControlName="published"
+          />
+        </td>
+      </tr>
+      <tr>
+        <!--Discount Price-->
+        <td>
+          Discount Price<br />
+          <input
+            type="text"
+            class="input-control"
+            name="price"
+            formControlName="price"
+          />
+        </td>
+      </tr>
+      <tr>
+        <!--Original Price-->
+        <td>
+          Original Price<br />
+          <input
+            type="text"
+            class="input-control"
+            name="originalPrice"
+            formControlName="originalPrice"
+          />
+        </td>
+      </tr>
+      <tr>
+        <!--side pictures-->
+        <td></td>
+
+        <!--store-->
+        <td>
+          <br />
+          <span style="color: maroon"
+            ><i style="color: maroon; font-size: 18px" class="fas fa-user"></i
+            >Sale by {{ thisUserDisplayName }}</span
+          >
+          <input
+            type="text"
+            style="display: none"
+            class="input-control"
+            name="store"
+            formControlName="store"
+          />
+        </td>
+      </tr>
+      <tr>
         <!--Description-->
-        Description<br>
-        <textarea cols="60" name="description" rows="5" [(ngModel)]='book.description'></textarea>
-      </td>
-      <td>
+        <td colspan="2" style="padding: 30px">
+          Description<br />
+          <textarea
+            cols="105"
+            name="description"
+            rows="2"
+            formControlName="description"
+          ></textarea>
+        </td>
+      </tr>
+    </table>
 
-      </td>
-    </tr>
-  </table>
-  <button type='submit'  class="buttonS">
-    <i class="{{editing ? 'fas fa-save' : 'fas fa-plus-circle' }}"></i>
-    {{ editing ? "Save Change" : "Add This Book" }}
-  </button>
+    <!--Submit button-->
+    <button type="submit" class="buttonS">
+      <i class="{{ editing ? 'fas fa-save' : 'fas fa-plus-circle' }}"></i>
+      {{ editing ? "Save Change" : "Add This Book" }}
+    </button>
 
-  <button class="buttonS" type='reset'  routerLink='/admin/main/books'>
-    <i class="fas fa-undo"></i>
-    Cancel
-  </button>
-</form>
-<br><br>
+    <!--Cancel button-->
+    <button class="buttonS" type="reset" routerLink="/admin/main/books">
+      <i class="fas fa-undo"></i>
+      Cancel
+    </button>
+  </form>
+  <br /><br />
 </div>

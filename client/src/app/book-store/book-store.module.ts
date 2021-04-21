@@ -1,11 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { BookDetailComponent } from './book-detail/book-detail.component';
 import { RouterModule } from '@angular/router';
 import { NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BookStoreComponent } from '../book-store/book-store.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+
 import { CounterDirective } from './counter.directive';
+import { PartialsModule } from './../partials/partials.module';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
+import { BookStoreComponent } from '../book-store/book-store.component';
+import { BookDetailComponent } from './book-detail/book-detail.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 
 const routingS = RouterModule.forChild([
@@ -20,8 +23,16 @@ const routingS = RouterModule.forChild([
 
 
 @NgModule({
-  imports: [CommonModule, FormsModule, routingS],
-  declarations: [BookDetailComponent, BookStoreComponent, CounterDirective, CartDetailComponent, CheckoutComponent]
+  imports: [CommonModule,
+            NgxSliderModule,
+            FormsModule,
+            routingS,
+            PartialsModule],
+  declarations: [BookDetailComponent,
+                 BookStoreComponent,
+                 CounterDirective,
+                 CartDetailComponent,
+                 CheckoutComponent]
 })
 
 export class BookStoreModule{}

@@ -1,9 +1,9 @@
 
-import { StaticDataSource } from './static.datasource';
 import { RestDataSource } from './rest.datasource';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Order } from './order.model';
+import { ConditionalExpr } from '@angular/compiler';
 
 @Injectable()
 export class OrderRepository
@@ -11,20 +11,36 @@ export class OrderRepository
   private orders: Order[] = [];
   private loaded = false;
 
-  constructor(private dataSource: RestDataSource){}
+  constructor(private dataSource: RestDataSource) { }
+
+  // This shit is not working
   loadOrders(): void
   {
     this.loaded = true;
     this.dataSource.getOrders().subscribe(orders => this.orders = orders);
   }
 
+  // Get all orders for 'Purchase History' page
   getOrders(): Order[]
   {
     if (!this.loaded)
     {
       this.loadOrders();
     }
+    //console.log('getOrders: '+this.orders);
     return this.orders;
+  }
+
+
+  // Get orders of specific buyer
+  getOneOrder(id: number): Order[]
+  {
+    if (!this.loaded)
+    {
+      this.loadOrders();
+    }
+
+    return this.orders.filter(p => p._id === id);
   }
 
   saveOrder(order: Order): Observable<Order>

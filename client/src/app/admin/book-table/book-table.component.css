@@ -1,16 +1,16 @@
-#wrapper{
- display: flex;
- flex-wrap:wrap;
- list-style: none;
+#wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
 }
-.bookDiv{
+.bookDiv {
   width: 231px;
-  height:350px;
-  border: 1px solid grey;
+  height: 350px;
+  border: 1px solid rgb(240, 236, 236);
   margin: 10px;
 }
-.editButton{
-  margin-top:20px;
+.editButton {
+  margin-top: 20px;
   margin-left: 180px;
   position: absolute;
   z-index: 10;
@@ -19,51 +19,80 @@
   border-radius: 50px;
   background-color: rgb(129, 129, 122);
 }
-.imageDiv{
-  position: absolute;
-  margin-right: auto;
-  margin-left: auto;
-  width:229px;
-  height:230px;
-  background-color: rgb(238, 235, 235);
-}
-.edit_dialog{
-  width:229px;
-  height:40px;
+
+.edit_dialog {
+  width: 229px;
+  height: 40px;
   position: absolute;
   bottom: 0;
-  font-size:12px;
+  font-size: 12px;
   padding-top: 10px;
   background-color: rgba(255, 245, 238, 0.863);
 }
-.bookName{
-  margin-top:235px;
+.bookName {
+  margin-top: 235px;
   margin-right: auto;
-  margin-left:auto;
+  margin-left: auto;
   font-size: 14px;
   font-weight: 600;
-  width:180px;
+  width: 180px;
   text-align: left;
 }
-.fas{
-  color:seashell;
+.fas {
+  color: seashell;
   font-size: 15px;
 }
-.delete{
-  margin-top:-7px;
-  margin-left:8px;
+.delete {
+  margin-top: -7px;
+  margin-left: 8px;
   position: absolute;
 }
-.orderTable{
+.orderTable {
   width: 70%;
 }
 /* Buttons */
-.buttonS{
+.buttonS {
   font-weight: 600;
   border: 0px solid grey;
   margin: 20px 10px;
-  width:30%;
-  color:rgb(46, 45, 45);
+  width: 30%;
+  color: rgb(46, 45, 45);
   background-color: #d8d5d5;
   font-size: 14px;
+}
+/*Product picture div*/
+.imageDiv {
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  width: 229px;
+  height: 230px;
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+
+.imageDiv:hover .edit_dialog {
+  height: 40px;
+}
+
+/*edit button div*/
+.edit_dialog {
+  position: absolute;
+  bottom: 0;
+
+  width: 229px;
+  height: 0px;
+  padding-top: 10px;
+  z-index: 10;
+  transition: height 0.7s;
+
+  font-size: 12px;
+
+  background-color: rgba(226, 109, 26, 0.082);
+}
+.line_title {
+  margin-top: 40px;
+  margin-bottom: -20px;
+  font-size: 17px;
+  text-align: left;
 }

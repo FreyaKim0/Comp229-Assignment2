@@ -5,7 +5,7 @@ import { ModelModule } from './model/model.module';
 import { PagesModule } from './pages/pages.module';
 import { PartialsModule } from './partials/partials.module';
 
-import { BrowserModule } from '@angular/platform-browser';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BookStoreModule } from './book-store/book-store.module';
@@ -22,7 +22,6 @@ export function jwtTokenGetter(): string
     AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     BookStoreModule,
     PartialsModule,

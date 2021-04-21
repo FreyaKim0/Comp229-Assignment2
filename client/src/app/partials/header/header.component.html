@@ -1,129 +1,126 @@
 <header>
   <!--Main Navigation-->
-  <div class=box>
-  <nav class="navbar-expand-xl navbar-dark" id="sideNav">
+  <div class="box">
+    <nav class="navbar-expand-xl navbar-dark" id="sideNav">
+      <!-- Image and text -->
+      <div
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        id="pictureDiv"
+      >
+        <a routerLink="/home" style="text-decoration: none">
+          <nav class="navbar-brand js-scroll-trigger" id="navClass">
+            <a routerLink="/home" style="text-decoration: none">
+              <img
+                src="../../assets/images/picture.jpg"
+                width="160"
+                height="160"
+                id="profilePicture"
+                loading="lazy"
+              />
+              <p id="name">FREYA&nbsp;&nbsp;KIM</p>
+              <p id="title">SOFTWARE&nbsp;&nbsp;ENGINEER</p>
+            </a>
+          </nav>
+        </a>
+      </div>
 
-  <!-- Image and text -->
-  <div [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" id="pictureDiv">
-    <a routerLink="/home" style="text-decoration: none">
-       <nav class="navbar-brand js-scroll-trigger" id="navClass">
-                  <a routerLink="/home" style="text-decoration: none">
-                        <img src="../../assets/images/picture.jpg"
-                                  width="160"
-                                  height="160"
-                                  id="profilePicture"
-                                  loading="lazy"/>
-                  <p id="name">FREYA&nbsp;&nbsp;KIM</p>
-                  <p id="title">SOFTWARE&nbsp;&nbsp;ENGINEER</p>
-                  </a>
-      </nav>
-    </a>
-  </div>
-
-  <!--contact buttons-->
- <div id="hamburgerDiv">
- <span>
- <div id="contactInfo">
-
-  <!--GitHub-->
-  <button class="contactButton"
-          type="button"
-          data-container="body"
-          data-trigger="hover"
-          data-toggle="popover"
-          data-placement="top"
-          data-content="Open GitHub in new Tab"
-          onclick=" window.open('https://github.com/FreyaKim0','_blank')"><i class="fab fa-github"></i></button>
-
-          <!--linkedIn-->
-  <button class="contactButton"
-          type="button"
-          data-container="body"
-          data-trigger="hover"
-          data-toggle="popover"
-          data-placement="top"
-          data-content="Open LinkedIn in new Tab"
-          onclick=" window.open('http://www.linkedin.com/in/xutungjin','_blank')">
-  <i class="fab fa-linkedin"></i>
-  </button>
-
-      <!--Logout and Login-->
-
-      <a *ngIf='isLoggedIn()' (click)='onLogoutClick()' routerLink='/logout' class="contactButton"
-      type="button"
-      routerLink="/login">
-      <i class="fas fa-sign-out-alt" id="login_icon"></i>
-      <div class="words">
-        logout
-       </div>
-      </a>
-
-      <a *ngIf='!isLoggedIn()' class="contactButton"
-      type="button"
-      routerLink="/login">
-      <i class="fas fa-sign-in-alt" id="login_icon"></i>
-      </a>
-
-   <!-- Admin -->
-   <a *ngIf='isLoggedIn()' class="contactButton"
-   [routerLinkActive]="['active']"
-   type="button"
-   routerLink="/admin/main">
-   <i class="fas fa-user-shield" id="login_icon"></i>
-   <div class="words">
-    {{user.displayName}}'s account
-    </div>
-   </a>
-
-
-
-     <!--Shopping Cart-->
-     <app-cart-summary>
-    </app-cart-summary>
-
-
-
-
- </div>
-
-  <!--Hamburger buttons-->
-  <button id="hamburger_btn"
-              style="float: right"
-              class="navbar-toggler"
+      <!--contact buttons-->
+      <div id="hamburgerDiv">
+        <span>
+          <div id="contactInfo">
+            <!--GitHub-->
+            <button
+              class="contactButton"
               type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation">
-  <span style="float: right" class="navbar-toggler-icon btn-sm"></span>
-  </button>
- </span>
- </div>
+              data-container="body"
+              data-trigger="hover"
+              data-toggle="popover"
+              data-placement="top"
+              data-content="Open GitHub in new Tab"
+              onclick=" window.open('https://github.com/FreyaKim0','_blank')"
+            >
+              <i class="fab fa-github"></i>
+            </button>
 
-  <!-- Dropdown List-->
-  <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+            <!--linkedIn-->
+            <button
+              class="contactButton"
+              type="button"
+              data-container="body"
+              data-trigger="hover"
+              data-toggle="popover"
+              data-placement="top"
+              data-content="Open LinkedIn in new Tab"
+              onclick=" window.open('http://www.linkedin.com/in/xutungjin','_blank')"
+            >
+              <i class="fab fa-linkedin"></i>
+            </button>
 
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" routerLink="/service">Service</a>
-      </li>
+            <!--Logout and Login-->
 
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a id="projectDropDown" class="nav-link" routerLink="/projects">Project</a>
-      </li>
+            <a
+              *ngIf="isLoggedIn()"
+              (click)="onLogoutClick()"
+              routerLink="/logout"
+              class="contactButton"
+              type="button"
+              routerLink="/login"
+            >
+              <i class="fas fa-sign-out-alt" id="login_icon"></i>
+              <div class="words">logout</div>
+            </a>
 
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" routerLink="/about">About</a>
-      </li>
+            <a class="contactButton" type="button" routerLink="/login">
+              <i class="fas fa-sign-in-alt" id="login_icon"></i>
+            </a>
+          </div>
 
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" routerLink="/contact">Contact</a>
-      </li>
-    </ul>
+          <!--Hamburger buttons-->
+          <button
+            id="hamburger_btn"
+            style="float: right"
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span
+              style="float: right"
+              class="navbar-toggler-icon btn-sm"
+            ></span>
+          </button>
+        </span>
+      </div>
+
+      <!-- Dropdown List-->
+      <div
+        class="collapse navbar-collapse justify-content-center"
+        id="navbarSupportedContent"
+      >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="/service">Service</a>
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a id="projectDropDown" class="nav-link" routerLink="/projects"
+              >Project</a
+            >
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="/about">About</a>
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
-  </nav>
-  </div>
-
-
 </header>

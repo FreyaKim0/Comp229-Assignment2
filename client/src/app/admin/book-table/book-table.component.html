@@ -1,52 +1,57 @@
 <!--Shop owner edit their products-->
+<p class="line_title"><b>Manage Products &nbsp;&nbsp;&nbsp;</b></p>
+<hr />
 
-<button class="buttonS" (click)='addBook()'>
+<button class="buttonS" routerLink="/book-list/all">
+  <i class="fas fa-eye"></i> &nbsp; Back To Main
+</button>
+
+<button class="buttonS" (click)="addBook()">
   <i class="fas fa-plus-circle"></i> &nbsp; Add New Book
 </button>
 
-<button class="buttonS" (click)='addBook()'>
-  <i class="fas fa-eye"></i> &nbsp; View As Public
-</button>
+<!--Generate items-->
+<div id="wrapper">
+  <div *ngFor="let b of getBooks() | callback: userNamefilter">
+    <div class="bookDiv">
+      <!--edit button-->
+      <div class="editButton">
+        <div class="delete">
+          <a (click)="deleteBook(b._id)">
+            <i class="fas fa-trash-alt"></i>
+          </a>
+        </div>
+      </div>
 
- <!--Generate items-->
-    <div id="wrapper">
-      <div *ngFor='let b of getBooks()'>
-        <div class="bookDiv">
+      <!--image-->
+      <div class="imageDiv">
+        <img
+          [src]="b.imagePath"
+          [alt]="b.name"
+          style="padding: 10px; max-width: 200px; max-height: 200px"
+        />
+        <div class="edit_dialog">
+          <a (click)="editBook(b._id)"> Edit Item </a>
+        </div>
+      </div>
 
-          <!--edit button-->
-          <div class="editButton">
-            <div class="delete">
-              <a (click)='deleteBook(b._id)'>
-                <i class="fas fa-trash-alt"></i>
-              </a>
+      <!--book name-->
+      <div class="bookName">
+        {{ b.name }} &nbsp;-&nbsp;<span style="color: gray"
+          >sale by {{ b.store }}</span
+        >
+      </div>
 
-            </div>
-          </div>
-
-          <!--image-->
-          <div class="imageDiv">
-            <div class="edit_dialog">
-              <a (click)='editBook(b._id)'>
-                Edit Item
-              </a>
-            </div>
-          </div>
-
-          <!--book name-->
-          <div class="bookName">
-            {{ b.store }}
-          </div>
-          <div class="bookName">
-            {{ b.name }}
-          </div>
-
-          <!--price-->
-          <div>
-            <span style="text-decoration: line-through; font-size: 12px;">{{ b.originalPrice | currency: 'USD': 'symbol': '2.2-2'}}</span>&nbsp;
-            <span style="font-size:12px; color:red;">{{ b.price | currency: 'USD': 'symbol': '2.2-2'}}</span>
-          </div>
-
-       </div>
+      <!--price-->
+      <div>
+        <span style="text-decoration: line-through; font-size: 12px">{{
+          b.originalPrice | currency: "USD":"symbol":"2.2-2"
+        }}</span
+        >&nbsp;
+        <span style="font-size: 12px; color: red">{{
+          b.price | currency: "USD":"symbol":"2.2-2"
+        }}</span>
       </div>
     </div>
-
+  </div>
+</div>

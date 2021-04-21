@@ -1,94 +1,139 @@
+<!--Nav-->
+<div>
+  <app-book-store-header></app-book-store-header>
+</div>
+
+<!--buttons-->
+<button class="buttonS" routerLink="/book-list/all">
+  <i class="fas fa-eye"></i> &nbsp; Buy Books
+</button>
+
+<button class="buttonS" routerLink="/admin/main/books">
+  <i class="fas fa-plus-circle"></i> &nbsp; Sale Books
+</button>
+
+<!--image-->
+<!--<img src="../../assets/images/book-2.jpg" />&nbsp;&nbsp;&nbsp;
+<img src="../../assets/images/book-1.jpg" />
+<hr style="margin-top: 50px; width: 60%" />-->
+
+<!--Left Column-->
 <div class="container-fluid">
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <!--Filter-->
-    <div id="filter" class="col-2 ml-5">
+    <div id="filter" class="col-2 ml-5" style="max-width: 200px">
+      <span style="font-size: 25px">Filter by</span>
+      <hr />
 
-        <span style="font-size:25px;">Filter by</span>
-        <hr>
+      <!--Price-->
+      <span>Price </span><br />
+      <div class="custom-slider">
+        <ngx-slider
+          [(value)]="value"
+          [(highValue)]="highValue"
+          [options]="options"
+        ></ngx-slider>
+      </div>
 
-        <!--Price-->
-        <span>Price</span>
-        <hr>
+      <hr />
 
-        <!--Authors-->
-        <span>Authors</span><br>
-        <button class="buttonS" (click)='changeAuthor()'>
-          All
-        </button><br>
+      <!--Authors-->
+      <span>Authors</span><br />
+      <button
+        style="
+          margin-top: 10px;
+          color: rgb(70, 62, 62);
+          width: 90%;
+          background-color: white;
+          border: solid 1px grey;
+        "
+        (click)="changeAuthor()"
+      >
+        All</button
+      ><br />
 
-        <button *ngFor='let author of authors'
-        class="buttonS"
-        [class.active] = 'author == selectedAuthor'
-        (click)='changeAuthor(author)'>
-            {{author}}
-        </button><br>
+      <button
+        *ngFor="let author of authors"
+        style="
+          margin-top: 10px;
+          color: rgb(70, 62, 62);
+          width: 90%;
+          background-color: white;
+          border: solid 1px grey;
+        "
+        [class.active]="author == selectedAuthor"
+        (click)="changeAuthor(author)"
+      >
+        {{ author }}
+      </button>
 
-        <hr>
+      <hr />
 
-        <!--Publish year-->
-        <span>Publish Year</span><br>
+      <!--Items per page-->
+      <span>Page Length</span><br /><br />
+      <select
+        style="width: 90%"
+        [value]="booksPerPage"
+        (change)="changePageSize($event.target.value)"
+      >
+        <option value="12">12 per page</option>
+        <option value="24">24 per page</option>
+        <option value="36">36 per page</option>
+        <option value="48">48 per page</option>
+      </select>
 
-        <hr>
-
-        <!--Items per page-->
-        <span>Display</span><br><br>
-        <select style="width: 90%;" [value]='booksPerPage'
-        (change)='changePageSize($event.target.value)'>
-          <option value="12">12 per page</option>
-          <option value="24">24 per page</option>
-          <option value="36">36 per page</option>
-          <option value="48">48 per page</option>
-        </select>
-
-
-
-        <hr>
-
+      <hr />
     </div>
-
-    <!--Generate book divs-->
-
-    <div id="wrapper" class="col-9">
-
+    <!--Right Column *Generate book divs*-->
+    <div id="wrapperA" class="col-9 ml-3">
       <router-outlet></router-outlet>
 
-        <div class="ngContent" *ngFor='let book of books'>
-            <div class="bookDiv">
-
-                <!--image and view details-->
-                <div class="imageDiv">
-                  <div class="edit_dialog">
-                    <a (click)='viewBook(book._id)'>
-                      View Details
-                    </a>
-                  </div>
-                </div>
-
-                <!--Book Store-->
-                <div class="bookName">
-                  {{book.store}}
-                </div>
-
-                <!--book name-->
-                <div class="bookName">
-                  {{book.name}}
-                </div>
-
-                <!--price-->
-                <div>
-                  <span style="text-decoration: line-through; font-size: 12px;">{{ book.originalPrice | currency: 'USD': 'symbol': '2.2-2'}}</span>&nbsp;
-                  <span style="font-size:12px; color:red;">{{ book.price | currency: 'USD': 'symbol': '2.2-2'}}</span>
-                </div>
-
+      <div class="ngContent" *ngFor="let book of books">
+        <div class="bookDiv">
+          <!--image and view details-->
+          <div class="imageDiv">
+            <img
+              [src]="book.imagePath"
+              [alt]="book.name"
+              style="padding: 10px; max-width: 200px; max-height: 200px"
+            />
+            <div class="edit_dialog">
+              <a (click)="viewBook(book._id)"> View Details </a>
             </div>
+          </div>
+
+          <!--book name-->
+          <div class="bookName">
+            {{ book.name }} &nbsp;-&nbsp;<span style="color: gray"
+              >sale by {{ book.store }}</span
+            >
+          </div>
+
+          <!--price-->
+          <div>
+            <span style="text-decoration: line-through; font-size: 12px">{{
+              book.originalPrice | currency: "USD":"symbol":"2.2-2"
+            }}</span
+            >&nbsp;
+            <span style="font-size: 12px; color: red">{{
+              book.price | currency: "USD":"symbol":"2.2-2"
+            }}</span>
+          </div>
         </div>
-        <br>
-     </div>
+      </div>
+      <br />
+    </div>
   </div>
-
-  <button *counter='let page of pageCount' (click)='changePage(page)' class="pageNumber"
-  [class.active]='page == selectedPage'>
-  {{ page }}
-  </button>
-
 </div>
+
+<!--page number bar-->
+<button
+  *counter="let page of pageCount"
+  (click)="changePage(page)"
+  class="pageNumber"
+  [class.active]="page == selectedPage"
+>
+  {{ page }}
+</button>
+
+<br /><br />

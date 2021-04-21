@@ -1,19 +1,15 @@
 /* Online Middleware To Backend */
 
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHandler, HttpHeaders , HttpInterceptor, HttpRequest} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Book } from './book.model';
 import { Order } from './order.model';
-import { JwtHelperService, JwtInterceptor } from '@auth0/angular-jwt';
+import { JwtHelperService} from '@auth0/angular-jwt';
 import { User } from './user.model';
-import { map } from 'rxjs/operators';
-import { Cart } from './cart.model';
-import { Type } from '@angular/compiler/src/core';
-import { faShoePrints } from '@fortawesome/free-solid-svg-icons';
+import { Form } from '@angular/forms';
 
-const PROTOCOL = 'https';
-const PORT = 3500;
+
 
 @Injectable()
 export class RestDataSource
@@ -26,7 +22,9 @@ export class RestDataSource
   private httpOptions =
   {
     headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
     })
   };
 
@@ -34,8 +32,8 @@ export class RestDataSource
               private jwtService: JwtHelperService)
   {
     this.user = new User();
-    // this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/api/`;
-    this.baseUrl = `https://xu-tung-jin-assignment2.herokuapp.com/api/`;
+    this.baseUrl = `http://localhost:3500/`; // + /api/ for product phase
+    //this.baseUrl = `https://xu-tung-jin-assignment2.herokuapp.com/api/`;
   }
 
 
@@ -74,12 +72,6 @@ export class RestDataSource
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
-
-    console.log('rest.datasource:');
-    console.log('authToken:' + this.authToken);
-    console.log('user displayname:' + this.user.displayName);
-    console.log('user email:' + this.user.email);
-    console.log('user username:' + this.user.username);
   }
 
   authenticate(user: User): Observable<any>
@@ -110,30 +102,27 @@ export class RestDataSource
 
 
   // get, add, update, delete books
+
+
   getBooks(): Observable<Book[]>
   {
     return this.http.get<Book[]>(this.baseUrl + 'book-list');
   }
 
-  addBook(book: Book): Observable<any>
+  addBook(bookData: FormData): Observable<any>
   {
     this.loadToken();
-    return this.http.post<Book>(this.baseUrl + 'book-list/add', book, this.httpOptions);
+    return this.http.post<{book: Book}>(this.baseUrl + 'book-list/add', bookData, this.httpOptions);
   }
 
-  updateBook(book: Book): Observable<Book>
+  updateBook(bookData: FormData,_id: string): Observable<Book>
   {
     this.loadToken();
-    console.log('rest.datasources,update book id:' + book._id);
-    console.log('rest.datasources,update book name:' + book.name);
-    console.log('rest.datasources,update book author:' + book.author);
-    console.log('rest.datasources,update book description:' + book.description);
-    console.log('rest.datasources,update book price:' + book.price);
-    console.log('rest.datasources,update book published:' + book.published);
-    return this.http.post<Book>(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
+    console.log('updatebook id: ' + _id);
+    return this.http.post<{book: Book}>(`${this.baseUrl}book-list/edit/${_id}`,bookData, this.httpOptions);
   }
 
-  deleteBook(id: number): Observable<Book>
+  deleteBook(id: string): Observable<Book>
   {
     console.log('delete Book start running..');
     this.loadToken();
@@ -147,7 +136,8 @@ export class RestDataSource
   // save, get, delete, update orders
   saveOrder(order: Order): Observable<Order>
   {
-    console.log(JSON.stringify(order));
+    // LINE有被變成json沒錯
+    console.log("rest->saveOrder: "+ JSON.stringify(order));
     return this.http.post<Order>(this.baseUrl + 'orders/add', order);
   }
 
@@ -179,8 +169,6 @@ export class RestDataSource
   {
     const token = localStorage.getItem('id_token');
     this.authToken = 'bearer '+token;
-
-    // this IS wrong
     this.httpOptions.headers = new HttpHeaders().set('Authorization', this.authToken);
   }
 

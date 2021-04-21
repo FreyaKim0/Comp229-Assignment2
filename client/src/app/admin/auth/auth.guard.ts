@@ -17,11 +17,11 @@ export class AuthGuard
   {
     if (this.auth.authenticated)
     {
-      console.log('auth.guard: you are authenticated to see this page');
+      // console.log('auth.guard: you are authenticated to see this page');
       return true;
     }
     else{
-      console.log('auth.guard: cannot authenticate to see this page, go back to login page');
+      // console.log('auth.guard: cannot authenticate to see this page, go back to login page');
       this.router.navigate(['/admin/auth']);
       return false;
     }

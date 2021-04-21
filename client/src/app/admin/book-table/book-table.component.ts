@@ -3,21 +3,31 @@ import { Router } from '@angular/router';
 import { Book } from 'src/app/model/book.model';
 import { BookRepository } from 'src/app/model/book.repository';
 
+
 @Component({
   templateUrl: './book-table.component.html',
   styleUrls: ['./book-table.component.css']
 })
+
+
 export class BookTableComponent implements OnInit {
+
+  public userNamefilter="";
+
   constructor(private repository: BookRepository,
-              private router: Router) { }
+    private router: Router) { }
+
   ngOnInit(): void {
   }
+
   getBooks(): Book[]
   {
     return this.repository.getBooks();
   }
+
   deleteBook(id: number): void
   {
+    console.log('id? ' + id);
     if (confirm('This item will be **DELETED PERMANENTLY** , are you sure ?') && (id !== undefined))
     {
       this.repository.deleteBook(id);

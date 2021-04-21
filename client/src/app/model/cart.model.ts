@@ -8,9 +8,15 @@ import { Book } from './book.model';
   public itemCount = 0;
   public cartPrice = 0;
 
+  constructor(){}
+
+
+
   addLine(book: Book, quantity: number= 1): void
   {
-    const line = this.lines.find( l => l.book._id === book._id);
+    const line = this.lines.find(l => l.book._id === book._id);
+
+    // If there is no duplicated _id
     if (line !== undefined)
     {
       line.quantity += quantity;
@@ -34,7 +40,7 @@ import { Book } from './book.model';
 
   removeLine(id: number): void
   {
-    const index = this.lines.findIndex(l => l.book._id === id);
+    const index = this.lines.findIndex(l => l.book._id === String(id));
     this.lines.splice(index, 1);
     this.recalculate();
   }
@@ -57,13 +63,14 @@ import { Book } from './book.model';
   }
 }
 
+// CartLine for recording each books
 export class CartLine
 {
  constructor(public book: Book,
-             public quantity: number)
-             { }
-             get lineTotal(): number
-             {
-               return this.quantity * this.book.price;
-             }
+             public quantity: number){ }
+
+ get lineTotal(): number
+{
+   return this.quantity * this.book.price;
+}
 }

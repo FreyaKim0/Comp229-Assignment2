@@ -1,52 +1,114 @@
-
-.displaySetting{
-
+.displaySetting {
   margin-right: auto;
   margin-left: auto;
-  text-align:center;
-  width:80%;
+  text-align: center;
+  width: 100%;
 }
-.input-control{
+.input-control {
+  border: 1px solid #eeeeee;
+  background-color: seashell;
   width: 200px;
+  padding: 0;
 }
-.imageDiv{
-  background-color: #d8d5d5;
-  width:100%;
+input[type="text"] {
+  padding-left: 10px;
+}
+textarea {
+  border: 1px solid #eeeeee;
+  background-color: seashell;
+  padding: 15px;
+}
+
+/*Upload main picture*/
+.imageDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgb(216, 210, 210);
+  border: 1px rgb(197, 196, 196) solid;
+
+  width: 400px;
   height: 350px;
+}
+.imageDiv:hover {
+  background-color: rgb(116, 100, 100);
+}
+.small_side:hover {
+  background-color: rgb(116, 100, 100);
+}
+.imageDiv_side {
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  padding-right: 50px;
+}
+.small_side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border: 1px rgb(219, 217, 217) solid;
+  background-color: seashell;
 }
 
 /* Buttons */
-.buttonS{
+.buttonS {
   font-weight: 600;
   border: 0px solid grey;
   margin: 20px 10px;
-  width:30%;
-  color:rgb(46, 45, 45);
+  width: 30%;
+  color: rgb(46, 45, 45);
   background-color: #d8d5d5;
   font-size: 14px;
 }
-.fas{
-  color:seashell;
+.fas {
+  color: seashell;
   font-size: 15px;
-  padding-right:15px;
+  padding-right: 15px;
 }
 
 /*Table*/
-table{
+table {
   margin-left: auto;
   margin-right: auto;
-  min-width: 300px;
-  width: 80%;
+  width: 500px;
   text-align: left;
   font-size: 16px;
 }
-td{
-  padding-left: 30px;
+td {
   padding-top: 20px;
 }
 
 /*Input*/
-input{
+input {
   width: 100%;
 }
 
+/*image*/
+.image_wrap {
+  width: 400px;
+  height: 350px;
+  position: relative;
+}
+
+.image_display {
+  width: 400px;
+  height: 350px;
+  background-color: rgb(255, 255, 255);
+}
+
+.image_edit {
+  width: 400px;
+  height: 350px;
+  background-color: rgb(39, 10, 15);
+  z-index: 10;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.image_edit:hover {
+  opacity: 0.5;
+}

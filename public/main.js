@@ -162,6 +162,7 @@ class CounterDirectiveContext {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Book", function() { return Book; });
+// Sorting book data model @ front end
 class Book {
     constructor(
     // tslint:disable-next-line: variable-name
@@ -610,20 +611,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const PROTOCOL = 'https';
-const PORT = 3500;
 class RestDataSource {
     constructor(http, jwtService) {
         this.http = http;
         this.jwtService = jwtService;
         this.httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
             })
         };
         this.user = new _user_model__WEBPACK_IMPORTED_MODULE_2__["User"]();
-        // this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/api/`;
-        this.baseUrl = `https://xu-tung-jin-assignment2.herokuapp.com/api/`;
+        this.baseUrl = `http://localhost:3500/`; // + /api/ for product phase
+        //this.baseUrl = `https://xu-tung-jin-assignment2.herokuapp.com/api/`;
     }
     // get, add, update user (registration)
     getUser() {
@@ -998,17 +999,17 @@ function BookStoreComponent_div_38_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "span", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "span", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "span", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](13, "currency");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "\u00A0 ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "span", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "span", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](17, "currency");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1018,9 +1019,9 @@ function BookStoreComponent_div_38_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const book_r6 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", book_r6.store, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", book_r6.name, " \u00A0-\u00A0");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", book_r6.name, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("sale by ", book_r6.store, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind4"](13, 4, book_r6.originalPrice, "USD", "symbol", "2.2-2"));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
@@ -1028,7 +1029,7 @@ function BookStoreComponent_div_38_Template(rf, ctx) { if (rf & 1) {
 } }
 function BookStoreComponent_button_40_Template(rf, ctx) { if (rf & 1) {
     const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function BookStoreComponent_button_40_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r11); const page_r9 = ctx.$implicit; const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r10.changePage(page_r9); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1075,7 +1076,7 @@ class BookStoreComponent {
     }
 }
 BookStoreComponent.ɵfac = function BookStoreComponent_Factory(t) { return new (t || BookStoreComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_model_book_repository__WEBPACK_IMPORTED_MODULE_1__["BookRepository"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
-BookStoreComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BookStoreComponent, selectors: [["app-book-store"]], decls: 41, vars: 4, consts: [[1, "container-fluid"], [1, "row"], ["id", "filter", 1, "col-2", "ml-5"], [2, "font-size", "25px"], [1, "buttonS", 3, "click"], ["class", "buttonS", 3, "active", "click", 4, "ngFor", "ngForOf"], [2, "width", "90%", 3, "value", "change"], ["value", "12"], ["value", "24"], ["value", "36"], ["value", "48"], ["id", "wrapper", 1, "col-9"], ["class", "ngContent", 4, "ngFor", "ngForOf"], ["class", "pageNumber", 3, "active", "click", 4, "counter", "counterOf"], [1, "ngContent"], [1, "bookDiv"], [1, "imageDiv"], [1, "edit_dialog"], [3, "click"], [1, "bookName"], [2, "text-decoration", "line-through", "font-size", "12px"], [2, "font-size", "12px", "color", "red"], [1, "pageNumber", 3, "click"]], template: function BookStoreComponent_Template(rf, ctx) { if (rf & 1) {
+BookStoreComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BookStoreComponent, selectors: [["app-book-store"]], decls: 41, vars: 4, consts: [[1, "container-fluid"], [1, "row"], ["id", "filter", 1, "col-2", "ml-5"], [2, "font-size", "25px"], [1, "buttonS", 3, "click"], ["class", "buttonS", 3, "active", "click", 4, "ngFor", "ngForOf"], [2, "width", "90%", 3, "value", "change"], ["value", "12"], ["value", "24"], ["value", "36"], ["value", "48"], ["id", "wrapper", 1, "col-9"], ["class", "ngContent", 4, "ngFor", "ngForOf"], ["class", "pageNumber", 3, "active", "click", 4, "counter", "counterOf"], [1, "ngContent"], [1, "bookDiv"], [1, "imageDiv"], [1, "edit_dialog"], [3, "click"], [1, "bookName"], [2, "color", "gray"], [2, "text-decoration", "line-through", "font-size", "12px"], [2, "font-size", "12px", "color", "red"], [1, "pageNumber", 3, "click"]], template: function BookStoreComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);

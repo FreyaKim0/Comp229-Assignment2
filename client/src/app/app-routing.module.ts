@@ -10,7 +10,6 @@ import { ProjectsComponent } from './pages/projects/projects.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ServiceComponent } from './pages/service/service.component';
 import { BookStoreComponent } from './book-store/book-store.component';
-import { Store } from 'express-session';
 
 
 const routes: Routes = [

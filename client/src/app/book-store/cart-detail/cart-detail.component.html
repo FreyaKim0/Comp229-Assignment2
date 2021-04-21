@@ -1,107 +1,110 @@
-<!--Personal Shopping cart page-->
-
+<!--Personal Shopping cart page (@ the body)-->
 <router-outlet></router-outlet>
 
 <div class="wrap">
+  <!--Details table-->
   <div id="left">
-    <p class="line_title">My Cart</p>
-    <hr>
+    <p class="line_title">My Shopping Cart</p>
+    <hr />
 
     <!--If no item-->
-    <p class="letter" *ngIf='cart.lines.length==0'>
-        The cart is empty.
-    </p>
+    <p class="letter" *ngIf="cart.lines.length == 0">The cart is empty.</p>
 
     <!--Generate items-->
-    <table *ngFor='let line of cart.lines'>
+    <table *ngFor="let line of cart.lines">
       <tr>
-          <!-- Conditional Section-->
-          <th *ngIf='cart.lines.length==0'>
-            Your cart is empty
-          </th>
+        <!-- Conditional Section-->
+        <th *ngIf="cart.lines.length == 0">Your cart is empty</th>
       </tr>
 
       <tr>
-        <th>
-            <!--Item picture-->
-            <div class="itemPicture"></div>
+        <th style="width: 120px">
+          <!--Item picture-->
+          <div class="itemPicture">
+            <img
+              [src]="line.book.imagePath"
+              [alt]="line.book.name"
+              style="max-width: 100px; max-height: 100px"
+            />
+          </div>
         </th>
-        <th style="max-width: 250px; margin-bottom: 10px;">
-            <!--Book name-->
-              {{line.book.name}}<br><br>
-            <!--Single price-->
-             <span style="color:grey; font-size: 10px;"> {{line.book.price|currency:'USD':'symbol':'2.2-2'}}&nbsp;x</span><br>
-            <!--quantity-->
-              <input type="number" style="width: 2.5em"
-              [value]='line.quantity'
-              (change)='cart.updateQuantity(line.book,$event.target.value)'
-              >
+        <th style="text-align: left; width: 250px; margin-bottom: 10px">
+          <!--Book name-->
+          {{ line.book.name }}<br /><br />
+          <!--Single price-->
+          <span style="color: grey; width: 250px; font-size: 10px">
+            {{
+              line.book.price | currency: "USD":"symbol":"2.2-2"
+            }}&nbsp;x</span
+          ><br />
+          <!--quantity-->
+          <input
+            type="number"
+            style="width: 2.5em"
+            [value]="line.quantity"
+            (change)="cart.updateQuantity(line.book, $event.target.value)"
+          />
         </th>
         <th>
-            <!--amount*price-->
-            <span style="color:red">{{line.lineTotal|currency:'USD':'symbol':'2.2-2'}}</span>
+          <!--amount*price-->
+          <span style="color: red">{{
+            line.lineTotal | currency: "USD":"symbol":"2.2-2"
+          }}</span>
         </th>
         <th>
-            <!--Remove item-->
-            <a clsdd="buttonS" (click)='cart.removeLine(line.book._id)'>
-               <i class="far fa-times-circle"></i>
-            </a>
+          <!--Remove item-->
+          <a clsdd="buttonS" (click)="cart.removeLine(line.book._id)">
+            <i class="far fa-times-circle"></i>
+          </a>
         </th>
       </tr>
-     </table>
+    </table>
 
-    <hr>
+    <hr />
   </div>
+
+  <!--Summary-->
   <div id="right">
     <p class="line_title">Summary</p>
-    <hr>
+    <hr />
     <table class="summary">
       <tr>
-        <td class="text-left w-50 p-0">
-          Subtotal
-        </td>
+        <td class="text-left w-50 p-0">Subtotal</td>
         <td class="text-right w-50 p-0">
-          {{ cart.cartPrice|currency:'USD':'symbol':'2.2-2'}}
+          {{ cart.cartPrice | currency: "USD":"symbol":"2.2-2" }}
         </td>
       </tr>
       <tr>
-        <td class="text-left w-50 p-0">
-          Shipping
-        </td>
-        <td class="text-right w-50 p-0">
-          $15.00
-        </td>
+        <td class="text-left w-50 p-0">Shipping</td>
+        <td class="text-right w-50 p-0">$15.00</td>
       </tr>
       <tr>
         <td class="text-left w-50 p-0">
-          <hr>
+          <hr />
         </td>
         <td class="text-right w-50 p-0">
-          <hr>
+          <hr />
         </td>
       </tr>
       <tr>
-        <td class="text-left w-50 p-0">
-          Total
-        </td>
+        <td class="text-left w-50 p-0">Total</td>
         <td class="text-right w-50 p-0">
-          {{ (cart.cartPrice+15)|currency:'USD':'symbol':'2.2-2'}}
+          {{ cart.cartPrice + 15 | currency: "USD":"symbol":"2.2-2" }}
         </td>
       </tr>
     </table>
 
-         <!--continue shopping-->
-         <button class="buttonS" routerLink='/book-list'>
-          Continue Shopping
-        </button><br>
+    <!--continue shopping-->
+    <button class="buttonS" routerLink="/book-list">Continue Shopping</button
+    ><br />
 
-        <!--checkout-->
-        <button class="buttonS checkout" routerLink='admin/main/checkout'
-          [disabled]='cart.lines.length==0'>
-          Checkout
-        </button>
+    <!--checkout-->
+    <button
+      class="buttonS checkout"
+      routerLink="/admin/main/checkout"
+      [disabled]="cart.lines.length == 0"
+    >
+      Checkout
+    </button>
   </div>
 </div>
-
-
-

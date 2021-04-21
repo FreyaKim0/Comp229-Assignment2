@@ -16,8 +16,8 @@ export class AdminComponent
               private router: Router)
               {
                 const userInfo = JSON.parse(localStorage.getItem('user'));
-                this.thisUserDisplayName = userInfo['displayName'];
-                this.thisUserAlphabet = this.thisUserDisplayName.substring(0,1);
+                this.thisUserDisplayName = userInfo.displayName;
+                this.thisUserAlphabet = this.thisUserDisplayName.substring(0, 1);
               }
   logout(): void
   {

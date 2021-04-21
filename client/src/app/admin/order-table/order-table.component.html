@@ -1,81 +1,115 @@
+<!--Manage your/customer's order-->
 <div class="wrap">
   <div id="left">
+    <!--Title text-->
     <p class="line_title">
-        My Order History &nbsp;&nbsp;&nbsp;
-        <input type="checkbox" style="font-size: 12px; text-align: left;" [(ngModel)]='includeShipped'>
-        <span style="color:rgb(122, 56, 56); font-size:12px; text-align:center;">
-          &nbsp;Display Shipped Orders
-        </span>
+      <span>
+        <b>{{ title }} &nbsp;&nbsp;&nbsp;</b>
+      </span>
+
+      <!--Include old data check box-->
+      <span
+        *ngIf="title != 'Manage Payment'"
+        style="color: rgb(122, 56, 56); font-size: 12px; text-align: center"
+      >
+        <input
+          type="checkbox"
+          style="font-size: 12px; text-align: left"
+          [(ngModel)]="includeShipped"
+        />
+        &nbsp;Display Shipped Orders
+      </span>
     </p>
+    <hr />
 
-    <hr>
-
-    <table>
-
-      <!--Header-->
+    <table style="width: 800px">
+      <!--T Header-->
       <tr>
-          <th style="width: 18%;">
-              Order Number
-          </th>
-          <th style="width: 18%;">
-              Postal Code
-          </th>
-          <th style="width: 18%;">
-              Product
-          </th>
-          <th style="width: 18%;">
-              Quantity
-          </th>
-          <th style="width: 18%;">
-              Ship Status
-          </th>
-          <th style="width: 10%;">
-          </th>
-      </tr>
-
-      <tr>
-        <td colspan="6">
-
-        </td>
+        <th style="width: 150px">Order Number</th>
+        <th style="width: 100px">Paid</th>
+        <th style="width: 150px">Order Date</th>
+        <th style="width: 150px">Ship Status</th>
+        <th style="width: 100px">View</th>
+        <th style="width: 100px">Delete</th>
       </tr>
 
       <!--If there is no data to show-->
-      <tr *ngIf='getOrders().length == 0'>
-        <td colspan="6" style="color:rgb(197, 191, 191); text-align:center; padding-top:25px;">
+      <tr *ngIf="getOrders().length == 0">
+        <td
+          colspan="6"
+          style="
+            color: rgb(197, 191, 191);
+            text-align: center;
+            padding-top: 25px;
+          "
+        >
           There are no unshipped orders.
         </td>
       </tr>
 
+      <!--If there are data to show-->
+      <ng-template ngFor let-o [ngForOf]="getOrders()" let-i="index">
+        <tr>
+          <!--Order Number-->
+          <td style="width: 200px; padding-top: 10px">{{ o._id }}</td>
 
-          <ng-template ngFor let-o [ngForOf]='getOrders()'>
-            <tr>
-              <td style="width: 18%; padding-top: 10px;">{{ o.name }}</td>
-              <td style="width: 18%; padding-top: 10px;">{{ o.postalCode }}</td>
-              <td style="width: 18%; padding-top: 10px;">Product</td>
-              <td style="width: 18%; padding-top: 10px;">Quantity</td>
-              <td style="width: 18%; padding-top: 10px; color:maroon;">
-               {{ o.shipped ? "Shipped" : "Proccessing..." }}
-              </td>
-              <td style="width: 10%;  padding-top: 10px;">
-                <button class="buttonS" (click)='delete(o._id)'>
-                  <i class="fas fa-trash-alt"></i> Delete
-                </button>
-              </td>
-            </tr>
+          <!--Amount-->
+          <td style="width: 100px; padding-top: 10px; color: maroon">
+            {{ o.cart.cartPrice | currency: "USD":"symbol":"2.2-2" }}
+          </td>
 
+          <!--Date-->
+          <td style="width: 150px; padding-top: 10px">
+            {{ o.created | date: "longDate" }}
+          </td>
 
-            <tr *ngFor='let line of o.cart.lines'>
-              <td colspan="2"></td>
-              <td>{{ line.book.name }}</td>
-              <td>{{ line.quantity }}</td>
-            </tr>
+          <!--Shipping (Purchase History)-->
+          <td
+            *ngIf="title === 'Purchase History'"
+            style="width: 150px; padding-top: 10px; color: maroon"
+          >
+            {{ o.shipped ? "Shipped" : "Not ship yet." }}
+          </td>
 
-          </ng-template>
+          <!--Shipping (Manage Orders)-->
+          <td
+            *ngIf="title === 'Manage Order'"
+            style="width: 150px; padding-top: 10px; color: maroon"
+          >
+            <span
+              *ngIf="title != 'Manage Payment'"
+              style="
+                color: rgb(122, 56, 56);
+                font-size: 12px;
+                text-align: center;
+              "
+            >
+              <input
+                type="checkbox"
+                style="font-size: 12px; text-align: left"
+                [(ngModel)]="includeShipped"
+              />
+              &nbsp;Shipped
+            </span>
+          </td>
 
+          <!--Details-->
+          <td style="width: 100px; padding-top: 10px">
+            <button class="buttonS" (click)="open(o._id, i)">
+              <i class="far fa-eye"></i> View
+            </button>
+          </td>
+
+          <!--Delete-->
+          <td style="width: 100px; padding-top: 10px">
+            <button class="buttonS" (click)="delete(o._id)">
+              <i class="fas fa-trash-alt"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </ng-template>
     </table>
-    <hr>
+
+    <hr />
   </div>
-
 </div>
-
-
