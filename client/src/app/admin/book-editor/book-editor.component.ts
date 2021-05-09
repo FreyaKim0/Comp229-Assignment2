@@ -10,12 +10,13 @@ import { BookRepository } from 'src/app/model/book.repository';
 })
 export class BookEditorComponent implements OnInit {
 
-  editing = false;
   public thisUserDisplayName;
+  public imageData = '';
+  editing = false;
 
   book: Book = new Book();
   form: FormGroup;
-  public imageData = '';
+
   constructor(private repository: BookRepository,
               private router: Router,
               activeRoute: ActivatedRoute)
@@ -32,13 +33,13 @@ export class BookEditorComponent implements OnInit {
       image0: new FormControl(null),
     });
 
-    // Assign shop's name
+    // Assign store name
     const userInfo = JSON.parse(localStorage.getItem('user'));
     // tslint:disable-next-line: no-string-literal
     this.thisUserDisplayName = userInfo['displayName'];
     this.book.store = this.thisUserDisplayName;
 
-    // Assign this book's data into webpage
+    // Assign this book's data into HTML
     this.editing = activeRoute.snapshot.params.mode === 'edit';
     if (this.editing)
     {
@@ -58,9 +59,8 @@ export class BookEditorComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // tslint:disable-next-line: typedef
-  onFileSelect(event: Event, name: string) {
-
+  onFileSelect(event: Event, name: string): void
+  {
       // Read image into reader
       const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
 
@@ -77,13 +77,11 @@ export class BookEditorComponent implements OnInit {
       }
     }
 
-  // tslint:disable-next-line: typedef
-  deleteImage(name: string) {
+  deleteImage(name: string): void {
     this.imageData = '';
   }
 
-  // tslint:disable-next-line: typedef
-  onSubmit()
+  onSubmit(): void
   {
     this.repository.saveBook(
                           String(this.book._id),

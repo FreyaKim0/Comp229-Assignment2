@@ -28,7 +28,7 @@ export class BookTableComponent implements OnInit {
   deleteBook(id: number): void
   {
     console.log('id? ' + id);
-    if (confirm('This item will be **DELETED PERMANENTLY** , are you sure ?') && (id !== undefined))
+    if (confirm('Are you sure to delete this book ?') && (id !== undefined))
     {
       this.repository.deleteBook(id);
     }

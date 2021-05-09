@@ -10,9 +10,7 @@ import { Book } from './book.model';
 
   constructor(){}
 
-
-
-  addLine(book: Book, quantity: number= 1): void
+  addLine(book: Book, quantity: number= 1, shipping: boolean): void
   {
     const line = this.lines.find(l => l.book._id === book._id);
 
@@ -23,7 +21,7 @@ import { Book } from './book.model';
     }
     else
     {
-      this.lines.push(new CartLine(book, quantity));
+      this.lines.push(new CartLine(book, quantity, shipping));
     }
     this.recalculate();
   }
@@ -67,7 +65,8 @@ import { Book } from './book.model';
 export class CartLine
 {
  constructor(public book: Book,
-             public quantity: number){ }
+             public quantity: number,
+             public shipping: boolean) { }
 
  get lineTotal(): number
 {

@@ -35,3 +35,31 @@ table {
   background-color: #d8d5d5;
   font-size: 14px;
 }
+
+/*Toggle*/
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 10px;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.mat-slide-toggle .mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #49c5b6;
+}
+
+.mat-slide-toggle .mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #49c5b6;
+}

@@ -2,15 +2,18 @@
 /*-------Framework css-----------*/
 /*---------2020-10-09------------*/
 
-
 /*------body sections------*/
 body {
-  background-color:#F3F4F5;
+  background-color: #f3f4f5;
   height: 100%;
 }
 
+button:focus {
+  outline: 0;
+}
+
 #nameBanner {
-  background-color: #F3F4F5;
+  background-color: #f3f4f5;
   color: rgb(129, 125, 125);
   font-family: "Helvetica Neue", sans-serif;
   font-size: 40px;
@@ -32,15 +35,15 @@ body {
 #header_in_main_wrapper {
   display: none;
 }
-#content{
+#content {
   background-color: black;
 }
 #content_in_main_wrapper {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   position: relative;
 }
 
@@ -61,14 +64,14 @@ body {
   font-size: 17px;
   line-height: 40px;
 }
-.words{
-  color:white;
+.words {
+  color: white;
   float: left;
   overflow: hidden;
   line-height: 20px;
   letter-spacing: 0.8px;
   font-size: 12px;
- }
+}
 
 /*------header sections------*/
 *:focus {
@@ -77,8 +80,8 @@ body {
 
 /*Header-Popover*/
 .popover-header {
-	outline: none;
-	border: none;
+  outline: none;
+  border: none;
   background-color: #eaeded;
   font-size: 12px;
   font-weight: normal;
@@ -86,7 +89,7 @@ body {
 }
 .popover {
   outline: none;
-	border: none;
+  border: none;
   font-weight: normal;
   font-size: 12px;
 }
@@ -119,7 +122,7 @@ body {
   letter-spacing: 0.1rem;
   margin-top: -25px;
 }
-#welcomeUser{
+#welcomeUser {
   color: #ffffff;
   font-size: 13px;
   float: left;
@@ -128,11 +131,10 @@ body {
 
   text-transform: uppercase;
 }
-#login_button{
+#login_button {
   float: left;
-  margin-top:0px;
+  margin-top: 0px;
 }
-
 
 /*Header-Hamgurger*/
 #hamburgerDiv {
@@ -169,19 +171,19 @@ body {
 
 /*Header-Nav*/
 #sideNav {
-  background-color:#252934f8;
+  background-color: #252934f8;
   width: auto;
   position: relative;
   z-index: 1;
   overflow: hidden; /*if you want to crop the image*/
 }
-#sideNav:before{
+#sideNav:before {
   z-index: -1;
   position: absolute;
   left: 0;
   top: 0;
   content: url("/assets/images/background.jpg");
-  opacity:0.4;;
+  opacity: 0.4;
   background-color: #252934c4;
 }
 #sideNav {
@@ -212,7 +214,6 @@ body {
   border-width: 0px;
 }
 
-
 /*-----XuTung Jin 301111889---------------*/
 /*--Header css for screen width > 1190px--*/
 /*----------------2020-10-09--------------*/
@@ -227,7 +228,7 @@ body {
   }
   #content {
     overflow: auto;
-    background-color: #F2F4F5;
+    background-color: #f2f4f5;
     position: relative;
   }
   #main {

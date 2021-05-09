@@ -17,7 +17,6 @@ let Order = mongoose.Schema(
     province: String,
     postalCode: String,
     country: String,
-    shipped: Boolean,
     cart: {
       lines: [
         {
@@ -31,8 +30,10 @@ let Order = mongoose.Schema(
             store: String,
             __v: Number,
             originalPrice: Number,
+            imagePath: String,
           },
           quantity: Number,
+          shipping: Boolean,
         },
       ],
       itemCount: Number,

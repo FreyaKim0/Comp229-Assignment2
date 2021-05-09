@@ -1,65 +1,78 @@
-
 import { RestDataSource } from './rest.datasource';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Order } from './order.model';
-import { ConditionalExpr } from '@angular/compiler';
+import { Cart } from './cart.model';
 
 @Injectable()
-export class OrderRepository
-{
+export class OrderRepository {
   private orders: Order[] = [];
+  private temp: Order[] = [];
+  private tempOrder: Order;
+  private tempCart: Cart;
   private loaded = false;
 
   constructor(private dataSource: RestDataSource) { }
 
-  // This shit is not working
-  loadOrders(): void
-  {
+  loadOrders(): void {
     this.loaded = true;
-    this.dataSource.getOrders().subscribe(orders => this.orders = orders);
+    this.dataSource.getOrders().subscribe(orders => {
+      this.orders = orders;
+    });
   }
 
-  // Get all orders for 'Purchase History' page
-  getOrders(): Order[]
-  {
-    if (!this.loaded)
-    {
+  getOrders(): Order[] {
+    if (!this.loaded) {
       this.loadOrders();
     }
-    //console.log('getOrders: '+this.orders);
     return this.orders;
   }
 
-
-  // Get orders of specific buyer
+  // Get orders filter by specific buyer
   getOneOrder(id: number): Order[]
   {
     if (!this.loaded)
     {
       this.loadOrders();
     }
-
     return this.orders.filter(p => p._id === id);
   }
 
-  saveOrder(order: Order): Observable<Order>
+  saveOrder(order: Order): boolean
   {
-    return this.dataSource.saveOrder(order);
+    this.dataSource.saveOrder(order).subscribe(res => {
+        this.tempOrder = res.order as Order;
+        this.orders.push(this.tempOrder);
+    });
+    return true;
   }
 
-  updateOrder(updatedOrder: Order): void
+  updateOrderShipping(
+    store: string,
+    originalShipping: boolean,
+    changedShipping: boolean,
+    id: number
+  ): void
   {
-    this.dataSource.updateOrder(updatedOrder).subscribe(order => {
-      this.orders.splice(this.orders.findIndex(o => o._id === order._id), 1, order);
-    });
+    this.dataSource.updateOrderShipping(id, store, originalShipping, changedShipping)
+      .subscribe(res => {
+        if (res.success) {
+          this.orders.forEach(function (order) {
+            if (order._id === id) {
+              for (let line of order.cart.lines) {
+                if (line.book.store === store && line.shipping === originalShipping) {
+                  line.shipping = changedShipping;
+                }
+              }
+            }
+         });
+        }
+      });
   }
 
-  deleteOrder(id: number): void
+  deleteOrder(id: number): Observable<any>
   {
-    this.dataSource.deleteOrder(id).subscribe(order => {
-      this.orders.splice(this.orders.findIndex(o => id === o._id), 1);
-    });
+    return this.dataSource.deleteOrder(id);
   }
 
 }

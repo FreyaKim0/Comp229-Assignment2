@@ -22,7 +22,6 @@ export class BookRepository
       this.price = data.map(b => b.originalPrice)
         .filter((a, index, array) => array.indexOf(a) > index).sort();
       });
-
   }
 
   getBooks(author: string = null): Book[]
@@ -65,6 +64,8 @@ export class BookRepository
       bookData.append("store", store);
       bookData.append("image0", image0, name);
 
+      // Sent this new data to backend,
+      // then update it into frontend array if successd
       this.dataSource.addBook(bookData).subscribe(res => {
          this.book = new Book(res.id,
           name,
@@ -80,7 +81,7 @@ export class BookRepository
       });
     }
 
-    // // update book
+    // update book
     else
     {
       const bookData = new FormData();
@@ -94,6 +95,8 @@ export class BookRepository
       bookData.append("store", store);
       bookData.append("image", image0, name);
 
+      // Sent this update data to backend,
+      // then update it into frontend array if successd
       this.dataSource.updateBook(bookData, _id).subscribe(book => {
         this.book = new Book(_id,
           name,
@@ -108,6 +111,7 @@ export class BookRepository
       });
     }
   }
+
   deleteBook(deletedBookID: number): void
   {
     let x = String(deletedBookID);

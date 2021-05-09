@@ -10,7 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BookStoreModule } from './book-store/book-store.module';
 import { JwtModule, JwtHelperService, JwtInterceptor } from '@auth0/angular-jwt';
-
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { BrowserModule } from '@angular/platform-browser';
 
 export function jwtTokenGetter(): string
 {
@@ -32,6 +33,8 @@ export function jwtTokenGetter(): string
         tokenGetter: jwtTokenGetter
       }
     })
+   // BrowserModule,
+   //BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

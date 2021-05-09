@@ -1,5 +1,6 @@
 let express = require("express");
 let router = express.Router();
+let mongoose = require("mongoose");
 let Order = require("../models/order");
 let Store = require("../models/store");
 let Cart = Store.Cart;
@@ -20,9 +21,6 @@ module.exports.processAddPage = (req, res, next) => {
   let cart = new Cart();
 
   // Serialize the Line Data (each purchase item)
-  // 檢查前端的line有順利存到嗎? 有
-  // 但是後端的array=[] 長度是0
-
   let book_data = req.body.cart;
 
   for (let counter = 0; counter < book_data.lines.length; counter++) {
@@ -33,11 +31,12 @@ module.exports.processAddPage = (req, res, next) => {
       book_data.lines[counter].book.description,
       book_data.lines[counter].book.price,
       book_data.lines[counter].book.originalPrice,
-      book_data.lines[counter].book.store
+      book_data.lines[counter].book.store,
+      book_data.lines[counter].book.imagePath
     );
 
     let quantity = req.body.cart.lines[counter].quantity;
-    cart.lines.push({ book: book, quantity: quantity });
+    cart.lines.push({ book: book, quantity: quantity, shipping: false }); // Initial shpping status: false
   }
 
   cart.itemCount = req.body.cart.itemCount;
@@ -52,70 +51,52 @@ module.exports.processAddPage = (req, res, next) => {
     province: req.body.province,
     postalCode: req.body.postalCode,
     country: req.body.country,
-    shipped: req.body.shipped,
     cart: cart,
   });
 
   // Add New Order Object to the Database
   Order.create(newOrder, (err, Order) => {
     if (err) {
-      console.log(err);
-      res.end(err);
+      res.json({ success: false, msg: err });
     } else {
-      res.json({ success: true, msg: "Successfully Added New Order" });
+      res.json({
+        success: "true",
+        msg: "Successfully Added New Order",
+        order: newOrder,
+      });
     }
   });
 };
 
 module.exports.processEditPage = (req, res, next) => {
-  let id = req.params.id;
+  // Get avlue from API params
+  const id = req.params.id;
+  const originalShipping = req.params.originalShipping;
+  const updateShipping = req.params.changedShipping;
+  const store = req.params.store;
 
-  // SERIALIZE CART DATA
-
-  let cart = new Cart();
-
-  // serialize the line data
-  for (let line of req.body.cart.lines) {
-    let book = new Book(
-      //line.book.originalPrice,
-      //line.book.store,
-      line.book._id,
-      line.book.name,
-      line.book.author,
-      line.book.description,
-      line.book.price
-    );
-    let quantity = line.quantity;
-    cart.lines.push({ book, quantity });
-  }
-  cart.itemCount = req.body.cart.itemCount;
-  cart.cartPrice = req.body.cart.cartPrice;
-
-  // Update the Order Object
-  let updatedOrder = Order({
-    _id: id,
-    name: req.body.name,
-    address: req.body.address,
-    city: req.body.city,
-    province: req.body.province,
-    postalCode: req.body.postalCode,
-    country: req.body.country,
-    shipped: req.body.shipped,
-    cart: cart,
-  });
-
-  Order.updateOne({ _id: id }, updatedOrder, (err) => {
-    if (err) {
-      console.log(err);
-      res.end(err);
-    } else {
-      res.json({
-        success: true,
-        msg: "Successfully Edited Order",
-        order: updatedOrder,
-      });
+  // Change the shipping status only for books with matching store & id
+  Order.updateMany(
+    {
+      _id: id,
+      "cart.lines.book.store": store,
+      "cart.lines.shipping": originalShipping,
+    },
+    { $set: { "cart.lines.$.shipping": updateShipping } },
+    (err) => {
+      if (err) {
+        res.json({
+          success: false,
+          msg: err,
+        });
+      } else {
+        res.json({
+          success: true,
+          msg: "Successfully Update Order",
+        });
+      }
     }
-  });
+  );
 };
 
 module.exports.performDelete = (req, res, next) => {
@@ -123,8 +104,7 @@ module.exports.performDelete = (req, res, next) => {
 
   Order.deleteOne({ _id: id }, (err) => {
     if (err) {
-      console.log(err);
-      res.end(err);
+      res.json({ success: false, msg: err });
     } else {
       res.json({ success: true, msg: "Successfully Deleted Order" });
     }

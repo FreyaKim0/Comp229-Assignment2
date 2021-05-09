@@ -7,7 +7,8 @@ class Book {
     description = "",
     price = 0,
     originalPrice = 0,
-    store = ""
+    store = "",
+    imagePath = ""
   ) {
     this._id = _id;
     this.name = name;
@@ -16,6 +17,7 @@ class Book {
     this.price = price;
     this.originalPrice = originalPrice;
     this.store = store;
+    this.imagePath = imagePath;
   }
 
   toString() {
@@ -39,15 +41,19 @@ class Book {
       this.originalPrice +
       "\n" +
       " store         :" +
-      this.store
+      this.store +
+      "\n" +
+      " imagePath         :" +
+      this.imagePath
     );
   }
 }
 
 class Line {
-  constructor(book = new Book(), quantity = 1) {
+  constructor(book = new Book(), quantity = 1, shipping = false) {
     this.book = book;
     this.quantity = quantity;
+    this.shipping = false;
   }
 
   toString() {

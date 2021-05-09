@@ -1,5 +1,4 @@
 // ========= installed 3rd party packages ==========
-
 let createError = require("http-errors"); // create errirs fir express,connection...ect
 let express = require("express"); // express module
 let path = require("path"); // Access to file (node.js)
@@ -8,7 +7,6 @@ let logger = require("morgan"); // http req logger middleware for node.js
 let cors = require("cors"); // Take http header from localhost to online
 
 // ========= modules for authentication =========
-
 let session = require("express-session"); // create session middlware with given options
 let passport = require("passport"); // Authantication logic
 
@@ -21,7 +19,6 @@ let localStrategy = passportLocal.Strategy;
 let flash = require("connect-flash"); // Temprary carry the message and display to user
 
 // ========== Set up database ============
-
 let mongoose = require("mongoose"); // MongoDB modeling tool
 let DB = require("./db");
 
@@ -35,7 +32,6 @@ mongoDB.once("open", () => {
 });
 
 // ========== Setup Routes Paths ============
-
 let indexRouter = require("../routes/index");
 let usersRouter = require("../routes/users");
 let booksRouter = require("../routes/book");

@@ -18,6 +18,7 @@ export class RestDataSource
   user: User;  // username , displayname and email
   authToken: string;
   baseUrl: string;
+  temp: Order[] = [];
 
   private httpOptions =
   {
@@ -101,9 +102,7 @@ export class RestDataSource
 
 
 
-  // get, add, update, delete books
-
-
+  // CRUD books
   getBooks(): Observable<Book[]>
   {
     return this.http.get<Book[]>(this.baseUrl + 'book-list');
@@ -115,16 +114,15 @@ export class RestDataSource
     return this.http.post<{book: Book}>(this.baseUrl + 'book-list/add', bookData, this.httpOptions);
   }
 
-  updateBook(bookData: FormData,_id: string): Observable<Book>
+  updateBook(bookData: FormData, _id: string): Observable<Book>
   {
     this.loadToken();
-    console.log('updatebook id: ' + _id);
-    return this.http.post<{book: Book}>(`${this.baseUrl}book-list/edit/${_id}`,bookData, this.httpOptions);
+    return this.http.post<{book: Book}>(`${this.baseUrl}book-list/edit/${_id}`,
+      bookData, this.httpOptions);
   }
 
   deleteBook(id: string): Observable<Book>
   {
-    console.log('delete Book start running..');
     this.loadToken();
     return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
   }
@@ -132,33 +130,28 @@ export class RestDataSource
 
 
 
-
-  // save, get, delete, update orders
-  saveOrder(order: Order): Observable<Order>
-  {
-    // LINE有被變成json沒錯
-    console.log("rest->saveOrder: "+ JSON.stringify(order));
-    return this.http.post<Order>(this.baseUrl + 'orders/add', order);
-  }
-
+  // CRUD orders
   getOrders(): Observable<Order[]>
   {
     return this.http.get<Order[]>(this.baseUrl + 'orders');
   }
 
-  deleteOrder(id: number): Observable<Order>
+  saveOrder(order: Order): Observable<any>
+  {
+    return this.http.post<Order>(this.baseUrl + 'orders/add', order);
+  }
+
+  updateOrderShipping(id: number, store: string, originalShipping: boolean, changedShipped: boolean): Observable<any>
+  {
+     this.loadToken();
+     return this.http.post<Order>(`${this.baseUrl}orders/edit/${id}/${store}/${originalShipping}/${changedShipped}`, this.httpOptions);
+  }
+
+  deleteOrder(id: number): Observable<any>
   {
     this.loadToken();
     return this.http.get<Order>(`${this.baseUrl}orders/delete/${id}`, this.httpOptions);
   }
-
-  updateOrder(order: Order): Observable<Order>
-  {
-    this.loadToken();
-    return this.http.post<Order>(`${this.baseUrl}orders/edit/${order._id}`, order, this.httpOptions);
-  }
-
-
 
 
 
@@ -168,10 +161,8 @@ export class RestDataSource
   private loadToken(): void
   {
     const token = localStorage.getItem('id_token');
-    this.authToken = 'bearer '+token;
+    this.authToken = 'bearer ' + token;
     this.httpOptions.headers = new HttpHeaders().set('Authorization', this.authToken);
   }
-
-
 }
 

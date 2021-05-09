@@ -3,7 +3,6 @@ import { Order } from '../../model/order.model';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Cart } from 'src/app/model/cart.model';
-
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -28,11 +27,11 @@ export class CheckoutComponent implements OnInit {
      this.submitted = true;
      if (form.valid)
      {
-       this.repository.saveOrder(this.order).subscribe(order => {
-        this.order.clear();
-        this.orderSent = true;
-        this.submitted = false;
-      });
+       if (this.repository.saveOrder(this.order)) {
+         this.order.clear();
+         this.orderSent = true;
+         this.submitted = false;
+       }
     }
   }
 }

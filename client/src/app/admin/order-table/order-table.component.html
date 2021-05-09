@@ -12,12 +12,8 @@
         *ngIf="title != 'Manage Payment'"
         style="color: rgb(122, 56, 56); font-size: 12px; text-align: center"
       >
-        <input
-          type="checkbox"
-          style="font-size: 12px; text-align: left"
-          [(ngModel)]="includeShipped"
-        />
-        &nbsp;Display Shipped Orders
+        <input type="checkbox" style="font-size: 12px; text-align: left" />
+        &nbsp;Unshipped Orders Only
       </span>
     </p>
     <hr />
@@ -29,12 +25,12 @@
         <th style="width: 100px">Paid</th>
         <th style="width: 150px">Order Date</th>
         <th style="width: 150px">Ship Status</th>
-        <th style="width: 100px">View</th>
-        <th style="width: 100px">Delete</th>
+        <th style="width: 100px">Details</th>
+        <th *ngIf="title == 'Manage Order'" style="width: 100px">Delete</th>
       </tr>
 
       <!--If there is no data to show-->
-      <tr *ngIf="getOrders().length == 0">
+      <tr *ngIf="getOrdersTs().length == 0">
         <td
           colspan="6"
           style="
@@ -43,19 +39,19 @@
             padding-top: 25px;
           "
         >
-          There are no unshipped orders.
+          There are no orders.
         </td>
       </tr>
 
       <!--If there are data to show-->
-      <ng-template ngFor let-o [ngForOf]="getOrders()" let-i="index">
+      <ng-template ngFor let-o [ngForOf]="getOrdersTs()" let-i="index">
         <tr>
           <!--Order Number-->
           <td style="width: 200px; padding-top: 10px">{{ o._id }}</td>
 
-          <!--Amount-->
+          <!--Amount(15% tax rate)-->
           <td style="width: 100px; padding-top: 10px; color: maroon">
-            {{ o.cart.cartPrice | currency: "USD":"symbol":"2.2-2" }}
+            {{ o.cart.cartPrice * 1.15 | currency: "USD":"symbol":"2.2-2" }}
           </td>
 
           <!--Date-->
@@ -68,26 +64,57 @@
             *ngIf="title === 'Purchase History'"
             style="width: 150px; padding-top: 10px; color: maroon"
           >
-            {{ o.shipped ? "Shipped" : "Not ship yet." }}
+            <span *ngIf="checkShipping(o._id, i) == true">
+              "Shipped! "+{{ shippingCalculate(o._id, i) }}</span
+            >
+            <span *ngIf="checkShipping(o._id, i) == false">
+              "In process..."+{{ shippingCalculate(o._id, i) }}</span
+            >
           </td>
 
           <!--Shipping (Manage Orders)-->
           <td
             *ngIf="title === 'Manage Order'"
-            style="width: 150px; padding-top: 10px; color: maroon"
-          ></td>
+            style="width: 150px; padding-top: 10px; color: rgb(66, 63, 63)"
+          >
+            <!--submit button-->
+            <span
+              style="color: maroon; margin-right: -3px"
+              *ngIf="o.cart.lines[0].shipping == true"
+              ><i class="fas fa-check"></i
+            ></span>
+            <span
+              style="color: rgb(230, 171, 9)"
+              *ngIf="o.cart.lines[0].shipping == false"
+              ><i class="fas fa-times"></i
+            ></span>
+            <button
+              class="buttonS"
+              type="submit"
+              (click)="changeShipStatus(o._id, i, o.cart.lines[0].shipping)"
+            >
+              <i class="fas fa-shipping-fast"></i>&nbsp;Toggle
+            </button>
+          </td>
 
           <!--Details-->
           <td style="width: 100px; padding-top: 10px">
-            <button class="buttonS" (click)="open(o._id, i)">
-              <i class="far fa-eye"></i> View
+            <button
+              class="buttonS"
+              (click)="open(o._id, i)"
+              (close)="onClose()"
+            >
+              <i class="far fa-eye"></i> Details
             </button>
           </td>
 
           <!--Delete-->
-          <td style="width: 100px; padding-top: 10px">
+          <td
+            *ngIf="title == 'Manage Order'"
+            style="width: 100px; padding-top: 10px"
+          >
             <button class="buttonS" (click)="delete(o._id)">
-              <i class="fas fa-trash-alt"></i> Delete
+              <i class="fas fa-archive"></i> Delete
             </button>
           </td>
         </tr>
