@@ -11,7 +11,13 @@ import { Component, Input, OnInit} from '@angular/core';
 
   // ======TEMPLATE HTML CODE STARTS======
   template: `
-        <div class="wrap">
+  <!--Close button-->
+    <div class="modal-title text-right mt-3 mr-3" >
+      <button style="outline:0px; background:#ffffff; border:0px;" (click)="closepage()" >
+          <i class="fas fa-times-circle" style=" color:gray; font-size:30px;"></i>
+        </button>
+    </div>
+        <div class="modal-body wrap">
 
           <!--Details table-->
           <div id="left">
@@ -125,12 +131,15 @@ export class modalComponent implements OnInit {
     if (this.title === 'Purchase History') {
       this.order = this.repository.getOneOrder(this.orderId)[0];
     }
-    // title = 'Manage Order'
-    else {
+
+    if (this.title === 'Manage Order'){
       this.order = this.manageOrder[this.index];
     }
   }
 
+   closepage(): void{
+    this.activeModal.dismiss('Cross click');
+  }
 }
 
 // BasePage(Parent)
@@ -147,7 +156,7 @@ export class OrderTableComponent implements OnInit
   title: string;
   thisUserDisplayName: string;
   closeThisModal = false;
-  shipped: string;
+  returnArray: number[];
 
   constructor(private repository: OrderRepository,
               private route: ActivatedRoute,
@@ -166,7 +175,6 @@ export class OrderTableComponent implements OnInit
   // Open Modal page
   open(id: number, index: number): void
   {
-     console.log('id ' + id + ' index ' + index);
      // Open modal window
      const ModalRef = this.modalService.open(modalComponent,
        {
@@ -198,7 +206,7 @@ export class OrderTableComponent implements OnInit
     if (this.title === 'Purchase History') {
 
       // Archieved option
-      return userOrders; // .filter(o => this.includeShipped? o.shipped : !o.shipped);
+      return userOrders;
     }
 
     if (this.title === 'Manage Order'){
@@ -263,11 +271,19 @@ export class OrderTableComponent implements OnInit
    }
 
   // Check shipping status
-  checkShipping(id: number, index: number): void {
+  checkShipping(id: number, index: number): boolean {
+    this.returnArray = this.repository.checkShipping(id);
 
+    // Array:[ totalCount , trueCount ]
+    if (this.returnArray[1] !== this.returnArray[0]) { return false; }
+    else { return true; }
   }
 
-  shippingCalculate(id: number, index: number): void {
+  shippingCalculate(id: number, index: number): any {
+    // Array:[ totalCount , trueCount ]
+    if (this.returnArray[1] !== this.returnArray[0]) {
+      return "("+this.returnArray[1]+"/"+this.returnArray[0]+")";
+    }
   }
 
   // delete order

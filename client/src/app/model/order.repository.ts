@@ -70,6 +70,27 @@ export class OrderRepository {
       });
   }
 
+  checkShipping(id: number): number[]
+  {
+    let totalCount = 0;
+    let trueCount = 0;
+
+    this.orders.forEach(function (order) {
+      if (order._id === id) {
+
+        for (let line of order.cart.lines) {
+
+          totalCount += line.quantity;
+
+          if (line.shipping === true) {
+            trueCount+=line.quantity;
+          }
+        }
+      }
+    })
+    return [totalCount, trueCount];
+  }
+
   deleteOrder(id: number): Observable<any>
   {
     return this.dataSource.deleteOrder(id);

@@ -91,14 +91,14 @@
       <div class="ngContent" *ngFor="let book of books">
         <div class="bookDiv">
           <!--image and view details-->
-          <div class="imageDiv">
+          <div class="imageDiv" (click)="viewBook(book._id)">
             <img
               [src]="book.imagePath"
               [alt]="book.name"
               style="padding: 10px; max-width: 200px; max-height: 200px"
             />
             <div class="edit_dialog">
-              <a (click)="viewBook(book._id)"> View Details </a>
+              <a> View Details </a>
             </div>
           </div>
 

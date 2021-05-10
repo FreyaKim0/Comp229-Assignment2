@@ -24,14 +24,14 @@
       </div>
 
       <!--image-->
-      <div class="imageDiv">
+      <div class="imageDiv" (click)="editBook(b._id)">
         <img
           [src]="b.imagePath"
           [alt]="b.name"
           style="padding: 10px; max-width: 200px; max-height: 200px"
         />
         <div class="edit_dialog">
-          <a (click)="editBook(b._id)"> Edit Item </a>
+          <a> Edit Item </a>
         </div>
       </div>
 

@@ -8,16 +8,10 @@ import { CounterDirective } from './counter.directive';
 import { PartialsModule } from './../partials/partials.module';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
 import { BookStoreComponent } from '../book-store/book-store.component';
-import { BookDetailComponent } from './book-detail/book-detail.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 
 const routingS = RouterModule.forChild([
   {path: 'all', component: BookStoreComponent},
-  {path: 'detail',
-   children: [
-    { path: ':id', component: BookDetailComponent, data: {title: 'Product Details'}},
-    { path: '**', redirectTo: 'all'}]
-  },
   {path: '**', redirectTo: 'all'},
 ]);
 
@@ -28,8 +22,7 @@ const routingS = RouterModule.forChild([
             FormsModule,
             routingS,
             PartialsModule],
-  declarations: [BookDetailComponent,
-                 BookStoreComponent,
+  declarations: [BookStoreComponent,
                  CounterDirective,
                  CartDetailComponent,
                  CheckoutComponent]

@@ -6,15 +6,6 @@
       <span>
         <b>{{ title }} &nbsp;&nbsp;&nbsp;</b>
       </span>
-
-      <!--Include old data check box-->
-      <span
-        *ngIf="title != 'Manage Payment'"
-        style="color: rgb(122, 56, 56); font-size: 12px; text-align: center"
-      >
-        <input type="checkbox" style="font-size: 12px; text-align: left" />
-        &nbsp;Unshipped Orders Only
-      </span>
     </p>
     <hr />
 
@@ -65,10 +56,13 @@
             style="width: 150px; padding-top: 10px; color: maroon"
           >
             <span *ngIf="checkShipping(o._id, i) == true">
-              "Shipped! "+{{ shippingCalculate(o._id, i) }}</span
+              <b>Complete</b>
+            </span>
+            <span
+              style="color: rgb(230, 171, 9)"
+              *ngIf="checkShipping(o._id, i) == false"
             >
-            <span *ngIf="checkShipping(o._id, i) == false">
-              "In process..."+{{ shippingCalculate(o._id, i) }}</span
+              <b>In process...</b>{{ shippingCalculate(o._id, i) }}</span
             >
           </td>
 
