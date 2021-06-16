@@ -1,6 +1,6 @@
 # Project-Shopping-Cart-Angular
 
-This angular project contains my portfolio and a shopping cart project.<br>
+This angular project contains my portfolio and a shopping cart system.<br>
 Heroku link:<br><br>
 
 
