@@ -1,9 +1,4 @@
-
-
-
-/*for making all pages' background are the correct color*/
-
-
+/* Div alignment */
 #grid_placeholder {
   display: none;
 }
@@ -11,16 +6,17 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   position: relative;
 }
 
+/*[ Responsive ]*/
+/*Bigger screen*/
 @media (min-width: 1190px) {
   #content_in_main_wrapper {
-  height:100vh;
-}
-
+    height: 100vh;
+  }
   #grid_placeholder {
     display: block;
     width: 100%;

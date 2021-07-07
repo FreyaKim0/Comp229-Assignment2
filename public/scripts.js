@@ -10,12 +10,10 @@
 //# sourceMappingURL=bootstrap.min.js.map
 ;//IIFE - Immediately Function Expression
 (() => {
- function Start()
- {
-  console.log('App Started...');
- }
-
- window.addEventListener('load', Start);
+  function Start() {
+    // console.log('App Started...');
+  }
+  window.addEventListener("load", Start);
 })();
 
 ;

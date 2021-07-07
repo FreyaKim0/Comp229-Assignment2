@@ -1,5 +1,4 @@
 /* LOCAL MOCK DATA -  book-list , orders */
-
 const { getAutomaticTypeDirectiveNames } = require("typescript");
 
 module.exports = function () {
@@ -39,6 +38,6 @@ module.exports = function () {
         __v: 0,
       },
     ],
-    orders: []
-  }
-}
+    orders: [],
+  };
+};

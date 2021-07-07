@@ -3,7 +3,6 @@ import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,9 +18,7 @@ export class HomeComponent extends BasePageComponent implements OnInit, OnDestro
     this._document.body.classList.remove('bodybg-color');
     this._document.body.classList.add('homebg-color');
   }
-  ngOnDestroy(): void
-  {
+  ngOnDestroy(): void {
     this._document.body.classList.remove('homebd-color');
   }
-
 }

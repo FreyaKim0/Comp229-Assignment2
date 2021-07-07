@@ -4,6 +4,11 @@
   text-align: center;
   width: 100%;
 }
+
+/*input control*/
+input {
+  width: 100%;
+}
 .input-control {
   border: 1px solid #eeeeee;
   background-color: seashell;
@@ -16,7 +21,7 @@ input[type="text"] {
 textarea {
   border: 1px solid #eeeeee;
   background-color: seashell;
-  padding: 15px;
+  padding: 30px;
 }
 
 /*Upload main picture*/
@@ -24,13 +29,10 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: rgb(216, 210, 210);
   border: 1px rgb(197, 196, 196) solid;
-
   width: 400px;
   height: 350px;
-
   cursor: pointer;
 }
 .imageDiv:hover {
@@ -54,13 +56,26 @@ textarea {
   border: 1px rgb(219, 217, 217) solid;
   background-color: seashell;
 }
+#formatDiv {
+  font-size: 14px;
+  color: maroon;
+  margin-top: 20px;
+  margin-bottom: -45px;
+  padding-top: 5px;
+  padding-left: -25px;
+}
+#mainPicture {
+  padding-right: 50px;
+  width: 200px;
+  margin: 0px;
+}
 
 /* Buttons */
 .buttonS {
   font-weight: 600;
   border: 0px solid grey;
   margin: 20px 10px;
-  width: 30%;
+  width: 150px;
   color: rgb(46, 45, 45);
   background-color: #d8d5d5;
   font-size: 14px;
@@ -72,36 +87,41 @@ textarea {
 }
 
 /*Table*/
-table {
-  margin-left: auto;
+#shadowDiv {
+  max-width: 770px;
+  padding-top: 0px !important;
+  padding-bottom: 30px !important;
   margin-right: auto;
-  width: 500px;
+  margin-left: auto;
+}
+#book_rightCol {
+  max-width: 200px;
+}
+table {
   text-align: left;
   font-size: 16px;
 }
 td {
   padding-top: 20px;
 }
-
-/*Input*/
-input {
-  width: 100%;
+#saleBy {
+  color: maroon;
 }
 
 /*image*/
 .image_wrap {
+  margin-left: -10px;
+  margin-top: 60px;
   width: 400px;
   height: 350px;
   position: relative;
   cursor: pointer;
 }
-
 .image_display {
   width: 400px;
   height: 350px;
   background-color: rgb(255, 255, 255);
 }
-
 .image_edit {
   width: 400px;
   height: 350px;
@@ -114,4 +134,82 @@ input {
 }
 .image_edit:hover {
   opacity: 0.5;
+}
+#description {
+  margin-left: -10px;
+  text-align: left;
+  line-height: 30px;
+  font-size: 12px;
+}
+.line_title {
+  margin-top: 40px;
+  margin-bottom: -20px;
+  font-size: 17px;
+  text-align: left;
+}
+
+/* [Responsive] */
+/* Smaller screen */
+
+@media only screen and (min-width: 1190px) and (max-width: 1351px) {
+  .input-control {
+    width: 350px;
+  }
+  #book_rightCol {
+    width: 400px;
+    max-width: 400px;
+  }
+  #shadowDiv {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    width: 400px;
+    min-width: 400px;
+  }
+  .image_wrap {
+    margin-left: 0px;
+  }
+  #description {
+    margin-left: 25px;
+  }
+  textarea {
+    width: 350px;
+  }
+  #saleBy {
+    float: right;
+    padding-right: 25px;
+  }
+  .line_title {
+    margin-top: -20px;
+  }
+}
+@media only screen and (min-width: 1px) and (max-width: 1080px) {
+  .input-control {
+    width: 350px;
+  }
+  #book_rightCol {
+    width: 400px;
+    max-width: 400px;
+  }
+  #shadowDiv {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    width: 400px;
+    min-width: 400px;
+  }
+  .image_wrap {
+    margin-left: 0px;
+  }
+  #description {
+    margin-left: 25px;
+  }
+  textarea {
+    width: 350px;
+  }
+  #saleBy {
+    float: right;
+    padding-right: 25px;
+  }
+  .line_title {
+    margin-top: -20px;
+  }
 }

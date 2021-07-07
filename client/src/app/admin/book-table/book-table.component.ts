@@ -2,13 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Book } from 'src/app/model/book.model';
 import { BookRepository } from 'src/app/model/book.repository';
-
-
 @Component({
   templateUrl: './book-table.component.html',
   styleUrls: ['./book-table.component.css']
 })
-
 
 export class BookTableComponent implements OnInit {
 
@@ -20,31 +17,23 @@ export class BookTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getBooks(): Book[]
-  {
+  getBooks(): Book[] {
     return this.repository.getBooks();
   }
 
-  deleteBook(id: number): void
-  {
-    console.log('id? ' + id);
-    if (confirm('Are you sure to delete this book ?') && (id !== undefined))
-    {
+  deleteBook(id: number): void {
+    if (confirm('Are you sure to delete this book ?') && (id !== undefined)) {
       this.repository.deleteBook(id);
     }
-    else
-    {
-      window.location.reload(); // refresh fix
+    else {
+      window.location.reload();                        // Refresh fixed part
       this.router.navigateByUrl('/admin/main/books');
     }
   }
-  addBook(): void
-  {
+  addBook(): void {
     this.router.navigateByUrl('/admin/main/books/add');
   }
-  editBook(id: number): void
-  {
+  editBook(id: number): void {
     this.router.navigateByUrl('/admin/main/books/edit/' + id);
   }
 }
-

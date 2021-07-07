@@ -4,29 +4,25 @@
 </div>
 
 <!--buttons-->
-<button class="buttonS" routerLink="/book-list/all">
-  <i class="fas fa-eye"></i> &nbsp; Buy Books
-</button>
+<div style="min-width: 500px">
+  <button class="buttonS" routerLink="/book-list/all">
+    <i class="fas fa-eye"></i> &nbsp; Buy Books
+  </button>
 
-<button class="buttonS" routerLink="/admin/main/books">
-  <i class="fas fa-plus-circle"></i> &nbsp; Sale Books
-</button>
+  <button class="buttonS" routerLink="/admin/main/books">
+    <i class="fas fa-plus-circle"></i> &nbsp; Sale Books
+  </button>
+</div>
 
-<!--image-->
-<!--<img src="../../assets/images/book-2.jpg" />&nbsp;&nbsp;&nbsp;
-<img src="../../assets/images/book-1.jpg" />
-<hr style="margin-top: 50px; width: 60%" />-->
-
-<!--Left Column-->
-<div class="container-fluid">
-  <div class="row d-flex justify-content-center">
-    <!--Filter-->
-    <div id="filter" class="col-2 ml-5" style="max-width: 200px">
-      <span style="font-size: 25px">Filter by</span>
-      <hr />
+<div class="main_wrap">
+  <div class="row d-flex justify-content-center m-0">
+    <!--Left Column *Filter*-->
+    <div id="filter_book">
+      <span><b>Filter by</b></span>
+      <hr style="margin-top: 0px" />
 
       <!--Price-->
-      <span>Price </span><br />
+      <span class="filterTitle">Price </span><br />
       <div class="custom-slider">
         <ngx-slider
           [(value)]="value"
@@ -34,13 +30,13 @@
           [options]="options"
         ></ngx-slider>
       </div>
-
       <hr />
 
       <!--Authors-->
-      <span>Authors</span><br />
+      <span class="filterTitle">Authors</span><br />
       <button
         style="
+          font-size: 14px;
           margin-top: 10px;
           color: rgb(70, 62, 62);
           width: 90%;
@@ -55,6 +51,7 @@
       <button
         *ngFor="let author of authors"
         style="
+          font-size: 14px;
           margin-top: 10px;
           color: rgb(70, 62, 62);
           width: 90%;
@@ -66,29 +63,31 @@
       >
         {{ author }}
       </button>
-
       <hr />
 
       <!--Items per page-->
-      <span>Page Length</span><br /><br />
-      <select
-        style="width: 90%"
-        [value]="booksPerPage"
-        (change)="changePageSize($event.target.value)"
-      >
-        <option value="12">12 per page</option>
-        <option value="24">24 per page</option>
-        <option value="36">36 per page</option>
-        <option value="48">48 per page</option>
-      </select>
+      <span class="filterTitle">Page Length</span>
+      <div style="margin-top: 10px">
+        <select
+          style="width: 90%"
+          [value]="booksPerPage"
+          (change)="changePageSize($event.target.value)"
+        >
+          <option value="12">12 per page</option>
+          <option value="24">24 per page</option>
+          <option value="36">36 per page</option>
+          <option value="48">48 per page</option>
+        </select>
+      </div>
 
       <hr />
     </div>
+
     <!--Right Column *Generate book divs*-->
-    <div id="wrapperA" class="col-9 ml-3">
+    <div id="bookDivs_wrap">
       <router-outlet></router-outlet>
 
-      <div class="ngContent" *ngFor="let book of books">
+      <div class="ngContent text-center" *ngFor="let book of books">
         <div class="bookDiv">
           <!--image and view details-->
           <div class="imageDiv" (click)="viewBook(book._id)">
@@ -124,16 +123,15 @@
       <br />
     </div>
   </div>
+
+  <!--page number bar-->
+  <button
+    *counter="let page of pageCount"
+    (click)="changePage(page)"
+    class="pageNumber"
+    [class.active]="page == selectedPage"
+  >
+    {{ page }}
+  </button>
+  <br /><br />
 </div>
-
-<!--page number bar-->
-<button
-  *counter="let page of pageCount"
-  (click)="changePage(page)"
-  class="pageNumber"
-  [class.active]="page == selectedPage"
->
-  {{ page }}
-</button>
-
-<br /><br />

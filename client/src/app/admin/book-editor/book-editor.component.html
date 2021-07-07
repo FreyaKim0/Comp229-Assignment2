@@ -1,14 +1,30 @@
-<!--Edit single book content-->
-
 <!--Book Form-->
 <div class="displaySetting">
+  <!--Title text-->
+  <p class="line_title">
+    <span>
+      <b>{{ title }} &nbsp;&nbsp;&nbsp;</b>
+    </span>
+  </p>
+  <hr />
+  <br />
   <form novalidate [formGroup]="form" (submit)="onSubmit()">
-    <table style="font-size: 12px; line-height: 30px">
-      <tr>
+    <div id="shadowDiv" class="row shadow p-5 bg-white rounded">
+      <!--Picture format error-->
+      <div class="col p-0" style="max-width: 400px">
+        <div id="formatDiv">
+          <span *ngIf="!ImageFormat"
+            >** File format: .jpg .jpeg or .pdf **</span
+          >
+          <span style="color: rgb(19, 19, 49)" *ngIf="ImageFormat"
+            >Valid format</span
+          >
+        </div>
+
         <!--Main picture-->
-        <td rowspan="5" style="padding-right: 50px; width: 200px; margin: 0">
+        <div id="mainPicture">
           <!--Before upload-->
-          <div *ngIf="!imageData">
+          <div class="image_wrap" *ngIf="!imageData">
             <input
               #image0
               (change)="onFileSelect($event, image0.name)"
@@ -40,6 +56,7 @@
                 </div>
               </div>
             </div>
+
             <!--Edit layer-->
             <div class="image_edit">
               <button
@@ -62,112 +79,128 @@
               </button>
             </div>
           </div>
-        </td>
+        </div>
 
-        <!--Book Name-->
-        <td>
-          Book Name<br />
-          <input
-            type="text"
-            class="input-control"
-            name="name"
-            formControlName="name"
-          />
-        </td>
-      </tr>
-      <tr>
-        <!--Author-->
-        <td>
-          Author<br />
-          <input
-            type="text"
-            class="input-control"
-            name="author"
-            formControlName="author"
-          />
-        </td>
-      </tr>
-      <tr>
-        <!--Publish date-->
-        <td>
-          Publish date<br />
-          <input
-            type="text"
-            class="input-control"
-            name="published"
-            formControlName="published"
-          />
-        </td>
-      </tr>
-      <tr>
-        <!--Discount Price-->
-        <td>
-          Discount Price<br />
-          <input
-            type="text"
-            class="input-control"
-            name="price"
-            formControlName="price"
-          />
-        </td>
-      </tr>
-      <tr>
-        <!--Original Price-->
-        <td>
-          Original Price<br />
-          <input
-            type="text"
-            class="input-control"
-            name="originalPrice"
-            formControlName="originalPrice"
-          />
-        </td>
-      </tr>
-      <tr>
-        <!--side pictures-->
-        <td></td>
-
-        <!--store-->
-        <td>
+        <!--Description input-->
+        <div id="description">
           <br />
-          <span style="color: maroon"
-            ><i style="color: maroon; font-size: 18px" class="fas fa-user"></i
-            >Sale by {{ thisUserDisplayName }}</span
-          >
-          <input
-            type="text"
-            style="display: none"
-            class="input-control"
-            name="store"
-            formControlName="store"
-          />
-        </td>
-      </tr>
-      <tr>
-        <!--Description-->
-        <td colspan="2" style="padding: 30px">
           Description<br />
           <textarea
-            cols="105"
+            cols="51"
             name="description"
-            rows="2"
+            rows="3"
             formControlName="description"
           ></textarea>
-        </td>
-      </tr>
-    </table>
 
-    <!--Submit button-->
-    <button type="submit" class="buttonS">
-      <i class="{{ editing ? 'fas fa-save' : 'fas fa-plus-circle' }}"></i>
-      {{ editing ? "Save Change" : "Add This Book" }}
-    </button>
+          <br />
+        </div>
+      </div>
 
-    <!--Cancel button-->
-    <button class="buttonS" type="reset" routerLink="/admin/main/books">
-      <i class="fas fa-undo"></i>
-      Cancel
-    </button>
+      <!--Right Column-->
+      <div id="book_rightCol" class="col p-0 ml-3">
+        <table style="font-size: 12px; line-height: 30px">
+          <tr>
+            <td>
+              <!--Book Name-->
+              Book Name<br />
+              <input
+                type="text"
+                class="input-control"
+                name="name"
+                formControlName="name"
+              />
+            </td>
+          </tr>
+          <tr>
+            <!--Author-->
+            <td>
+              Author<br />
+              <input
+                type="text"
+                class="input-control"
+                name="author"
+                formControlName="author"
+              />
+            </td>
+          </tr>
+          <tr>
+            <!--Publish date-->
+            <td>
+              Publish date<br />
+              <input
+                type="text"
+                class="input-control"
+                name="published"
+                formControlName="published"
+              />
+            </td>
+          </tr>
+          <tr>
+            <!--Discount Price-->
+            <td>
+              Discount Price<br />
+              <input
+                type="text"
+                class="input-control"
+                name="price"
+                formControlName="price"
+              />
+            </td>
+          </tr>
+          <tr>
+            <!--Original Price-->
+            <td>
+              Original Price<br />
+              <input
+                type="text"
+                class="input-control"
+                name="originalPrice"
+                formControlName="originalPrice"
+              />
+              <div id="saleBy">
+                &nbsp;<br /><i
+                  style="color: maroon; font-size: 18px"
+                  class="fas fa-user"
+                ></i
+                >Sale by {{ thisUserDisplayName }}
+              </div>
+              <input
+                type="text"
+                style="display: none"
+                class="input-control"
+                name="store"
+                formControlName="store"
+              /><br />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!--Buttons-->
+      <div style="width: 100%; text-align: center">
+        <!--Submit button-->
+        <br />
+        <button type="submit" class="buttonS">
+          <i class="{{ editing ? 'fas fa-save' : 'fas fa-plus-circle' }}"></i>
+          {{ editing ? "Save Change" : "Add This Book" }}
+        </button>
+
+        <!--Cancel button-->
+        <button class="buttonS" type="reset" routerLink="/admin/main/books">
+          <i class="fas fa-undo"></i>
+          Cancel
+        </button>
+      </div>
+
+      <!--Validation-->
+      <div
+        *ngIf="!formValidate"
+        style="width: 100%; text-align: center; font-size: 14px; color: maroon"
+      >
+        ** Must upload image **<br />** All rows should be filled **
+      </div>
+    </div>
   </form>
+
   <br /><br />
 </div>

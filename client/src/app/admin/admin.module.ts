@@ -20,7 +20,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartDetailComponent } from '../book-store/cart-detail/cart-detail.component';
 
 // Toggle
-//import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
@@ -54,9 +53,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//import { BrowserModule } from '@angular/platform-browser';
-
 
 const routing = RouterModule.forChild([
   {path: 'register', component: RegisterComponent},
@@ -85,9 +81,6 @@ const routing = RouterModule.forChild([
             FormsModule,
             routing,
             PartialsModule,
-            // Toggle
-            //BrowserAnimationsModule,
-            //BrowserModule,
             MatNativeDateModule,
             MatAutocompleteModule,
             MatBottomSheetModule,
@@ -130,7 +123,6 @@ const routing = RouterModule.forChild([
               UserRepository
              ],
   declarations: [
-
                  AuthComponent,
                  AdminComponent,
                  OrderTableComponent,
@@ -147,5 +139,3 @@ const routing = RouterModule.forChild([
   entryComponents: [OrderTableComponent]
 })
 export class AdminModule{}
-
-

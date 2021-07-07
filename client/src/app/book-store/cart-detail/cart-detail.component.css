@@ -1,3 +1,35 @@
+/* Div alignment */
+.wrap {
+  display: flex;
+  width: 100%;
+}
+#left {
+  width: 70%;
+  margin-right: 40px;
+  margin-left: 0px;
+}
+#right {
+  width: 20%;
+}
+
+/* Content styles */
+table {
+  width: 100%;
+  margin-bottom: 20px;
+  vertical-align: top;
+}
+th {
+  vertical-align: top;
+  padding: 0px;
+  font-size: 15px;
+  text-align: left;
+  font-weight: 400;
+}
+.itemPicture {
+  background-color: rgb(255, 255, 255);
+  width: 100px;
+  height: 100px;
+}
 .line_title {
   margin-top: 40px;
   margin-bottom: -20px;
@@ -8,18 +40,6 @@
 .ordersTable {
   font-size: 12px;
   text-align: left;
-}
-.itemPicture {
-  background-color: rgb(255, 255, 255);
-  width: 100px;
-  height: 100px;
-}
-th {
-  vertical-align: top;
-  padding: 0px;
-  font-size: 15px;
-  text-align: left;
-  font-weight: 400;
 }
 .buttonS {
   padding: 10px;
@@ -35,28 +55,18 @@ th {
   background-color: rgb(158, 51, 51);
   color: #f1f1f1;
 }
-.wrap {
-  display: flex;
-  width: 100%;
-}
-#left {
-  width: 70%;
-  margin-right: 40px;
-  margin-left: 40px;
-}
-#right {
-  width: 20%;
-}
 .letter {
   font-weight: 400;
   font-size: 14px;
   color: rgb(109, 34, 47);
 }
-table {
-  width: 100%;
-  margin-bottom: 20px;
-  vertical-align: top;
-}
 .summary {
   font-size: 14px;
+}
+
+/* Smaller screen */
+@media only screen and (min-width: 1px) and (max-width: 1189px) {
+  .line_title {
+    margin-top: 0px;
+  }
 }

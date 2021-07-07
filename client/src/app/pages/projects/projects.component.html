@@ -1,24 +1,2147 @@
-
-
-
-
-<div class="container-fluid p-0">
-
+<div id="whole_wrap" class="container-fluid p-0">
   <app-base-page></app-base-page>
 
-  <div class="row">
-
+  <!--bigger screen-->
+  <div class="row-bigger">
+    <div class="row m-0">
       <!--filter buttons-->
-      <div class="col-2 p-0">
-        <app-project-filter></app-project-filter>
+      <div class="col-2 p-0" style="min-width: 260px; margin-right: 20px">
+        <div id="sticky">
+          SORT BY :
+          <!--Web app-->
+          <a
+            (click)="changeFilter('web')"
+            style="cursor: pointer"
+            class="button nav-link p-0"
+          >
+            <div class="d-flex flex-row p-0">
+              <div id="tag3" class="cube">WEB APP</div>
+              <div id="tag4" class="arrow"></div>
+            </div>
+          </a>
+
+          <!--PC-->
+          <a
+            (click)="changeFilter('pc')"
+            style="cursor: pointer"
+            class="button nav-link p-0"
+          >
+            <div class="d-flex flex-row p-0">
+              <div class="cube">PC APP</div>
+              <div class="arrow"></div>
+            </div>
+          </a>
+
+          <!--MOBILE-->
+          <a
+            (click)="changeFilter('mobile')"
+            style="cursor: pointer"
+            class="button nav-link p-0"
+          >
+            <div class="d-flex flex-row p-0">
+              <div id="tag5" class="cube">MOBILE APP</div>
+              <div id="tag6" class="arrow"></div>
+            </div>
+          </a>
+
+          <!--UX/UI-->
+          <a
+            (click)="changeFilter('uxui')"
+            style="cursor: pointer"
+            class="button nav-link p-0"
+          >
+            <div class="d-flex flex-row p-0">
+              <div id="tag1" class="cube">UX/UI</div>
+              <div id="tag2" class="arrow"></div>
+            </div>
+          </a>
+
+          <br /><br />
+          <!--LANGUAGE-->
+          <table>
+            <tr>
+              <td class="td_s">
+                <input
+                  uncheck
+                  #angularCheck
+                  [checked]="angular"
+                  (click)="checkboxFilter(angularCheck.checked, 'angular')"
+                  id="angularCheck"
+                  type="checkbox"
+                />&nbsp;Angular
+              </td>
+              <td class="td_s">
+                <input
+                  #csharpCheck
+                  [checked]="Csharp"
+                  (click)="checkboxFilter(csharpCheck.checked, 'csharp')"
+                  id="csharpCheck"
+                  uncheck
+                  type="checkbox"
+                />&nbsp;C#
+              </td>
+            </tr>
+            <tr>
+              <td class="td_s">
+                <input
+                  #mongodbCheck
+                  [checked]="mongodb"
+                  (click)="checkboxFilter(mongodbCheck.checked, 'mongodb')"
+                  id="mongodbCheck"
+                  uncheck
+                  type="checkbox"
+                />&nbsp;MongoDB
+              </td>
+              <td class="td_s">
+                <input
+                  #jsCheck
+                  [checked]="js"
+                  (click)="checkboxFilter(jsCheck.checked, 'js')"
+                  id="jsCheck"
+                  uncheck
+                  type="checkbox"
+                />&nbsp;JavaScript
+              </td>
+            </tr>
+            <tr>
+              <td class="td_s">
+                <input
+                  #ejsCheck
+                  [checked]="ejs"
+                  (click)="checkboxFilter(ejsCheck.checked, 'ejs')"
+                  id="ejsCheck"
+                  uncheck
+                  type="checkbox"
+                />&nbsp;Ejs
+              </td>
+              <td class="td_s">
+                <input
+                  #javaCheck
+                  [checked]="java"
+                  (click)="checkboxFilter(javaCheck.checked, 'java')"
+                  id="javaCheck"
+                  uncheck
+                  type="checkbox"
+                />&nbsp;Java
+              </td>
+            </tr>
+            <tr>
+              <td class="td_s">
+                <input
+                  #bootstrapCheck
+                  [checked]="bootstrap"
+                  (click)="checkboxFilter(bootstrapCheck.checked, 'bootstrap')"
+                  id="bootstrapCheck"
+                  uncheck
+                  type="checkbox"
+                />&nbsp;Bootstrap
+              </td>
+              <td>
+                <input
+                  #sqlCheck
+                  [checked]="sql"
+                  (click)="checkboxFilter(sqlCheck.checked, 'sql')"
+                  id="sqlCheck"
+                  uncheck
+                  type="checkbox"
+                />&nbsp;SQL
+              </td>
+            </tr>
+            <tr>
+              <td class="td_s">
+                <input
+                  #wireframeCheck
+                  [checked]="wireframe"
+                  (click)="checkboxFilter(wireframeCheck.checked, 'wireframe')"
+                  id="wireframeCheck"
+                  uncheck
+                  type="checkbox"
+                />&nbsp;Wireframe
+              </td>
+              <td class="td_s">
+                <input
+                  #pythonCheck
+                  [checked]="python"
+                  (click)="checkboxFilter(pythonCheck.checked, 'python')"
+                  id="pythonCheck"
+                  uncheck
+                  type="checkbox"
+                />&nbsp;Python
+              </td>
+            </tr>
+            <tr>
+              <td colspan="td_s">
+                <input
+                  #androidCheck
+                  [checked]="android"
+                  (click)="checkboxFilter(androidCheck.checked, 'android')"
+                  id="androidCheck"
+                  uncheck
+                  type="checkbox"
+                />&nbsp;Android Studio
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
 
       <!--projects-->
-      <div id="back" class="col-8 p-0" >
-        <app-project-items></app-project-items>
-      </div>
+      <div class="col-8 p-0">
+        <div class="whole">
+          <div id="sub" style="font-size: 14px; margin-top: 10px">
+            &nbsp;<br />The below are my projects and exercises.
+          </div>
 
+          <!--1st row (Shopping Website)-->
+          <div
+            *ngIf="web || angular || mongodb || js || bootstrap"
+            class="service_div"
+          >
+            <!--image-->
+            <div class="left" style="height: 571px">
+              <img
+                class="service_img"
+                src="./assets/images/readit.png"
+                style="max-height: 571px"
+              />
+            </div>
+
+            <div class="right" style="height: 571px">
+              <!--1st text content-->
+              <span class="title_s">SHOPPING WEBSITE</span>
+              <br />
+              <div>
+                <div>
+                  <div id="wrapper">
+                    <div id="c1" class="text_s">
+                      <table>
+                        <tr>
+                          <td>Solution:</td>
+                          <td>&nbsp;&nbsp;MongoDB</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>&nbsp;&nbsp;Node.js</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Express.js</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Angular</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Editor:</td>
+                          <td>&nbsp;&nbsp;VScode</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Collection:</td>
+                          <td>&nbsp;&nbsp;Fontawsome</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Bootstrap</td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <div id="c2"></div>
+
+                    <div id="c3" class="text_s">
+                      <table>
+                        <tr>
+                          <td>Middleware:</td>
+                          <td>&nbsp;&nbsp;Multer</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>&nbsp;&nbsp;Morgan</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Passport</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Cookie-parser</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Mongoose</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Component:</td>
+                          <td>&nbsp;&nbsp;NgxSlider</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Modal</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div id="c4" class="text_s">
+                  <div class="grey">
+                    Functionality:<br />&nbsp;
+                    <ul>
+                      <li>
+                        As buyer, end-users can filter authors by name using
+                        buttons.
+                      </li>
+                      <li>
+                        As buyer, end-users can filter the number of items
+                        displayed per
+                      </li>
+                      <li>
+                        As buyer, end-users can filter the price range using the
+                        slider.
+                      </li>
+                    </ul>
+                    <ul>
+                      <li>
+                        As seller, end-users can create, update and delete
+                        products.
+                      </li>
+                      <li>
+                        As seller, end-users can check order details from the
+                        'Manage Product' page.
+                      </li>
+                      <li>
+                        As seller, end-users can toggle shipping status at the
+                        'Manage Product' page.
+                      </li>
+                      <li>
+                        As seller, end-users can remove orders from the 'Manage
+                        Product' page.
+                      </li>
+                    </ul>
+                    <div class="text-center">
+                      <a
+                        class="example_c"
+                        href="https://github.com/FreyaKim0/Project-Shopping-Cart-Angular"
+                        target="_blank"
+                      >
+                        <span id="button_s"> View Code </span>
+                      </a>
+
+                      <a
+                        class="example_c"
+                        href="/book-list/all"
+                        rel="nofollow noopener"
+                      >
+                        <span id="button_s"> View Website </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--divier1-->
+          <div
+            *ngIf="web || angular || mongodb || js || bootstrap"
+            class="service_div"
+          >
+            <div class="left"></div>
+
+            <div class="divider"></div>
+          </div>
+
+          <!--2nd row (GPA Calculator)-->
+          <div *ngIf="pc || Csharp" class="service_div">
+            <div class="left" style="height: 475px">
+              <img
+                class="service_img"
+                src="./assets/images/gpaCal.jpg"
+                style="max-height: 475px"
+              />
+            </div>
+
+            <div class="right" style="height: 475px">
+              <!--2nd text content-->
+              <div class="title_s">GPA CALCULATOR</div>
+              <div>
+                <div>
+                  <div id="wrapper">
+                    <div id="c1" class="text_s">
+                      <table>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Solution:</td>
+                          <td>&nbsp;&nbsp;C#-WPF</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;SQL Server Profiler</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Editor:</td>
+                          <td>&nbsp;&nbsp;Visual Studio</td>
+                        </tr>
+
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <div id="c2"></div>
+
+                    <div id="c3" class="text_s">
+                      <table>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Practice scope:</td>
+                          <td>&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Binding gridview</td>
+                          <td>&nbsp;&nbsp;TableLayout</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Loading page</td>
+                          <td>&nbsp;&nbsp;Material skin</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Queue</td>
+                          <td>&nbsp;&nbsp;Dictionary</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Buttons</td>
+                          <td>&nbsp;&nbsp;ComboBox</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Textboxes</td>
+                          <td>&nbsp;&nbsp;Labels</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Radio Buttons</td>
+                          <td>&nbsp;&nbsp;PictureBox</td>
+                        </tr>
+
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div id="c4" class="text_s">
+                  <div class="grey">
+                    This is a WPF project for calculating college GPA. In this
+                    app:<br />&nbsp;
+                    <ul>
+                      <li>
+                        User can create, read, update and delete courses related
+                        values in grid.
+                      </li>
+                      <li>User can calculate GPA.</li>
+                      <li>User can store value by SQL Server Profiler.</li>
+                    </ul>
+                    <div class="text-center">
+                      <a
+                        class="example_c"
+                        href="https://github.com/FreyaKim0/Project-GPA-calculator"
+                        target="_blank"
+                      >
+                        <span id="button_s"> Code / Demo </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--divier2-->
+          <div *ngIf="pc || Csharp" class="service_div">
+            <div class="left"></div>
+
+            <div class="divider"></div>
+          </div>
+
+          <!--3th row (Protfolio EJS)-->
+          <div *ngIf="web || ejs || js || bootstrap" class="service_div">
+            <div class="left" style="height: 511px">
+              <img
+                class="service_img"
+                src="./assets/images/ejstemplate.jpg"
+                max-style="height: 511px"
+              />
+            </div>
+
+            <div class="right" style="height: 511px">
+              <!--3rd text content-->
+              <div class="title_s">PORTFOLIO TEMPLATE</div>
+              <div>
+                <div>
+                  <div id="wrapper">
+                    <div id="c1" class="text_s">
+                      <table>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Solution:</td>
+                          <td>&nbsp;&nbsp;Node.js</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Express.js</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Ejs</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Editor:</td>
+                          <td>&nbsp;&nbsp;VScode</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Collection:</td>
+                          <td>&nbsp;&nbsp;Fontawsome</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Bootstrap</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <div id="c2"></div>
+
+                    <div id="c3" class="text_s">
+                      <tr>
+                        <td>&nbsp;&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Practice scope:</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Responsive web</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;MVC framework</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Render page by ejs templates</td>
+                      </tr>
+                    </div>
+                  </div>
+                </div>
+                <div></div>
+
+                <div id="c4" class="text_s">
+                  <div class="grey">
+                    This is a 5 pages website project:<br />&nbsp;
+                    <ul>
+                      <li>
+                        Home - display greeting message and link to resume.
+                      </li>
+                      <li>Service - display skills.</li>
+                      <li>Project - display selected study projects.</li>
+                      <li>
+                        About - display course and personal related experience.
+                      </li>
+                      <li>Contact - display form to contact by email.</li>
+                    </ul>
+                    <div class="text-center">
+                      <a
+                        class="example_c"
+                        href="https://github.com/FreyaKim0/Project-Portfolio-EJS"
+                        target="_blank"
+                      >
+                        <span id="button_s"> Code / Demo </span>
+                      </a>
+
+                      <a
+                        class="example_c"
+                        href="https://portfolio-ejs-template.herokuapp.com/"
+                        target="_blank"
+                      >
+                        <span id="button_s"> View Website </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--divier3-->
+          <div *ngIf="web || ejs || js || bootstrap" class="service_div">
+            <div class="left"></div>
+
+            <div class="divider"></div>
+          </div>
+
+          <!--4th row (Property Management Website)-->
+          <div *ngIf="web || js" class="service_div">
+            <div class="left" style="height: 493px">
+              <img
+                class="service_img"
+                src="./assets/images/realestate.jpg"
+                max-style="height: 493px"
+              />
+            </div>
+
+            <div class="right" style="height: 493px">
+              <!--4th text content-->
+              <div class="title_s">PROPERTY MANAGEMENT WEBSITE</div>
+              <div>
+                <div>
+                  <div id="wrapper">
+                    <div id="c1" class="text_s">
+                      <table>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Language:</td>
+                          <td>&nbsp;&nbsp;HTML</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>&nbsp;&nbsp;CSS</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Javascipt</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Editor:</td>
+                          <td>&nbsp;&nbsp;VScode</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;MS Expression Web4</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Adobe photoshop</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Adobe illustrator</td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <div id="c2"></div>
+
+                    <div id="c3" class="text_s">
+                      <table>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Practice scope:</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Embed third-party Code (google map)</td>
+                        </tr>
+
+                        <tr>
+                          <td>Form constraint</td>
+                        </tr>
+                        <tr>
+                          <td>Website layout design</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div id="c4" class="text_s">
+                  <div class="grey">
+                    This is a 4 page website project: <br />&nbsp;
+                    <ul>
+                      <li>
+                        Home - display the agent's certification and customer
+                        reviews.
+                      </li>
+                      <li>
+                        See Properties - display a list of available properties
+                        and details.
+                      </li>
+                      <li>
+                        Contact me - customer can fill up form and send it to
+                        agent.
+                      </li>
+                      <li>Site map - tour of this webpage.</li>
+                    </ul>
+                    <div class="text-center">
+                      <a
+                        class="example_c"
+                        href="https://github.com/FreyaKim0/Exercises-Web-Designs"
+                        target="_blank"
+                      >
+                        <span id="button_s"> Code / Demo </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--divier4-->
+          <div *ngIf="web || js" class="service_div">
+            <div class="left"></div>
+
+            <div class="divider"></div>
+          </div>
+
+          <!--5th row (Android Studio)-->
+          <div *ngIf="mobile || java || android" class="service_div">
+            <div class="left" style="height: 529px">
+              <img
+                class="service_img"
+                src="./assets/images/orderPizza.jpg"
+                max-style="height: 529px"
+              />
+            </div>
+
+            <div class="right" style="height: 529px">
+              <!--5th text content-->
+              <div class="title_s">PIZZA ORDER MOBILE APP</div>
+              <div>
+                <div>
+                  <div id="wrapper">
+                    <div id="c1" class="text_s">
+                      <table>
+                        <tr>
+                          <td>Language:</td>
+                          <td>&nbsp;&nbsp;JAVA</td>
+                        </tr>
+
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Editor:</td>
+                          <td>&nbsp;&nbsp;Android Studio</td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <div id="c2"></div>
+
+                    <div id="c3" class="text_s">
+                      <table>
+                        <tr>
+                          <td>&nbsp;&nbsp;Practice scope:</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;JAVA form controls</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Menu control</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Intent</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Serialize and deserialize object</td>
+                        </tr>
+
+                        <tr>
+                          <td>&nbsp;&nbsp;Radio group</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;number picker</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Spinner</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div id="c4" class="text_s">
+                  <div class="grey">
+                    Funcionality: <br />&nbsp;
+                    <ul>
+                      <li>
+                        End user may view photos, ingredients of 5 different
+                        type of pizzas.
+                      </li>
+                      <li>
+                        End user may choose various types of pizzas , toppings ,
+                        payment method and contact information as they wish.
+                      </li>
+                      <li>
+                        Order variables will be stored and passed through 6
+                        different activities and will be presented at the last
+                        activity.
+                      </li>
+                      <li>
+                        Form Controls will be performed on customer information
+                        page.
+                      </li>
+                    </ul>
+                    <div class="text-center">
+                      <a
+                        class="example_c"
+                        href="https://github.com/FreyaKim0/Exercises-Android-Studio"
+                        target="_blank"
+                      >
+                        <span id="button_s"> Code / Demo </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--divier5-->
+          <div *ngIf="mobile || java || android" class="service_div">
+            <div class="left"></div>
+
+            <div class="divider"></div>
+          </div>
+
+          <!--6th row (Wireframe)-->
+          <div *ngIf="uxui || wireframe" class="service_div">
+            <div class="left" style="height: 529px">
+              <img
+                class="service_img"
+                src="./assets/images/wireframe.png"
+                max-style="height: 529px"
+              />
+            </div>
+
+            <div class="right" style="height: 529px">
+              <!--6th text content-->
+              <div class="title_s">VOTING WEBSITE - WIREFRAME</div>
+              <div>
+                <div>
+                  <div id="wrapper">
+                    <div id="c1" class="text_s">
+                      <table>
+                        <tr>
+                          <td>Editor:</td>
+                          <td>&nbsp;&nbsp;Figma</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Team Role:</td>
+                          <td>&nbsp;&nbsp;Web Designer</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Scopes:</td>
+                          <td>&nbsp;&nbsp;Desgin templates</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Color plan</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;RWD layouts</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;UI Mockups</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;Logo</td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div id="c2"></div>
+                    <div id="c3" class="text_s">
+                      <table>
+                        <tr>
+                          <td>&nbsp;&nbsp;Practice scope:</td>
+                        </tr>
+
+                        <tr>
+                          <td>&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Cloud design platform</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Block components</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Adobe illustrator</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Adobe photoshop</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div id="c4" class="text_s">
+                  <div class="grey">
+                    This is a wireframe for survey website: <br />&nbsp;
+                    <ul>
+                      <li>Home - display the list of all on-going surveys.</li>
+                      <li>Login/Register - login and register account.</li>
+
+                      <li>
+                        Manage Surverys - as hoster, end-user can edit their
+                        survey objects.
+                      </li>
+                      <li>
+                        View result - as hoster, end-user can see and import the
+                        current votoing result.<br />
+                      </li>
+                      <li>
+                        Voting - as voter, end-user can view details and vote
+                        for one survey.
+                      </li>
+                      <li>Page not found - display 404 error.<br /></li>
+                    </ul>
+                    <div class="text-center">
+                      <a
+                        class="example_c"
+                        href="https://www.figma.com/file/bU87uuAoSWBq9L8kzGTUag/Coffee-Crunch-Code?node-id=266269%3A0"
+                        target="_blank"
+                      >
+                        <span id="button_s"> View Design </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--divier6-->
+          <div *ngIf="uxui || wireframe" class="service_div">
+            <div class="left"></div>
+
+            <div class="divider"></div>
+          </div>
+
+          <!--7th row (Other pactice)-->
+          <div *ngIf="exercise || python || sql" class="service_div">
+            <div class="left" style="height: 415px">
+              <img
+                class="service_img"
+                src="./assets/images/exercise.png"
+                style="max-height: 415px"
+              />
+            </div>
+
+            <div class="right" style="height: 415px">
+              <!--7th text content-->
+              <div class="title_s">OTHER EXERCIESE</div>
+              <div>
+                <div>
+                  <div id="wrapper">
+                    <div id="c1" class="text_s">
+                      <table>
+                        <tr>
+                          <td>Language:</td>
+                          <td>&nbsp;&nbsp;Python</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>&nbsp;&nbsp;SQL</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>Editor:</td>
+                          <td>&nbsp;&nbsp;Pycharm</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;&nbsp;SQL developer</td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <div id="c2"></div>
+
+                    <div id="c3" class="text_s">
+                      <table>
+                        <tr>
+                          <td>&nbsp;&nbsp;Practice scope:</td>
+                          <td>&nbsp;&nbsp;Python</td>
+                        </tr>
+
+                        <tr>
+                          <td>&nbsp;&nbsp;Responsive frame</td>
+                          <td>&nbsp;&nbsp;Tkinter</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Multiple treads</td>
+                          <td>&nbsp;&nbsp;Constructor</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;Practice scope:</td>
+                          <td>&nbsp;&nbsp;SQL</td>
+                        </tr>
+
+                        <tr>
+                          <td>&nbsp;&nbsp;Sequence</td>
+                          <td>&nbsp;&nbsp;Trigger</td>
+                        </tr>
+
+                        <tr>
+                          <td>&nbsp;&nbsp;Group by</td>
+                          <td>&nbsp;&nbsp;Index</td>
+                        </tr>
+
+                        <tr>
+                          <td>&nbsp;&nbsp;Declare,Begine,End</td>
+                          <td>&nbsp;&nbsp;Joins</td>
+                        </tr>
+
+                        <tr>
+                          <td>&nbsp;&nbsp;min and max</td>
+                          <td>&nbsp;&nbsp;average</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div id="c4" class="text_s">
+                  <div class="grey">
+                    These are some simple programs that demostrate the languages
+                    I have learned. Please click links below to my github
+                    account for results.
+                    <br />&nbsp;
+                    <div class="text-center">
+                      <a
+                        class="example_c"
+                        href="https://github.com/FreyaKim0/Exercises-Python"
+                        target="_blank"
+                      >
+                        <span id="button_s"> Python Exercise </span>
+                      </a>
+                      <a
+                        class="example_c"
+                        href="https://github.com/FreyaKim0/Exercises-SQL"
+                        target="_blank"
+                      >
+                        <span id="button_s"> SQL Exercise </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--divier7-->
+          <div *ngIf="exercise || python || sql" class="service_div">
+            <div class="left"></div>
+
+            <div class="divider"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-</div>
+  <!--smaller screen-->
+  <div class="row-smaller">
+    <!--filter buttons-->
+    <div class="p-0">
+      <div id="smaller_screen">
+        <div class="container">
+          <div class="row">
+            <div class="col text-center p-1">
+              <!--Web app-->
+              <a
+                (click)="changeFilter('web')"
+                style="cursor: pointer"
+                class="button nav-link p-0"
+              >
+                <div class="d-flex flex-row justify-content-center p-0">
+                  <div id="tag3" class="cube">WEB APP</div>
+                  <div id="tag4" class="arrow"></div>
+                </div>
+              </a>
+            </div>
+            <div class="col text-center p-1">
+              <!--PC-->
+              <a
+                (click)="changeFilter('pc')"
+                style="cursor: pointer"
+                class="button nav-link p-0"
+              >
+                <div class="d-flex flex-row justify-content-center p-0">
+                  <div class="cube">PC APP</div>
+                  <div class="arrow"></div>
+                </div>
+              </a>
+            </div>
+            <div class="col text-center p-1">
+              <!--Mpbile app-->
+              <a
+                (click)="changeFilter('mobile')"
+                style="cursor: pointer"
+                class="button nav-link p-0"
+              >
+                <div class="d-flex flex-row justify-content-center p-0">
+                  <div id="tag5" class="cube">MOBILE APP</div>
+                  <div id="tag6" class="arrow"></div>
+                </div>
+              </a>
+            </div>
+            <div class="col text-center p-1">
+              <!--UX/UI-->
+              <a
+                (click)="changeFilter('uxui')"
+                style="cursor: pointer"
+                class="button nav-link p-0"
+              >
+                <div class="d-flex flex-row justify-content-center p-0">
+                  <div id="tag1" class="cube">UX / UI</div>
+                  <div id="tag2" class="arrow"></div>
+                </div>
+              </a>
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!--projects-->
+    <div class="p-0">
+      <div class="whole">
+        <div id="sub" style="font-size: 14px; margin-top: 10px">
+          &nbsp;<br />The below are my projects and exercises.
+        </div>
+
+        <!--1st row (Shopping Website)-->
+        <div
+          *ngIf="web || angular || mongodb || js || bootstrap"
+          class="service_div"
+        >
+          <!--image-->
+          <div class="left" style="height: 571px">
+            <img
+              class="service_img"
+              src="./assets/images/readit.png"
+              style="height: 571px"
+            />
+          </div>
+
+          <div class="right" style="height: 571px">
+            <!--1st text content-->
+            <span class="title_s">SHOPPING WEBSITE</span>
+            <br />
+            <div>
+              <div>
+                <div id="wrapper">
+                  <div id="c1" class="text_s">
+                    <table>
+                      <tr>
+                        <td>Solution:</td>
+                        <td>&nbsp;&nbsp;MongoDB</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td>&nbsp;&nbsp;Node.js</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Express.js</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Angular</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Editor:</td>
+                        <td>&nbsp;&nbsp;VScode</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Collection:</td>
+                        <td>&nbsp;&nbsp;Fontawsome</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Bootstrap</td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div id="c2"></div>
+
+                  <div id="c3" class="text_s">
+                    <table>
+                      <tr>
+                        <td>Middleware:</td>
+                        <td>&nbsp;&nbsp;Multer</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td>&nbsp;&nbsp;Morgan</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Passport</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Cookie-parser</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Mongoose</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Component:</td>
+                        <td>&nbsp;&nbsp;NgxSlider</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Modal</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div id="c4" class="text_s">
+                <div class="grey">
+                  Functionality:<br />&nbsp;
+                  <ul>
+                    <li>
+                      As buyer, end-users can filter authors by name using
+                      buttons.
+                    </li>
+                    <li>
+                      As buyer, end-users can filter the number of items
+                      displayed per
+                    </li>
+                    <li>
+                      As buyer, end-users can filter the price range using the
+                      slider.
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      As seller, end-users can create, update and delete
+                      products.
+                    </li>
+                    <li>
+                      As seller, end-users can check order details from the
+                      'Manage Product' page.
+                    </li>
+                    <li>
+                      As seller, end-users can toggle shipping status at the
+                      'Manage Product' page.
+                    </li>
+                    <li>
+                      As seller, end-users can remove orders from the 'Manage
+                      Product' page.
+                    </li>
+                  </ul>
+                  <div class="text-center">
+                    <a
+                      class="example_c"
+                      href="https://github.com/FreyaKim0/Project-Shopping-Cart-Angular"
+                      target="_blank"
+                    >
+                      <span id="button_s"> View Code </span>
+                    </a>
+
+                    <a
+                      class="example_c"
+                      href="/book-list/all"
+                      rel="nofollow noopener"
+                    >
+                      <span id="button_s"> View Website </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--divier1-->
+        <div
+          *ngIf="web || angular || mongodb || js || bootstrap"
+          class="service_div"
+        >
+          <div class="left"></div>
+
+          <div class="divider"></div>
+        </div>
+
+        <!--2nd row (GPA Calculator)-->
+        <div *ngIf="pc || Csharp" class="service_div">
+          <div class="left" style="height: 475px">
+            <img
+              class="service_img"
+              src="./assets/images/gpaCal.jpg"
+              style="height: 475px"
+            />
+          </div>
+
+          <div class="right" style="height: 475px">
+            <!--2nd text content-->
+            <div class="title_s">GPA CALCULATOR</div>
+            <div>
+              <div>
+                <div id="wrapper">
+                  <div id="c1" class="text_s">
+                    <table>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Solution:</td>
+                        <td>&nbsp;&nbsp;C#-WPF</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;SQL Server Profiler</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Editor:</td>
+                        <td>&nbsp;&nbsp;Visual Studio</td>
+                      </tr>
+
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div id="c2"></div>
+
+                  <div id="c3" class="text_s">
+                    <table>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Practice scope:</td>
+                        <td>&nbsp;&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Binding gridview</td>
+                        <td>&nbsp;&nbsp;TableLayout</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Loading page</td>
+                        <td>&nbsp;&nbsp;Material skin</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Queue</td>
+                        <td>&nbsp;&nbsp;Dictionary</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Buttons</td>
+                        <td>&nbsp;&nbsp;ComboBox</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Textboxes</td>
+                        <td>&nbsp;&nbsp;Labels</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Radio Buttons</td>
+                        <td>&nbsp;&nbsp;PictureBox</td>
+                      </tr>
+
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div id="c4" class="text_s">
+                <div class="grey">
+                  This is a WPF project for calculating college GPA. In this
+                  app:<br />&nbsp;
+                  <ul>
+                    <li>
+                      User can create, read, update and delete courses related
+                      values in grid.
+                    </li>
+                    <li>User can calculate GPA.</li>
+                    <li>User can store value by SQL Server Profiler.</li>
+                  </ul>
+                  <div class="text-center">
+                    <a
+                      class="example_c"
+                      href="https://github.com/FreyaKim0/Project-GPA-calculator"
+                      target="_blank"
+                    >
+                      <span id="button_s"> Code / Demo </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--divier2-->
+        <div *ngIf="pc || Csharp" class="service_div">
+          <div class="left"></div>
+
+          <div class="divider"></div>
+        </div>
+
+        <!--3th row (Protfolio EJS)-->
+        <div *ngIf="web || ejs || js || bootstrap" class="service_div">
+          <div class="left" style="height: 511px">
+            <img
+              class="service_img"
+              src="./assets/images/ejstemplate.jpg"
+              style="height: 511px"
+            />
+          </div>
+
+          <div class="right" style="height: 511px">
+            <!--3rd text content-->
+            <div class="title_s">PORTFOLIO TEMPLATE</div>
+            <div>
+              <div>
+                <div id="wrapper">
+                  <div id="c1" class="text_s">
+                    <table>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Solution:</td>
+                        <td>&nbsp;&nbsp;Node.js</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Express.js</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Ejs</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Editor:</td>
+                        <td>&nbsp;&nbsp;VScode</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Collection:</td>
+                        <td>&nbsp;&nbsp;Fontawsome</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Bootstrap</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div id="c2"></div>
+
+                  <div id="c3" class="text_s">
+                    <tr>
+                      <td>&nbsp;&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>Practice scope:</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;&nbsp;Responsive web</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;&nbsp;MVC framework</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;&nbsp;Render page by ejs templates</td>
+                    </tr>
+                  </div>
+                </div>
+              </div>
+              <div></div>
+
+              <div id="c4" class="text_s">
+                <div class="grey">
+                  This is a 5 pages website project:<br />&nbsp;
+                  <ul>
+                    <li>Home - display greeting message and link to resume.</li>
+                    <li>Service - display skills.</li>
+                    <li>Project - display selected study projects.</li>
+                    <li>
+                      About - display course and personal related experience.
+                    </li>
+                    <li>Contact - display form to contact by email.</li>
+                  </ul>
+                  <div class="text-center">
+                    <a
+                      class="example_c"
+                      href="https://github.com/FreyaKim0/Project-Portfolio-EJS"
+                      target="_blank"
+                    >
+                      <span id="button_s"> Code / Demo </span>
+                    </a>
+
+                    <a
+                      class="example_c"
+                      href="https://portfolio-ejs-template.herokuapp.com/"
+                      target="_blank"
+                    >
+                      <span id="button_s"> View Website </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--divier3-->
+        <div *ngIf="web || ejs || js || bootstrap" class="service_div">
+          <div class="left"></div>
+
+          <div class="divider"></div>
+        </div>
+
+        <!--4th row (Property Management Website)-->
+        <div *ngIf="web || js" class="service_div">
+          <div class="left" style="height: 493px">
+            <img
+              class="service_img"
+              src="./assets/images/realestate.jpg"
+              style="height: 493px"
+            />
+          </div>
+
+          <div class="right" style="height: 493px">
+            <!--4th text content-->
+            <div class="title_s">PROPERTY MANAGEMENT WEBSITE</div>
+            <div>
+              <div>
+                <div id="wrapper">
+                  <div id="c1" class="text_s">
+                    <table>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Language:</td>
+                        <td>&nbsp;&nbsp;HTML</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td>&nbsp;&nbsp;CSS</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Javascipt</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Editor:</td>
+                        <td>&nbsp;&nbsp;VScode</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;MS Expression Web4</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Adobe photoshop</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Adobe illustrator</td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div id="c2"></div>
+
+                  <div id="c3" class="text_s">
+                    <table>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Practice scope:</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Embed third-party Code (google map)</td>
+                      </tr>
+
+                      <tr>
+                        <td>Form constraint</td>
+                      </tr>
+                      <tr>
+                        <td>Website layout design</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div id="c4" class="text_s">
+                <div class="grey">
+                  This is a 4 page website project: <br />&nbsp;
+                  <ul>
+                    <li>
+                      Home - display the agent's certification and customer
+                      reviews.
+                    </li>
+                    <li>
+                      See Properties - display a list of available properties
+                      and details.
+                    </li>
+                    <li>
+                      Contact me - customer can fill up form and send it to
+                      agent.
+                    </li>
+                    <li>Site map - tour of this webpage.</li>
+                  </ul>
+                  <div class="text-center">
+                    <a
+                      class="example_c"
+                      href="https://github.com/FreyaKim0/Exercises-Web-Designs"
+                      target="_blank"
+                    >
+                      <span id="button_s"> Code / Demo </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--divier4-->
+        <div *ngIf="web || js" class="service_div">
+          <div class="left"></div>
+
+          <div class="divider"></div>
+        </div>
+
+        <!--5th row (Android Studio)-->
+        <div *ngIf="mobile || java || android" class="service_div">
+          <div class="left" style="height: 529px">
+            <img
+              class="service_img"
+              src="./assets/images/orderPizza.jpg"
+              style="height: 529px"
+            />
+          </div>
+
+          <div class="right" style="height: 529px">
+            <!--5th text content-->
+            <div class="title_s">PIZZA ORDER MOBILE APP</div>
+            <div>
+              <div>
+                <div id="wrapper">
+                  <div id="c1" class="text_s">
+                    <table>
+                      <tr>
+                        <td>Language:</td>
+                        <td>&nbsp;&nbsp;JAVA</td>
+                      </tr>
+
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Editor:</td>
+                        <td>&nbsp;&nbsp;Android Studio</td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div id="c2"></div>
+
+                  <div id="c3" class="text_s">
+                    <table>
+                      <tr>
+                        <td>&nbsp;&nbsp;Practice scope:</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;JAVA form controls</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Menu control</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Intent</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Serialize and deserialize object</td>
+                      </tr>
+
+                      <tr>
+                        <td>&nbsp;&nbsp;Radio group</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;number picker</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Spinner</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div id="c4" class="text_s">
+                <div class="grey">
+                  Funcionality: <br />&nbsp;
+                  <ul>
+                    <li>
+                      End user may view photos, ingredients of 5 different type
+                      of pizzas.
+                    </li>
+                    <li>
+                      End user may choose various types of pizzas , toppings ,
+                      payment method and contact information as they wish.
+                    </li>
+                    <li>
+                      Order variables will be stored and passed through 6
+                      different activities and will be presented at the last
+                      activity.
+                    </li>
+                    <li>
+                      Form Controls will be performed on customer information
+                      page.
+                    </li>
+                  </ul>
+                  <div class="text-center">
+                    <a
+                      class="example_c"
+                      href="https://github.com/FreyaKim0/Exercises-Android-Studio"
+                      target="_blank"
+                    >
+                      <span id="button_s"> Code / Demo </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--divier5-->
+        <div *ngIf="mobile || java || android" class="service_div">
+          <div class="left"></div>
+
+          <div class="divider"></div>
+        </div>
+
+        <!--6th row (Wireframe)-->
+        <div *ngIf="uxui || wireframe" class="service_div">
+          <div class="left" style="height: 529px">
+            <img
+              class="service_img"
+              src="./assets/images/wireframe.png"
+              style="height: 529px"
+            />
+          </div>
+
+          <div class="right" style="height: 529px">
+            <!--6th text content-->
+            <div class="title_s">VOTING WEBSITE - WIREFRAME</div>
+            <div>
+              <div>
+                <div id="wrapper">
+                  <div id="c1" class="text_s">
+                    <table>
+                      <tr>
+                        <td>Editor:</td>
+                        <td>&nbsp;&nbsp;Figma</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Team Role:</td>
+                        <td>&nbsp;&nbsp;Web Designer</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Scopes:</td>
+                        <td>&nbsp;&nbsp;Desgin templates</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Color plan</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;RWD layouts</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;UI Mockups</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;Logo</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div id="c2"></div>
+                  <div id="c3" class="text_s">
+                    <table>
+                      <tr>
+                        <td>&nbsp;&nbsp;Practice scope:</td>
+                      </tr>
+
+                      <tr>
+                        <td>&nbsp;&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Cloud design platform</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Block components</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Adobe illustrator</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Adobe photoshop</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div id="c4" class="text_s">
+                <div class="grey">
+                  This is a wireframe for survey website: <br />&nbsp;
+                  <ul>
+                    <li>Home - display the list of all on-going surveys.</li>
+                    <li>Login/Register - login and register account.</li>
+
+                    <li>
+                      Manage Surverys - as hoster, end-user can edit their
+                      survey objects.
+                    </li>
+                    <li>
+                      View result - as hoster, end-user can see and import the
+                      current votoing result.<br />
+                    </li>
+                    <li>
+                      Voting - as voter, end-user can view details and vote for
+                      one survey.
+                    </li>
+                    <li>Page not found - display 404 error.<br /></li>
+                  </ul>
+                  <div class="text-center">
+                    <a
+                      class="example_c"
+                      href="https://www.figma.com/file/bU87uuAoSWBq9L8kzGTUag/Coffee-Crunch-Code?node-id=266269%3A0"
+                      target="_blank"
+                    >
+                      <span id="button_s"> View Design </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--divier6-->
+        <div *ngIf="uxui || wireframe" class="service_div">
+          <div class="left"></div>
+
+          <div class="divider"></div>
+        </div>
+
+        <!--7th row (Other pactice)-->
+        <div *ngIf="exercise || python || sql" class="service_div">
+          <div class="left" style="height: 415px">
+            <img
+              class="service_img"
+              src="./assets/images/exercise.png"
+              style="height: 415px"
+            />
+          </div>
+
+          <div class="right" style="height: 415px">
+            <!--7th text content-->
+            <div class="title_s">OTHER EXERCIESE</div>
+            <div>
+              <div>
+                <div id="wrapper">
+                  <div id="c1" class="text_s">
+                    <table>
+                      <tr>
+                        <td>Language:</td>
+                        <td>&nbsp;&nbsp;Python</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td>&nbsp;&nbsp;SQL</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>Editor:</td>
+                        <td>&nbsp;&nbsp;Pycharm</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;SQL developer</td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div id="c2"></div>
+
+                  <div id="c3" class="text_s">
+                    <table>
+                      <tr>
+                        <td>&nbsp;&nbsp;Practice scope:</td>
+                        <td>&nbsp;&nbsp;Python</td>
+                      </tr>
+
+                      <tr>
+                        <td>&nbsp;&nbsp;Responsive frame</td>
+                        <td>&nbsp;&nbsp;Tkinter</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Multiple treads</td>
+                        <td>&nbsp;&nbsp;Constructor</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;Practice scope:</td>
+                        <td>&nbsp;&nbsp;SQL</td>
+                      </tr>
+
+                      <tr>
+                        <td>&nbsp;&nbsp;Sequence</td>
+                        <td>&nbsp;&nbsp;Trigger</td>
+                      </tr>
+
+                      <tr>
+                        <td>&nbsp;&nbsp;Group by</td>
+                        <td>&nbsp;&nbsp;Index</td>
+                      </tr>
+
+                      <tr>
+                        <td>&nbsp;&nbsp;Declare,Begine,End</td>
+                        <td>&nbsp;&nbsp;Joins</td>
+                      </tr>
+
+                      <tr>
+                        <td>&nbsp;&nbsp;min and max</td>
+                        <td>&nbsp;&nbsp;average</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div id="c4" class="text_s">
+                <div class="grey">
+                  These are some simple programs that demostrate the languages I
+                  have learned. Please click links below to my github account
+                  for results.
+                  <br />&nbsp;
+                  <div class="text-center">
+                    <a
+                      class="example_c"
+                      href="https://github.com/FreyaKim0/Exercises-Python"
+                      target="_blank"
+                    >
+                      <span id="button_s"> Python Exercise </span>
+                    </a>
+                    <a
+                      class="example_c"
+                      href="https://github.com/FreyaKim0/Exercises-SQL"
+                      target="_blank"
+                    >
+                      <span id="button_s"> SQL Exercise </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--divier7-->
+        <div *ngIf="exercise || python || sql" class="service_div">
+          <div class="left"></div>
+
+          <div class="divider"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

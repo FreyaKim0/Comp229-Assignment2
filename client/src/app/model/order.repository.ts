@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Order } from './order.model';
 import { Cart } from './cart.model';
-
 @Injectable()
 export class OrderRepository {
   private orders: Order[] = [];
@@ -29,8 +28,7 @@ export class OrderRepository {
   }
 
   // Get orders filter by specific buyer
-  getOneOrder(id: number): Order[]
-  {
+  getOneOrder(id: number): Order[] {
     if (!this.loaded)
     {
       this.loadOrders();
@@ -38,8 +36,7 @@ export class OrderRepository {
     return this.orders.filter(p => p._id === id);
   }
 
-  saveOrder(order: Order): boolean
-  {
+  saveOrder(order: Order): boolean {
     this.dataSource.saveOrder(order).subscribe(res => {
         this.tempOrder = res.order as Order;
         this.orders.push(this.tempOrder);
@@ -52,8 +49,7 @@ export class OrderRepository {
     originalShipping: boolean,
     changedShipping: boolean,
     id: number
-  ): void
-  {
+  ): void {
     this.dataSource.updateOrderShipping(id, store, originalShipping, changedShipping)
       .subscribe(res => {
         if (res.success) {
@@ -70,8 +66,7 @@ export class OrderRepository {
       });
   }
 
-  checkShipping(id: number): number[]
-  {
+  checkShipping(id: number): number[] {
     let totalCount = 0;
     let trueCount = 0;
 
@@ -91,9 +86,7 @@ export class OrderRepository {
     return [totalCount, trueCount];
   }
 
-  deleteOrder(id: number): Observable<any>
-  {
+  deleteOrder(id: number): Observable<any> {
     return this.dataSource.deleteOrder(id);
   }
-
 }

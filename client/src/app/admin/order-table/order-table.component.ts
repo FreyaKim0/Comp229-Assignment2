@@ -15,103 +15,102 @@ import { Component, Input, OnInit} from '@angular/core';
     <div class="modal-title text-right mt-3 mr-3" >
       <button style="outline:0px; background:#ffffff; border:0px;" (click)="closepage()" >
           <i class="fas fa-times-circle" style=" color:gray; font-size:30px;"></i>
-        </button>
+      </button>
     </div>
-        <div class="modal-body wrap">
+    <div id="big_window" class="modal-body wrap">
 
-          <!--Details table-->
-          <div id="left">
-            <p class="line_title">Order Details</p>
-            <hr />
-
-            <!--Generate items-->
-            <table *ngFor="let line of order.cart.lines">
-              <tr>
-                <th style="width: 120px">
-                  <!--Item picture-->
-                   <div class="itemPicture">
-                      <img
-                        [src]="line.book.imagePath"
-                        [alt]="line.book.name"
-                        style="max-width: 100px; max-height: 100px"
-                      />
-                    </div>
-                </th>
-                <th style="text-align: left; width: 250px; margin-bottom: 10px">
-                  <!--Book name-->
-                 {{line.book.name}} <br /><br />
-                  <!--Single price-->
-                  <span style="color: grey; width: 250px; font-size: 14px">
-                    {{
-                      line.book.price | currency: "USD":"symbol":"2.2-2"
-                    }}&nbsp;x&nbsp;{{ line.quantity }}
-                    <br>This order is
-                    <span *ngIf="!line.shipping" style="color:rgb(230, 171, 9);"><b>in process</b></span>
-                    <span *ngIf="line.shipping" style="color:maroon;"><b>has been sent</b></span>
-                    by&nbsp;<u>{{line.book.store}}</u></span>
-                  <!--quantity-->
-
-                </th>
-                <th>
-                  <!--amount*price-->
-                  <span style="color: red">{{
-                    line.book.price*line.quantity | currency: "USD":"symbol":"2.2-2"
-                  }}</span>
-                </th>
-              </tr>
-            </table>
-
-            <hr />
-          </div>
-
-
-          <!--Center Address-->
-          <div id="center">
-             <p class="line_title">Shipping Info</p>
-            <hr />
-            <span style="font-size:14px;">
-            <u>{{order.name}}</u><br>
-            {{order.address}},
-            {{order.city}},
-            {{order.province}},
-
-            {{order.country}} &nbsp;
-            ({{order.postalCode}})
-            </span><br><hr>
-          </div>
-
-          <!--Summary-->
-          <div id="right">
-            <p class="line_title">Summary</p>
-            <hr />
-            <table class="summary">
-              <tr>
-                <td class="text-left w-50 p-0">Subtotal</td>
-                <td class="text-right w-50 p-0">
-                  {{ order.cart.cartPrice | currency: "USD":"symbol":"2.2-2" }}
-                </td>
-              </tr>
-              <tr>
-                <td class="text-left w-50 p-0">Tax</td>
-                <td class="text-right w-50 p-0">{{ order.cart.cartPrice*0.15 | currency: "USD":"symbol":"2.2-2" }}</td>
-              </tr>
-              <tr>
-                <td class="text-left w-50 p-0">
+      <!--Details table-->
+      <div class="container">
+             <div class="row">
+              <div class="col-sm">
+                  <p class="line_title">Order Details</p>
                   <hr />
-                </td>
-                <td class="text-right w-50 p-0">
+
+                  <!--Generate items-->
+                  <table *ngFor="let line of order.cart.lines">
+                    <tr>
+                      <th style="width: 120px">
+
+                        <!--Item picture-->
+                        <div class="itemPicture">
+                          <img
+                            [src]="line.book.imagePath"
+                            [alt]="line.book.name"
+                            style="max-width: 100px; max-height: 100px"
+                          />
+                        </div>
+                      </th>
+                      <th style="text-align: left; width: 250px; margin-bottom: 10px">
+
+                          <!--Book name-->
+                          {{line.book.name}} <br /><br />
+
+                          <!--Single price-->
+                          <span style="color: grey; width: 250px; font-size: 14px">
+                            {{line.book.price | currency: "USD":"symbol":"2.2-2"}}&nbsp;x&nbsp;{{ line.quantity }}<br>This order is
+                            <span *ngIf="!line.shipping" style="color:rgb(230, 171, 9);"><b>in process</b></span>
+                            <span *ngIf="line.shipping" style="color:maroon;"><b>has been sent</b></span>
+                            by&nbsp;<u>{{line.book.store}}</u>
+                          </span>
+                      </th>
+                      <th>
+
+                        <!--amount*price-->
+                        <span style="color: red">{{
+                          line.book.price*line.quantity | currency: "USD":"symbol":"2.2-2"
+                        }}</span>
+                      </th>
+                    </tr>
+                 </table>
+              </div>
+              <div class="col-sm">
+                  <p class="line_title">Shipping Info</p>
                   <hr />
-                </td>
-              </tr>
-              <tr>
-                <td class="text-left w-50 p-0">Total</td>
-                <td class="text-right w-50 p-0">
-                  <span style="color:maroon"><b>{{ order.cart.cartPrice*1.15 | currency: "USD":"symbol":"2.2-2" }}</b></span>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
+                  <span style="font-size:14px;">
+                  <u>{{order.name}}</u><br>
+                  {{order.address}},
+                  {{order.city}},
+                  {{order.province}},
+
+                  {{order.country}} &nbsp;
+                  ({{order.postalCode}})
+                  </span><br><hr>
+              </div>
+              <div class="col-sm">
+
+                <!--Summary-->
+                <p class="line_title">Summary</p>
+                <hr />
+                <table class="summary">
+                  <tr>
+                    <td class="text-left w-50 p-0">Subtotal</td>
+                    <td class="text-right w-50 p-0">
+                      {{ order.cart.cartPrice | currency: "USD":"symbol":"2.2-2" }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-left w-50 p-0">Tax</td>
+                    <td class="text-right w-50 p-0">{{ order.cart.cartPrice*0.15 | currency: "USD":"symbol":"2.2-2" }}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-left w-50 p-0">
+                      <hr />
+                    </td>
+                    <td class="text-right w-50 p-0">
+                      <hr />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-left w-50 p-0">Total</td>
+                    <td class="text-right w-50 p-0">
+                      <span style="color:maroon"><b>{{ order.cart.cartPrice*1.15 | currency: "USD":"symbol":"2.2-2" }}</b></span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+             </div>
+            </div>
+      </div>
     `,
   styleUrls: ['../order-each/order-each.component.css']
 })
@@ -137,7 +136,7 @@ export class modalComponent implements OnInit {
     }
   }
 
-   closepage(): void{
+  closepage(): void{
     this.activeModal.dismiss('Cross click');
   }
 }
@@ -162,8 +161,7 @@ export class OrderTableComponent implements OnInit
               private route: ActivatedRoute,
               private modalService: NgbModal){ }
 
-  ngOnInit(): void
-  {
+  ngOnInit(): void {
     // Set this user's name
     const userInfo = JSON.parse(localStorage.getItem('user'));
     this.thisUserDisplayName = userInfo.displayName;
@@ -173,8 +171,7 @@ export class OrderTableComponent implements OnInit
   }
 
   // Open Modal page
-  open(id: number, index: number): void
-  {
+  open(id: number, index: number): void {
      // Open modal window
      const ModalRef = this.modalService.open(modalComponent,
        {
@@ -194,52 +191,46 @@ export class OrderTableComponent implements OnInit
   }
 
   // Get order lists
-  getOrdersTs(): Order[]
-  {
-    // get orders filter by user name
-    let userOrders: Order[] = [];
-    let storeOrders: Order[] = [];
+  getOrdersTs(): Order[] {
 
-    userOrders = this.repository.getOrders()
-      .filter(p => p.buyer === this.thisUserDisplayName);
+    // get all orders
+     let allOrders = this.repository.getOrders()
 
     if (this.title === 'Purchase History') {
-
-      // Archieved option
-      return userOrders;
+      // all orders filter 'buyer' by this user name
+      return allOrders.filter(p => p.buyer === this.thisUserDisplayName);;
     }
 
     if (this.title === 'Manage Order'){
-
       // get orders filter by store name
-      storeOrders = this.getStoreOrders(userOrders, this.thisUserDisplayName);
-
-      // Archieved option
-      return storeOrders; // .filter(o => !this.includeShipped || o[0].Cart.lines);
+      return this.getStoreOrders(allOrders, this.thisUserDisplayName);
     }
   }
 
-  getStoreOrders(temp: Order[], userDisplayName: string): Order[]
-  {
-    // Create an Order subject
+  getStoreOrders(temp: Order[], userDisplayName: string): Order[] {
+    // Create a reutrn list
     const returnArray: Order[] = [];
 
-    // Write matching lines into tempOrder
+    // =========Write matching lines into tempOrder=========
+    // Scan each order of the whole list
     temp.forEach( function(order): void {
 
       const tempOrder = new Order(new Cart());
 
-      // tslint:disable-next-line: prefer-for-of
+      // Scan each line book of that order's cart
       for (let counter = 0; counter < order.cart.lines.length; counter++) {
 
+        // Temp line object (a book)
         const x = order.cart.lines[counter];
 
+        // Check if that book's store name is equal to this user name?
         if (x.book.store === userDisplayName) {
             tempOrder.cart.addLine(x.book, x.quantity, x.shipping);
         }
       }
 
-      if (tempOrder.cart.lines.length !== 0 ) {
+      // If result is not a empty cart, then push temp order to array
+      if (tempOrder.cart.lines.length != 0 ) {
           tempOrder._id = order._id;
           tempOrder.buyer = order.buyer;
           tempOrder.name = order.name;
@@ -253,13 +244,11 @@ export class OrderTableComponent implements OnInit
           returnArray.push(tempOrder);
       }
     });
-
     return returnArray;
   }
 
   // Change shipping status
-  changeShipStatus(id: number, index: number, originalShipping: boolean): void
-  {
+  changeShipStatus(id: number, index: number, originalShipping: boolean): void {
     const changedShipping = !originalShipping;
 
     // Set value for restdatasource
@@ -297,5 +286,3 @@ export class OrderTableComponent implements OnInit
     }
   }
 }
-
-

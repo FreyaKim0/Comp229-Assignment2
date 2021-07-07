@@ -1,6 +1,6 @@
 <header>
   <!--Main Navigation-->
-  <div class="box">
+  <div style="min-width: 500px">
     <nav class="navbar-expand-xl navbar-dark" id="sideNav">
       <!-- Image and text -->
       <div
@@ -65,14 +65,19 @@
               routerLink="/logout"
               class="contactButton"
               type="button"
-              routerLink="/login"
             >
-              <i class="fas fa-sign-out-alt" id="login_icon"></i>
+              <i class="fas fa-sign-out-alt" style="padding-left: 5px"></i>
               <div class="words">logout</div>
             </a>
-
-            <a class="contactButton" type="button" routerLink="/login">
-              <i class="fas fa-sign-in-alt" id="login_icon"></i>
+            <a
+              *ngIf="!isLoggedIn()"
+              (click)="onLoginClick()"
+              class="contactButton"
+              type="button"
+              routerLink="/login"
+            >
+              <i class="fas fa-sign-out-alt" style="padding-left: 5px"></i>
+              <div class="words">login</div>
             </a>
           </div>
 
@@ -103,7 +108,7 @@
       >
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" [routerLinkActive]="['active']">
-            <a class="nav-link" routerLink="/service">Service</a>
+            <a class="nav-link" routerLink="/services">Service</a>
           </li>
 
           <li class="nav-item" [routerLinkActive]="['active']">
@@ -116,9 +121,9 @@
             <a class="nav-link" routerLink="/about">About</a>
           </li>
 
-          <li class="nav-item" [routerLinkActive]="['active']">
+          <!--<li class="nav-item" [routerLinkActive]="['active']">
             <a class="nav-link" routerLink="/contact">Contact</a>
-          </li>
+          </li>-->
         </ul>
       </div>
     </nav>

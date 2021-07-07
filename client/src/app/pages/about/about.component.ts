@@ -13,7 +13,5 @@ export class AboutComponent extends BasePageComponent implements OnInit {
     super(route);
    }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

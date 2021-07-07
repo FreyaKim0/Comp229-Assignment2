@@ -18,7 +18,7 @@ input.ng-dirty.ng-valid {
   margin: 20px 10px;
 
   font-size: 14px;
-  width: 180px;
+  width: 90%;
   background-color: maroon;
   color: beige;
 }
@@ -50,4 +50,29 @@ input[type="text"] {
   border: 1px solid #eeeeee;
   background-color: seashell;
   height: 40px;
+}
+.left {
+  width: 500px;
+  margin: 10px;
+}
+.right {
+  width: 250px;
+  margin-top: -20px;
+  margin-left: 10px;
+}
+@media (min-width: 1190px) {
+  .left {
+    width: 350px;
+    margin: 40px;
+  }
+  .right {
+    width: 250px;
+    margin-top: 15px;
+    margin-left: 0px;
+  }
+  .buttonS,
+  .buttonP,
+  .buttonE {
+    width: 180px;
+  }
 }

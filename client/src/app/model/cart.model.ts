@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Book } from './book.model';
-
 @Injectable()
-  export class Cart
-{
+  export class Cart {
   public lines: CartLine[] = [];
   public itemCount = 0;
   public cartPrice = 0;
 
   constructor(){}
 
-  addLine(book: Book, quantity: number= 1, shipping: boolean): void
-  {
+  addLine(book: Book, quantity: number= 1, shipping: boolean): void {
     const line = this.lines.find(l => l.book._id === book._id);
 
     // If there is no duplicated _id
@@ -26,8 +23,7 @@ import { Book } from './book.model';
     this.recalculate();
   }
 
-  updateQuantity(book: Book, quantity: number): void
-  {
+  updateQuantity(book: Book, quantity: number): void {
     const line = this.lines.find(l => l.book._id === book._id);
     if (line !== undefined)
     {
@@ -36,22 +32,19 @@ import { Book } from './book.model';
     this.recalculate();
   }
 
-  removeLine(id: number): void
-  {
+  removeLine(id: number): void {
     const index = this.lines.findIndex(l => l.book._id === String(id));
     this.lines.splice(index, 1);
     this.recalculate();
   }
 
-  clear(): void
-  {
+  clear(): void {
     this.lines = [];
     this.itemCount = 0;
     this.cartPrice = 0;
   }
 
-  private recalculate(): void
-  {
+  private recalculate(): void {
     this.itemCount = 0;
     this.cartPrice = 0;
     this.lines.forEach(l => {
@@ -62,14 +55,12 @@ import { Book } from './book.model';
 }
 
 // CartLine for recording each books
-export class CartLine
-{
+export class CartLine {
  constructor(public book: Book,
              public quantity: number,
              public shipping: boolean) { }
 
- get lineTotal(): number
-{
+ get lineTotal(): number {
    return this.quantity * this.book.price;
-}
+ }
 }

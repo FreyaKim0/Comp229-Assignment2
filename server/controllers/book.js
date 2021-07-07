@@ -19,16 +19,13 @@ module.exports.displayBookList = (req, res, next) => {
 
 // Add New books
 module.exports.displayAddPage = (req, res, next) => {
-  /*
-    res.render('book/add', {title: 'Add Book', 
-    displayName: req.user ? req.user.displayName : ''});
-    */
   res.json({ success: true, msg: "Succesfully Displayed Add Page" });
 };
 
 module.exports.processAddPage = (req, res, next) => {
-  const imagePath0 = "http://localhost:3500/server/images/" + req.file.filename;
-
+  const imagePath0 =
+    "https://xu-tung-jin-assignment2.herokuapp.com/api/server/images/" +
+    req.file.filename;
   const x = req.body.price;
   const price = Number(x);
   const y = req.body.originalPrice;
@@ -81,53 +78,105 @@ module.exports.displayEditPage = (req, res, next) => {
   });
 };
 
+// This is for update case which image has been changed
 module.exports.processEditPage = (req, res, next) => {
-  let id = req.body._id;
+  const imagePath0 =
+    "https://xu-tung-jin-assignment2.herokuapp.com/api/server/images/" +
+    req.file.filename;
+  const id = req.params.id;
 
-  //const imagePath0 =
-  //  "http://localhost:3500/server/images/" + req.files[0].filename;
-  // const imagePath1 =
-  //   "http://localhost:3500/server/images/" + req.files[1].filename;
-  // const imagePath2 =
-  //   "http://localhost:3500/server/images/" + req.files[2].filename;
-  // const imagePath3 =
-  //   "http://localhost:3500/server/images/" + req.files[3].filename;
-  // const imagePath4 =
-  //   "http://localhost:3500/server/images/" + req.files[4].filename;
-  // const imagePath5 =
-  //   "http://localhost:3500/server/images/" + req.files[5].filename;
   const x = req.body.price;
   const price = Number(x);
   const y = req.body.originalPrice;
   const originalPrice = Number(y);
 
+  const name = req.body.name;
+  const author = req.body.author;
+  const published = req.body.published;
+  const description = req.body.description;
+  const store = req.body.store;
+
   let updatedBook = Book({
-    _id: id,
-    name: req.body.name,
-    author: req.body.author,
-    published: req.body.published,
-    description: req.body.description,
-    price: price,
+    name: name,
+    author: author,
+    published: published,
+    description: description,
     originalPrice: originalPrice,
-    store: req.body.store,
-    imagePath0: imagePath0,
+    price: price,
+    store: store,
+    imagePath: imagePath0,
   });
 
-  Book.updateOne({ _id: id }, updatedBook, (err) => {
-    if (err) {
-      res.json({
-        success: false,
-        msg: "Server: Failed at upadting this new book.",
-        book: updatedBook,
-      });
-    } else {
-      res.json({
-        success: true,
-        msg: "Successfully Updated Book",
-        book: updatedBook,
-      });
+  Book.updateOne(
+    { _id: id },
+    {
+      $set: {
+        name: name,
+        author: author,
+        published: published,
+        description: description,
+        price: price,
+        originalPrice: originalPrice,
+        store: store,
+        imagePath: imagePath0,
+      },
+    },
+    (err) => {
+      if (err) {
+        res.json({
+          success: false,
+          msg: "Server: Failed at upadting this new book.",
+          book: updatedBook,
+          imagePath: imagePath0,
+        });
+      } else {
+        res.json({
+          success: true,
+          msg: "Successfully Updated Book (with image change)",
+          book: updatedBook,
+          id: id,
+          imagePath: imagePath0,
+        });
+      }
     }
-  });
+  );
+};
+
+module.exports.processEditWithSameImagePage = (req, res, next) => {
+  const id = req.params.id;
+  const price = req.params.price;
+  const originalPrice = req.params.originalPrice;
+  const name1 = req.params.name;
+  const author1 = req.params.author;
+  const published1 = req.params.published;
+  const description1 = req.params.description;
+  const store1 = req.params.store;
+
+  Book.updateOne(
+    { _id: id },
+    {
+      $set: {
+        name: name1,
+        author: author1,
+        published: published1,
+        description: description1,
+        price: price,
+        originalPrice: originalPrice,
+        store: store1,
+      },
+    },
+    (err) => {
+      if (err) {
+        res.json({
+          success: false,
+        });
+      } else {
+        res.json({
+          success: true,
+        });
+      }
+    }
+  );
 };
 
 module.exports.performDelete = (req, res, next) => {
@@ -138,8 +187,6 @@ module.exports.performDelete = (req, res, next) => {
       console.log(err);
       res.end(err);
     } else {
-      // refresh the book list
-      //res.redirect('/book-list');
       res.json({ success: true, msg: "Successfully Deleted Book" });
     }
   });

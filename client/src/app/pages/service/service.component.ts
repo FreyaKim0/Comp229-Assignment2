@@ -1,7 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { BasePageComponent } from '../../partials/base-page/base-page.component';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-service',
   templateUrl: './service.component.html',
@@ -13,8 +12,5 @@ export class ServiceComponent extends BasePageComponent implements OnInit {
     super(route);
    }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void { }
 }
-

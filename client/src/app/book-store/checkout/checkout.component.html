@@ -20,8 +20,8 @@
     novalidate
     (ngSubmit)="submitOrder(form)"
   >
-    <div class="d-flex justify-content-center">
-      <div style="width: 350px; margin: 40px">
+    <div class="d-flex justify-content-center" style="min-width: 400px">
+      <div class="left">
         <!--Inputs-->
         <div class="border p-3">
           <!--Form Title-->
@@ -135,7 +135,7 @@
         </div>
       </div>
 
-      <div style="width: 250px; margin-top: 15px">
+      <div class="right">
         <!-- Payment summary -->
         <div class="mt-3 border h-50 p-3">
           <!--Price summary-->
@@ -179,17 +179,8 @@
           <!--buttons-->
           <div class="text-center">
             <br />
-            <button class="buttonP" type="submit">Process to paymnet</button>
+            <button class="buttonP" type="submit">Process to payment</button>
             <br />
-
-            <!--policy agreement-->
-            <div
-              style="text-align: left; margin-top: -20px; padding-left: 15px"
-            >
-              <input type="checkbox" /><span style="font-size: 10px"
-                >&nbsp;I have agree the policy.</span
-              >
-            </div>
           </div>
         </div>
       </div>

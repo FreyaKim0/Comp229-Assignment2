@@ -3,11 +3,10 @@ import { Cart } from './cart.model';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class Order
-{
+export class Order{
   public _id: number;
   public buyer: string;
-  public name: string;  // <---buyer's account user name
+  public name: string;            // <---buyer's account user name
   public address: string;
   public city: string;
   public province: string;

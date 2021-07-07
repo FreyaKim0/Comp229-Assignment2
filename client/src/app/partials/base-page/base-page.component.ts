@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
 @Component({
   selector: 'app-base-page',
   templateUrl: './base-page.component.html',
@@ -15,6 +14,4 @@ export class BasePageComponent implements OnInit {
   ngOnInit(): void {
     this.title = this.route.snapshot.data.title;
   }
-
 }
-

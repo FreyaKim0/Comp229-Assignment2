@@ -13,7 +13,6 @@ function requireAuth(req, res, next) {
   if (!req.isAuthenticated()) {
     return res.redirect("/login");
   }
-
   next();
 }
 
@@ -34,6 +33,11 @@ router.post(
   storage,
   passport.authenticate("jwt", { session: false }),
   bookController.processEditPage
+);
+
+router.post(
+  "/editWithSameImage/:id/:name/:author/:published/:description/:originalPrice/:price/:store",
+  bookController.processEditWithSameImagePage
 );
 
 /* GET to perform  Deletion - DELETE Operation */

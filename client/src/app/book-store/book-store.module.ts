@@ -15,7 +15,6 @@ const routingS = RouterModule.forChild([
   {path: '**', redirectTo: 'all'},
 ]);
 
-
 @NgModule({
   imports: [CommonModule,
             NgxSliderModule,
@@ -29,6 +28,3 @@ const routingS = RouterModule.forChild([
 })
 
 export class BookStoreModule{}
-
-
-

@@ -1,4 +1,4 @@
-// Sorting book data model @ front end
+// ======Sorting book data model (front end)======
 export class Book
 {
   constructor(

@@ -1,17 +1,20 @@
-/*------footer sections------*/
 #footer {
-
-  width: 100%;
+  background-color: #f2f4f5;
+  width: 80%;
   font-size: 10px;
-  color:grey;
+  color: grey;
   text-align: center;
   display: block;
-  bottom: 0;
   letter-spacing: 3px;
-  padding-top:5px;
+  padding-top: 5px;
   padding-bottom: 5px;
+  position: fixed;
+  bottom: 0;
 }
 
-#grid_placeholder {
-  display: none;
+/* [responsive] */
+@media only screen and (min-width: 1px) and (max-width: 1189px) {
+  #footer {
+    width: 100%;
+  }
 }

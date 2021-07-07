@@ -2,46 +2,39 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RestDataSource } from './rest.datasource';
 import { User } from './user.model';
-
 @Injectable()
 export class AuthService
 {
   user: User;
 
   // Initial constructor
-  constructor(private datasource: RestDataSource)
-  {
+  constructor(private datasource: RestDataSource) {
    this.user = new User();
   }
 
   // login
-  authenticate(user: User): Observable<any>
-  {
+  authenticate(user: User): Observable<any> {
      return this.datasource.authenticate(user);
   }
 
   // local storage
-  storeUserData(token: any, user: User): void
-  {
+  storeUserData(token: any, user: User): void {
     this.datasource.storeUserData(token, user);
   }
 
   // is logged in
-  get authenticated(): boolean
-  {
+  get authenticated(): boolean {
    return this.datasource.loggedIn();
   }
 
   // is logged out
-  logout(): Observable<any>
-  {
+  logout(): Observable<any> {
     return this.datasource.logout();
   }
 
   // rigister new user
   // tslint:disable-next-line: typedef
-  createUser()
-  {
+  createUser() {
     console.log('IN auth.service.ts creat() ...');
     return this.datasource.addUser(this.user);
   }

@@ -9,8 +9,6 @@ import { HeaderComponent } from './header/header.component';
 import { BookStoreHeaderComponent } from './book-store-header/book-store-header.component';
 import { CommonModule } from '@angular/common';
 
-
-
 @NgModule({
   imports: [
              CommonModule,

@@ -1,86 +1,82 @@
 <!--Login page-->
-
 <div id="background">
   <div id="placeholder"></div>
-      <div class="limiter">
-        <div class="main_wrap">
+  <div class="limiter">
+    <div class="main_wrap">
+      <!--Login block-->
+      <div id="block_wrap">
+        <form autocomplete="off" #form="ngForm" (ngSubmit)="authenticate(form)">
+          <span class="account_login"> ACCOUNT LOGIN </span><br />
 
-              <!--Login block-->
-          <div id="block_wrap">
+          <!--Authenicain error-->
+          <span
+            style="padding-left: 20px; font-size: 14px; color: red"
+            *ngIf="errorMessage != null"
+          >
+            {{ errorMessage }} </span
+          ><br />
 
-            <form autocomplete='off' #form='ngForm' (ngSubmit)='authenticate(form)'>
+          <span class="field_name"> USERNAME </span>
 
-              <span class="account_login">
-                ACCOUNT LOGIN
-              </span><br>
-
-              <!--Authenicain error-->
-              <span style="padding-left:20px; font-size:14px; color:red;" *ngIf='errorMessage != null'>
-              {{errorMessage}}
-              </span><br>
-
-              <span class="field_name">
-                USERNAME
-              </span>
-
-              <div class="wrap-input100" data-validate = "Username is required">
-
-                  <!--username input-->
-                  <input id="username"
-                         required autofocus autocomplete='off'
-                         class="input100"
-                         [(ngModel)]='user.username'
-                         type="text"
-                         name="username"
-                         required>
-                  <span class="focus-input100"></span>
-
-              </div>
-
-
-              <span class="field_name">
-                PASSWORD
-              </span>
-
-              <div class="wrap-input100" data-validate = "Password is required">
-
-                <!--view password text-->
-                <span class="btn-show-pass">
-                  <i class="fa fa-eye"></i>
-                </span>
-
-                <!--password input-->
-                <input id="password"  [(ngModel)]='user.password' class="input100" type="password" name="password" >
-                <span class="focus-input100" required autofocus autocomplete='off'></span>
-
-              </div>
-
-              <span class="forget">Forget password?</span>
-              <span class="register">
-              <a (click)='goRegister()'>Register</a>
-              </span>
-
-
-
-
-
-              <div class="container-login100-form-btn">
-                <!--submit button-->
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" class="login100-form-btn" value="Login">
-                <!--cancel button-->
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a routerLink='/home'>
-                <input type="button" value="Cancel" class="login100-form-btn">
-                </a>
-
-
-              </div>
-            </form>
+          <div class="wrap-input100" data-validate="Username is required">
+            <!--username input-->
+            <input
+              id="username"
+              required
+              autofocus
+              autocomplete="off"
+              class="input100"
+              [(ngModel)]="user.username"
+              type="text"
+              name="username"
+              required
+            />
+            <span class="focus-input100"></span>
           </div>
-        </div>
-        <br><br><br>
+
+          <span class="field_name"> PASSWORD </span>
+
+          <div class="wrap-input100" data-validate="Password is required">
+            <!--view password text-->
+            <!--<span class="btn-show-pass">
+              <i class="fa fa-eye"></i>
+            </span>-->
+
+            <!--password input-->
+            <input
+              id="password"
+              [(ngModel)]="user.password"
+              class="input100"
+              type="password"
+              name="password"
+            />
+            <span
+              class="focus-input100"
+              required
+              autofocus
+              autocomplete="off"
+            ></span>
+          </div>
+
+          <!--<span class="forget">Forget password?</span>-->
+          <div class="register">
+            <a (click)="goRegister()">Register</a>
+            <!--<span>Register</span>-->
+          </div>
+
+          <div class="container-login100-form-btn">
+            <!--submit button-->
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" class="login100-form-btn" value="Login" />
+            <!--cancel button-->
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a routerLink="/home">
+              <input type="button" value="Cancel" class="login100-form-btn" />
+            </a>
+          </div>
+        </form>
       </div>
     </div>
-
-
+    <br /><br /><br />
+  </div>
+</div>

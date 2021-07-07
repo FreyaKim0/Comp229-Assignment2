@@ -9,112 +9,254 @@
     </p>
     <hr />
 
-    <table style="width: 800px">
-      <!--T Header-->
-      <tr>
-        <th style="width: 150px">Order Number</th>
-        <th style="width: 100px">Paid</th>
-        <th style="width: 150px">Order Date</th>
-        <th style="width: 150px">Ship Status</th>
-        <th style="width: 100px">Details</th>
-        <th *ngIf="title == 'Manage Order'" style="width: 100px">Delete</th>
-      </tr>
+    <div
+      id="smallDivWarning"
+      class="container-fluid"
+      *ngIf="getOrdersTs().length == 0"
+    >
+      There are no orders.
+    </div>
 
-      <!--If there is no data to show-->
-      <tr *ngIf="getOrdersTs().length == 0">
-        <td
-          colspan="6"
-          style="
-            color: rgb(197, 191, 191);
-            text-align: center;
-            padding-top: 25px;
-          "
+    <!--Smaller window-->
+    <ng-template ngFor let-o [ngForOf]="getOrdersTs()" let-i="index">
+      <div style="margin-right: auto; margin-left: auto; min-width: 400px">
+        <table
+          id="small_table"
+          class="table shadow p-3 mb-5 bg-white rounded p-0"
         >
-          There are no orders.
-        </td>
-      </tr>
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Order</th>
+              <th scope="col">{{ o._id }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="col">Paid</th>
+              <td scope="col">
+                {{ o.cart.cartPrice * 1.15 | currency: "USD":"symbol":"2.2-2" }}
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">Date</th>
+              <td scope="col">
+                {{ o.created | date: "longDate" }}
+              </td>
+            </tr>
+            <tr *ngIf="title === 'Purchase History'">
+              <th scope="col">Shipping</th>
+              <td scope="col">
+                <span
+                  style="color: maroon"
+                  *ngIf="checkShipping(o._id, i) == true"
+                >
+                  <b>Complete</b>
+                </span>
+                <span
+                  style="color: rgb(230, 171, 9)"
+                  *ngIf="checkShipping(o._id, i) == false"
+                >
+                  In process...{{ shippingCalculate(o._id, i) }}
+                </span>
+              </td>
+            </tr>
+            <tr *ngIf="title === 'Manage Order'">
+              <th scope="col">Shipping</th>
 
-      <!--If there are data to show-->
-      <ng-template ngFor let-o [ngForOf]="getOrdersTs()" let-i="index">
-        <tr>
-          <!--Order Number-->
-          <td style="width: 200px; padding-top: 10px">{{ o._id }}</td>
+              <!--Toggle button-->
+              <td scope="col">
+                <span
+                  style="color: maroon; margin-right: 5px"
+                  *ngIf="o.cart.lines[0].shipping == true"
+                  ><i class="fas fa-check"></i
+                ></span>
+                <span
+                  style="color: rgb(230, 171, 9); margin-right: 5px"
+                  *ngIf="o.cart.lines[0].shipping == false"
+                  ><i class="fas fa-times"></i
+                ></span>
+                <button
+                  class="buttonS"
+                  type="submit"
+                  (click)="changeShipStatus(o._id, i, o.cart.lines[0].shipping)"
+                >
+                  <i class="fas fa-shipping-fast"></i>&nbsp;Toggle
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">Details</th>
+              <td scope="col">
+                <button
+                  class="buttonS"
+                  (click)="open(o._id, i)"
+                  (close)="onClose()"
+                >
+                  <i class="far fa-eye"></i> Details
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="title == 'Manage Order'">
+              <th scope="col">Delete</th>
+              <td scope="col">
+                <button class="buttonS" (click)="delete(o._id)">
+                  <i class="fas fa-archive"></i> Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
 
-          <!--Amount(15% tax rate)-->
-          <td style="width: 100px; padding-top: 10px; color: maroon">
-            {{ o.cart.cartPrice * 1.15 | currency: "USD":"symbol":"2.2-2" }}
-          </td>
+    <!--Bigger window-->
+    <div class="container">
+      <div class="col">
+        <table class="table shadow bg-white rounded" id="big_table">
+          <!--T Header-->
+          <thead class="thead-dark">
+            <tr>
+              <th style="width: 200px">Order Number</th>
+              <th style="width: 120px">Paid</th>
+              <th style="width: 160px">Order Date</th>
+              <th style="width: 160px">Ship Status</th>
+              <th style="width: 160px">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--If there is no data to show-->
+            <tr *ngIf="getOrdersTs().length == 0">
+              <td
+                colspan="6"
+                style="
+                  color: rgb(197, 191, 191);
+                  text-align: center;
+                  padding-top: 25px;
+                "
+              >
+                There are no orders.
+              </td>
+            </tr>
 
-          <!--Date-->
-          <td style="width: 150px; padding-top: 10px">
-            {{ o.created | date: "longDate" }}
-          </td>
+            <!--If there are data to show-->
+            <ng-template ngFor let-o [ngForOf]="getOrdersTs()" let-i="index">
+              <tr>
+                <!--Order Number-->
+                <td
+                  *ngIf="title === 'Purchase History'"
+                  style="padding-top: 30px"
+                  scope="col"
+                >
+                  {{ o._id }}
+                </td>
+                <td
+                  *ngIf="title === 'Manage Order'"
+                  style="padding-top: 52px"
+                  scope="col"
+                >
+                  {{ o._id }}
+                </td>
 
-          <!--Shipping (Purchase History)-->
-          <td
-            *ngIf="title === 'Purchase History'"
-            style="width: 150px; padding-top: 10px; color: maroon"
-          >
-            <span *ngIf="checkShipping(o._id, i) == true">
-              <b>Complete</b>
-            </span>
-            <span
-              style="color: rgb(230, 171, 9)"
-              *ngIf="checkShipping(o._id, i) == false"
-            >
-              <b>In process...</b>{{ shippingCalculate(o._id, i) }}</span
-            >
-          </td>
+                <!--Amount(15% tax rate)-->
+                <td
+                  *ngIf="title === 'Purchase History'"
+                  style="padding-top: 30px; color: maroon"
+                >
+                  {{
+                    o.cart.cartPrice * 1.15 | currency: "USD":"symbol":"2.2-2"
+                  }}
+                </td>
+                <td
+                  *ngIf="title === 'Manage Order'"
+                  style="padding-top: 52px; color: maroon"
+                >
+                  {{
+                    o.cart.cartPrice * 1.15 | currency: "USD":"symbol":"2.2-2"
+                  }}
+                </td>
 
-          <!--Shipping (Manage Orders)-->
-          <td
-            *ngIf="title === 'Manage Order'"
-            style="width: 150px; padding-top: 10px; color: rgb(66, 63, 63)"
-          >
-            <!--submit button-->
-            <span
-              style="color: maroon; margin-right: -3px"
-              *ngIf="o.cart.lines[0].shipping == true"
-              ><i class="fas fa-check"></i
-            ></span>
-            <span
-              style="color: rgb(230, 171, 9)"
-              *ngIf="o.cart.lines[0].shipping == false"
-              ><i class="fas fa-times"></i
-            ></span>
-            <button
-              class="buttonS"
-              type="submit"
-              (click)="changeShipStatus(o._id, i, o.cart.lines[0].shipping)"
-            >
-              <i class="fas fa-shipping-fast"></i>&nbsp;Toggle
-            </button>
-          </td>
+                <!--Date-->
+                <td
+                  *ngIf="title === 'Purchase History'"
+                  style="padding-top: 30px"
+                  scope="col"
+                >
+                  {{ o.created | date: "longDate" }}
+                </td>
+                <td
+                  *ngIf="title === 'Manage Order'"
+                  style="padding-top: 52px"
+                  scope="col"
+                >
+                  {{ o.created | date: "longDate" }}
+                </td>
 
-          <!--Details-->
-          <td style="width: 100px; padding-top: 10px">
-            <button
-              class="buttonS"
-              (click)="open(o._id, i)"
-              (close)="onClose()"
-            >
-              <i class="far fa-eye"></i> Details
-            </button>
-          </td>
+                <td style="padding-top: 30px; color: maroon">
+                  <!--Shipping (Purchase History)-->
+                  <div *ngIf="title === 'Purchase History'">
+                    <span *ngIf="checkShipping(o._id, i) == true">
+                      <b>Complete</b>
+                    </span>
+                    <span
+                      style="color: rgb(230, 171, 9)"
+                      *ngIf="checkShipping(o._id, i) == false"
+                    >
+                      In process...{{ shippingCalculate(o._id, i) }}</span
+                    >
+                  </div>
 
-          <!--Delete-->
-          <td
-            *ngIf="title == 'Manage Order'"
-            style="width: 100px; padding-top: 10px"
-          >
-            <button class="buttonS" (click)="delete(o._id)">
-              <i class="fas fa-archive"></i> Delete
-            </button>
-          </td>
-        </tr>
-      </ng-template>
-    </table>
+                  <!--Shipping (Manage Orders)-->
+                  <div *ngIf="title === 'Manage Order'">
+                    <!--submit button-->
+                    <div style="text-align: center">
+                      <span
+                        style="color: maroon; margin-right: -3px"
+                        *ngIf="o.cart.lines[0].shipping == true"
+                        ><i style="font-size: 28px" class="fas fa-check"></i
+                      ></span>
+                    </div>
+                    <div style="text-align: center">
+                      <span
+                        style="color: rgb(230, 171, 9)"
+                        *ngIf="o.cart.lines[0].shipping == false"
+                        ><i style="font-size: 28px" class="fas fa-times"></i
+                      ></span>
+                    </div>
 
-    <hr />
+                    <button
+                      class="buttonS"
+                      type="submit"
+                      (click)="
+                        changeShipStatus(o._id, i, o.cart.lines[0].shipping)
+                      "
+                    >
+                      <i class="fas fa-shipping-fast"></i>&nbsp;Toggle
+                    </button>
+                  </div>
+                </td>
+
+                <!--Details-->
+                <td scope="col">
+                  <button
+                    class="buttonS"
+                    (click)="open(o._id, i)"
+                    (close)="onClose()"
+                  >
+                    <i class="far fa-eye"></i> Details
+                  </button>
+                  <button
+                    *ngIf="title == 'Manage Order'"
+                    class="buttonS"
+                    (click)="delete(o._id)"
+                  >
+                    <i class="fas fa-archive"></i> Delete
+                  </button>
+                </td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

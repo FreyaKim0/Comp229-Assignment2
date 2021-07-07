@@ -31,12 +31,14 @@
         <th style="text-align: left; width: 250px; margin-bottom: 10px">
           <!--Book name-->
           {{ line.book.name }}<br /><br />
+
           <!--Single price-->
           <span style="color: grey; width: 250px; font-size: 10px">
             {{
               line.book.price | currency: "USD":"symbol":"2.2-2"
             }}&nbsp;x</span
           ><br />
+
           <!--quantity-->
           <input
             type="number"
@@ -59,7 +61,6 @@
         </th>
       </tr>
     </table>
-
     <hr />
   </div>
 

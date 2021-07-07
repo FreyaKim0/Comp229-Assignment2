@@ -11,46 +11,60 @@
 </button>
 
 <!--Generate items-->
-<div id="wrapper">
-  <div *ngFor="let b of getBooks() | callback: userNamefilter">
-    <div class="bookDiv">
-      <!--edit button-->
-      <div class="editButton">
-        <div class="delete">
-          <a (click)="deleteBook(b._id)">
-            <i class="fas fa-trash-alt"></i>
-          </a>
+<div class="container">
+  <!--No book warning-->
+  <div id="DivWarning" class="container-fluid" *ngIf="getBooks().length == 0">
+    There are no books yet.
+  </div>
+
+  <div class="row justify-content-md-center" style="list-style: none">
+    <div *ngFor="let b of getBooks() | callback: userNamefilter">
+      <div
+        style="
+          width: 231px;
+          height: 350px;
+          border: 1px solid rgb(240, 236, 236);
+          margin: 10px;
+        "
+      >
+        <!--edit button-->
+        <div class="editButton">
+          <div class="delete">
+            <a (click)="deleteBook(b._id)">
+              <i class="fas fa-trash-alt"></i>
+            </a>
+          </div>
         </div>
-      </div>
 
-      <!--image-->
-      <div class="imageDiv" (click)="editBook(b._id)">
-        <img
-          [src]="b.imagePath"
-          [alt]="b.name"
-          style="padding: 10px; max-width: 200px; max-height: 200px"
-        />
-        <div class="edit_dialog">
-          <a> Edit Item </a>
+        <!--image-->
+        <div class="imageDiv" (click)="editBook(b._id)">
+          <img
+            [src]="b.imagePath"
+            [alt]="b.name"
+            style="padding: 10px; max-width: 200px; max-height: 200px"
+          />
+          <div class="edit_dialog">
+            <a> Edit Item </a>
+          </div>
         </div>
-      </div>
 
-      <!--book name-->
-      <div class="bookName">
-        {{ b.name }} &nbsp;-&nbsp;<span style="color: gray"
-          >sale by {{ b.store }}</span
-        >
-      </div>
+        <!--book name-->
+        <div class="bookName">
+          {{ b.name }} &nbsp;-&nbsp;<span style="color: gray"
+            >sale by {{ b.store }}</span
+          >
+        </div>
 
-      <!--price-->
-      <div>
-        <span style="text-decoration: line-through; font-size: 12px">{{
-          b.originalPrice | currency: "USD":"symbol":"2.2-2"
-        }}</span
-        >&nbsp;
-        <span style="font-size: 12px; color: red">{{
-          b.price | currency: "USD":"symbol":"2.2-2"
-        }}</span>
+        <!--price-->
+        <div>
+          <span style="text-decoration: line-through; font-size: 12px">{{
+            b.originalPrice | currency: "USD":"symbol":"2.2-2"
+          }}</span
+          >&nbsp;
+          <span style="font-size: 12px; color: red">{{
+            b.price | currency: "USD":"symbol":"2.2-2"
+          }}</span>
+        </div>
       </div>
     </div>
   </div>

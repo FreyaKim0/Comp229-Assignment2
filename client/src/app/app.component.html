@@ -1,25 +1,15 @@
-
+<div style="min-width: 500px">
   <!--Partial:header-->
   <app-header></app-header>
-    <!--Partial:content and footer-->
-    <div id="main" class="main_wrapper">
+  <!--Partial:content and footer-->
+  <div id="main" class="main_wrapper">
+    <div id="grid_placeholder" class="main_grid_constraint"></div>
+    <div id="content_in_main_wrapper" class="main_grid_constraint">
+      <!--Content-->
+      <router-outlet></router-outlet>
 
-        <div id="grid_placeholder" class="main_grid_constraint"></div>
-
-        <div id="content_in_main_wrapper" class="main_grid_constraint">
-
-          <!--content(title)-->
-
-          <!----------------------->
-          <!------page link-------->
-          <!----------------------->
-
-          <router-outlet></router-outlet>
-
-          <app-footer></app-footer>
-
-        </div>
-
+      <!--Footer-->
+      <app-footer></app-footer>
     </div>
-
-
+  </div>
+</div>

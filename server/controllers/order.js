@@ -76,13 +76,22 @@ module.exports.processEditPage = (req, res, next) => {
   const store = req.params.store;
 
   // Change the shipping status only for books with matching store & id
-  Order.updateMany(
+  Order.update(
     {
       _id: id,
       "cart.lines.book.store": store,
       "cart.lines.shipping": originalShipping,
     },
-    { $set: { "cart.lines.$.shipping": updateShipping } },
+    { $set: { "cart.lines.$[elem].shipping": updateShipping } },
+    {
+      arrayFilters: [
+        {
+          "elem.shipping": originalShipping,
+          "elem.book.store": store,
+        },
+      ],
+      multi: true,
+    },
     (err) => {
       if (err) {
         res.json({

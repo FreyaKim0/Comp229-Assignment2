@@ -4,14 +4,13 @@
   <app-book-store-header></app-book-store-header>
 </div>
 
-<div class="d-flex justify-content-center">
-  <!-- LEFT COL (user's menu)-->
-  <div style="display: flex">
-    <!-- LEFT COL BUTTONS -->
+<div class="main_wrap_admin">
+  <div class="row d-flex justify-content-center m-0">
+    <!-- Left column (filters) -->
     <div class="left_menu">
       <!--Administrator Name-->
       <div class="name_bar">{{ thisUserAlphabet }}</div>
-      <span>{{ thisUserDisplayName }}<br /></span>
+      <div id="display_name">{{ thisUserDisplayName }}<br /></div>
 
       <!--Sale Book divider-->
       <div class="divier_words">Sale Books</div>
@@ -29,10 +28,6 @@
       <button class="buttonS" routerLink="/admin/main/manage-order">
         Manage Orders</button
       ><br /><br />
-
-      <button class="buttonS" routerLink="/admin/main/manage-payment">
-        Manage Payment</button
-      ><br />
 
       <div class="divier_words">Buy Books</div>
       <hr />
@@ -61,7 +56,7 @@
       <br /><br />
     </div>
 
-    <!-- RIGHT COL (books)-->
+    <!-- Right column (books)-->
     <div class="right_content">
       <router-outlet></router-outlet>
     </div>
