@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Freya\Desktop\team-main\Comp229-Assignment2\client\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! C:\Users\Freya\Desktop\team-main\Project-Shopping-Cart-Angular\client\src\polyfills.ts */"hN/g");
 
 
 /***/ }),

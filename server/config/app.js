@@ -95,11 +95,14 @@ let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
 passport.use(strategy);
 
 // ============= API routing (+ /api for product mode) ===============
-app.use("/api/", indexRouter);
+app.use("/api", indexRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/book-list", booksRouter);
 app.use("/api/orders", ordersRouter);
 app.use("/api/server/images", express.static(path.join("server/images")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../public/index.html"));
+});
 
 // ============= catch 404 and forward to error handler =============
 app.use(function (req, res, next) {

@@ -7,10 +7,10 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Freya\Desktop\team-main\Comp229-Assignment2\client\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */"8jWO");
-__webpack_require__(/*! C:\Users\Freya\Desktop\team-main\Comp229-Assignment2\client\node_modules\bootstrap\dist\css\bootstrap.min.css */"q4sD");
-__webpack_require__(/*! C:\Users\Freya\Desktop\team-main\Comp229-Assignment2\client\node_modules\@fortawesome\fontawesome-free\css\all.min.css */"vs8Z");
-module.exports = __webpack_require__(/*! C:\Users\Freya\Desktop\team-main\Comp229-Assignment2\client\src\Content\styles.css */"AcV0");
+__webpack_require__(/*! C:\Users\Freya\Desktop\team-main\Project-Shopping-Cart-Angular\client\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */"8jWO");
+__webpack_require__(/*! C:\Users\Freya\Desktop\team-main\Project-Shopping-Cart-Angular\client\node_modules\bootstrap\dist\css\bootstrap.min.css */"q4sD");
+__webpack_require__(/*! C:\Users\Freya\Desktop\team-main\Project-Shopping-Cart-Angular\client\node_modules\@fortawesome\fontawesome-free\css\all.min.css */"vs8Z");
+module.exports = __webpack_require__(/*! C:\Users\Freya\Desktop\team-main\Project-Shopping-Cart-Angular\client\src\Content\styles.css */"AcV0");
 
 
 /***/ }),
