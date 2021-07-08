@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
 import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { Location } from '@angular/common';
 @Component({
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
@@ -17,7 +16,6 @@ export class AuthComponent implements OnInit, OnDestroy {
   public errorMessage = "* Prepared for HR - guest / password2021 *";
 
   constructor(private router: Router,
-              private _location: Location,
               private auth: AuthService,
               // tslint:disable-next-line: variable-name
               @Inject(DOCUMENT) private _document ) { }
@@ -47,7 +45,7 @@ export class AuthComponent implements OnInit, OnDestroy {
           {
             // Store token and user information in this browser page
             this.auth.storeUserData(data.token, data.user);
-            this._location.back();
+            this.router.navigate(['/home']);
           }
         else
         {
@@ -59,7 +57,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     else
     {
       // webpage data contraints
-      this.errorMessage = 'Please fill in both rows .';
+      this.errorMessage = '* Please fill in both rows *';
     }
   }
 }
