@@ -69,6 +69,9 @@
   margin-left: 8px;
   position: absolute;
 }
+.delete_icon {
+  margin: auto;
+}
 
 /* Product picture div */
 .imageDiv {
