@@ -9,14 +9,15 @@
           <span class="account_login"> ACCOUNT LOGIN </span><br />
 
           <!--Authenicain error-->
-          <span
-            style="padding-left: 20px; font-size: 14px; color: red"
+          <div
+            style="padding: 20px; font-size: 14px; color: red"
             *ngIf="errorMessage != null"
           >
-            {{ errorMessage }} </span
-          ><br />
+            {{ errorMessage }}
+          </div>
+          <br />
 
-          <span class="field_name"> USERNAME </span>
+          <div class="field_name">USERNAME</div>
 
           <div class="wrap-input100" data-validate="Username is required">
             <!--username input-->
@@ -34,7 +35,7 @@
             <span class="focus-input100"></span>
           </div>
 
-          <span class="field_name"> PASSWORD </span>
+          <div class="field_name">PASSWORD</div>
 
           <div class="wrap-input100" data-validate="Password is required">
             <!--view password text-->
