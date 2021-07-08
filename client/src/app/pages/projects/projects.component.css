@@ -157,7 +157,7 @@ input[type="checkbox"]:checked + label {
 }
 
 /*icon images*/
-.service_img {
+.project_img {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
@@ -256,7 +256,7 @@ input[type="checkbox"]:checked + label {
     float: left;
     width: 60%;
   }
-  .service_img {
+  .project_img {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -272,7 +272,7 @@ input[type="checkbox"]:checked + label {
   #sub {
     display: none;
   }
-  .service_img {
+  .project_img {
     display: none;
   }
 }
@@ -288,7 +288,7 @@ input[type="checkbox"]:checked + label {
   #sub {
     display: block;
   }
-  .service_img {
+  .project_img {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-top-right-radius: 0px;
