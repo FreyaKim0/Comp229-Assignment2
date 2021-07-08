@@ -1,4 +1,11 @@
-<div id="content">
+<div *ngIf="title !== 'ABOUT'" id="content">
+  <div id="nameBanner">
+    <p>{{ title }}</p>
+    <hr style="width: 400px" />
+  </div>
+</div>
+
+<div *ngIf="title === 'ABOUT'" id="content" style="background-color: #f7f6f7">
   <div id="nameBanner">
     <p>{{ title }}</p>
     <hr style="width: 400px" />

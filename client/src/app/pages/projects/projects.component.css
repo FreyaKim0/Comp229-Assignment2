@@ -125,7 +125,7 @@ input[type="checkbox"]:checked + label {
 /*project items*/
 .whole {
   width: 100%;
-  min-height: 85vh;
+  min-height: 100vh;
   background-color: #f2f4f5;
 }
 
