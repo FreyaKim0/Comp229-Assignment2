@@ -29,7 +29,7 @@ export class RestDataSource
               private jwtService: JwtHelperService) {
     this.user = new User();
     //this.baseUrl = `http://localhost:3500/`; // + /api/ for product phase
-    this.baseUrl = `https://xu-tung-jin-assignment2.herokuapp.com/api/`;
+    this.baseUrl = `https://xu-tung-jin.herokuapp.com/api/`;
   }
 
   // ====== get, add, update user (registration) ======

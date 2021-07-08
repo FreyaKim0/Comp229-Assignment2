@@ -24,8 +24,7 @@ module.exports.displayAddPage = (req, res, next) => {
 
 module.exports.processAddPage = (req, res, next) => {
   const imagePath0 =
-    "https://xu-tung-jin-assignment2.herokuapp.com/api/server/images/" +
-    req.file.filename;
+    "https://xu-tung-jin.herokuapp.com/api/server/images/" + req.file.filename;
   const x = req.body.price;
   const price = Number(x);
   const y = req.body.originalPrice;
@@ -81,8 +80,7 @@ module.exports.displayEditPage = (req, res, next) => {
 // This is for update case which image has been changed
 module.exports.processEditPage = (req, res, next) => {
   const imagePath0 =
-    "https://xu-tung-jin-assignment2.herokuapp.com/api/server/images/" +
-    req.file.filename;
+    "https://xu-tung-jin.herokuapp.com/api/server/images/" + req.file.filename;
   const id = req.params.id;
 
   const x = req.body.price;
