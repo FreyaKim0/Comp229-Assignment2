@@ -35,8 +35,8 @@
 }
 
 /*text columns*/
-#service_wrapper,
-#service_wrapper2 {
+#wrapper,
+#wrapper2 {
   padding: 10px;
   padding-left: 0px;
   display: flex;
@@ -64,7 +64,7 @@
     margin-left: auto;
     width: 800px;
   }
-  .left {
+  .service_image_wrap {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     margin-top: 35px;
@@ -129,19 +129,19 @@
   #c1,
   #c2,
   #c3,
-  #service_wrapper {
+  #wrapper {
     background-color: white;
     height: auto;
   }
-  #service_wrapper,
-  #service_wrapper2 {
+  #wrapper,
+  #wrapper2 {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 40px;
     padding-bottom: 20px;
     background-color: white;
   }
-  #service_wrapper2 {
+  #wrapper2 {
     margin-bottom: 0px;
   }
   .service_image_wrap {
