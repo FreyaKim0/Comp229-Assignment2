@@ -32,7 +32,7 @@ import { Cart } from '../model/cart.model';
               <div>
                 <img
                   [src]="book.imagePath"
-                  onerror="this.onerror=null; this.src='https://xu-tung-jin.herokuapp.com/assets/images/default_book.gif'"
+                  onerror="this.onerror=null; this.src='../assets/images/default_book.gif'"
                   [alt]="book.name"
                   style="max-width: 400px; max-height: 350px"
                 />
