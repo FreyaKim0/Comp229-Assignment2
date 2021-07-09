@@ -1,5 +1,5 @@
 # Project-Shopping-Cart-Angular
-**This is a bookstore shopping platform. In this app:**
+**This is a bookstore shopping platform project. In this app:**
 * As buyer, end-users can filter authors by name using buttons.
 * As buyer, end-users can filter the number of items displayed per page.
 * As buyer, end-users can filter the price range using the slider.<br>
