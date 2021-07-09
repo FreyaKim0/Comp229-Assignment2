@@ -1,5 +1,8 @@
 # Project-Shopping-Cart-Angular
-**This is a bookstore shopping platform project. In this app:**
+
+**[View on Heroku](https://xu-tung-jin.herokuapp.com)**<br>
+**This is a bookstore shopping platform project in my portfolio website. In this project:**
+
 * As buyer, end-users can filter authors by name using buttons.
 * As buyer, end-users can filter the number of items displayed per page.
 * As buyer, end-users can filter the price range using the slider.<br>
