@@ -94,16 +94,16 @@ module.exports.processEditPage = (req, res, next) => {
   const description = req.body.description;
   const store = req.body.store;
 
-  let updatedBook = Book({
-    name: name,
-    author: author,
-    published: published,
-    description: description,
-    originalPrice: originalPrice,
-    price: price,
-    store: store,
-    imagePath: imagePath0,
-  });
+  // let updatedBook = Book({
+  //   name: name,
+  //   author: author,
+  //   published: published,
+  //   description: description,
+  //   originalPrice: originalPrice,
+  //   price: price,
+  //   store: store,
+  //   imagePath: imagePath0,
+  // });
 
   Book.updateOne(
     { _id: id },
@@ -147,16 +147,11 @@ module.exports.processEditWithSameImagePage = (req, res, next) => {
   const y = req.body.originalPrice;
   const originalPrice = Number(y);
 
-  let newBook = Book({
-    name: req.body.name,
-    author: req.body.author,
-    published: req.body.published,
-    description: req.body.description,
-    originalPrice: originalPrice,
-    price: price,
-    store: req.body.store,
-    imagePath: imagePath0,
-  });
+  const name = req.body.name;
+  const author = req.body.author;
+  const published = req.body.published;
+  const description = req.body.description;
+  const store = req.body.store;
 
   // const id = req.params.id;
   // const price = req.params.price;
@@ -171,14 +166,14 @@ module.exports.processEditWithSameImagePage = (req, res, next) => {
     { _id: id },
     {
       $set: {
-        name: newBook.name,
-        author: newBook.author,
-        published: newBook.published,
-        description: newBook.description,
-        price: newBook.price,
-        originalPrice: newBook.originalPrice,
-        store: newBook.store,
-        imagePath: newBook.imagePath0,
+        name: name,
+        author: author,
+        published: published,
+        description: description,
+        price: price,
+        originalPrice: originalPrice,
+        store: store,
+        imagePath: imagePath0,
       },
     },
     (err) => {
