@@ -90,6 +90,16 @@ export class BookRepository
       bookData.append("store", store);
       bookData.append("image0", image0, name);
 
+    console.log('image0: ' + image0);
+    console.log("name: " + name);
+    console.log("author: " + author);
+    console.log("published: " + published);
+    console.log("description: " + description);
+    console.log("originalPrice: " + originalPrice);
+    console.log("price: " + price);
+    console.log("store: " + store);
+    console.log("image0: " + image0);
+
       // Sent this update data to back-end,
       // then update it into front-end array if successd
       this.dataSource.updateBook(bookData, _id).subscribe(book => {
@@ -120,6 +130,13 @@ export class BookRepository
 
     console.log('image0: ' + image0);
     console.log("name: " + name);
+    console.log("author: " + author);
+    console.log("published: " + published);
+    console.log("description: " + description);
+    console.log("originalPrice: " + originalPrice);
+    console.log("price: " + price);
+    console.log("store: " + store);
+    console.log("image0: " + image0);
 
      const bookData = new FormData();
       bookData.append("name", name);
