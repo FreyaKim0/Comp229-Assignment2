@@ -86,7 +86,6 @@ export class RestDataSource
   }
 
   updateBookWithSameImage(_id: string, name: string, author: string, published: string, description: string, originalPrice: string, price: string, store: string): Observable<any> {
-    console.log('updateBookWithSameImage...........');
      this.loadToken();
     return this.http.post<{book: Book}>(`${this.baseUrl}book-list/editWithSameImage/${_id}/${name}/${author}/${published}/${description}/${originalPrice}/${price}/${store}}`,this.httpOptions);
   }

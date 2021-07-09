@@ -763,7 +763,6 @@ class RestDataSource {
         return this.http.post(`${this.baseUrl}book-list/edit/${_id}`, bookData, this.httpOptions);
     }
     updateBookWithSameImage(_id, name, author, published, description, originalPrice, price, store) {
-        console.log('updateBookWithSameImage...........');
         this.loadToken();
         return this.http.post(`${this.baseUrl}book-list/editWithSameImage/${_id}/${name}/${author}/${published}/${description}/${originalPrice}/${price}/${store}}`, this.httpOptions);
     }

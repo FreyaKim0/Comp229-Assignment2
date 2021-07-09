@@ -16273,10 +16273,12 @@ function BookTableComponent_div_13_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "img", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "img", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function BookTableComponent_div_13_Template_img_click_3_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r4); const b_r2 = ctx.$implicit; const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r3.deleteBook(b_r2._id); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function BookTableComponent_div_13_Template_div_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r4); const b_r2 = ctx.$implicit; const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r3.editBook(b_r2._id); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function BookTableComponent_div_13_Template_div_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r4); const b_r2 = ctx.$implicit; const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r5.editBook(b_r2._id); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "img", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "a");
@@ -16344,7 +16346,7 @@ class BookTableComponent {
     }
 }
 BookTableComponent.ɵfac = function BookTableComponent_Factory(t) { return new (t || BookTableComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_model_book_repository__WEBPACK_IMPORTED_MODULE_1__["BookRepository"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
-BookTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BookTableComponent, selectors: [["ng-component"]], decls: 15, vars: 5, consts: [[1, "line_title"], ["routerLink", "/book-list/all", 1, "buttonS"], [1, "fas", "fa-eye"], [1, "buttonS", 3, "click"], [1, "fas", "fa-plus-circle"], [1, "container"], ["id", "DivWarning", "class", "container-fluid", 4, "ngIf"], [1, "row", "justify-content-md-center", 2, "list-style", "none"], [4, "ngFor", "ngForOf"], ["id", "DivWarning", 1, "container-fluid"], [2, "width", "231px", "height", "350px", "border", "1px solid rgb(240, 236, 236)", "margin", "10px"], [1, "editButton"], ["src", "../../assets/images/delete_button.gif", 2, "width", "30px", "height", "30px"], [1, "imageDiv", 3, "click"], [2, "padding", "10px", "max-width", "200px", "max-height", "200px", 3, "src", "alt"], [1, "edit_dialog"], [1, "bookName"], [2, "color", "gray"], [2, "text-decoration", "line-through", "font-size", "12px"], [2, "font-size", "12px", "color", "red"]], template: function BookTableComponent_Template(rf, ctx) { if (rf & 1) {
+BookTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BookTableComponent, selectors: [["ng-component"]], decls: 15, vars: 5, consts: [[1, "line_title"], ["routerLink", "/book-list/all", 1, "buttonS"], [1, "fas", "fa-eye"], [1, "buttonS", 3, "click"], [1, "fas", "fa-plus-circle"], [1, "container"], ["id", "DivWarning", "class", "container-fluid", 4, "ngIf"], [1, "row", "justify-content-md-center", 2, "list-style", "none"], [4, "ngFor", "ngForOf"], ["id", "DivWarning", 1, "container-fluid"], [2, "width", "231px", "height", "350px", "border", "1px solid rgb(240, 236, 236)", "margin", "10px"], [1, "editButton"], ["src", "../../assets/images/delete_button.gif", 2, "width", "30px", "height", "30px", 3, "click"], [1, "imageDiv", 3, "click"], [2, "padding", "10px", "max-width", "200px", "max-height", "200px", 3, "src", "alt"], [1, "edit_dialog"], [1, "bookName"], [2, "color", "gray"], [2, "text-decoration", "line-through", "font-size", "12px"], [2, "font-size", "12px", "color", "red"]], template: function BookTableComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "b");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Manage Products \u00A0\u00A0\u00A0");
@@ -49303,7 +49305,7 @@ class BookEditorComponent {
         }
         // Submit
         if (this.formValidate) {
-            // update without modifying image
+            // Update without modifying image
             if (this.imageData.substring(0, 4) === "http") {
                 this.repository.editBookWithoutChangePicture(String(this.book._id), this.form.value.name, this.form.value.author, this.form.value.published, this.form.value.description, this.form.value.originalPrice, this.form.value.price, this.thisUserDisplayName, this.imageData);
             }

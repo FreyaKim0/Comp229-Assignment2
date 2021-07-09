@@ -106,7 +106,7 @@ export class BookEditorComponent implements OnInit {
     // Submit
     if (this.formValidate) {
 
-      // update without modifying image
+      // Update without modifying image
       if (this.imageData.substring(0, 4) === "http") {
         this.repository.editBookWithoutChangePicture(String(this.book._id),
                                                       this.form.value.name,
