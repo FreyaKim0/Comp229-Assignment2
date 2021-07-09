@@ -1324,7 +1324,7 @@ class modalComponentBook {
     }
 }
 modalComponentBook.ɵfac = function modalComponentBook_Factory(t) { return new (t || modalComponentBook)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_model_book_repository__WEBPACK_IMPORTED_MODULE_2__["BookRepository"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_model_cart_model__WEBPACK_IMPORTED_MODULE_4__["Cart"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbActiveModal"])); };
-modalComponentBook.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: modalComponentBook, selectors: [["modalpage"]], inputs: { orderId: "orderId" }, decls: 86, vars: 18, consts: [[1, "displaySetting", "mt-5"], [1, "modal-title", "text-right"], [2, "outline", "0px", "background", "#ffffff", "border", "0px", 3, "click"], [1, "fas", "fa-times-circle", 2, "color", "gray", "font-size", "30px"], ["id", "big_window", 1, "modal-body"], ["rowspan", "6"], [1, "image_display"], [1, "d-flex", "justify-content-center"], [2, "max-width", "400px", "max-height", "350px", 3, "src", "alt"], [2, "color", "grey", "font-size", "14px"], [2, "font-size", "14px", "color", "grey"], [2, "color", "red", "font-size", "18px", "font-weight", "600"], [1, "addtoCart", 3, "click"], ["colspan", "2"], ["id", "small_window"], [1, "container"], [1, "row"], [1, "col-sm"], [1, "col-sm", "text-left"], [1, "text-left"]], template: function modalComponentBook_Template(rf, ctx) { if (rf & 1) {
+modalComponentBook.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: modalComponentBook, selectors: [["modalpage"]], inputs: { orderId: "orderId" }, decls: 86, vars: 18, consts: [[1, "displaySetting", "mt-5"], [1, "modal-title", "text-right"], [2, "outline", "0px", "background", "#ffffff", "border", "0px", 3, "click"], [1, "fas", "fa-times-circle", 2, "color", "gray", "font-size", "30px"], ["id", "big_window", 1, "modal-body"], ["rowspan", "6"], [1, "image_display"], [1, "d-flex", "justify-content-center"], ["onerror", "this.onerror=null; this.src='https://xu-tung-jin.herokuapp.com/assets/images/default_book.gif'", 2, "max-width", "400px", "max-height", "350px", 3, "src", "alt"], [2, "color", "grey", "font-size", "14px"], [2, "font-size", "14px", "color", "grey"], [2, "color", "red", "font-size", "18px", "font-weight", "600"], [1, "addtoCart", 3, "click"], ["colspan", "2"], ["id", "small_window"], [1, "container"], [1, "row"], [1, "col-sm"], [1, "col-sm", "text-left"], [1, "text-left"]], template: function modalComponentBook_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "button", 2);
@@ -1522,6 +1522,7 @@ modalComponentBook.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
               <div>
                 <img
                   [src]="book.imagePath"
+                  onerror="this.onerror=null; this.src='https://xu-tung-jin.herokuapp.com/assets/images/default_book.gif'"
                   [alt]="book.name"
                   style="max-width: 400px; max-height: 350px"
                 />
@@ -1606,6 +1607,7 @@ modalComponentBook.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
                   <div>
                     <img
                       [src]="book.imagePath"
+                      onerror="this.onerror=null; this.src='https://xu-tung-jin.herokuapp.com/assets/images/default_book.gif'"
                       [alt]="book.name"
                       style="max-width: 400px; max-height: 350px"
                     />
@@ -6043,7 +6045,7 @@ class CartDetailComponent {
     ngOnInit() { }
 }
 CartDetailComponent.ɵfac = function CartDetailComponent_Factory(t) { return new (t || CartDetailComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_model_cart_model__WEBPACK_IMPORTED_MODULE_1__["Cart"])); };
-CartDetailComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CartDetailComponent, selectors: [["app-cart-detail"]], decls: 41, vars: 15, consts: [[1, "wrap"], ["id", "left"], [1, "line_title"], ["class", "letter", 4, "ngIf"], [4, "ngFor", "ngForOf"], ["id", "right"], [1, "summary"], [1, "text-left", "w-50", "p-0"], [1, "text-right", "w-50", "p-0"], ["routerLink", "/book-list", 1, "buttonS"], ["routerLink", "/admin/main/checkout", 1, "buttonS", "checkout", 3, "disabled"], [1, "letter"], [4, "ngIf"], [2, "width", "120px"], [1, "itemPicture"], [2, "max-width", "100px", "max-height", "100px", 3, "src", "alt"], [2, "text-align", "left", "width", "250px", "margin-bottom", "10px"], [2, "color", "grey", "width", "250px", "font-size", "10px"], ["type", "number", 2, "width", "2.5em", 3, "value", "change"], [2, "color", "red"], [2, "cursor", "pointer", 3, "click"], [1, "far", "fa-times-circle"]], template: function CartDetailComponent_Template(rf, ctx) { if (rf & 1) {
+CartDetailComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CartDetailComponent, selectors: [["app-cart-detail"]], decls: 41, vars: 15, consts: [[1, "wrap"], ["id", "left"], [1, "line_title"], ["class", "letter", 4, "ngIf"], [4, "ngFor", "ngForOf"], ["id", "right"], [1, "summary"], [1, "text-left", "w-50", "p-0"], [1, "text-right", "w-50", "p-0"], ["routerLink", "/book-list", 1, "buttonS"], ["routerLink", "/admin/main/checkout", 1, "buttonS", "checkout", 3, "disabled"], [1, "letter"], [4, "ngIf"], [2, "width", "120px"], [1, "itemPicture"], ["onerror", "this.onerror=null; this.src='https://xu-tung-jin.herokuapp.com/assets/images/default_book.gif'", 2, "max-width", "100px", "max-height", "100px", 3, "src", "alt"], [2, "text-align", "left", "width", "250px", "margin-bottom", "10px"], [2, "color", "grey", "width", "250px", "font-size", "10px"], ["type", "number", 2, "width", "2.5em", 3, "value", "change"], [2, "color", "red"], [2, "cursor", "pointer", 3, "click"], [1, "far", "fa-times-circle"]], template: function CartDetailComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "router-outlet");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
