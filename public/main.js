@@ -937,6 +937,7 @@ class BookRepository {
         bookData.append("store", store);
         bookData.append("image0", image0);
         this.dataSource.updateBookWithSameImage(bookData, _id).subscribe(res => {
+            console.log(res.success);
             if (res.success === true) {
                 this.book = new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](_id, name, author, published, description, Number(originalPrice), Number(price), store, image0);
                 this.books.splice(this.books.findIndex(b => b._id === _id), 1, this.book);

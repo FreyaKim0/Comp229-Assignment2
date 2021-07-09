@@ -131,7 +131,8 @@ export class BookRepository
       bookData.append("store", store);
       bookData.append("image0", image0);
 
-    this.dataSource.updateBookWithSameImage(bookData,_id).subscribe(res => {
+    this.dataSource.updateBookWithSameImage(bookData, _id).subscribe(res => {
+      console.log(res.success);
       if (res.success === true) {
         this.book = new Book(_id,
             name,
