@@ -185,6 +185,14 @@ module.exports.processEditWithSameImagePage = (req, res, next) => {
         res.json({
           success: false,
           id: id,
+          name: name,
+          author: author,
+          published: published,
+          description: description,
+          price: price,
+          originalPrice: originalPrice,
+          store: store,
+          image: imagePath0,
         });
       } else {
         res.json({
