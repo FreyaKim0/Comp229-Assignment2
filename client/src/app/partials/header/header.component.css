@@ -193,17 +193,17 @@ button:focus {
 #navbarDropdown .nav-link dropdown-toggle {
   color: pink;
 }
-.contactButton {
+#contactButton {
   opacity: 0.5;
   background-color: transparent;
   border-width: 0px;
   margin-right: 5px;
   float: left;
 }
-.contactButton:hover {
+#contactButton:hover {
   opacity: 1;
 }
-.contactButton:focus {
+#contactButton:focus {
   opacity: 1;
   border-width: 0px;
 }
@@ -293,7 +293,7 @@ button:focus {
   #header_in_main_wrapper {
     display: block;
   }
-  .contactButton {
+  #contactButton {
     float: none;
   }
   #hamburger_btn {

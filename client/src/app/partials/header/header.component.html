@@ -63,7 +63,8 @@
               *ngIf="isLoggedIn()"
               (click)="onLogoutClick()"
               routerLink="/logout"
-              class="contactButton"
+              id="contactButton"
+              class="btn"
               type="button"
             >
               <i class="fas fa-sign-out-alt" style="padding-left: 5px"></i>
@@ -72,7 +73,8 @@
             <a
               *ngIf="!isLoggedIn()"
               (click)="onLoginClick()"
-              class="contactButton"
+              id="contactButton"
+              class="btn"
               type="button"
               routerLink="/login"
             >
