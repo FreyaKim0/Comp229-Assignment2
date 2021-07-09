@@ -12,6 +12,9 @@
 
 * As seller, end-users can check order details from the 'Manage Product' page.
 * As seller, end-users can toggle shipping status at the 'Manage Product' page.
+
+![main_page](./screenShot_order.png?raw=true)
+
 * As seller, end-users can remove orders from the 'Manage Product' page.
  
 
