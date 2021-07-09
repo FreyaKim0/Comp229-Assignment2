@@ -155,6 +155,17 @@ module.exports.processEditWithSameImagePage = (req, res, next) => {
   const description = req.body.description;
   const store = req.body.store;
 
+  let updatedBook = Book({
+    name: name,
+    author: author,
+    published: published,
+    description: description,
+    originalPrice: originalPrice,
+    price: price,
+    store: store,
+    imagePath: imagePath0,
+  });
+
   let newBook = Book({
     name: req.body.name,
     author: req.body.author,
