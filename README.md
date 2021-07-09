@@ -1,5 +1,5 @@
 # Project-Shopping-Cart-Angular
-![Basic Pizza Order System](./screenShot_main.gif?raw=true)
+![main_page](./screenShot_main.PNG?raw=true)
 **This is a bookstore shopping platform. In this app:**
 * As buyer, end-users can filter authors by name using buttons.
 * As buyer, end-users can filter the number of items displayed per page.
