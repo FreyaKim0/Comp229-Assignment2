@@ -3,6 +3,7 @@
 * As buyer, end-users can filter authors by name using buttons.
 * As buyer, end-users can filter the number of items displayed per page.
 * As buyer, end-users can filter the price range using the slider.<br>
+
 ![main_page](./screenShot_main.PNG?raw=true)
 
 
