@@ -133,6 +133,7 @@ export class BookRepository
 
     this.dataSource.updateBookWithSameImage(bookData, _id).subscribe(res => {
       console.log(res.success);
+      console.log(res.id);
       if (res.success === true) {
         this.book = new Book(_id,
             name,

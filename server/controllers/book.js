@@ -142,6 +142,7 @@ module.exports.processEditPage = (req, res, next) => {
 
 module.exports.processEditWithSameImagePage = (req, res, next) => {
   const id = req.params.id;
+  const imagePath0 = "https://xu-tung-jin.herokuapp.com/api/server/images/";
 
   const x = req.body.price;
   const price = Number(x);
@@ -153,6 +154,17 @@ module.exports.processEditWithSameImagePage = (req, res, next) => {
   const published = req.body.published;
   const description = req.body.description;
   const store = req.body.store;
+
+  let newBook = Book({
+    name: req.body.name,
+    author: req.body.author,
+    published: req.body.published,
+    description: req.body.description,
+    originalPrice: originalPrice,
+    price: price,
+    store: req.body.store,
+    imagePath: imagePath0,
+  });
 
   // const id = req.params.id;
   // const price = req.params.price;
@@ -174,12 +186,14 @@ module.exports.processEditWithSameImagePage = (req, res, next) => {
         price: price,
         originalPrice: originalPrice,
         store: store,
+        imagePath: imagePath0,
       },
     },
     (err) => {
       if (err) {
         res.json({
           success: false,
+          id: id,
         });
       } else {
         res.json({
