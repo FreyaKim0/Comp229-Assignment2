@@ -16308,7 +16308,8 @@ function BookTableComponent_div_13_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const b_r2 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", b_r2.imagePath, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("alt", b_r2.name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("ng-src", b_r2.imagePath || "https://xu-tung-jin.herokuapp.com/assets/images/default_book.gif");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("alt", b_r2.name);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", b_r2.name, " \u00A0-\u00A0");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
@@ -16346,7 +16347,7 @@ class BookTableComponent {
     }
 }
 BookTableComponent.ɵfac = function BookTableComponent_Factory(t) { return new (t || BookTableComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_model_book_repository__WEBPACK_IMPORTED_MODULE_1__["BookRepository"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
-BookTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BookTableComponent, selectors: [["ng-component"]], decls: 15, vars: 5, consts: [[1, "line_title"], ["routerLink", "/book-list/all", 1, "buttonS"], [1, "fas", "fa-eye"], [1, "buttonS", 3, "click"], [1, "fas", "fa-plus-circle"], [1, "container"], ["id", "DivWarning", "class", "container-fluid", 4, "ngIf"], [1, "row", "justify-content-md-center", 2, "list-style", "none"], [4, "ngFor", "ngForOf"], ["id", "DivWarning", 1, "container-fluid"], [2, "width", "231px", "height", "350px", "border", "1px solid rgb(240, 236, 236)", "margin", "10px"], [1, "editButton"], ["src", "../../assets/images/delete_button.gif", 2, "width", "30px", "height", "30px", 3, "click"], [1, "imageDiv", 3, "click"], [2, "padding", "10px", "max-width", "200px", "max-height", "200px", 3, "src", "alt"], [1, "edit_dialog"], [1, "bookName"], [2, "color", "gray"], [2, "text-decoration", "line-through", "font-size", "12px"], [2, "font-size", "12px", "color", "red"]], template: function BookTableComponent_Template(rf, ctx) { if (rf & 1) {
+BookTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BookTableComponent, selectors: [["ng-component"]], decls: 15, vars: 5, consts: [[1, "line_title"], ["routerLink", "/book-list/all", 1, "buttonS"], [1, "fas", "fa-eye"], [1, "buttonS", 3, "click"], [1, "fas", "fa-plus-circle"], [1, "container"], ["id", "DivWarning", "class", "container-fluid", 4, "ngIf"], [1, "row", "justify-content-md-center", 2, "list-style", "none"], [4, "ngFor", "ngForOf"], ["id", "DivWarning", 1, "container-fluid"], [2, "width", "231px", "height", "350px", "border", "1px solid rgb(240, 236, 236)", "margin", "10px"], [1, "editButton"], ["src", "../../assets/images/delete_button.gif", 2, "width", "30px", "height", "30px", 3, "click"], [1, "imageDiv", 3, "click"], [2, "padding", "10px", "max-width", "200px", "max-height", "200px", 3, "ng-src", "alt"], [1, "edit_dialog"], [1, "bookName"], [2, "color", "gray"], [2, "text-decoration", "line-through", "font-size", "12px"], [2, "font-size", "12px", "color", "red"]], template: function BookTableComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "b");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Manage Products \u00A0\u00A0\u00A0");
