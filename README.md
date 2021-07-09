@@ -6,9 +6,13 @@
 
 ![main_page](./screenShot_main.PNG?raw=true)
 
-* As buyer, end-users can select book into shopping cart.
+* As buyer, end-users can view book detail in modal window.
 
 ![main_page](./screenShot_detail.JPG?raw=true)
+
+* As buyer, end-users can select book into shopping cart.
+
+![main_page](./screenShot_cart.JPG?raw=true)
 
 * As seller, end-users can create, update and delete products.
 
