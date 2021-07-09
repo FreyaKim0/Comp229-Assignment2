@@ -93,6 +93,7 @@
           <div class="imageDiv" (click)="viewBook(book._id)">
             <img
               [src]="book.imagePath"
+              onerror="this.onerror=null; this.src='https://xu-tung-jin.herokuapp.com/assets/images/default_book.gif'"
               [alt]="book.name"
               style="padding: 10px; max-width: 200px; max-height: 200px"
             />
