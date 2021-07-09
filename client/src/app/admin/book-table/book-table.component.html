@@ -44,10 +44,7 @@
         <!--image-->
         <div class="imageDiv" (click)="editBook(b._id)">
           <img
-            ng-src="{{
-              b.imagePath ||
-                'https://xu-tung-jin.herokuapp.com/assets/images/default_book.gif'
-            }}"
+            [src]="b.imagePath"
             [alt]="b.name"
             style="padding: 10px; max-width: 200px; max-height: 200px"
           />
