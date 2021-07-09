@@ -293,7 +293,7 @@ button:focus {
   #header_in_main_wrapper {
     display: block;
   }
-  #contactButton {
+  .contactButton {
     float: none;
   }
   #hamburger_btn {
