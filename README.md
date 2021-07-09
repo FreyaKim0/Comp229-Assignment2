@@ -29,4 +29,4 @@
 
 Skill Scope:<br>
 * Middleware:	Multer, Morgan, Passport, Cookie-parser, Mongoose
-* Component: NgxSlider, Modal
+* Component: NgxSlider, Modal 
