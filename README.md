@@ -26,3 +26,7 @@
 * As seller, end-users can remove orders from the 'Manage Product' page.
 
 ![main_page](./screenShot_order.png?raw=true)
+
+Skill Scope:<br>
+* Middleware:	Multer, Morgan, Passport, Cookie-parser, Mongoose
+* Component: NgxSlider, Modal
