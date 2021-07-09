@@ -77,7 +77,7 @@ module.exports.displayEditPage = (req, res, next) => {
   });
 };
 
-// This is for update case which image has been changed
+// This is for update case with image changed
 module.exports.processEditPage = (req, res, next) => {
   const imagePath0 =
     "https://xu-tung-jin.herokuapp.com/api/server/images/" + req.file.filename;
@@ -141,7 +141,7 @@ module.exports.processEditPage = (req, res, next) => {
 };
 
 module.exports.processEditWithSameImagePage = (req, res, next) => {
-  const imagePath0 = req.body.image0;
+  const imagePath0 = "777"; //req.body.image0;
   const x = req.body.price;
   const price = Number(x);
   const y = req.body.originalPrice;
