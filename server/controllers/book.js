@@ -94,16 +94,16 @@ module.exports.processEditPage = (req, res, next) => {
   const description = req.body.description;
   const store = req.body.store;
 
-  // let updatedBook = Book({
-  //   name: name,
-  //   author: author,
-  //   published: published,
-  //   description: description,
-  //   originalPrice: originalPrice,
-  //   price: price,
-  //   store: store,
-  //   imagePath: imagePath0,
-  // });
+  let updatedBook = Book({
+    name: name,
+    author: author,
+    published: published,
+    description: description,
+    originalPrice: originalPrice,
+    price: price,
+    store: store,
+    imagePath: imagePath0,
+  });
 
   Book.updateOne(
     { _id: id },
