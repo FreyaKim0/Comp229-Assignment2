@@ -49174,7 +49174,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function BookEditorComponent_span_11_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "** File format: .jpg .jpeg or .pdf **");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "** File format: .jpg / .jpeg (max 0.5Mb) **");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function BookEditorComponent_span_12_Template(rf, ctx) { if (rf & 1) {
@@ -49266,12 +49266,13 @@ class BookEditorComponent {
     }
     onFileSelect(event, name) {
         // Read image into reader
-        const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+        const allowedMimeTypes = ['image/jpeg', 'image/jpg'];
+        const allowedSize = 512 * 512; // 0.5Mb
         // Stringfy image0
         const file = event.target.files[0];
+        const filesize = file.size;
         this.form.patchValue({ image0: file });
-        console.log("new value patch...");
-        if (file && allowedMimeTypes.includes(file.type)) {
+        if (file && allowedMimeTypes.includes(file.type) && filesize < allowedSize) {
             const reader0 = new FileReader();
             reader0.onload = () => {
                 this.imageData = reader0.result;

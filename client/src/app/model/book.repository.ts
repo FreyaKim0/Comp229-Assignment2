@@ -107,6 +107,7 @@ export class BookRepository
     }
   }
 
+  // update book (without image change)
   editBookWithoutChangePicture( _id: string,
                                 name: string,
                                 author: string,
@@ -120,7 +121,17 @@ export class BookRepository
     console.log('image0: ' + image0);
     console.log("name: " + name);
 
-    this.dataSource.updateBookWithSameImage(_id,name,author,published,description,originalPrice,price,store).subscribe(res => {
+     const bookData = new FormData();
+      bookData.append("name", name);
+      bookData.append("author", author);
+      bookData.append("published", published);
+      bookData.append("description", description);
+      bookData.append("originalPrice", originalPrice);
+      bookData.append("price", price);
+      bookData.append("store", store);
+      bookData.append("image0", image0);
+
+    this.dataSource.updateBookWithSameImage(bookData,_id).subscribe(res => {
       if (res.success === true) {
         this.book = new Book(_id,
             name,

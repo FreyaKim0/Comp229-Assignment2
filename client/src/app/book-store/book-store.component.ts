@@ -219,7 +219,7 @@ export class BookStoreComponent {
 
   // Price filter
   public value = 0;
-  public highValue = 50;
+  public highValue = 100;
   public options: Options = {
     floor: 0,
     ceil: 100,

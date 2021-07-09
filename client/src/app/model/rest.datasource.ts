@@ -85,9 +85,9 @@ export class RestDataSource
     return this.http.post<{book: Book}>(`${this.baseUrl}book-list/edit/${_id}`,bookData, this.httpOptions);
   }
 
-  updateBookWithSameImage(_id: string, name: string, author: string, published: string, description: string, originalPrice: string, price: string, store: string): Observable<any> {
+  updateBookWithSameImage(bookData: FormData, _id: string): Observable<any> {
      this.loadToken();
-    return this.http.post<{book: Book}>(`${this.baseUrl}book-list/editWithSameImage/${_id}/${name}/${author}/${published}/${description}/${originalPrice}/${price}/${store}}`,this.httpOptions);
+    return this.http.post<{book: Book}>(`${this.baseUrl}book-list/editWithSameImage/${_id}`,bookData,this.httpOptions);
   }
 
   deleteBook(id: string): Observable<Book>{

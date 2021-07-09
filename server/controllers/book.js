@@ -141,26 +141,44 @@ module.exports.processEditPage = (req, res, next) => {
 };
 
 module.exports.processEditWithSameImagePage = (req, res, next) => {
-  const id = req.params.id;
-  const price = req.params.price;
-  const originalPrice = req.params.originalPrice;
-  const name1 = req.params.name;
-  const author1 = req.params.author;
-  const published1 = req.params.published;
-  const description1 = req.params.description;
-  const store1 = req.params.store;
+  const imagePath0 = req.body.image0;
+  const x = req.body.price;
+  const price = Number(x);
+  const y = req.body.originalPrice;
+  const originalPrice = Number(y);
+
+  let newBook = Book({
+    name: req.body.name,
+    author: req.body.author,
+    published: req.body.published,
+    description: req.body.description,
+    originalPrice: originalPrice,
+    price: price,
+    store: req.body.store,
+    imagePath: imagePath0,
+  });
+
+  // const id = req.params.id;
+  // const price = req.params.price;
+  // const originalPrice = req.params.originalPrice;
+  // const name1 = req.params.name;
+  // const author1 = req.params.author;
+  // const published1 = req.params.published;
+  // const description1 = req.params.description;
+  // const store1 = req.params.store;
 
   Book.updateOne(
     { _id: id },
     {
       $set: {
-        name: name1,
-        author: author1,
-        published: published1,
-        description: description1,
-        price: price,
-        originalPrice: originalPrice,
-        store: store1,
+        name: newBook.name,
+        author: newBook.author,
+        published: newBook.published,
+        description: newBook.description,
+        price: newBook.price,
+        originalPrice: newBook.originalPrice,
+        store: newBook.store,
+        imagePath: newBook.imagePath0,
       },
     },
     (err) => {

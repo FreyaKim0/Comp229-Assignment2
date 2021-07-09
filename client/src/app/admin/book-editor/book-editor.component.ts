@@ -61,14 +61,15 @@ export class BookEditorComponent implements OnInit {
 
   onFileSelect(event: Event, name: string): void {
     // Read image into reader
-    const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+    const allowedMimeTypes = ['image/jpeg', 'image/jpg'];
+    const allowedSize = 512 * 512; // 0.5Mb
 
     // Stringfy image0
     const file = (event.target as HTMLInputElement).files[0];
+    const filesize = file.size;
     this.form.patchValue({ image0: file });
-    console.log("new value patch...");
 
-    if (file && allowedMimeTypes.includes(file.type)) {
+    if (file && allowedMimeTypes.includes(file.type) && filesize<allowedSize) {
         const reader0 = new FileReader();
         reader0.onload = () => {
           this.imageData = reader0.result as string;

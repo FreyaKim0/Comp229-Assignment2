@@ -37,7 +37,7 @@ router.post(
 
 /* POST Route for processing the Edit page - UPDATE Without new image Operation */
 router.post(
-  "/editWithSameImage/:id/:name/:author/:published/:description/:originalPrice/:price/:store",
+  "/editWithSameImage/:id",
   bookController.processEditWithSameImagePage
 );
 

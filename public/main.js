@@ -762,9 +762,9 @@ class RestDataSource {
         this.loadToken();
         return this.http.post(`${this.baseUrl}book-list/edit/${_id}`, bookData, this.httpOptions);
     }
-    updateBookWithSameImage(_id, name, author, published, description, originalPrice, price, store) {
+    updateBookWithSameImage(bookData, _id) {
         this.loadToken();
-        return this.http.post(`${this.baseUrl}book-list/editWithSameImage/${_id}/${name}/${author}/${published}/${description}/${originalPrice}/${price}/${store}}`, this.httpOptions);
+        return this.http.post(`${this.baseUrl}book-list/editWithSameImage/${_id}`, bookData, this.httpOptions);
     }
     deleteBook(id) {
         this.loadToken();
@@ -923,10 +923,20 @@ class BookRepository {
             });
         }
     }
+    // update book (without image change)
     editBookWithoutChangePicture(_id, name, author, published, description, originalPrice, price, store, image0) {
         console.log('image0: ' + image0);
         console.log("name: " + name);
-        this.dataSource.updateBookWithSameImage(_id, name, author, published, description, originalPrice, price, store).subscribe(res => {
+        const bookData = new FormData();
+        bookData.append("name", name);
+        bookData.append("author", author);
+        bookData.append("published", published);
+        bookData.append("description", description);
+        bookData.append("originalPrice", originalPrice);
+        bookData.append("price", price);
+        bookData.append("store", store);
+        bookData.append("image0", image0);
+        this.dataSource.updateBookWithSameImage(bookData, _id).subscribe(res => {
             if (res.success === true) {
                 this.book = new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](_id, name, author, published, description, Number(originalPrice), Number(price), store, image0);
                 this.books.splice(this.books.findIndex(b => b._id === _id), 1, this.book);
@@ -1683,7 +1693,7 @@ class BookStoreComponent {
         this.selectedPage = 1;
         // Price filter
         this.value = 0;
-        this.highValue = 50;
+        this.highValue = 100;
         this.options = {
             floor: 0,
             ceil: 100,
