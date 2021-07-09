@@ -45,6 +45,7 @@
         <div class="imageDiv" (click)="editBook(b._id)">
           <img
             [src]="b.imagePath"
+            onerror="this.onerror=null; this.src='https://xu-tung-jin.herokuapp.com/assets/images/default_book.gif'"
             [alt]="b.name"
             style="padding: 10px; max-width: 200px; max-height: 200px"
           />
