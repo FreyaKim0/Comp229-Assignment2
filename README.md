@@ -6,16 +6,16 @@
 
 ![main_page](./screenShot_main.PNG?raw=true)
 
+* As buyer, end-users can select book into shopping cart.
+
+![main_page](./screenShot_detail.JPG?raw=true)
+
 * As seller, end-users can create, update and delete products.
 
 ![main_page](./screenShot_edit.JPG?raw=true)
 
 * As seller, end-users can check order details from the 'Manage Product' page.
 * As seller, end-users can toggle shipping status at the 'Manage Product' page.
+* As seller, end-users can remove orders from the 'Manage Product' page.
 
 ![main_page](./screenShot_order.png?raw=true)
-
-* As seller, end-users can remove orders from the 'Manage Product' page.
- 
-
-
