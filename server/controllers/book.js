@@ -149,7 +149,7 @@ module.exports.processEditWithSameImagePage = (req, res, next) => {
   const y = req.body.originalPrice;
   const originalPrice = Number(y);
 
-  const name = req.body.name;
+  const name = "test"; //req.body.name;
   const author = req.body.author;
   const published = req.body.published;
   const description = req.body.description;

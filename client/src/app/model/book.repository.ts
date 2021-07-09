@@ -98,7 +98,6 @@ export class BookRepository
     console.log("originalPrice: " + originalPrice);
     console.log("price: " + price);
     console.log("store: " + store);
-    console.log("image0: " + image0);
 
       // Sent this update data to back-end,
       // then update it into front-end array if successd
