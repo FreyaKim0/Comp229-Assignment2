@@ -77,7 +77,7 @@ module.exports.displayEditPage = (req, res, next) => {
   });
 };
 
-// This is for update case with image changed
+// This is for update case which image has been changed
 module.exports.processEditPage = (req, res, next) => {
   const imagePath0 =
     "https://xu-tung-jin.herokuapp.com/api/server/images/" + req.file.filename;
@@ -141,58 +141,32 @@ module.exports.processEditPage = (req, res, next) => {
 };
 
 module.exports.processEditWithSameImagePage = (req, res, next) => {
-  const imagePath0 = "https://xu-tung-jin.herokuapp.com/api/server/images/";
   const id = req.params.id;
-
-  const x = req.body.price;
-  const price = Number(x);
-  const y = req.body.originalPrice;
-  const originalPrice = Number(y);
-
-  const name = "test"; //req.body.name;
-  const author = req.body.author;
-  const published = req.body.published;
-  const description = req.body.description;
-  const store = req.body.store;
-
-  let updatedBook = Book({
-    name: name,
-    author: author,
-    published: published,
-    description: description,
-    originalPrice: originalPrice,
-    price: price,
-    store: store,
-    imagePath: imagePath0,
-  });
+  const price = req.params.price;
+  const originalPrice = req.params.originalPrice;
+  const name1 = req.params.name;
+  const author1 = req.params.author;
+  const published1 = req.params.published;
+  //const description1 = req.params.description;
+  const store1 = req.params.store;
 
   Book.updateOne(
     { _id: id },
     {
       $set: {
-        name: name,
-        author: author,
-        published: published,
-        description: description,
+        name: name1,
+        author: author1,
+        published: published1,
+        //description: description1,
         price: price,
         originalPrice: originalPrice,
-        store: store,
-        //imagePath: imagePath0,
+        store: store1,
       },
     },
     (err) => {
       if (err) {
         res.json({
           success: false,
-          id: id,
-          name: name,
-          author: author,
-          published: published,
-          description: description,
-          price: price,
-          originalPrice: originalPrice,
-          store: store,
-          image: imagePath0,
         });
       } else {
         res.json({

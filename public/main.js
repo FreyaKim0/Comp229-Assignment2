@@ -762,9 +762,9 @@ class RestDataSource {
         this.loadToken();
         return this.http.post(`${this.baseUrl}book-list/edit/${_id}`, bookData, this.httpOptions);
     }
-    updateBookWithSameImage(bookData, _id) {
+    updateBookWithSameImage(_id, name, author, published, description, originalPrice, price, store) {
         this.loadToken();
-        return this.http.post(`${this.baseUrl}book-list/editWithSameImage/${_id}`, bookData, this.httpOptions);
+        return this.http.post(`${this.baseUrl}book-list/editWithSameImage/${_id}/${name}/${author}/${published}/${originalPrice}/${price}/${store}}`, this.httpOptions);
     }
     deleteBook(id) {
         this.loadToken();
@@ -915,15 +915,6 @@ class BookRepository {
             bookData.append("price", price);
             bookData.append("store", store);
             bookData.append("image0", image0, name);
-            console.log('image0: ' + image0);
-            console.log("name: " + name);
-            console.log("author: " + author);
-            console.log("published: " + published);
-            console.log("description: " + description);
-            console.log("originalPrice: " + originalPrice);
-            console.log("price: " + price);
-            console.log("store: " + store);
-            console.log("image0: " + image0);
             // Sent this update data to back-end,
             // then update it into front-end array if successd
             this.dataSource.updateBook(bookData, _id).subscribe(book => {
@@ -932,37 +923,9 @@ class BookRepository {
             });
         }
     }
-    // update book (without image change)
     editBookWithoutChangePicture(_id, name, author, published, description, originalPrice, price, store, image0) {
-        console.log('image0: ' + image0);
-        console.log("name: " + name);
-        console.log("author: " + author);
-        console.log("published: " + published);
-        console.log("description: " + description);
-        console.log("originalPrice: " + originalPrice);
-        console.log("price: " + price);
-        console.log("store: " + store);
-        console.log("image0: " + image0);
-        const bookData = new FormData();
-        bookData.append("name", name);
-        bookData.append("author", author);
-        bookData.append("published", published);
-        bookData.append("description", description);
-        bookData.append("originalPrice", originalPrice);
-        bookData.append("price", price);
-        bookData.append("store", store);
-        bookData.append("image0", image0);
-        this.dataSource.updateBookWithSameImage(bookData, _id).subscribe(res => {
-            console.log(res.success);
-            console.log(res.id);
-            console.log(res.name);
-            console.log(res.author);
-            console.log(res.published);
-            console.log(res.description);
-            console.log(res.originalPrice);
-            console.log(res.store);
-            console.log(res.image);
-            if (res.success === true) {
+        this.dataSource.updateBookWithSameImage(_id, name, author, published, description, originalPrice, price, store).subscribe(res => {
+            if (res.success == true) {
                 this.book = new _book_model__WEBPACK_IMPORTED_MODULE_1__["Book"](_id, name, author, published, description, Number(originalPrice), Number(price), store, image0);
                 this.books.splice(this.books.findIndex(b => b._id === _id), 1, this.book);
             }

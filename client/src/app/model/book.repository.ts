@@ -90,15 +90,6 @@ export class BookRepository
       bookData.append("store", store);
       bookData.append("image0", image0, name);
 
-    console.log('image0: ' + image0);
-    console.log("name: " + name);
-    console.log("author: " + author);
-    console.log("published: " + published);
-    console.log("description: " + description);
-    console.log("originalPrice: " + originalPrice);
-    console.log("price: " + price);
-    console.log("store: " + store);
-
       // Sent this update data to back-end,
       // then update it into front-end array if successd
       this.dataSource.updateBook(bookData, _id).subscribe(book => {
@@ -116,7 +107,6 @@ export class BookRepository
     }
   }
 
-  // update book (without image change)
   editBookWithoutChangePicture( _id: string,
                                 name: string,
                                 author: string,
@@ -127,37 +117,8 @@ export class BookRepository
                                 store: string,
                                 image0: string) {
 
-    console.log('image0: ' + image0);
-    console.log("name: " + name);
-    console.log("author: " + author);
-    console.log("published: " + published);
-    console.log("description: " + description);
-    console.log("originalPrice: " + originalPrice);
-    console.log("price: " + price);
-    console.log("store: " + store);
-    console.log("image0: " + image0);
-
-     const bookData = new FormData();
-      bookData.append("name", name);
-      bookData.append("author", author);
-      bookData.append("published", published);
-      bookData.append("description", description);
-      bookData.append("originalPrice", originalPrice);
-      bookData.append("price", price);
-      bookData.append("store", store);
-      bookData.append("image0", image0);
-
-    this.dataSource.updateBookWithSameImage(bookData, _id).subscribe(res => {
-      console.log(res.success);
-      console.log(res.id);
-      console.log(res.name);
-      console.log(res.author);
-      console.log(res.published);
-      console.log(res.description);
-      console.log(res.originalPrice);
-      console.log(res.store);
-      console.log(res.image);
-      if (res.success === true) {
+    this.dataSource.updateBookWithSameImage(_id,name,author,published,description,originalPrice,price,store).subscribe(res => {
+      if (res.success == true) {
         this.book = new Book(_id,
             name,
             author,
