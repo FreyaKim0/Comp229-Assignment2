@@ -35,7 +35,7 @@ import { Component, Input, OnInit} from '@angular/core';
                         <div class="itemPicture">
                           <img
                             [src]="line.book.imagePath"
-                             onerror="this.onerror=null; this.src='https://xu-tung-jin.herokuapp.com/assets/images/default_book.gif'"
+                            onerror="this.onerror=null; this.src='https://xu-tung-jin.herokuapp.com/assets/images/default_book.gif'"
                             [alt]="line.book.name"
                             style="max-width: 100px; max-height: 100px"
                           />
