@@ -141,7 +141,8 @@ module.exports.processEditPage = (req, res, next) => {
 };
 
 module.exports.processEditWithSameImagePage = (req, res, next) => {
-  const imagePath0 = "777"; //req.body.image0;
+  const id = req.params.id;
+
   const x = req.body.price;
   const price = Number(x);
   const y = req.body.originalPrice;
@@ -173,7 +174,6 @@ module.exports.processEditWithSameImagePage = (req, res, next) => {
         price: price,
         originalPrice: originalPrice,
         store: store,
-        imagePath: imagePath0,
       },
     },
     (err) => {
