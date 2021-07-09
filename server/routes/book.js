@@ -38,6 +38,7 @@ router.post(
 /* POST Route for processing the Edit page - UPDATE Without new image Operation */
 router.post(
   "/editWithSameImage/:id",
+  passport.authenticate("jwt", { session: false }),
   bookController.processEditWithSameImagePage
 );
 
